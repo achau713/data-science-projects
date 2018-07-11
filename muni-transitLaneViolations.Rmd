@@ -1,0 +1,45 @@
+---
+title: "Analysis of Transit Only Lane Violations for SFMTA"
+author: Anthony Chau
+date: 07-10-2018
+output: html_notebook
+---
+
+
+```{r}
+muni <- read.csv('muni_transitLanes.csv')
+
+# Convert muni object to a data frame class
+muni <- as.data.frame(muni)
+
+# Check variables in muni
+str(muni)
+summary(muni)
+
+```
+# Cleaning the Data
+
+First, we remove the Citation.Issue.Month column from the data frame since the
+month is already included in the Citation.Issue.Date column.
+```{r}
+muni$Citaton.Issue.Month <- NULL
+```
+
+Now, let's focus our attention on the date and time data within this dataset.
+
+Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
+```{r}
+# Convert citation dates and times to a Datetime object
+
+muni$Citation.Date <- strptime(paste(muni$Citation.Issue.Date, 
+                                            muni$Citation.Issue.Time), 
+                                      format ='%m/%d/%Y %H:%M')
+
+# Drop original citation issue date and time
+
+muni$Citation.Issue.Date <- NULL
+muni$Citation.Issue.Time <- NULL
+
+```
+
+
