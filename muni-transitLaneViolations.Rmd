@@ -20,9 +20,11 @@ summary(muni)
 # Cleaning the Data
 
 First, we remove the Citation.Issue.Month column from the data frame since the
-month is already included in the Citation.Issue.Date column.
+month is already included in the Citation.Issue.Date column. And, we remove the 
+Last.Edited.Date column because this is not relevant for our analysis.
 ```{r}
 muni$Citaton.Issue.Month <- NULL
+muni$Last.Edited.Date <- NULL
 ```
 
 Now, let's focus our attention on the date and time data within this dataset.
@@ -40,6 +42,37 @@ muni$Citation.Date <- strptime(paste(muni$Citation.Issue.Date,
 muni$Citation.Issue.Date <- NULL
 muni$Citation.Issue.Time <- NULL
 
+str(muni)
+
+table(muni$Violation.Code)
+table(muni$Violation)
+table(muni$Citation.Status)
+table(muni$Disposition.Code)
+table(muni$Suspend.Process.Date)
 ```
 
+
+We want to collaspe observations in the location column to only record a unique
+factor level for a street name.
+```{r}
+library(stringr)
+
+muni$Location <- as.character(muni$Location)
+
+muni$Location <- str_replace_all(muni$Location, "[:punct:]", "")
+
+### Testing code
+
+# Split location into street number and street name
+# Logic: If a word boundary is proceeded by a digit, split the word
+y <- lapply(strsplit(muni$Location, "(?<=\\d)\\b ", perl=T), function(x) if (length(x)<2) c("", x) else x)
+
+# Create new matrix with street name column and street name column
+y <- do.call(rbind, y)
+
+# Check unique street names
+unique(y[,2])
+
+
+```
 
