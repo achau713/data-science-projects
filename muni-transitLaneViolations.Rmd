@@ -7,9 +7,7 @@ output: html_notebook
 
 
 ```{r}
-muni <- read.csv('muni_transitLanes.csv')
-
-# Convert muni object to a data frame class
+muni <- read.csv('muni_transitLanes.csv', strip.white = TRUE)
 muni <- as.data.frame(muni)
 
 # Check variables in muni
@@ -42,13 +40,6 @@ muni$Citation.Date <- strptime(paste(muni$Citation.Issue.Date,
 muni$Citation.Issue.Date <- NULL
 muni$Citation.Issue.Time <- NULL
 
-str(muni)
-
-table(muni$Violation.Code)
-table(muni$Violation)
-table(muni$Citation.Status)
-table(muni$Disposition.Code)
-table(muni$Suspend.Process.Date)
 ```
 
 
@@ -65,13 +56,54 @@ muni$Location <- str_replace_all(muni$Location, "[:punct:]", "")
 
 # Split location into street number and street name
 # Logic: If a word boundary is proceeded by a digit, split the word
-y <- lapply(strsplit(muni$Location, "(?<=\\d)\\b ", perl=T), function(x) if (length(x)<2) c("", x) else x)
+
+splitAddress <- strsplit(muni$Location, "(?<=\\d)\\b ", perl=T)
 
 # Create new matrix with street name column and street name column
-y <- do.call(rbind, y)
+y <- do.call(rbind, splitAddress)
+y <- as.data.frame(y)
+
+
+# Change column names
+colnames(y) <- c('Street.Number', 'Street.Name')
+
+# Make new column in muni df
+muni$Street.Name <- y$Street.Name
+
+# Check df
+str(muni)
 
 # Check unique street names
-unique(y[,2])
+unique(muni$Street.Name)
+
+# Trim leading white space
+trim.leading <- function (x)  sub("^\\s+", "", x)
+muni$Street.Name <- trim.leading(muni$Street.Name)
+
+# Refactor duplicate/misspelled streets
+# Find more efficient way of doing this
+muni$Street.Name[muni$Street.Name %in% c("GEARY", "GEARY ST")] <- "GEARY BLVD"
+muni$Street.Name[muni$Street.Name %in% c("OFARRELL", "OFALLELL", 
+                                         "OFARRELL ST", 
+                                         "OFARRELL STREET")] <- "O'FARRELL ST"
+muni$Street.Name[muni$Street.Name %in% c("04TH ST", "04TH  ST",
+                                         "O4TH STREET")] <- "4TH ST"
+muni$Street.Name[muni$Street.Name %in% c("03RD ST")] <- "3RD ST"
+muni$Street.Name[muni$Street.Name %in% c("MISSION")] <- "MISSION ST"
+muni$Street.Name[muni$Street.Name %in% c("MARKET", "566MARKET ST")] <- "MARKET ST"
+muni$Street.Name[muni$Street.Name %in% c("STOCKTON", 
+                                         "STOCKTON TUNL")] <- "STOCKTON ST"
+muni$Street.Name[muni$Street.Name %in% c("SACRAMENTO")] <- "SACRAMENTO ST"
+muni$Street.Name[muni$Street.Name %in% c("POST")] <- "POST ST"
+muni$Street.Name[muni$Street.Name %in% c("KEARNY")] <- "KEARNY ST"
+muni$Street.Name[muni$Street.Name %in% c("SUTTER")] <- "SUTTER ST"
+muni$Street.Name[muni$Street.Name %in% c("CLAY")] <- "CLAY ST"
+muni$Street.Name[muni$Street.Name %in% c("MAIN")] <- "MAIN ST"
+muni$Street.Name[muni$Street.Name %in% c("FOLSOM")] <- "FOLSOM ST"
+muni$Street.Name[muni$Street.Name %in% c("TRUMBWELL")] <- "TRUMBWELL ST"
+muni$Street.Name[muni$Street.Name %in% c("WILDE")] <- "WILDE ST"
+
+unique(muni$Street.Name)
 
 
 ```
