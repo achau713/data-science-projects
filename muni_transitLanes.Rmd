@@ -2,7 +2,7 @@
 title: "Analysis of Transit Only Lane Violations for SFMTA"
 author: Anthony Chau
 date: 07-10-2018
-output: html_notebook
+output: github_document
 ---
 
 
@@ -31,7 +31,10 @@ Initially, the citation issue date and time were stored as factor variables. We 
 ```{r}
 # Convert citation dates and times to a Datetime object
 
-muni$Citation.Date <- strptime(paste(muni$Citation.Issue.Date, 
+muni$Citation.Date <- strptime(muni$Citation.Issue.Date, format ='%m/%d/%Y')
+
+
+muni$Citation.FullDate <- strptime(paste(muni$Citation.Issue.Date, 
                                             muni$Citation.Issue.Time), 
                                       format ='%m/%d/%Y %H:%M')
 
@@ -104,7 +107,68 @@ muni$Street.Name[muni$Street.Name %in% c("TRUMBWELL")] <- "TRUMBWELL ST"
 muni$Street.Name[muni$Street.Name %in% c("WILDE")] <- "WILDE ST"
 
 unique(muni$Street.Name)
+unique(muni$Violation.Code)
+unique(muni$Violation)
 
 
+```
+
+```{r}
+library(ggplot2)
+
+# Group together factor level with low counts
+
+# Visualize number of violations by street name with barplot
+streetBarPlot <- ggplot(data=muni, aes(x=Street.Name)) + 
+  geom_bar(aes(fill=Violation), color='black') +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+streetBarPlot
+
+# Visualize number of violations by street name with barplot
+violations <- ggplot(data=muni, aes(x=Violation)) + 
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# Visualize number of violations with pie chart
+pie <- ggplot(muni, aes(x = "", fill = factor(Violation))) + 
+  geom_bar(width = 1) +
+  theme(axis.line = element_blank(), 
+        plot.title = element_text(hjust=0.5)) + 
+  labs(fill="class", 
+       x=NULL, 
+       y=NULL, 
+       title="Pie Chart of Violation Type", 
+       caption="Source: muni")
+  
+pie + coord_polar(theta = "y", start=0)
+
+
+violations
+
+```
+
+Time Series visualization test
+```{r}
+install.packages('ggfortify')
+library(ggfortify)
+
+library(dplyr)
+
+# Create new column which stores how many citations were issued that day and build 
+# time series object from that column
+
+# Convert citation date to date object to work in dplyr
+muni$Citation.Date <- as.Date(muni$Citation.Date)
+
+# Group and count observations by date 
+muni %>%
+  group_by(Citation.Date) %>%
+  count() %>%
+  mutate(new=new)
+
+
+
+timeSeries <- ts(muni$Citation.Date)
 ```
 
