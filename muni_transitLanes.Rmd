@@ -107,9 +107,11 @@ muni$street_name[muni$street_name %in% c("TRUMBWELL")] <- "TRUMBWELL ST"
 muni$street_name[muni$street_name %in% c("WILDE")] <- "WILDE ST"
 
 unique(muni$street_name)
-s
+
 ```
 
+
+WOrk on this
 ```{r}
 library(ggplot2)
 
@@ -149,7 +151,6 @@ violations
 
 Time Series visualization test
 ```{r}
-library(ggfortify)
 library(dplyr)
 
 # Create new column which stores how many citations were issued that day and build 
@@ -161,10 +162,23 @@ muni$citation_dateTime <- as.Date(muni$citation_date, format ='%m/%d/%Y  %H:%M')
 
 
 # Group and count observations by date 
-muni %>%
+muni <- 
+  muni %>%
   arrange(citation_date) %>%
   group_by(citation_date) %>%
   mutate(citation_count = length(citation_date))
+
+# Pull out citation_count vector
+citation_count <- 
+  muni %>%
+  pull(citation_count)
+
+# Time series
+# More research on dealing with regular data (almost daily) and spanning across
+# many years
+citation_ts <- ts(citation_count, frequency = 7, start= c(2008,2))
+
+plot.ts(citation_ts)
 
 
 
