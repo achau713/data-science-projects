@@ -106,6 +106,25 @@ muni$street_name[muni$street_name %in% c("FOLSOM")] <- "FOLSOM ST"
 muni$street_name[muni$street_name %in% c("TRUMBWELL")] <- "TRUMBWELL ST"
 muni$street_name[muni$street_name %in% c("WILDE")] <- "WILDE ST"
 
+
+# Function to clean up location column
+# Work on making code cleaner and less repititive
+# Maybe use with/within?
+locationName_clean <- function(location){
+  location <- as.character(location)
+  location <- str_replace_all(location, "[:punct:]", "")
+  location <- str_replace_all(location, street_types, "")
+  location <- str_to_title(location)
+  location <- trimws(location, which="both")
+  if(str_detect("ST$", location)){
+    return(location[0])
+  }else{
+    return(location[1])
+  }
+}
+
+street_types <- c("ST$", "BLVD$")
+
 unique(muni$street_name)
 
 ```
@@ -161,7 +180,7 @@ library(dplyr)
 
 # Convert citation date to date object to work in dplyr
 muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
-muni$citation_dateTime <- as.Date(muni$citation_date, format ='%m/%d/%Y  %H:%M') 
+muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
 
 
 # Group and count observations by date 
@@ -169,7 +188,7 @@ muni <-
   muni %>%
   arrange(citation_date) %>%
   group_by(citation_date) %>%
-  mutate(citation_count = length(citation_date))
+  mutate(citation_count = n())
 
 # Try n = n()
 # Count missing values: (sum(is.na(x))) or set na.rm=TRUE
