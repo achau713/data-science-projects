@@ -1,6 +1,6 @@
 ---
 title: Exploring NYC Flight Data
-output: html_notebook
+output: github_document
 ---
 
 # Ways to charcterize typical delay characteristics of a group of flights
@@ -20,12 +20,68 @@ library(dplyr)
 
 flights <- flights
 
-
+# Delays by carrier
 
 flights %>%
-  group_by(year, month, day) %>%
-  summarise(delay = mean(arr_delay, na.rm = TRUE))
+  group_by(carrier) %>%
+  filter(is.na(dep_delay)) %>%
+  summarise(n())
 
+# Delays by originating airport
+flights %>%
+  group_by(origin) %>%
+  filter(is.na(dep_delay)) %>%
+  summarise(n())
+
+
+# Number of flights by carrier to a destination
+flights %>%
+  group_by(carrier, dest) %>%
+  summarise(n())
+
+# Count of Uncancelled flights sorted by destination
+flights %>%
+  filter(!is.na(dep_delay)) %>%
+  group_by(dest) %>%
+  summarise(n())
+  
+
+# Cancelled flights by tailnum weighted by distance travelled, without count()
+flights %>%
+  filter(!is.na(dep_delay)) %>%
+  group_by(tailnum, distance) %>% 
+  summarise(n()) %>% 
+  summarise(n() * sum(distance))
+
+# Cancelled flights by tailnum weighted by distance travelled, using count()
+flights %>%
+  filter(!is.na(dep_delay)) %>%
+  count(tailnum, wt = distance)
 ```
 
+
+#Number of cancelled flights per day
+```{r}
+
+library(nycflights13)
+library(dplyr)
+
+# Calculate proportion of cancelled flights and avergae delay
+cancelled_vs_delay <-  flights %>% 
+  group_by(year, month, day) %>% 
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE), # Calcylate mean dep_delay
+            prop_cancelled = sum(is.na(dep_delay)) / n()) # number of cancelled flights / number of total flights
+
+# plot it
+library(ggplot2)
+
+scatter1 <- ggplot(data=cancelled_vs_delay, aes(x=avg_delay, y= prop_cancelled)) +
+  geom_point(aes(color=month)) + geom_smooth(method = 'loess', se=TRUE) +
+  scale_color_gradientn(colors = terrain.colors(12)) +
+  ggtitle('Proportion of cancelled flights vs Average Departure Delays for flights in 
+NYC 2013')
+
+scatter1
+
+```
 
