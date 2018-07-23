@@ -85,3 +85,52 @@ scatter1
 
 ```
 
+
+# Grouped Mutates & Filters
+```{r}
+# Which plane (tailnum) has worst on-time record
+flights %>% 
+  slice(which.min(dep_delay)) %>% # Get row with the minimum departure delay
+  select(tailnum)
+
+
+# Gets minimum departure delay for every day
+flights %>% 
+  group_by(year, month, day) %>% 
+  slice(which.min(dep_delay))
+
+
+# What time of day should you fly if you want to avoid delays as much as possible?
+flights %>%
+  group_by(year, month, day) %>% 
+  summarise(mean=mean(dep_delay, na.rm=TRUE)) 
+  # filter(dep_delay == min(dep_delay)) 
+  # %>% 
+  # group_by(dep_time) %>% 
+  # summarise(n=n())
+
+
+# For each destination, compute the total minutes of delay. For each flight, compute the proportion of the total delay for its destination.
+flights %>% 
+  group_by(dest) %>% 
+  summarise(total_delay = sum(dep_delay, arr_delay, na.rm=TRUE)) %>% 
+  mutate(prop_delay = total_delay / sum(total_delay))
+
+
+# 
+# Delays are typically temporally correlated: even once the problem that caused the initial delay has been resolved, later flights are delayed to allow earlier flights to leave. Using lag(), explore how the delay of a flight is related to the delay of the immediately preceding flight.
+
+
+# Look at each destination. Can you find flights that are suspiciously fast? (i.e. flights that represent a potential data entry error). Compute the air time a flight relative to the shortest flight to that destination. Which flights were most delayed in the air?
+
+# Find all destinations that are flown by at least two carriers. Use that information to rank the carriers.
+
+# For each plane, count the number of flights before the first delay of greater than 1 hour.
+
+
+
+  
+
+
+```
+
