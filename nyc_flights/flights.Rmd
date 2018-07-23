@@ -4,16 +4,6 @@ output: github_document
 ---
 
 # Ways to charcterize typical delay characteristics of a group of flights
-
-
-A flight is 15 minutes early 50% of the time, and 15 minutes late 50% of the time.
-
-A flight is always 10 minutes late.
-
-A flight is 30 minutes early 50% of the time, and 30 minutes late 50% of the time.
-
-99% of the time a flight is on time. 1% of the time it's 2 hours late.
-
 ```{r}
 library(nycflights13)
 library(dplyr)
@@ -66,10 +56,10 @@ flights %>%
 library(nycflights13)
 library(dplyr)
 
-# Calculate proportion of cancelled flights and avergae delay
+# Calculate proportion of cancelled flights and average delay
 cancelled_vs_delay <-  flights %>% 
   group_by(year, month, day) %>% 
-  summarise(avg_delay = mean(dep_delay, na.rm = TRUE), # Calcylate mean dep_delay
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE), # Calculate mean dep_delay
             prop_cancelled = sum(is.na(dep_delay)) / n()) # number of cancelled flights / number of total flights
 
 # plot it
@@ -87,20 +77,24 @@ scatter1
 
 
 # Grouped Mutates & Filters
+
+Which plane (tailnum) has worst on-time record
 ```{r}
-# Which plane (tailnum) has worst on-time record
 flights %>% 
   slice(which.min(dep_delay)) %>% # Get row with the minimum departure delay
   select(tailnum)
 
+```
 
-# Gets minimum departure delay for every day
+Gets minimum departure delay for every day
+```{r}
 flights %>% 
   group_by(year, month, day) %>% 
   slice(which.min(dep_delay))
+```
 
-
-# What time of day should you fly if you want to avoid delays as much as possible?
+What time of day should you fly if you want to avoid delays as much as possible?
+```{r}
 flights %>%
   group_by(year, month, day) %>% 
   summarise(mean=mean(dep_delay, na.rm=TRUE)) 
@@ -108,29 +102,61 @@ flights %>%
   # %>% 
   # group_by(dep_time) %>% 
   # summarise(n=n())
+```
 
-
-# For each destination, compute the total minutes of delay. For each flight, compute the proportion of the total delay for its destination.
+For each destination, compute the total minutes of delay. For each flight, compute the proportion of the total delay for its destination.
+```{r}
 flights %>% 
   group_by(dest) %>% 
   summarise(total_delay = sum(dep_delay, arr_delay, na.rm=TRUE)) %>% 
   mutate(prop_delay = total_delay / sum(total_delay))
+```
 
 
-# 
-# Delays are typically temporally correlated: even once the problem that caused the initial delay has been resolved, later flights are delayed to allow earlier flights to leave. Using lag(), explore how the delay of a flight is related to the delay of the immediately preceding flight.
+
+Delays are typically temporally correlated: even once the problem that caused the initial delay has been resolved, later flights are delayed to allow earlier flights to leave. Using lag(), explore how the delay of a flight is related to the delay of the immediately preceding flight.
+```{r}
+# Create delay_lag column from flights data
+flights <- flights %>% 
+  group_by(year, month, day) %>% 
+  mutate(delay_lag=lag(dep_delay)) %>% 
+  select(year:day, dep_delay, delay_lag)
 
 
-# Look at each destination. Can you find flights that are suspiciously fast? (i.e. flights that represent a potential data entry error). Compute the air time a flight relative to the shortest flight to that destination. Which flights were most delayed in the air?
+# Plot delay_lag time series
+# How to deal with multiple observations per day
+# We need to plot the delay_lag for each day and compare
+# Maybe weekdays vs weekends
+ts_lag <- ts(data=flights$delay_lag, start=c(2013, 1))
 
-# Find all destinations that are flown by at least two carriers. Use that information to rank the carriers.
+plot.ts(ts_lag)
 
-# For each plane, count the number of flights before the first delay of greater than 1 hour.
+
+# Plot lag plot
+
+lag_scatter <- ggplot(data=flights, aes(x=delay_lag, y=dep_delay)) +
+  geom_point() + geom_smooth()
+
+lag_scatter
 
 
 
   
+```
 
+Look at each destination. Can you find flights that are suspiciously fast? (i.e. flights that represent a potential data entry error). Compute the air time a flight relative to the shortest flight to that destination. Which flights were most delayed in the air?
+```{r}
+
+```
+
+
+Find all destinations that are flown by at least two carriers. Use that information to rank the carriers.
+```{r}
+
+```
+
+For each plane, count the number of flights before the first delay of greater than 1 hour.
+```{r}
 
 ```
 
