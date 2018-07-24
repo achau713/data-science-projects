@@ -25,6 +25,14 @@ muni$Citaton.Issue.Month <- NULL
 muni$Last.Edited.Date <- NULL
 ```
 
+Check for NA values
+```{r}
+# Check for NA values for each column
+apply(muni, 2, function(x) any(is.na(x)))
+
+```
+
+
 Now, let's focus our attention on the date and time data within this dataset.
 
 Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
@@ -108,29 +116,38 @@ muni$street_name[muni$street_name %in% c("WILDE")] <- "WILDE ST"
 
 
 # Function to clean up location column
-# Work on making code cleaner and less repititive
-# Maybe use with/within?
+# Work on making code cleaner and less repititive, Maybe use with/within?
+
+```
+
+# Clean up street names
+```{r}
+# To extend functionality, can make it so that any street type will be converted to 
+# empty string
+
+street_types <- c("ST$" = "", "BLVD$" = "", "AVE$" = "")
+
+# implement function with magarittr
+library(magrittr)
+
 locationName_clean <- function(location){
-  location <- as.character(location)
-  location <- str_replace_all(location, "[:punct:]", "")
-  location <- str_replace_all(location, street_types, "")
-  location <- str_to_title(location)
-  location <- trimws(location, which="both")
-  if(str_detect("ST$", location)){
-    return(location[0])
-  }else{
-    return(location[1])
-  }
+  location %>% 
+  as.character() %>% 
+  str_replace_all("[:punct:]", "") %>% 
+  str_replace_all(street_types) %>% 
+  str_to_title() %>% 
+  trimws(which="both")
 }
 
-street_types <- c("ST$", "BLVD$")
 
+# Check
 unique(muni$street_name)
+
 
 ```
 
 
-WOrk on this
+Work on this
 ```{r}
 library(ggplot2)
 
