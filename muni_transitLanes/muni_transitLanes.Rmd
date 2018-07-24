@@ -19,10 +19,12 @@ muni <- as.data.frame(muni)
 
 First, we remove the Citation.Issue.Month column from the data frame since the
 month is already included in the Citation.Issue.Date column. And, we remove the 
-Last.Edited.Date column because this is not relevant for our analysis.
+Last.Edited.Date column because this is not relevant for our analysis. Lastly,
+we remove the Ticket.Number column.
 ```{r}
 muni$Citaton.Issue.Month <- NULL
 muni$Last.Edited.Date <- NULL
+muni$Ticket.Number <-  NULL
 ```
 
 Check for NA values
@@ -59,16 +61,14 @@ factor level for a street name.
 ```{r}
 library(stringr)
 
-muni$location <- as.character(muni$Location)
-
-muni$location <- str_replace_all(muni$Location, "[:punct:]", "")
+muni$Location <- as.character(muni$Location)
 
 ### Testing code
 
 # Split location into street number and street name
 # Logic: If a word boundary is proceeded by a digit, split the word
 
-splitAddress <- strsplit(muni$location, "(?<=\\d)\\b ", perl=T)
+splitAddress <- strsplit(muni$Location, "(?<=\\d)\\b", perl=T)
 
 # Create new matrix with street name column and street name column
 y <- do.call(rbind, splitAddress)
@@ -87,37 +87,6 @@ str(muni)
 # Check unique street names
 unique(muni$street_name)
 
-# Trim leading white space
-trim.leading <- function (x)  sub("^\\s+", "", x)
-muni$street_name <- trim.leading(muni$street_name)
-
-# Refactor duplicate/misspelled streets
-# Find more efficient way of doing this
-muni$street_name[muni$street_name %in% c("GEARY", "GEARY ST")] <- "GEARY BLVD"
-muni$street_name[muni$street_name %in% c("OFARRELL", "OFALLELL", 
-                                       "OFARRELL ST", 
-                                       "OFARRELL STREET")] <- "O'FARRELL ST"
-muni$street_name[muni$street_name %in% c("04TH ST", "04TH  ST", 
-                                         "O4TH STREET")] <- "4TH ST"
-muni$street_name[muni$street_name %in% c("03RD ST")] <- "3RD ST"
-muni$street_name[muni$street_name %in% c("MISSION")] <- "MISSION ST"
-muni$street_name[muni$street_name %in% c("MARKET", "566MARKET ST")] <- "MARKET ST"
-muni$street_name[muni$street_name %in% c("STOCKTON", 
-                                       "STOCKTON TUNL")] <- "STOCKTON ST"
-muni$street_name[muni$street_name %in% c("SACRAMENTO")] <- "SACRAMENTO ST"
-muni$street_name[muni$street_name %in% c("POST")] <- "POST ST"
-muni$street_name[muni$street_name %in% c("KEARNY")] <- "KEARNY ST"
-muni$street_name[muni$street_name %in% c("SUTTER")] <- "SUTTER ST"
-muni$street_name[muni$street_name %in% c("CLAY")] <- "CLAY ST"
-muni$street_name[muni$street_name %in% c("MAIN")] <- "MAIN ST"
-muni$street_name[muni$street_name %in% c("FOLSOM")] <- "FOLSOM ST"
-muni$street_name[muni$street_name %in% c("TRUMBWELL")] <- "TRUMBWELL ST"
-muni$street_name[muni$street_name %in% c("WILDE")] <- "WILDE ST"
-
-
-# Function to clean up location column
-# Work on making code cleaner and less repititive, Maybe use with/within?
-
 ```
 
 # Clean up street names
@@ -125,7 +94,8 @@ muni$street_name[muni$street_name %in% c("WILDE")] <- "WILDE ST"
 # To extend functionality, can make it so that any street type will be converted to 
 # empty string
 
-street_types <- c("ST$" = "", "BLVD$" = "", "AVE$" = "")
+# Vector of street types for use with str_replace_all function
+street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "")
 
 # implement function with magarittr
 library(magrittr)
@@ -139,12 +109,37 @@ locationName_clean <- function(location){
   trimws(which="both")
 }
 
+muni$street_name <- locationName_clean(muni$street_name)
 
 # Check
 unique(muni$street_name)
 
 
 ```
+
+
+Clean up minor spelling mistakes
+```{r}
+
+# Clean up spelling and duplicates of street names
+# Find more efficient way of doing this
+# Only keep indicator of the street for the 'numerical streets' because San Francisco
+# has both 2nd St and 2nd Ave
+# Remove for the rest to keep it more clean
+# We will determine the exact geographical location with longitude and latitude
+# coordinates
+muni$street_name[muni$street_name %in% c("Ofarrell", "ofallell")] <- "O'Farrell"
+muni$street_name[muni$street_name %in% c("4Th", "04Th", "04th")] <- "4th St"
+muni$street_name[muni$street_name %in% c("3Rd", "03Rd")] <- "3rd St"
+muni$street_name[muni$street_name %in% c("22Nd")] <- "22nd St"
+muni$street_name[muni$street_name %in% c("Po")] <- "Post"
+
+
+# Check
+unique(muni$street_name)
+```
+
+
 
 
 Work on this
