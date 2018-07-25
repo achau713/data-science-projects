@@ -147,7 +147,8 @@ Clean up street names
 # empty string
 
 # Vector of street types for use with str_replace_all function
-street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "")
+street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "",
+                  "Street$" = "")
 
 # implement function with magarittr
 library(magrittr)
@@ -189,8 +190,8 @@ Clean up minor spelling mistakes
 # Remove for the rest to keep it more clean
 # We will determine the exact geographical location with longitude and latitude
 # coordinates
-muni$street_name[muni$street_name %in% c("Ofarrell", "ofallell")] <- "O'Farrell"
-muni$street_name[muni$street_name %in% c("4Th", "04Th", "04th")] <- "4th St"
+muni$street_name[muni$street_name %in% c("Ofarrell", "Ofallell")] <- "O'Farrell"
+muni$street_name[muni$street_name %in% c("4Th", "04Th", "O4th")] <- "4th St"
 muni$street_name[muni$street_name %in% c("3Rd", "03Rd")] <- "3rd St"
 muni$street_name[muni$street_name %in% c("22Nd")] <- "22nd St"
 muni$street_name[muni$street_name %in% c("Po")] <- "Post"
@@ -204,12 +205,12 @@ unique(muni$street_name)
     ##  [4] "Post"            "3rd St"          "Sutter"         
     ##  [7] "Sacramento"      "Main"            "Clay"           
     ## [10] "Stockton"        "4th St"          "Market"         
-    ## [13] "Ofarrell Street" "Ofallell"        "O4th Street"    
-    ## [16] "Potrero Ave"     "Mission Street"  "San Bruno Ave"  
-    ## [19] "22nd St"         "Haight"          "Townsend"       
-    ## [22] "San Jose Ave"    "Steuart"         "Scott"          
-    ## [25] "Chestnut"        "Kearny"          "Folsom"         
-    ## [28] "Bush"            "Trumbwell"       "Wilde"
+    ## [13] "Ofarrell Street" "O4th Street"     "Potrero Ave"    
+    ## [16] "Mission Street"  "San Bruno Ave"   "22nd St"        
+    ## [19] "Haight"          "Townsend"        "San Jose Ave"   
+    ## [22] "Steuart"         "Scott"           "Chestnut"       
+    ## [25] "Kearny"          "Folsom"          "Bush"           
+    ## [28] "Trumbwell"       "Wilde"
 
 Work on this
 
@@ -218,55 +219,6 @@ library(ggplot2)
 ```
 
     ## Warning: package 'ggplot2' was built under R version 3.4.4
-
-``` r
-# Group together factor level with low counts
-
-# Visualize number of violations by street name with barplot
-streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
-  geom_bar(aes(fill=Violation), color='black') +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-streetBarPlot
-```
-
-![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-8-1.png)
-
-``` r
-# Visualize number of violations by street name with barplot
-violations <- ggplot(data=muni, aes(x=Violation)) + 
-  geom_bar() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-violations
-```
-
-![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-8-2.png)
-
-``` r
-# Visualize number of violations with pie chart
-pie <- ggplot(muni, aes(x = "", fill = factor(Violation))) + 
-  geom_bar(width = 1) +
-  theme(axis.line = element_blank(), 
-        plot.title = element_text(hjust=0.5)) + 
-  labs(fill="class", 
-       x=NULL, 
-       y=NULL, 
-       title="Pie Chart of Violation Type", 
-       caption="Source: muni")
-  
-pie + coord_polar(theta = "y", start=0)
-```
-
-![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-8-3.png)
-
-``` r
-violations
-```
-
-![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-8-4.png)
-
-Time Series visualization test Account for dates with no citation Make dates with sequence function between earliest date and latest date \# try missing\_values &lt;- date\[!date in% sequence\]
 
 ``` r
 library(dplyr)
@@ -286,6 +238,112 @@ library(dplyr)
     ##     intersect, setdiff, setequal, union
 
 ``` r
+# Convert citation date to date object to work in dplyr
+muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
+muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
+
+# Rename violations
+muni <- muni %>% 
+  rename(violation_type = Violation)
+
+# Group together factor level with low counts
+
+# Visualize number of violations by street name with barplot
+streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
+  geom_bar(aes(fill=violation_type), color='black', position = "dodge") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+streetBarPlot
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+We find that most transit lane violations are concentrated on a few streets: Geary, Market, Mission, Folsom, Stockton, and Sutter. Almost all of these pass through downtown San Francisco, which is plausible since many bus services aggregate in downtown.
+
+Many questions can be asked from this visualization. Is the high number of citations of these streets because of high bus and therefore high transit lane density in downtown San Francisco?
+
+Are drivers more likely to violate regulations in the downtown area because of how crowded and hectic streets can get during peak hours, which makes driver more short-tempered and willing to make shortcuts through transit lanes?
+
+Or, are high incidence of transit lane violations on a few streets because muni drivers are more short-tempered and willing to report violations in crowded downton SF?
+
+Also, we have to take into account when each transit lane was implemented.
+
+Visualize number of violations with barplot
+===========================================
+
+``` r
+# Visualize number of violations by street name with barplot
+violations <- ggplot(data=muni, aes(x=violation_type)) + 
+  geom_bar() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+violations
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-9-1.png) Most violation types are towaway zone and towaway zone \#1. There are few on sidewalk and OVR 18\*C violations. As there are few no violations. Need more information on how specific violation types are defined.
+
+Violations - Count Plot
+
+``` r
+violationsCountPlot <- ggplot(data=muni)+ 
+  geom_count(mapping = aes(x = violation_type, y = street_name)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+violationsCountPlot
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-10-1.png)
+
+Violations by Street Name - Tile Plot (possibly do a heat map with d3heatmap or heatmaply)
+
+``` r
+muni %>% 
+  count(violation_type, street_name) %>% 
+  ggplot(mapping = aes(x = violation_type, y = street_name)) +
+    geom_tile(mapping = aes(fill = n)) +   
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-11-1.png)
+
+Violations by Street Name - Jitter plot
+
+``` r
+violations_jitter <- ggplot(data = muni) +
+  geom_jitter(mapping = aes(x = violation_type, y = street_name)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+violations_jitter
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-12-1.png)
+
+Violations - Pie Chart
+
+``` r
+# Visualize number of violations with pie chart
+pie <- ggplot(muni, aes(x = "", fill = factor(violation_type))) + 
+  geom_bar(width = 1) +
+  theme(axis.line = element_blank(), 
+        plot.title = element_text(hjust=0.5)) + 
+  labs(fill="class", 
+       x=NULL, 
+       y=NULL, 
+       title="Pie Chart of Violation Type", 
+       caption="Source: muni")
+  
+pie + coord_polar(theta = "y", start=0)
+```
+
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-13-1.png)
+
+Time Series visualization test Account for dates with no citation Make dates with sequence function between earliest date and latest date \# try missing\_values &lt;- date\[!date in% sequence\]
+
+``` r
+library(dplyr)
+
 # Create new column which stores how many citations were issued that day and build 
 # time series object from that column
 
@@ -321,4 +379,4 @@ citation_ts <- ts(citation_count, frequency = 7, start= c(2008,2))
 plot.ts(citation_ts)
 ```
 
-![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](muni_transitLanes_files/figure-markdown_github/unnamed-chunk-14-1.png)

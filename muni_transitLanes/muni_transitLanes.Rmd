@@ -95,7 +95,8 @@ unique(muni$street_name)
 # empty string
 
 # Vector of street types for use with str_replace_all function
-street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "")
+street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "",
+                  "Street$" = "")
 
 # implement function with magarittr
 library(magrittr)
@@ -128,8 +129,8 @@ Clean up minor spelling mistakes
 # Remove for the rest to keep it more clean
 # We will determine the exact geographical location with longitude and latitude
 # coordinates
-muni$street_name[muni$street_name %in% c("Ofarrell", "ofallell")] <- "O'Farrell"
-muni$street_name[muni$street_name %in% c("4Th", "04Th", "04th")] <- "4th St"
+muni$street_name[muni$street_name %in% c("Ofarrell", "Ofallell")] <- "O'Farrell"
+muni$street_name[muni$street_name %in% c("4Th", "04Th", "O4th")] <- "4th St"
 muni$street_name[muni$street_name %in% c("3Rd", "03Rd")] <- "3rd St"
 muni$street_name[muni$street_name %in% c("22Nd")] <- "22nd St"
 muni$street_name[muni$street_name %in% c("Po")] <- "Post"
@@ -145,25 +146,102 @@ unique(muni$street_name)
 Work on this
 ```{r}
 library(ggplot2)
+library(dplyr)
+
+
+# Convert citation date to date object to work in dplyr
+muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
+muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
+
+# Rename violations
+muni <- muni %>% 
+  rename(violation_type = Violation)
 
 # Group together factor level with low counts
 
 # Visualize number of violations by street name with barplot
 streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
-  geom_bar(aes(fill=Violation), color='black') +
+  geom_bar(aes(fill=violation_type), color='black', position = "dodge") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 streetBarPlot
+```
 
+We find that most transit lane violations are concentrated on a few streets: Geary, Market, Mission, Folsom, Stockton, and Sutter. Almost all of these pass through downtown
+San Francisco, which is plausible since many bus services aggregate in downtown. 
+
+Many questions can be asked from this visualization. Is the high number of citations of these streets because of high bus and therefore high transit lane density in downtown San Francisco? 
+
+Are drivers more likely to violate regulations in the downtown area because of how crowded and hectic streets can get during peak hours, which makes driver more 
+short-tempered and willing to make shortcuts through transit lanes?
+
+Or, are high incidence of transit lane violations on a few streets because muni drivers
+are more short-tempered and willing to report violations in crowded downton SF?
+
+Also, we have to take into account when each transit lane was implemented.
+
+
+
+# Visualize number of violations with barplot
+```{r}
 # Visualize number of violations by street name with barplot
-violations <- ggplot(data=muni, aes(x=Violation)) + 
+violations <- ggplot(data=muni, aes(x=violation_type)) + 
   geom_bar() +
+  theme_minimal() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 violations
+```
+Most violation types are towaway zone and towaway zone #1. There are few on sidewalk and OVR 18*C violations. As there are few no violations. Need more information on how specific violation types are defined.
 
+
+Violations - Count Plot
+```{r}
+violationsCountPlot <- ggplot(data=muni)+ 
+  geom_count(mapping = aes(x = violation_type, y = street_name)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+violationsCountPlot
+```
+
+Violations by Street Name - Tile Plot (possibly do a heat map with d3heatmap or heatmaply)
+
+```{r}
+muni %>% 
+  count(violation_type, street_name) %>% 
+  ggplot(mapping = aes(x = violation_type, y = street_name)) +
+    geom_tile(mapping = aes(fill = n)) +   
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+
+
+```
+
+
+
+Violations by Street Name - Jitter plot
+```{r}
+violations_jitter <- ggplot(data = muni) +
+  geom_jitter(mapping = aes(x = violation_type, y = street_name)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+violations_jitter
+  
+  
+```
+
+
+
+
+
+
+
+Violations - Pie Chart
+```{r}
 # Visualize number of violations with pie chart
-pie <- ggplot(muni, aes(x = "", fill = factor(Violation))) + 
+pie <- ggplot(muni, aes(x = "", fill = factor(violation_type))) + 
   geom_bar(width = 1) +
   theme(axis.line = element_blank(), 
         plot.title = element_text(hjust=0.5)) + 
@@ -175,10 +253,9 @@ pie <- ggplot(muni, aes(x = "", fill = factor(Violation))) +
   
 pie + coord_polar(theta = "y", start=0)
 
-
-violations
-
 ```
+
+
 
 Time Series visualization test
 Account for dates with no citation
