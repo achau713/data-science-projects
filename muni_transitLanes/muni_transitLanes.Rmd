@@ -96,7 +96,7 @@ unique(muni$street_name)
 
 # Vector of street types for use with str_replace_all function
 street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "",
-                  "Street$" = "")
+                  "STREET$" = "")
 
 # implement function with magarittr
 library(magrittr)
@@ -105,9 +105,10 @@ locationName_clean <- function(location){
   location %>% 
   as.character() %>% 
   str_replace_all("[:punct:]", "") %>% 
+  trimws(which = "both") %>% 
   str_replace_all(street_types) %>% 
   str_to_title() %>% 
-  trimws(which="both")
+  trimws(which = "both")
 }
 
 muni$street_name <- locationName_clean(muni$street_name)
@@ -192,6 +193,7 @@ violations <- ggplot(data=muni, aes(x=violation_type)) +
 
 violations
 ```
+
 Most violation types are towaway zone and towaway zone #1. There are few on sidewalk and OVR 18*C violations. As there are few no violations. Need more information on how specific violation types are defined.
 
 
