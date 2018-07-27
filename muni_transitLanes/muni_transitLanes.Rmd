@@ -113,6 +113,8 @@ locationName_clean <- function(location){
 
 muni$street_name <- locationName_clean(muni$street_name)
 
+# bug -> need to apply function twice to acheive desired result
+
 # Check
 unique(muni$street_name)
 
@@ -141,7 +143,19 @@ muni$street_name[muni$street_name %in% c("Po")] <- "Post"
 unique(muni$street_name)
 ```
 
+Exploring Transit Lane Violation Types
+```{r}
+# Rename violations
+muni <- muni %>% 
+  rename(violation_type = Violation)
 
+
+# Counts of violation type
+table(muni$violation_type)
+
+unique(muni$violation_type)
+
+```
 
 
 Work on this
@@ -154,9 +168,6 @@ library(dplyr)
 muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
 muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
 
-# Rename violations
-muni <- muni %>% 
-  rename(violation_type = Violation)
 
 # Group together factor level with low counts
 
@@ -216,10 +227,40 @@ muni %>%
     geom_tile(mapping = aes(fill = n)) +   
     theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
+# Change street_name to factor variable
+muni$street_name <- factor(muni$street_name)
+
+# Create matrix of observation counts by street name and violation type
+m <- table(muni$street_name, muni$violation_type)
+
+p <- plot_ly(z = m,
+  x = levels(muni$street_name), y = levels(muni$violation_type),
+  type = "heatmap"
+)
+
+p
 
 
 
 ```
+
+
+
+
+# Experiment with Plotly visualizations
+```{r}
+library(plotly)
+
+# data frame of violation type and street name
+df <-  data.frame(muni$violation_type, muni$street_name)
+
+
+plot_ly(df, type = "box")
+
+
+
+```
+
 
 
 
