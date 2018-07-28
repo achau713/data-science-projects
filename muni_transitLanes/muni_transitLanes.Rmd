@@ -95,7 +95,7 @@ unique(muni$street_name)
 # empty string
 
 # Vector of street types for use with str_replace_all function
-street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "Ave" = "",
+street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "AVE" = "",
                   "STREET$" = "")
 
 # implement function with magarittr
@@ -144,7 +144,15 @@ unique(muni$street_name)
 ```
 
 Exploring Transit Lane Violation Types
+```{r results='hide}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+```
+
+Exploring Transit Lane Violation Types
 ```{r}
+
 # Rename violations
 muni <- muni %>% 
   rename(violation_type = Violation)
@@ -157,17 +165,40 @@ unique(muni$violation_type)
 
 ```
 
+# Delete violation type categories from data frame
 
-Work on this
+We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
 ```{r}
-library(ggplot2)
-library(dplyr)
+# Find the 8 observations with the 4 violation categories and delete them from data frame
+
+muni <- muni[!muni$violation_type %in% c('NO VIOL', 'ON SIDEWLK', 'OVR 18 " C', 'PK FR LN'),]
+
+# Check violation categories
+table(muni$violation_type)
+
+# Check total number of observations - we orignially had 17,178 observations
+dim(muni)
+
+```
+
+# Combine small violation counts on different street names
+```{r}
+
+```
 
 
+
+
+Convrt date and time columns to Date objects
+```{r}
 # Convert citation date to date object to work in dplyr
 muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
 muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
 
+```
+
+Work on this
+```{r}
 
 # Group together factor level with low counts
 
@@ -231,9 +262,10 @@ muni %>%
 muni$street_name <- factor(muni$street_name)
 
 # Create matrix of observation counts by street name and violation type
+# Bug with matrix code
 m <- table(muni$street_name, muni$violation_type)
 
-p <- plot_ly(z = m,
+p <- plot_ly(
   x = levels(muni$street_name), y = levels(muni$violation_type),
   type = "heatmap"
 )
