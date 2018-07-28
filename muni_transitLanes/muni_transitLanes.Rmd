@@ -138,6 +138,9 @@ muni$street_name[muni$street_name %in% c("3Rd", "03Rd")] <- "3rd St"
 muni$street_name[muni$street_name %in% c("22Nd")] <- "22nd St"
 muni$street_name[muni$street_name %in% c("Po")] <- "Post"
 
+# Change street_name to factor variable
+muni$street_name <- factor(muni$street_name)
+
 
 # Check
 unique(muni$street_name)
@@ -162,6 +165,7 @@ muni <- muni %>%
 table(muni$violation_type)
 
 unique(muni$violation_type)
+
 
 ```
 
@@ -189,7 +193,7 @@ dim(muni)
 
 
 
-Convrt date and time columns to Date objects
+Convert date and time columns to Date objects
 ```{r}
 # Convert citation date to date object to work in dplyr
 muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
@@ -251,49 +255,41 @@ violationsCountPlot
 
 Violations by Street Name - Tile Plot (possibly do a heat map with d3heatmap or heatmaply)
 
+Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
 ```{r}
+
 muni %>% 
   count(violation_type, street_name) %>% 
-  ggplot(mapping = aes(x = violation_type, y = street_name)) +
-    geom_tile(mapping = aes(fill = n)) +   
-    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  ggplot(mapping = aes(x = reorder(violation_type, n), y = street_name)) +
+    geom_tile(aes(fill = n), color = 'white', size = 0.25s) +
+    scale_fill_gradientn(colors = terrain.colors(n = 7)) +
+    scale_x_discrete(limits = c('TWAWY ZN#1', 'DBL PARK', 'PRK PROHIB',
+                                'BUS ZONE', 'TWAWY ZONE', 
+                                'PK PHB OTD', 'TRNST ONLY')) +
+    theme_grey() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, face = "bold"),
+          plot.background = element_blank(),
+          panel.border = element_blank())
 
-# Change street_name to factor variable
-muni$street_name <- factor(muni$street_name)
+
+
+```
+
+
+Heatmap - Plotly
+```{r}
 
 # Create matrix of observation counts by street name and violation type
 # Bug with matrix code
 m <- table(muni$street_name, muni$violation_type)
 
-p <- plot_ly(
+p <- plot_ly(z = m,
   x = levels(muni$street_name), y = levels(muni$violation_type),
   type = "heatmap"
 )
 
 p
-
-
-
 ```
-
-
-
-
-# Experiment with Plotly visualizations
-```{r}
-library(plotly)
-
-# data frame of violation type and street name
-df <-  data.frame(muni$violation_type, muni$street_name)
-
-
-plot_ly(df, type = "box")
-
-
-
-```
-
-
 
 
 Violations by Street Name - Jitter plot
