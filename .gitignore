@@ -1,2 +1,6 @@
-.RData
-.Rhistory
+# ignore R-data and R-history files
+*.RData
+*.Rhistory
+
+# ignore generated html files
+*.html
