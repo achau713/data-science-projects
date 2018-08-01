@@ -3,7 +3,9 @@ title: "Analysis of Transit Only Lane Violations for SFMTA"
 author: Anthony Chau
 date: 07-10-2018
 output: github_document
+always_allow_html: yes
 ---
+
 
 
 ```{r}
@@ -27,18 +29,19 @@ muni$Last.Edited.Date <- NULL
 muni$Ticket.Number <-  NULL
 ```
 
-Check for NA values
+# Check for Missing Values
 ```{r}
 # Check for NA values for each column
 apply(muni, 2, function(x) any(is.na(x)))
 
 ```
 
+# Date and Time
 
 Now, let's focus our attention on the date and time data within this dataset.
 
 Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
-```{r}
+```{r dateTime}
 # Convert citation dates and times to a Datetime object
 
 muni$citation_date <- strptime(muni$Citation.Issue.Date, format ='%m/%d/%Y')
@@ -55,10 +58,10 @@ muni$Citation.Issue.Time <- NULL
 
 ```
 
+# Extract unique street names from location column 
 
-We want to collaspe observations in the location column to only record a unique
-factor level for a street name.
-```{r}
+We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
+```{r }
 library(stringr)
 
 muni$Location <- as.character(muni$Location)
@@ -90,6 +93,8 @@ unique(muni$street_name)
 ```
 
 # Clean up street names
+
+In the newly created street_name column, we remove unnecessary puncation or white space within the different factor levels and remove the street type from each factor level. Lastly, we convert each street name to title style capitalization.
 ```{r}
 # To extend functionality, can make it so that any street type will be converted to 
 # empty string
@@ -113,8 +118,6 @@ locationName_clean <- function(location){
 
 muni$street_name <- locationName_clean(muni$street_name)
 
-# bug -> need to apply function twice to acheive desired result
-
 # Check
 unique(muni$street_name)
 
@@ -122,7 +125,14 @@ unique(muni$street_name)
 ```
 
 
-Clean up minor spelling mistakes
+# Clean up minor spelling mistakes
+
+Some of the street names in the dataset are misspelled. We manually correct these
+mistakes by reassigning observations with misspelling to the correct spelling.
+
+For this analysis, I have decided to remove the street type indicator from non-duplicate
+street names. Beacuse of this, only numerical street names, such as 4th or 22nd, have
+street type indicators.
 ```{r}
 
 # Clean up spelling and duplicates of street names
@@ -141,13 +151,13 @@ muni$street_name[muni$street_name %in% c("Po")] <- "Post"
 # Change street_name to factor variable
 muni$street_name <- factor(muni$street_name)
 
-
 # Check
 unique(muni$street_name)
 ```
 
+
 Exploring Transit Lane Violation Types
-```{r results='hide}
+```{r, results="hide"}
 library(dplyr)
 library(ggplot2)
 library(plotly)
@@ -189,8 +199,6 @@ dim(muni)
 ```{r}
 
 ```
-
-
 
 
 Convert date and time columns to Date objects
@@ -261,8 +269,8 @@ Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
 muni %>% 
   count(violation_type, street_name) %>% 
   ggplot(mapping = aes(x = reorder(violation_type, n), y = street_name)) +
-    geom_tile(aes(fill = n), color = 'white', size = 0.25s) +
-    scale_fill_gradientn(colors = terrain.colors(n = 7)) +
+    geom_tile(aes(fill = n), color = 'white', size = 0.25) +
+    scale_fill_continuous(type = "viridis", na.value = "grey90") +
     scale_x_discrete(limits = c('TWAWY ZN#1', 'DBL PARK', 'PRK PROHIB',
                                 'BUS ZONE', 'TWAWY ZONE', 
                                 'PK PHB OTD', 'TRNST ONLY')) +
