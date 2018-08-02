@@ -9,6 +9,7 @@ always_allow_html: yes
 
 
 ```{r}
+# Use read_csv from readr package (Faster, more reproducible, tibbles)
 muni <- read.csv('muni_transitLanes.csv', strip.white = TRUE)
 muni <- as.data.frame(muni)
 
@@ -23,15 +24,19 @@ First, we remove the Citation.Issue.Month column from the data frame since the
 month is already included in the Citation.Issue.Date column. And, we remove the 
 Last.Edited.Date column because this is not relevant for our analysis. Lastly,
 we remove the Ticket.Number column.
-```{r}
+```{r remove_columns}
+
 muni$Citaton.Issue.Month <- NULL
 muni$Last.Edited.Date <- NULL
-muni$Ticket.Number <-  NULL
+muni$Ticket.Number <- NULL
+
+
 ```
 
 # Check for Missing Values
-```{r}
+```{r missing_values}
 # Check for NA values for each column
+
 apply(muni, 2, function(x) any(is.na(x)))
 
 ```
@@ -61,8 +66,20 @@ muni$Citation.Issue.Time <- NULL
 # Extract unique street names from location column 
 
 We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
-```{r }
+```{r street_names}
 library(stringr)
+
+get_streetName <-  function(df, location_column){
+  location_column <- as.character(location_column)
+  splitLocation <- strsplit(location_column, "(?<=\\d)\\b", perl=T)
+  y <- do.call(rbind, splitLocation)
+  y <- as.data.frame(y)
+  colnames(y) <- c('street_number', 'street_name')
+  df$street_name <- y$street_name
+  return(unique(df$street_name))
+}
+
+get_streetName(muni, muni$Location)
 
 muni$Location <- as.character(muni$Location)
 
@@ -157,7 +174,7 @@ unique(muni$street_name)
 
 
 Exploring Transit Lane Violation Types
-```{r, results="hide"}
+```{r, message=FALSE}
 library(dplyr)
 library(ggplot2)
 library(plotly)
@@ -248,7 +265,7 @@ violations <- ggplot(data=muni, aes(x=violation_type)) +
 violations
 ```
 
-Most violation types are towaway zone and towaway zone #1. There are few on sidewalk and OVR 18*C violations. As there are few no violations. Need more information on how specific violation types are defined.
+Most violation types are towaway zone and towaway zone #1. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. Need more information on how specific violation types are defined.
 
 
 Violations - Count Plot
