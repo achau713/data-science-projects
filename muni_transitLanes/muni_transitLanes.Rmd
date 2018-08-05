@@ -6,8 +6,16 @@ output: github_document
 always_allow_html: yes
 ---
 
+```{r, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(magrittr)
+
+```
 
 
+# Read in data
 ```{r}
 # Use read_csv from readr package (Faster, more reproducible, tibbles)
 muni <- read.csv('muni_transitLanes.csv', strip.white = TRUE)
@@ -29,7 +37,6 @@ we remove the Ticket.Number column.
 muni$Citaton.Issue.Month <- NULL
 muni$Last.Edited.Date <- NULL
 muni$Ticket.Number <- NULL
-
 
 ```
 
@@ -67,45 +74,41 @@ muni$Citation.Issue.Time <- NULL
 
 We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
 ```{r street_names}
-library(stringr)
 
-get_streetName <-  function(df, location_column){
-  location_column <- as.character(location_column)
+# Good functional programming practice:
+# Not advisable to change global variables in functions
+# Instead, we write a function with a more explicit return value and reassign the result
+# outside the function (gloabl environment)
+
+# In this case, we create a new column in data frame called y, which contains only the
+# street names of all the location. We use the get_streetName function to return this
+# column and then assign that column to a new column in the muni data frame.
+
+
+get_streetName <-  function(location_column){
+  location_column <- as.character(location_column) 
   splitLocation <- strsplit(location_column, "(?<=\\d)\\b", perl=T)
   y <- do.call(rbind, splitLocation)
   y <- as.data.frame(y)
   colnames(y) <- c('street_number', 'street_name')
-  df$street_name <- y$street_name
-  return(unique(df$street_name))
+  return(y$street_name)
 }
 
-get_streetName(muni, muni$Location)
+muni$street_name <- get_streetName(muni$Location)
 
-muni$Location <- as.character(muni$Location)
+# Check street names
+unique(muni$street_name)
 
-### Testing code
+
+### Explanation of Function
 
 # Split location into street number and street name
 # Logic: If a word boundary is proceeded by a digit, split the word
-
-splitAddress <- strsplit(muni$Location, "(?<=\\d)\\b", perl=T)
-
 # Create new matrix with street name column and street name column
-y <- do.call(rbind, splitAddress)
-y <- as.data.frame(y)
-
-
 # Change column names
-colnames(y) <- c('Street.Number', 'Street.Name')
-
 # Make new column in muni df
-muni$street_name <- y$Street.Name
 
-# Check df
-str(muni)
 
-# Check unique street names
-unique(muni$street_name)
 
 ```
 
@@ -113,27 +116,27 @@ unique(muni$street_name)
 
 In the newly created street_name column, we remove unnecessary puncation or white space within the different factor levels and remove the street type from each factor level. Lastly, we convert each street name to title style capitalization.
 ```{r}
-# To extend functionality, can make it so that any street type will be converted to 
-# empty string
+# To extend practicality and to simplify our string data, any street type will be converted to empty string
 
 # Vector of street types for use with str_replace_all function
 street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "AVE" = "",
                   "STREET$" = "")
 
-# implement function with magarittr
-library(magrittr)
 
-locationName_clean <- function(location){
-  location %>% 
+clean_streetName <- function(streetName_column){
+  streetName_column <- streetName_column %>% 
   as.character() %>% 
   str_replace_all("[:punct:]", "") %>% 
   trimws(which = "both") %>% 
   str_replace_all(street_types) %>% 
   str_to_title() %>% 
   trimws(which = "both")
+  return(streetName_column)
 }
 
-muni$street_name <- locationName_clean(muni$street_name)
+muni$street_name <-  clean_streetName(muni$street_name)
+
+# Take in original location column, which was previously cleaned up by the 
 
 # Check
 unique(muni$street_name)
