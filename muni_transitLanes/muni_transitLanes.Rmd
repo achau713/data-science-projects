@@ -71,10 +71,19 @@ muni$Citation.Issue.Time <- NULL
 ```
 
 
-# Split Geom column into Longitude and Latitude column
+# Spatial Location 
 ```{r}
+# Split Geom column into Longitude and Latitude column
 muni <-  muni %>% 
   separate(Geom, into = c('latitude', 'longitude'), sep = ',')
+
+# Clean up longitude and latitude column (remove parenthesis)
+muni$latitude <- muni$latitude %>% 
+  str_replace('^\\(', '')
+
+muni$longitude <-  muni$longitude %>% 
+  str_replace('\\)$', '')
+
 ```
 
 
@@ -102,7 +111,7 @@ get_streetName <-  function(location_column){
   splitLocation <- strsplit(location_column, "(?<=\\d)\\b", perl=T)
   y <- do.call(rbind, splitLocation)
   y <- as.data.frame(y)
-  colnames(y) <- c('street_number', 'street_name')
+  colnames(y) <- c("street_number", "street_name")
   return(y$street_name)
 }
 
