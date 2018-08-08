@@ -11,7 +11,7 @@ library(dplyr)
 library(ggplot2)
 library(stringr)
 library(magrittr)
-
+library(tidyverse)
 ```
 
 
@@ -70,6 +70,16 @@ muni$Citation.Issue.Time <- NULL
 
 ```
 
+
+# Split Geom column into Longitude and Latitude column
+```{r}
+muni <-  muni %>% 
+  separate(Geom, into = c('latitude', 'longitude'), sep = ',')
+```
+
+
+
+
 # Extract unique street names from location column 
 
 We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
@@ -84,6 +94,8 @@ We create a new column which consists of only the street name where the violatio
 # street names of all the location. We use the get_streetName function to return this
 # column and then assign that column to a new column in the muni data frame.
 
+
+# instead of do.call() use dplyr:: bind_rows()
 
 get_streetName <-  function(location_column){
   location_column <- as.character(location_column) 
@@ -127,14 +139,13 @@ clean_streetName <- function(streetName_column){
   streetName_column <- streetName_column %>% 
   as.character() %>% 
   str_replace_all("[:punct:]", "") %>% 
-  trimws(which = "both") %>% 
   str_replace_all(street_types) %>% 
   str_to_title() %>% 
   trimws(which = "both")
   return(streetName_column)
 }
 
-muni$street_name <-  clean_streetName(muni$street_name)
+muni$street_name <- clean_streetName(muni$street_name)
 
 # Take in original location column, which was previously cleaned up by the 
 
