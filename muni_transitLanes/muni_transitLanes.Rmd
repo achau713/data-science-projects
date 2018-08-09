@@ -6,7 +6,7 @@ output: github_document
 always_allow_html: yes
 ---
 
-```{r, message=FALSE}
+```{r, message=FALSE, results='hide'}
 library(dplyr)
 library(ggplot2)
 library(stringr)
@@ -18,7 +18,7 @@ library(tidyverse)
 # Read in data
 ```{r}
 # Use read_csv from readr package (Faster, more reproducible, tibbles)
-muni <- read.csv('muni_transitLanes.csv', strip.white = TRUE)
+muni <- read_csv('muni_transitLanes.csv', trim_ws = TRUE, na = c("", "NA"))
 muni <- as.data.frame(muni)
 
 # Check variables in muni
@@ -34,9 +34,8 @@ Last.Edited.Date column because this is not relevant for our analysis. Lastly,
 we remove the Ticket.Number column.
 ```{r remove_columns}
 
-muni$Citaton.Issue.Month <- NULL
-muni$Last.Edited.Date <- NULL
-muni$Ticket.Number <- NULL
+muni <- muni %>% 
+  select(-`Citaton Issue Month`, -`Last Edited Date`, -`Ticket Number`)
 
 ```
 
@@ -75,18 +74,16 @@ muni$Citation.Issue.Time <- NULL
 ```{r}
 # Split Geom column into Longitude and Latitude column
 muni <-  muni %>% 
-  separate(Geom, into = c('latitude', 'longitude'), sep = ',')
+  separate(Geom, into = c("latitude", "longitude"), sep = ",")
 
 # Clean up longitude and latitude column (remove parenthesis)
 muni$latitude <- muni$latitude %>% 
-  str_replace('^\\(', '')
+  str_replace("^\\(", "")
 
 muni$longitude <-  muni$longitude %>% 
-  str_replace('\\)$', '')
+  str_replace("\\)$", "")
 
 ```
-
-
 
 
 # Extract unique street names from location column 
@@ -338,22 +335,6 @@ p <- plot_ly(z = m,
 
 p
 ```
-
-
-Violations by Street Name - Jitter plot
-```{r}
-violations_jitter <- ggplot(data = muni) +
-  geom_jitter(mapping = aes(x = violation_type, y = street_name)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-violations_jitter
-  
-  
-```
-
-
-
-
 
 
 
