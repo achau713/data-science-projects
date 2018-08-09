@@ -12,6 +12,7 @@ library(ggplot2)
 library(stringr)
 library(magrittr)
 library(tidyverse)
+library(leaflet)
 ```
 
 
@@ -49,7 +50,7 @@ apply(muni, 2, function(x) any(is.na(x)))
 
 # find total number of missing values for columns with missing values
 totalMissing <-  function(missing_column){
-  cat("Total missing values:", sum(is.na(missing_column)))
+  cat("Total missing values:", sum(is.na(missing_column)), "\n")
 }
 
 totalMissing(muni$`Amount Due`)
@@ -69,18 +70,25 @@ Initially, the citation issue date and time were stored as factor variables. We 
 ```{r dateTime}
 # Convert citation dates and times to a Datetime object
 
-muni$citation_date <- strptime(muni$Citation.Issue.Date, format ='%m/%d/%Y')
+muni$citation_date <- strptime(muni$`Citation Issue Date`, format ='%m/%d/%Y')
 
 
-muni$citation_dateTime <- strptime(paste(muni$Citation.Issue.Date, 
-                                            muni$Citation.Issue.Time), 
+muni$citation_dateTime <- strptime(paste(muni$`Citation Issue Date`, 
+                                            muni$`Citation Issue Time`), 
                                       format ='%m/%d/%Y %H:%M')
 
 # Drop original citation issue date and time
 
-muni$Citation.Issue.Date <- NULL
-muni$Citation.Issue.Time <- NULL
+muni <- muni %>% 
+  select(-`Citation Issue Date`, -`Citation Issue Time`)
 
+```
+
+We also want to analyze citation counts in a smaller time frame, so we separate the citation_date column into three columns for the month, date, and year
+```{r}
+muni <- muni %>% 
+  separate(citation_date, into = c("year", "month", "day"), sep = "-")
+  
 ```
 
 
@@ -369,12 +377,22 @@ pie + coord_polar(theta = "y", start=0)
 
 ```
 
+# Mapping Transit Lane Violations
+```{r}
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng= c(-122.415269816, -121.34, -120.57), lat = c(37.7854374715, 37.85, 38.12), popup="Transit Violation", label= "Broke the law!")
+m 
+```
 
 
-Time Series visualization test
+
+
+
+# Time Series visualization test
 Account for dates with no citation
 Make dates with sequence function between earliest date and latest date
-# try missing_values <- date[!date in% sequence]
+try missing_values <- date[!date in% sequence]
 ```{r}
 library(dplyr)
 
