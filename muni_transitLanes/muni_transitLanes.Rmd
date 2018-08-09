@@ -16,7 +16,7 @@ library(tidyverse)
 
 
 # Read in data
-```{r}
+```{r read_data, results = 'hide'}
 # Use read_csv from readr package (Faster, more reproducible, tibbles)
 muni <- read_csv('muni_transitLanes.csv', trim_ws = TRUE, na = c("", "NA"))
 muni <- as.data.frame(muni)
@@ -40,10 +40,24 @@ muni <- muni %>%
 ```
 
 # Check for Missing Values
+
+We have many missing values scattered across the columns in the muni data frame. More specifcally, there are missing values in the 'Amount Due', 'Suspend Code', 'Suspend Process Date', 'Suspend Until Date', 'Disposition Code', and 'Geom' columns.
 ```{r missing_values}
 # Check for NA values for each column
 
 apply(muni, 2, function(x) any(is.na(x)))
+
+# find total number of missing values for columns with missing values
+totalMissing <-  function(missing_column){
+  cat("Total missing values:", sum(is.na(missing_column)))
+}
+
+totalMissing(muni$`Amount Due`)
+totalMissing(muni$`Suspend Code`)
+totalMissing(muni$`Suspend Process Date`)
+totalMissing(muni$`Suspend Until Date`)
+totalMissing(muni$`Disposition Code`)
+totalMissing(muni$Geom)
 
 ```
 
