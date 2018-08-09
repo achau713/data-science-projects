@@ -40,7 +40,7 @@ muni <- muni %>%
 
 ```
 
-# Check for Missing Values
+## Missing Values
 
 We have many missing values scattered across the columns in the muni data frame. More specifcally, there are missing values in the 'Amount Due', 'Suspend Code', 'Suspend Process Date', 'Suspend Until Date', 'Disposition Code', and 'Geom' columns.
 ```{r missing_values}
@@ -62,7 +62,7 @@ totalMissing(muni$Geom)
 
 ```
 
-# Date and Time
+## Date and Time
 
 Now, let's focus our attention on the date and time data within this dataset.
 
@@ -70,7 +70,7 @@ Initially, the citation issue date and time were stored as factor variables. We 
 ```{r dateTime}
 # Convert citation dates and times to a Datetime object
 
-muni$citation_date <- strptime(muni$`Citation Issue Date`, format ='%m/%d/%Y')
+muni$citation_date <- strptime(paste(muni$`Citation Issue Date`), format ='%m/%d/%Y')
 
 
 muni$citation_dateTime <- strptime(paste(muni$`Citation Issue Date`, 
@@ -84,6 +84,8 @@ muni <- muni %>%
 
 ```
 
+## Separate date column
+
 We also want to analyze citation counts in a smaller time frame, so we separate the citation_date column into three columns for the month, date, and year
 ```{r}
 muni <- muni %>% 
@@ -92,7 +94,7 @@ muni <- muni %>%
 ```
 
 
-# Spatial Location 
+## Spatial Location 
 ```{r}
 # Split Geom column into Longitude and Latitude column
 muni <-  muni %>% 
@@ -108,7 +110,7 @@ muni$longitude <-  muni$longitude %>%
 ```
 
 
-# Extract unique street names from location column 
+## Extract unique street names from location column 
 
 We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
 ```{r street_names}
@@ -152,7 +154,7 @@ unique(muni$street_name)
 
 ```
 
-# Clean up street names
+## Clean up street names
 
 In the newly created street_name column, we remove unnecessary puncation or white space within the different factor levels and remove the street type from each factor level. Lastly, we convert each street name to title style capitalization.
 ```{r}
@@ -184,7 +186,7 @@ unique(muni$street_name)
 ```
 
 
-# Clean up minor spelling mistakes
+## Clean up minor spelling mistakes
 
 Some of the street names in the dataset are misspelled. We manually correct these
 mistakes by reassigning observations with misspelling to the correct spelling.
@@ -214,7 +216,30 @@ muni$street_name <- factor(muni$street_name)
 unique(muni$street_name)
 ```
 
+## Rename columns
+```{r}
+names(muni)
 
+muni <- muni %>% 
+  rename(ID = "Object ID", violation_type = "Violation")
+
+names(muni)
+
+```
+
+
+## Rearrange columns
+
+```{r}
+muni <- muni %>% 
+  select(ID, month, day, year, street_name, 
+         violation_type, latitude, longitude, everything())
+```
+
+
+
+
+# Data Visualization
 Exploring Transit Lane Violation Types
 ```{r, message=FALSE}
 library(dplyr)
