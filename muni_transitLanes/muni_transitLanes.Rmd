@@ -13,6 +13,8 @@ library(stringr)
 library(magrittr)
 library(tidyverse)
 library(leaflet)
+library(plotly)
+library(lubridate)
 ```
 
 
@@ -75,23 +77,16 @@ Now, let's focus our attention on the date and time data within this dataset.
 
 Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
 ```{r dateTime}
-# Convert citation date to date object to work in dplyr
+# Convert all values in the original citation column into a Date object
 muni$citation_date <- as.Date(muni$`Citation Issue Date`, format ="%m/%d/%Y")
+
 
 # Combine date and time columns into a citation_dateTime column
 muni <-  muni %>% 
   unite(citation_dateTime, `Citation Issue Date`, `Citation Issue Time`, sep = " ")
 
-
-# Convert citation date and citation dateTimeto date object to work in dplyr
-muni$citation_date <- as.Date(muni$`Citation Issue Date`, format ="%m/%d/%Y")
-
-
-
-# Drop original citation issue date and time
-
-muni <- muni %>% 
-  select(-`Citation Issue Date`, -`Citation Issue Time`)
+# Convert citation_dateTime to a POSIXct object
+muni$citation_dateTime <- mdy_hms(muni$citation_dateTime)
 
 ```
 
@@ -240,12 +235,10 @@ unique(muni$street_name)
 ```{r}
 
 muni <- muni %>% 
-  rename(ID = "Object ID", violation_type = "Violation")
+  rename(ID = "Object ID", violation_type = "Violation", location = "Location",
+         fine_amount = "Fine Amount")
 
 names(muni)
-
-
-
 
 ```
 
@@ -255,28 +248,48 @@ names(muni)
 ```{r}
 muni <- muni %>% 
   select(ID, month, day, year, street_name, 
-         violation_type, latitude, longitude, everything())
+         violation_type, latitude, longitude, 
+         fine_amount, citation_dateTime, everything())
 ```
-
-
-## sandbox - play around with data
-```{r}
-muni %>% 
-  group_by(year, month, day) %>% 
-  summarise_(n())
-```
-
 
 
 # Data Visualization
-Exploring Transit Lane Violation Types
-```{r, message=FALSE}
-library(dplyr)
-library(ggplot2)
-library(plotly)
+
+First, we summarize the number of citations per day by grouping the observations by each day. Then, we make a frequency plot with ggplot2 to display the distribution of citationc counts over time
+```{r}
+citations_dt <- muni %>% 
+  select(street_name, citation_dateTime)
+
+# Citation count by day from 2008 to 2014
+citations_dt %>% 
+  ggplot(aes(citation_dateTime)) +
+  geom_freqpoly(binwidth = 86400) # 86400 secs = 1 day
+
+# The above 
+
+
 ```
 
-Exploring Transit Lane Violation Types
+The above plot is too nosy. Let's plot out violation counts by month.
+```{r warning= FALSE}
+citations_dt %>% 
+  ggplot(aes(citation_dateTime)) +
+  # take average days in a month to be 30 and multiple by the number of seconds in a day
+  geom_freqpoly(binwidth = 86400*30, color = "firebrick") +
+  theme_minimal() +
+  labs(x = "Date", y = "Citation Count", 
+       title = "Transit Lane Violation Counts in San Francisco") +
+  scale_x_datetime(date_breaks = "4 months") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, 
+                                   margin = margin(0, 0, 15, 0)),
+        plot.title = element_text(size = 15, face = "bold", 
+                                  margin = margin(0, 0, 10, 0)))
+```
+
+
+
+
+## Exploring Transit Lane Violation Types
 ```{r}
 
 # Rename violations
@@ -313,24 +326,6 @@ dim(muni)
 
 ```
 
-
-Convert date and time columns to Date objects
-```{r}
-# Convert citation date to date object to work in dplyr
-muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
-muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M')
-
-
-# Convert citation dates and times to a Datetime object
-
-muni$citation_date <- strptime(paste(muni$`Citation Issue Date`), format ='%m/%d/%Y')
-
-
-muni$citation_dateTime <- strptime(paste(muni$`Citation Issue Date`, 
-                                            muni$`Citation Issue Time`), 
-                                      format ='%m/%d/%Y %H:%M')
-
-```
 
 Work on this
 ```{r}
