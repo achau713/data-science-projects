@@ -31,8 +31,7 @@ muni <- as.data.frame(muni)
 
 First, we remove the Citation.Issue.Month column from the data frame since the
 month is already included in the Citation.Issue.Date column. And, we remove the 
-Last.Edited.Date column because this is not relevant for our analysis. Lastly,
-we remove the Ticket.Number column.
+Last.Edited.Date and Ticket Number column because the columns are not relevant for our analysis.
 ```{r remove_columns}
 
 muni <- muni %>% 
@@ -43,6 +42,8 @@ muni <- muni %>%
 ## Missing Values
 
 We have many missing values scattered across the columns in the muni data frame. More specifcally, there are missing values in the 'Amount Due', 'Suspend Code', 'Suspend Process Date', 'Suspend Until Date', 'Disposition Code', and 'Geom' columns.
+
+we have many missing values in the Disposition Code column but few missing values for the 'Amount Due' and Geom' column. Also, there are about an equal amount of missing values for the 'Suspend Code', 'Suspend Process Date, and 'Suspend Until Date'. This makes sense intuitively because the columns are related to each other. In fact the 'Suspend Process Date' and 'Suspend Until Date' have the same number of missing values. 
 ```{r missing_values}
 # Check for NA values for each column
 
@@ -62,20 +63,30 @@ totalMissing(muni$Geom)
 
 ```
 
+## Impute Missing Valuess
+```{r}
+
+```
+
+
 ## Date and Time
 
 Now, let's focus our attention on the date and time data within this dataset.
 
 Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
 ```{r dateTime}
-# Convert citation dates and times to a Datetime object
+# Convert citation date to date object to work in dplyr
+muni$citation_date <- as.Date(muni$`Citation Issue Date`, format ="%m/%d/%Y")
 
-muni$citation_date <- strptime(paste(muni$`Citation Issue Date`), format ='%m/%d/%Y')
+# Combine date and time columns into a citation_dateTime column
+muni <-  muni %>% 
+  unite(citation_dateTime, `Citation Issue Date`, `Citation Issue Time`, sep = " ")
 
 
-muni$citation_dateTime <- strptime(paste(muni$`Citation Issue Date`, 
-                                            muni$`Citation Issue Time`), 
-                                      format ='%m/%d/%Y %H:%M')
+# Convert citation date and citation dateTimeto date object to work in dplyr
+muni$citation_date <- as.Date(muni$`Citation Issue Date`, format ="%m/%d/%Y")
+
+
 
 # Drop original citation issue date and time
 
@@ -91,6 +102,15 @@ We also want to analyze citation counts in a smaller time frame, so we separate 
 muni <- muni %>% 
   separate(citation_date, into = c("year", "month", "day"), sep = "-")
   
+```
+
+## Convert month, day, and year columns into the integer type
+```{r}
+muni$month <- as.integer(muni$month)
+
+muni$day <- as.integer(muni$day)
+
+muni$year <- as.integer(muni$year)
 ```
 
 
@@ -218,12 +238,14 @@ unique(muni$street_name)
 
 ## Rename columns
 ```{r}
-names(muni)
 
 muni <- muni %>% 
   rename(ID = "Object ID", violation_type = "Violation")
 
 names(muni)
+
+
+
 
 ```
 
@@ -236,6 +258,13 @@ muni <- muni %>%
          violation_type, latitude, longitude, everything())
 ```
 
+
+## sandbox - play around with data
+```{r}
+muni %>% 
+  group_by(year, month, day) %>% 
+  summarise_(n())
+```
 
 
 
@@ -289,7 +318,17 @@ Convert date and time columns to Date objects
 ```{r}
 # Convert citation date to date object to work in dplyr
 muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
-muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
+muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M')
+
+
+# Convert citation dates and times to a Datetime object
+
+muni$citation_date <- strptime(paste(muni$`Citation Issue Date`), format ='%m/%d/%Y')
+
+
+muni$citation_dateTime <- strptime(paste(muni$`Citation Issue Date`, 
+                                            muni$`Citation Issue Time`), 
+                                      format ='%m/%d/%Y %H:%M')
 
 ```
 
