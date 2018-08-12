@@ -6,7 +6,7 @@ output: github_document
 always_allow_html: yes
 ---
 
-```{r, message=FALSE, results='hide'}
+```{r, message=FALSE, results='hide', message=FALSE}
 library(dplyr)
 library(ggplot2)
 library(stringr)
@@ -96,7 +96,7 @@ We also want to analyze citation counts in a smaller time frame, so we separate 
 ```{r}
 muni <- muni %>% 
   separate(citation_date, into = c("year", "month", "day"), sep = "-")
-  
+
 ```
 
 ## Convert month, day, and year columns into the integer type
@@ -133,7 +133,7 @@ We create a new column which consists of only the street name where the violatio
 # Good functional programming practice:
 # Not advisable to change global variables in functions
 # Instead, we write a function with a more explicit return value and reassign the result
-# outside the function (gloabl environment)
+# outside the function (global environment)
 
 # In this case, we create a new column in data frame called y, which contains only the
 # street names of all the location. We use the get_streetName function to return this
@@ -265,27 +265,38 @@ citations_dt %>%
   ggplot(aes(citation_dateTime)) +
   geom_freqpoly(binwidth = 86400) # 86400 secs = 1 day
 
-# The above 
-
-
 ```
 
-The above plot is too nosy. Let's plot out violation counts by month.
+The above plot is too nosy. Let's plot out violation counts by every 3 months.
 ```{r warning= FALSE}
-citations_dt %>% 
+p <- citations_dt %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
-  geom_freqpoly(binwidth = 86400*30, color = "firebrick") +
-  theme_minimal() +
+  geom_freqpoly(binwidth = 84600*120, color = "firebrick") +
   labs(x = "Date", y = "Citation Count", 
        title = "Transit Lane Violation Counts in San Francisco") +
-  scale_x_datetime(date_breaks = "4 months") +
+  scale_x_datetime(date_breaks = "3 months") +
+  theme_minimal() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1, 
                                    margin = margin(0, 0, 15, 0)),
         plot.title = element_text(size = 15, face = "bold", 
                                   margin = margin(0, 0, 10, 0)))
+
+p <- ggplotly(p)
+p
+
+
+
 ```
 
+Citations by Month Visualization
+```{r}
+citations_byMonth <- muni %>% 
+  group_by(year, month) %>% 
+  summarise(n())
+
+
+```
 
 
 
