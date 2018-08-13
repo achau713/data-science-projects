@@ -270,7 +270,6 @@ citations_dt %>%
 The above plot is too nosy. Let's plot out violation counts by every 3 months.
 ```{r warning= FALSE}
 p <- citations_dt %>% 
-  filter(citation_dateTime < ymd(20101001)) %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
   geom_freqpoly(binwidth = 86400*7, color = "firebrick") +
@@ -291,18 +290,39 @@ p
 
 ```
 
-Citations by Month Visualization
+Citations by Month Visualization - Geary Boulevard
+```{r}
+citations_streetName <- muni %>% 
+  group_by(street_name, year) %>% 
+  mutate(count = n())
+
+p2 <- citations_streetName %>% 
+  filter(street_name == "Geary") %>% 
+  ggplot(aes(street_name)) +
+  geom_bar(fill = "navy blue") +
+  labs(x = "Geary Boulevard", y = "Citatio Count", 
+       title = "Citations count on Geary Boulevard from 2008-2015") + 
+  facet_grid(cols = vars(year)) +
+  theme(axis.text.x = element_blank())
+
+p2 
+
+p2 <- ggplotly(p2)
+
+p2
+
+``` 
+
+Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
+
+
+Citations by Street Name
 ```{r}
 muni %>% 
   group_by(year, month) %>% 
   summarise(n())
 
-```
 
-
-
-Citations by Street Name
-```{r}
 streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
   geom_bar(aes(fill=violation_type), color='black', position = "dodge") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
