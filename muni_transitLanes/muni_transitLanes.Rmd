@@ -290,7 +290,19 @@ p
 
 ```
 
-Citations by Month Visualization - Geary Boulevard
+
+# Number of transit lane violations by street name. 
+
+We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
+```{r}
+muni %>% 
+  group_by(street_name) %>% 
+  summarise(n())
+```
+
+
+
+# Citations by Year Visualization - Geary Boulevard
 ```{r}
 citations_streetName <- muni %>% 
   group_by(street_name, year) %>% 
@@ -300,10 +312,14 @@ p2 <- citations_streetName %>%
   filter(street_name == "Geary") %>% 
   ggplot(aes(street_name)) +
   geom_bar(fill = "navy blue") +
-  labs(x = "Geary Boulevard", y = "Citatio Count", 
+  labs(x = "Geary Boulevard", y = "Citation Count", 
        title = "Citations count on Geary Boulevard from 2008-2015") + 
   facet_grid(cols = vars(year)) +
-  theme(axis.text.x = element_blank())
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
+        axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+        plot.title = element_text(face = "bold"))
 
 p2 
 
@@ -314,6 +330,36 @@ p2
 ``` 
 
 Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
+
+
+Pack year-by-year bar graph into a function
+```{r}
+
+streetName_barGraph <- function(street){
+  barGraph <- citations_streetName %>% 
+  filter(street_name == street) %>% 
+  ggplot(aes(street_name)) +
+  geom_bar(fill = "navy blue") +
+  labs(x = street, y = "Citation Count", 
+       title = cat("Citation count on", street, "from 2008-2015")) + 
+  facet_grid(cols = vars(year)) +
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
+        axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+        plot.title = element_text(face = "bold"))
+  return(ggplotly(barGraph))
+}
+  
+
+test <- streetName_barGraph("Post")
+test
+
+
+
+
+```
+
 
 
 Citations by Street Name
