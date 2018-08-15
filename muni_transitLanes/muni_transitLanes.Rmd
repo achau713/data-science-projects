@@ -346,15 +346,14 @@ streetName_barGraph <- function(street){
   theme(axis.text.x = element_blank(), 
         axis.ticks.x = element_blank(),
         axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
-        axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+        axis.title.y = element_text(margin = margin(0, 20, 0, 0)),
         plot.title = element_text(face = "bold"))
-  return(ggplotly(barGraph))
+  return(barGraph)
 }
   
 
 test <- streetName_barGraph("Post")
 test
-
 
 
 
@@ -569,4 +568,35 @@ plot.ts(citation_ts)
 
 
 ```
+
+
+
+# Visulaize transit lane violations with Leaflet
+```{r}
+
+muni$latitude <- as.numeric(muni$latitude)
+
+muni$longitude <- as.numeric(muni$longitude)
+
+leaflet(data = muni) %>% 
+  addProviderTiles("Stamen.TonerLite") %>% 
+  addCircleMarkers(~longitude, ~latitude, 
+                   clusterOptions = markerClusterOptions())
+```
+
+
+
+
+
+
+
+
+# Extensions/Further Work
+
+1. Integrate SFMTA on-time arrival/departure and average delays for bus routes using transit only lanes -> How effective are transit-only lanes? How do we measure this?
+
+2. Data is inconsistent and not frequently maintained/updated -> difficult to fully explore and understand the data
+
+3. Research more on SFMTA and even city-wide intiatives to better understand spikes and dips in transit lane citations
+
 
