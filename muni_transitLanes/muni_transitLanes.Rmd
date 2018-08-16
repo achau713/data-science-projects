@@ -19,14 +19,13 @@ library(lubridate)
 
 
 # Read in data
-```{r read_data, results = 'hide'}
+```{r read_data, results = 'hide', message=FALSE}
 # Use read_csv from readr package (Faster, more reproducible, tibbles)
 muni <- read_csv('muni_transitLanes.csv', trim_ws = TRUE, na = c("", "NA"))
 muni <- as.data.frame(muni)
 
 # Check variables in muni
-# str(muni)
-# summary(muni)
+str(muni)
 
 ```
 # Cleaning the Data
@@ -255,7 +254,11 @@ muni <- muni %>%
 
 # Data Visualization
 
-First, we summarize the number of citations per day by grouping the observations by each day. Then, we make a frequency plot with ggplot2 to display the distribution of citationc counts over time
+## Transit lane citations count from 2008-2015
+
+First, we condense down the muni data frame by selecting only the street_name and citation_dateTime column. We will pass in this condensed data frame to ggplot2 to create visualizations.
+
+Then, we make a frequency plot with ggplot2 to display the distribution of citationc counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
 ```{r}
 citations_dt <- muni %>% 
   select(street_name, citation_dateTime)
@@ -267,15 +270,19 @@ citations_dt %>%
 
 ```
 
-The above plot is too nosy. Let's plot out violation counts by every 3 months.
+## 
+
+We increase the bindwidth to be approximately a month and put breaks in the dates every 6 months. This allows us to see a clearer general trend without the unnecessary noise.
+
+From the graph, transit lane citations were increasing in general, with peak levels around September 2012. There is a cylical pattern in the data, with peaks and troughs scattered throughout the curve.
 ```{r warning= FALSE}
 p <- citations_dt %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
-  geom_freqpoly(binwidth = 86400*7, color = "firebrick") +
+  geom_freqpoly(binwidth = 86400*30, color = "firebrick") +
   labs(x = "Date", y = "Citation Count", 
        title = "Transit Lane Violation Counts in San Francisco") +
-  scale_x_datetime(date_breaks = "3 months", date_labels = "%b-%Y") +
+  scale_x_datetime(date_breaks = "6 months", date_labels = "%b-%Y") +
   theme_minimal() + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, 
                                    margin = margin(0, 0, 15, 0)),
@@ -286,12 +293,10 @@ p
 
 p <- ggplotly(p, tooltip = c("y"))
 p
-
-
 ```
 
 
-# Number of transit lane violations by street name. 
+## Visualzing Transit lane citations by street name. 
 
 We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
 ```{r}
@@ -302,62 +307,37 @@ muni %>%
 
 
 
-# Citations by Year Visualization - Geary Boulevard
+# Citations by Street Name from 2008-2015 Visualization
 ```{r}
 citations_streetName <- muni %>% 
   group_by(street_name, year) %>% 
   mutate(count = n())
 
 p2 <- citations_streetName %>% 
-  filter(street_name == "Geary") %>% 
+  filter(street_name %in% c("Geary", "Mission", "O'Farrell", "Post", "Sutter")) %>% 
   ggplot(aes(street_name)) +
-  geom_bar(fill = "navy blue") +
+  geom_bar(color = "black", mapping = aes(fill = street_name)) +
   labs(x = "Geary Boulevard", y = "Citation Count", 
-       title = "Citations count on Geary Boulevard from 2008-2015") + 
-  facet_grid(cols = vars(year)) +
+       title = "Citations count across different streets") + 
+  facet_grid(cols = vars(year), rows = vars(street_name), 
+             scales = "free_y") +
+  theme_dark() + 
   theme(axis.text.x = element_blank(), 
         axis.ticks.x = element_blank(),
         axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
         axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
         plot.title = element_text(face = "bold"))
 
-p2 
-
-p2 <- ggplotly(p2)
-
 p2
+
+# glitchy
+ggplotly(p2, tooltip = "count")
+
 
 ``` 
 
 Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
 
-
-Pack year-by-year bar graph into a function
-```{r}
-
-streetName_barGraph <- function(street){
-  barGraph <- citations_streetName %>% 
-  filter(street_name == street) %>% 
-  ggplot(aes(street_name)) +
-  geom_bar(fill = "navy blue") +
-  labs(x = street, y = "Citation Count", 
-       title = cat("Citation count on", street, "from 2008-2015")) + 
-  facet_grid(cols = vars(year)) +
-  theme(axis.text.x = element_blank(), 
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
-        axis.title.y = element_text(margin = margin(0, 20, 0, 0)),
-        plot.title = element_text(face = "bold"))
-  return(barGraph)
-}
-  
-
-test <- streetName_barGraph("Post")
-test
-
-
-
-```
 
 
 
