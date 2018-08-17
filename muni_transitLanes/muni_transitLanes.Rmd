@@ -6,7 +6,7 @@ output: github_document
 always_allow_html: yes
 ---
 
-```{r, message=FALSE, results='hide', message=FALSE}
+```{r, message=FALSE, results='hide', warning = FALSE}
 library(dplyr)
 library(ggplot2)
 library(stringr)
@@ -317,7 +317,7 @@ p2 <- citations_streetName %>%
   filter(street_name %in% c("Geary", "Mission", "O'Farrell", "Post", "Sutter")) %>% 
   ggplot(aes(street_name)) +
   geom_bar(color = "black", mapping = aes(fill = street_name)) +
-  labs(x = "Geary Boulevard", y = "Citation Count", 
+  labs(x ="", y = "Citation Count", 
        title = "Citations count across different streets") + 
   facet_grid(cols = vars(year), rows = vars(street_name), 
              scales = "free_y") +
@@ -326,7 +326,14 @@ p2 <- citations_streetName %>%
         axis.ticks.x = element_blank(),
         axis.title.x = element_text(margin = margin(10, 0, 0, 0)), 
         axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
-        plot.title = element_text(face = "bold"))
+        plot.title = element_text(face = "bold"),
+        panel.spacing.y = unit(.5, "cm"),
+        panel.grid.major = element_blank(),
+        panel.border = element_rect(linetype = "dashed", fill = NA),
+        strip.background.x = element_rect(colour = "white", fill = "gray"),
+        strip.background.y = element_rect(colour = "white", fill = "firebrick"),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        panel.background = element_rect(fill = "white", color = "gray50"))
 
 p2
 
@@ -337,6 +344,8 @@ ggplotly(p2, tooltip = "count")
 ``` 
 
 Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
+
+
 
 
 
