@@ -94,7 +94,7 @@ muni$citation_dateTime <- mdy_hms(muni$citation_dateTime)
 We also want to analyze citation counts in a smaller time frame, so we separate the citation_date column into three columns for the month, date, and year
 ```{r}
 muni <- muni %>% 
-  separate(citation_date, into = c("year", "month", "day"), sep = "-")
+  separate(citation_date, into = c("year", "month", "day"), sep = "-", remove = FALSE)
 
 ```
 
@@ -270,7 +270,7 @@ citations_dt %>%
 
 ```
 
-## 
+## Transit lane citations count from 2008-2015 with increased binwidth
 
 We increase the bindwidth to be approximately a month and put breaks in the dates every 6 months. This allows us to see a clearer general trend without the unnecessary noise.
 
@@ -346,7 +346,48 @@ ggplotly(p2, tooltip = "count")
 Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
 
 
+## Transit Lane Citations by hour
 
+Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is no increasing citation count leading up to the afternoon hour. Instead, citation count stays fairly flat. 
+```{r}
+muni %>% 
+  ggplot(aes(hour(citation_dateTime))) +
+  geom_bar(stat = "count", fill = "#39a78e") +
+  theme_minimal() +
+  labs(x = "Hour", y = "Total Count", title = "Transit Lane Citations by Hour") + 
+  theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0))) + 
+  scale_x_continuous(breaks = seq(0, max(hour(muni$citation_dateTime)), by = 1))
+
+```
+
+
+## Transit Lane Citations by year
+```{r}
+muni %>% 
+  ggplot(aes(year(citation_dateTime))) +
+  geom_bar(stat = "count", fill = "#39a78e") +
+  theme_minimal() +
+  labs(x = "Year", y = "Total Count", title = "Transit Lane Citations by Year") + 
+  theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0))) + 
+  scale_x_continuous(breaks = seq(min(year(muni$citation_dateTime)),
+                                  max(year(muni$citation_dateTime)), by = 1))
+```
+
+
+
+## Transit Lane Citations by Month
+
+```{r}
+muni %>% 
+  ggplot(aes(month(citation_dateTime))) +
+  geom_bar(stat = "count", fill = "#39a78e") +
+  theme_minimal() +
+  labs(x = "Month", y = "Total Count", title = "Transit Lane Citations by Month") + 
+  theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+        axis.title.x = element_text(margin = margin(10, 0, 0, 0))) + 
+  scale_x_continuous(breaks = seq(1, max(month(muni$citation_dateTime)), by = 1))
+
+```
 
 
 
@@ -356,10 +397,6 @@ muni %>%
   group_by(year, month) %>% 
   summarise(n())
 
-
-streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
-  geom_bar(aes(fill=violation_type), color='black', position = "dodge") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 
