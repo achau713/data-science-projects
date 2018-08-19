@@ -75,6 +75,8 @@ totalMissing(muni$Geom)
 Now, let's focus our attention on the date and time data within this dataset.
 
 Initially, the citation issue date and time were stored as factor variables. We collapse date and time into a single column and convert it to a datetime object. This will make the data easier to work with in our analysis.
+
+We also want to analyze citation counts in a smaller time frame, so we separate the citation_date column into three columns for the month, date, and year.
 ```{r dateTime}
 # Convert all values in the original citation column into a Date object
 muni$citation_date <- as.Date(muni$`Citation Issue Date`, format ="%m/%d/%Y")
@@ -87,24 +89,17 @@ muni <-  muni %>%
 # Convert citation_dateTime to a POSIXct object
 muni$citation_dateTime <- mdy_hms(muni$citation_dateTime)
 
-```
-
-## Separate date column
-
-We also want to analyze citation counts in a smaller time frame, so we separate the citation_date column into three columns for the month, date, and year
-```{r}
+#Separate date column
 muni <- muni %>% 
   separate(citation_date, into = c("year", "month", "day"), sep = "-", remove = FALSE)
 
-```
-
-## Convert month, day, and year columns into the integer type
-```{r}
+# Convert month, day, and year columns into the integer type
 muni$month <- as.integer(muni$month)
 
 muni$day <- as.integer(muni$day)
 
 muni$year <- as.integer(muni$year)
+
 ```
 
 
@@ -126,7 +121,7 @@ muni$longitude <-  muni$longitude %>%
 
 ## Extract unique street names from location column 
 
-We create a new column which consists of only the street name where the violation occured. In the original datset, the location column provided both the street number and street name. As a result, we have an extremely high amount of factor levels for the location column. Hence, we will condense down the number of factor levels to the total number of unique street names.
+In the original datset, the location column provided both the street number and street name. Hence, we have an extremely high amount of factor levels for the location column. So, we create a new column which consists of only the street name where the violation occured. This step condenses down the number of factor levels to the total number of unique street names.
 ```{r street_names}
 
 # Good functional programming practice:
@@ -191,9 +186,8 @@ clean_streetName <- function(streetName_column){
 
 muni$street_name <- clean_streetName(muni$street_name)
 
-# Take in original location column, which was previously cleaned up by the 
 
-# Check
+# Double check
 unique(muni$street_name)
 
 
@@ -258,8 +252,9 @@ muni <- muni %>%
 
 First, we condense down the muni data frame by selecting only the street_name and citation_dateTime column. We will pass in this condensed data frame to ggplot2 to create visualizations.
 
-Then, we make a frequency plot with ggplot2 to display the distribution of citationc counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
-```{r}
+Then, we make a frequency plot with ggplot2 to display the distribution of citation counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
+```{r, fig.keep = 'last'}
+# select citation_dateTime and street_name columns only
 citations_dt <- muni %>% 
   select(street_name, citation_dateTime)
 
@@ -272,16 +267,16 @@ citations_dt %>%
 
 ## Transit lane citations count from 2008-2015 with increased binwidth
 
-We increase the bindwidth to be approximately a month and put breaks in the dates every 6 months. This allows us to see a clearer general trend without the unnecessary noise.
+We increase the bindwidth to be approximately 7 days and put breaks in the dates every 6 months. This allows us to see a clearer general trend without the unnecessary noise.
 
 From the graph, transit lane citations were increasing in general, with peak levels around September 2012. There is a cylical pattern in the data, with peaks and troughs scattered throughout the curve.
-```{r warning= FALSE}
+```{r warning= FALSE, fig.keep = 'last'}
 p <- citations_dt %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
   geom_freqpoly(binwidth = 86400*7, aes(color = factor(year(citation_dateTime)))) +
   labs(x = "Date", y = "Citation Count", 
-       title = "Transit Lane Violation Counts in San Francisco") +
+       title = "Transit Lane Citation Counts in San Francisco") +
   scale_x_datetime(date_breaks = "6 months", date_labels = "%b - %Y") +
   theme_minimal() + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, 
@@ -299,7 +294,7 @@ p
 ```
 
 
-## Visualzing Transit lane citations by street name. 
+# Visualizing Transit lane citations by street name. 
 
 We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
 ```{r}
@@ -309,9 +304,21 @@ muni %>%
 ```
 
 
-
 # Citations by Street Name from 2008-2015 Visualization
-```{r}
+
+We display citation counts for different streets in San Francisco from 2008 to 2015. 
+
+Some key observations from the plot:
+
+1. Citation counts increase to a peak and then decreases after the peak for many streets. The initial upward trend of citation counts can be attributed to stricter enforcement when the transit lanes were first implemented. Then, after the behaviors of drivers have adjusted, strict enforcement decreased.
+
+2. Sutter and Mission St have a disproportionately high amount of citation counts compared to the other streets
+
+3. Citation counts for Mission St have two peaks. The two peaks may have been because  new transit lanes were rolled out in different phases.
+
+4. Post and Sutter St sustain higher citation counts after hitting the peak compared to other streets
+
+```{r, fig.keep = 'last'}
 citations_streetName <- muni %>% 
   group_by(street_name, year) %>% 
   mutate(count = n())
@@ -346,13 +353,12 @@ ggplotly(p2, tooltip = "count")
 
 ``` 
 
-Violations on Geary dramatically increased from 2008 onwards, peaking in the year 2011 and then declining in the number of reported violations. The upward trend in violation count may be because of stricter enforcement when San Francisco was first rolling out transit only lanes as a way to increase public awareness and knowledge. And after the intial roll-out, strict enforcement decreased.
 
 
 ## Transit Lane Citations by hour
 
-Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is no increasing citation count leading up to the afternoon hour. Instead, citation count stays fairly flat. 
-```{r}
+Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is a big difference in citation counts before the peak hour and citation counts do not gradually increase as time gets closer to the peak hour. Instead, citation counts stays fairly flat. 
+```{r, fig.keep = 'last'}
 citationsByHour <- muni %>% 
   ggplot(aes(hour(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
@@ -367,7 +373,9 @@ citationsByHour
 
 
 ## Transit Lane Citations by year
-```{r}
+
+Citations counts have been increasing from 2008 and onwards, peaking in 2012, but maintaining relatively high counts afterwards. New transit lanes being rolled out and the subsequent inital strict enforcement is a big reason for this increasing trend. More data from 2015 onwards is necessary to visualize future trends in citation counts.
+```{r, fig.keep = 'last'}
 citationsByYear <- muni %>% 
   ggplot(aes(year(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
@@ -384,6 +392,7 @@ citationsByYear
 
 ## Transit Lane Citations by Month
 
+Citation counts peak around the month of July and are in general highest during Fall months (August, Septemeber, October). This makes sense because these months are when students go back to school and when people in the workforce have come back from summer vacation, increasing people and traffic flow throughout the city. In contrast, citation counts are lowest around the holidays and New Years, when many people leave the city for the holidays and are off from work.
 ```{r}
 citationsByMonth <- muni %>% 
   ggplot(aes(month(citation_dateTime))) +
@@ -406,7 +415,7 @@ citationsByMonth
 
 
 
-Citations by Street Name
+## Transit Lane Citations by Street Name
 ```{r}
 muni %>% 
   group_by(year, month) %>% 
@@ -416,6 +425,8 @@ muni %>%
 
 
 ## Exploring Transit Lane Violation Types
+
+We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
 ```{r}
 
 # Counts of violation type
@@ -423,14 +434,6 @@ table(muni$violation_type)
 
 unique(muni$violation_type)
 
-
-```
-
-# Delete violation type categories from data frame
-# Combine small violation counts on different street names
-
-We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
-```{r}
 # Find the 8 observations with the 4 violation categories and delete them from data frame
 
 muni <- muni[!muni$violation_type %in% c('NO VIOL', 'ON SIDEWLK', 'OVR 18 " C', 'PK FR LN'),]
@@ -441,12 +444,13 @@ table(muni$violation_type)
 # Check total number of observations - we orignially had 17,178 observations
 dim(muni)
 
+
 ```
 
 
 Work on this
-```{r}
-
+```{r, fig.keep = 'last'}
+# Combine small violation counts on different street names
 # Group together factor level with low counts
 
 # Visualize number of violations by street name with barplot
@@ -474,8 +478,8 @@ Most violation types are towaway zone and towaway zone #1. There are few observa
 
 Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
 
-# Visualize number of violations with barplot
-```{r}
+# Visualize counts of citation type with barplot
+```{r, fig.keep = 'last'}
 # Visualize number of violations by street name with barplot
 violations <- ggplot(data=muni, aes(x=violation_type)) + 
   geom_bar() +
@@ -485,49 +489,7 @@ violations <- ggplot(data=muni, aes(x=violation_type)) +
 violations
 ```
 
-
-# Time Series visualization test
-Account for dates with no citation
-Make dates with sequence function between earliest date and latest date
-try missing_values <- date[!date in% sequence]
-```{r}
-library(dplyr)
-
-# Create new column which stores how many citations were issued that day and build 
-# time series object from that column
-
-# Convert citation date to date object to work in dplyr
-muni$citation_date <- as.Date(muni$citation_date, format ='%m/%d/%Y')
-muni$citation_dateTime <- as.Date(muni$citation_dateTime, format ='%m/%d/%Y  %H:%M') 
-
-
-# Group and count observations by date 
-muni <- 
-  muni %>%
-  arrange(citation_date) %>%
-  group_by(citation_date) %>%
-  mutate(citation_count = n())
-
-# Try n = n()
-# Count missing values: (sum(is.na(x))) or set na.rm=TRUE
-
-# Pull out citation_count vector
-citation_count <- 
-  muni %>%
-  pull(citation_count)
-
-# Time series
-# More research on dealing with regular data (almost daily) and spanning across
-# many years
-citation_ts <- ts(citation_count, frequency = 7, start= c(2008,2))
-
-plot.ts(citation_ts)
-
-
-
-```
-
-
+# Geospatial mapping 
 
 # Visualize transit lane violations with Leaflet
 ```{r}
@@ -542,11 +504,6 @@ leaflet(data = muni) %>%
                    label = "Got ya!",
                    clusterOptions = markerClusterOptions())
 ```
-
-
-
-
-
 
 
 
