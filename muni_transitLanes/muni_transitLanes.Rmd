@@ -282,7 +282,7 @@ p <- citations_dt %>%
   geom_freqpoly(binwidth = 86400*30, color = "firebrick") +
   labs(x = "Date", y = "Citation Count", 
        title = "Transit Lane Violation Counts in San Francisco") +
-  scale_x_datetime(date_breaks = "6 months", date_labels = "%b-%Y") +
+  scale_x_datetime(date_breaks = "6 months", date_labels = "%b - %Y") +
   theme_minimal() + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, 
                                    margin = margin(0, 0, 15, 0)),
@@ -303,6 +303,8 @@ We will focus on the streets with relatively high amounts of citations. Namely, 
 muni %>% 
   group_by(street_name) %>% 
   summarise(n())
+
+
 ```
 
 
@@ -350,7 +352,7 @@ Violations on Geary dramatically increased from 2008 onwards, peaking in the yea
 
 Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is no increasing citation count leading up to the afternoon hour. Instead, citation count stays fairly flat. 
 ```{r}
-muni %>% 
+citationsByHour <- muni %>% 
   ggplot(aes(hour(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -358,12 +360,14 @@ muni %>%
   theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0))) + 
   scale_x_continuous(breaks = seq(0, max(hour(muni$citation_dateTime)), by = 1))
 
+citationsByHour
+
 ```
 
 
 ## Transit Lane Citations by year
 ```{r}
-muni %>% 
+citationsByYear <- muni %>% 
   ggplot(aes(year(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -371,6 +375,8 @@ muni %>%
   theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0))) + 
   scale_x_continuous(breaks = seq(min(year(muni$citation_dateTime)),
                                   max(year(muni$citation_dateTime)), by = 1))
+
+citationsByYear
 ```
 
 
@@ -378,7 +384,7 @@ muni %>%
 ## Transit Lane Citations by Month
 
 ```{r}
-muni %>% 
+citationsByMonth <- muni %>% 
   ggplot(aes(month(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -387,7 +393,15 @@ muni %>%
         axis.title.x = element_text(margin = margin(10, 0, 0, 0))) + 
   scale_x_continuous(breaks = seq(1, max(month(muni$citation_dateTime)), by = 1))
 
+citationsByMonth
+
 ```
+
+## Transit Lane Citations by Weekday
+```{r}
+
+```
+
 
 
 
@@ -412,6 +426,7 @@ unique(muni$violation_type)
 ```
 
 # Delete violation type categories from data frame
+# Combine small violation counts on different street names
 
 We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
 ```{r}
@@ -424,11 +439,6 @@ table(muni$violation_type)
 
 # Check total number of observations - we orignially had 17,178 observations
 dim(muni)
-
-```
-
-# Combine small violation counts on different street names
-```{r}
 
 ```
 
@@ -459,7 +469,9 @@ are more short-tempered and willing to report violations in crowded downton SF?
 
 Also, we have to take into account when each transit lane was implemented.
 
+Most violation types are towaway zone and towaway zone #1. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. Need more information on how specific violation types are defined.
 
+Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
 
 # Visualize number of violations with barplot
 ```{r}
@@ -471,87 +483,6 @@ violations <- ggplot(data=muni, aes(x=violation_type)) +
 
 violations
 ```
-
-Most violation types are towaway zone and towaway zone #1. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. Need more information on how specific violation types are defined.
-
-
-Violations - Count Plot
-```{r}
-violationsCountPlot <- ggplot(data=muni)+ 
-  geom_count(mapping = aes(x = violation_type, y = street_name)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-
-violationsCountPlot
-```
-
-Violations by Street Name - Tile Plot (possibly do a heat map with d3heatmap or heatmaply)
-
-Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
-```{r}
-
-muni %>% 
-  count(violation_type, street_name) %>% 
-  ggplot(mapping = aes(x = reorder(violation_type, n), y = street_name)) +
-    geom_tile(aes(fill = n), color = 'white', size = 0.25) +
-    scale_fill_continuous(type = "viridis", na.value = "grey90") +
-    scale_x_discrete(limits = c('TWAWY ZN#1', 'DBL PARK', 'PRK PROHIB',
-                                'BUS ZONE', 'TWAWY ZONE', 
-                                'PK PHB OTD', 'TRNST ONLY')) +
-    theme_grey() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1, face = "bold"),
-          plot.background = element_blank(),
-          panel.border = element_blank())
-
-
-
-```
-
-
-Heatmap - Plotly
-```{r}
-
-# Create matrix of observation counts by street name and violation type
-# Bug with matrix code
-m <- table(muni$street_name, muni$violation_type)
-
-p <- plot_ly(z = m,
-  x = levels(muni$street_name), y = levels(muni$violation_type),
-  type = "heatmap"
-)
-
-p
-```
-
-
-
-Violations - Pie Chart
-```{r}
-# Visualize number of violations with pie chart
-pie <- ggplot(muni, aes(x = "", fill = factor(violation_type))) + 
-  geom_bar(width = 1) +
-  theme(axis.line = element_blank(), 
-        plot.title = element_text(hjust=0.5)) + 
-  labs(fill="class", 
-       x=NULL, 
-       y=NULL, 
-       title="Pie Chart of Violation Type", 
-       caption="Source: muni")
-  
-pie + coord_polar(theta = "y", start=0)
-
-```
-
-# Mapping Transit Lane Violations
-```{r}
-m <- leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
-  addMarkers(lng= c(-122.415269816, -121.34, -120.57), lat = c(37.7854374715, 37.85, 38.12), popup="Transit Violation", label= "Broke the law!")
-m 
-```
-
-
-
 
 
 # Time Series visualization test
@@ -597,7 +528,7 @@ plot.ts(citation_ts)
 
 
 
-# Visulaize transit lane violations with Leaflet
+# Visualize transit lane violations with Leaflet
 ```{r}
 
 muni$latitude <- as.numeric(muni$latitude)
@@ -606,7 +537,8 @@ muni$longitude <- as.numeric(muni$longitude)
 
 leaflet(data = muni) %>% 
   addProviderTiles("Stamen.TonerLite") %>% 
-  addCircleMarkers(~longitude, ~latitude, 
+  addCircleMarkers(~longitude, ~latitude, popup = "Transit Violation", 
+                   label = "Got ya!",
                    clusterOptions = markerClusterOptions())
 ```
 
