@@ -279,7 +279,7 @@ From the graph, transit lane citations were increasing in general, with peak lev
 p <- citations_dt %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
-  geom_freqpoly(binwidth = 86400*30, color = "firebrick") +
+  geom_freqpoly(binwidth = 86400*7, aes(color = factor(year(citation_dateTime)))) +
   labs(x = "Date", y = "Citation Count", 
        title = "Transit Lane Violation Counts in San Francisco") +
   scale_x_datetime(date_breaks = "6 months", date_labels = "%b - %Y") +
@@ -287,12 +287,15 @@ p <- citations_dt %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1, 
                                    margin = margin(0, 0, 15, 0)),
         plot.title = element_text(size = 15, face = "bold", 
-                                  margin = margin(0, 0, 10, 0)))
+                                  margin = margin(0, 0, 10, 0)),
+        legend.title = element_blank())
 
 p
 
 p <- ggplotly(p, tooltip = c("y"))
 p
+
+
 ```
 
 
@@ -303,8 +306,6 @@ We will focus on the streets with relatively high amounts of citations. Namely, 
 muni %>% 
   group_by(street_name) %>% 
   summarise(n())
-
-
 ```
 
 
