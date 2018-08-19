@@ -2,7 +2,10 @@
 title: "Analysis of Transit Only Lane Violations for SFMTA"
 author: Anthony Chau
 date: 07-10-2018
-output: github_document
+output: 
+  github_document:
+    toc: true
+    toc_depth: 2
 always_allow_html: yes
 ---
 
@@ -294,7 +297,7 @@ p
 ```
 
 
-# Visualizing Transit lane citations by street name. 
+## Visualizing Transit lane citations by street name. 
 
 We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
 ```{r}
@@ -304,7 +307,7 @@ muni %>%
 ```
 
 
-# Citations by Street Name from 2008-2015 Visualization
+## Transit Lane Citations by Street Name
 
 We display citation counts for different streets in San Francisco from 2008 to 2015. 
 
@@ -424,7 +427,7 @@ muni %>%
 ```
 
 
-## Exploring Transit Lane Violation Types
+## Transit Lane Citations by Violation Type
 
 We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
 ```{r}
@@ -478,7 +481,7 @@ Most violation types are towaway zone and towaway zone #1. There are few observa
 
 Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
 
-# Visualize counts of citation type with barplot
+## Visualize counts of citation type with barplot
 ```{r, fig.keep = 'last'}
 # Visualize number of violations by street name with barplot
 violations <- ggplot(data=muni, aes(x=violation_type)) + 
@@ -491,7 +494,7 @@ violations
 
 # Geospatial mapping 
 
-# Visualize transit lane violations with Leaflet
+## Visualize transit lane violations with Leaflet
 ```{r}
 
 muni$latitude <- as.numeric(muni$latitude)
