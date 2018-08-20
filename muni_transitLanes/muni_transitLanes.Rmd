@@ -258,11 +258,11 @@ First, we condense down the muni data frame by selecting only the street_name an
 Then, we make a frequency plot with ggplot2 to display the distribution of citation counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
 ```{r, fig.keep = 'last'}
 # select citation_dateTime and street_name columns only
-citations_dt <- muni %>% 
+citationsDateTime <- muni %>% 
   select(street_name, citation_dateTime)
 
 # Citation count by day from 2008 to 2014
-citations_dt %>% 
+citationsDateTime %>% 
   ggplot(aes(citation_dateTime)) +
   geom_freqpoly(binwidth = 86400) # 86400 secs = 1 day
 
@@ -274,7 +274,7 @@ We increase the bindwidth to be approximately 7 days and put breaks in the dates
 
 From the graph, transit lane citations were increasing in general, with peak levels around September 2012. There is a cylical pattern in the data, with peaks and troughs scattered throughout the curve.
 ```{r warning= FALSE, fig.keep = 'last'}
-p <- citations_dt %>% 
+citationsTimeSeries <- citationsDateTime %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
   geom_freqpoly(binwidth = 86400*7, aes(color = factor(year(citation_dateTime)))) +
@@ -288,10 +288,11 @@ p <- citations_dt %>%
                                   margin = margin(0, 0, 10, 0)),
         legend.title = element_blank())
 
-p
+citationsTimeSeries
 
-p <- ggplotly(p, tooltip = c("y"))
-p
+# plotly plot
+ggplotly(citationsTimeSeries, tooltip = c("y"))
+
 
 
 ```
@@ -300,6 +301,7 @@ p
 ## Visualizing Transit lane citations by street name. 
 
 We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
+
 ```{r}
 muni %>% 
   group_by(street_name) %>% 
@@ -322,11 +324,11 @@ Some key observations from the plot:
 4. Post and Sutter St sustain higher citation counts after hitting the peak compared to other streets
 
 ```{r, fig.keep = 'last'}
-citations_streetName <- muni %>% 
+citationsGroupedByStreet <- muni %>% 
   group_by(street_name, year) %>% 
   mutate(count = n())
 
-p2 <- citations_streetName %>% 
+citationsByStreet <- citationsGroupedByStreet %>% 
   filter(street_name %in% c("Geary", "Mission", "O'Farrell", "Post", "Sutter")) %>% 
   ggplot(aes(street_name)) +
   geom_bar(color = "black", mapping = aes(fill = street_name)) +
@@ -348,10 +350,10 @@ p2 <- citations_streetName %>%
         strip.text.x = element_text(colour = "white", face = "bold"),
         panel.background = element_rect(fill = "white", color = "gray50"))
 
-p2
+citationsByStreet
 
 # glitchy
-ggplotly(p2, tooltip = "count")
+ggplotly(citationsByStreet, tooltip = "count")
 
 
 ``` 
@@ -410,19 +412,10 @@ citationsByMonth
 
 ```
 
+
+
 ## Transit Lane Citations by Weekday
 ```{r}
-
-```
-
-
-
-
-## Transit Lane Citations by Street Name
-```{r}
-muni %>% 
-  group_by(year, month) %>% 
-  summarise(n())
 
 ```
 
@@ -450,47 +443,23 @@ dim(muni)
 
 ```
 
+Most violation types are towaway zone #1, DNL PARK, and BUS ZONE. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. We need more information on how specific violation types are defined.
 
-Work on this
 ```{r, fig.keep = 'last'}
-# Combine small violation counts on different street names
-# Group together factor level with low counts
 
 # Visualize number of violations by street name with barplot
-streetBarPlot <- ggplot(data=muni, aes(x=street_name)) + 
-  geom_bar(aes(fill=violation_type), color='black', position = "dodge") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-streetBarPlot
-```
-
-We find that most transit lane violations are concentrated on a few streets: Geary, Market, Mission, Folsom, Stockton, and Sutter. Almost all of these pass through downtown
-San Francisco, which is plausible since many bus services aggregate in downtown. 
-
-Many questions can be asked from this visualization. Is the high number of citations of these streets because of high bus and therefore high transit lane density in downtown San Francisco? 
-
-Are drivers more likely to violate regulations in the downtown area because of how crowded and hectic streets can get during peak hours, which makes driver more 
-short-tempered and willing to make shortcuts through transit lanes?
-
-Or, are high incidence of transit lane violations on a few streets because muni drivers
-are more short-tempered and willing to report violations in crowded downton SF?
-
-Also, we have to take into account when each transit lane was implemented.
-
-Most violation types are towaway zone and towaway zone #1. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. Need more information on how specific violation types are defined.
-
-Most violation types were 'BUS ZONE', 'DBL PARK', and 'TWAWAY ZN#1'.
-
-## Visualize counts of citation type with barplot
-```{r, fig.keep = 'last'}
-# Visualize number of violations by street name with barplot
-violations <- ggplot(data=muni, aes(x=violation_type)) + 
-  geom_bar() +
+citationsByType <- ggplot(data=muni, aes(x=violation_type)) + 
+  geom_bar(fill = "firebrick") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  labs(title = "Citation counts by type of violation", x = "Violation Type") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_text(margin = margin(10, 0, 0, 0)),
+        axis.title.y = element_text(margin = margin(0, 10, 0, 0)))
 
-violations
+citationsByType
+
 ```
+
 
 # Geospatial mapping 
 
@@ -517,5 +486,14 @@ leaflet(data = muni) %>%
 2. Data is inconsistent and not frequently maintained/updated -> difficult to fully explore and understand the data
 
 3. Research more on SFMTA and even city-wide intiatives to better understand spikes and dips in transit lane citations
+
+4. Are drivers more likely to violate regulations in the downtown area because of how crowded and hectic streets can get during peak hours, which makes driver more 
+short-tempered and willing to make shortcuts through transit lanes?
+
+5. Are high incidence of transit lane violations on a few streets because muni drivers
+are more short-tempered and willing to report violations in crowded downton SF?
+
+
+
 
 
