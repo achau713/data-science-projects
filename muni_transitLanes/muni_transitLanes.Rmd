@@ -54,16 +54,16 @@ we have many missing values in the Disposition Code column but few missing value
 apply(muni, 2, function(x) any(is.na(x)))
 
 # find total number of missing values for columns with missing values
-totalMissing <-  function(missing_column){
+total_missing <-  function(missing_column){
   cat("Total missing values:", sum(is.na(missing_column)), "\n")
 }
 
-totalMissing(muni$`Amount Due`)
-totalMissing(muni$`Suspend Code`)
-totalMissing(muni$`Suspend Process Date`)
-totalMissing(muni$`Suspend Until Date`)
-totalMissing(muni$`Disposition Code`)
-totalMissing(muni$Geom)
+total_missing(muni$`Amount Due`)
+total_missing(muni$`Suspend Code`)
+total_missing(muni$`Suspend Process Date`)
+total_missing(muni$`Suspend Until Date`)
+total_missing(muni$`Disposition Code`)
+total_missing(muni$Geom)
 
 ```
 
@@ -258,13 +258,16 @@ First, we condense down the muni data frame by selecting only the street_name an
 Then, we make a frequency plot with ggplot2 to display the distribution of citation counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
 ```{r, fig.keep = 'last'}
 # select citation_dateTime and street_name columns only
-citationsDateTime <- muni %>% 
+citations_dateTime <- muni %>% 
   select(street_name, citation_dateTime)
 
-# Citation count by day from 2008 to 2014
-citationsDateTime %>% 
+# Citation count by day from 2008 to 2014; 86400 secs = 1 day
+
+citations_dateTime %>% 
   ggplot(aes(citation_dateTime)) +
-  geom_freqpoly(binwidth = 86400) # 86400 secs = 1 day
+  geom_freqpoly(binwidth = 86400, color = "firebrick", alpha = 0.3) +
+  labs(x = "", title = "Transit Lanes Citation Count in San Francisco") + 
+  theme_minimal()
 
 ```
 
@@ -274,11 +277,11 @@ We increase the bindwidth to be approximately 7 days and put breaks in the dates
 
 From the graph, transit lane citations were increasing in general, with peak levels around September 2012. There is a cylical pattern in the data, with peaks and troughs scattered throughout the curve.
 ```{r warning= FALSE, fig.keep = 'last'}
-citationsTimeSeries <- citationsDateTime %>% 
+citations_timeSeries <- citations_dateTime %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
   geom_freqpoly(binwidth = 86400*7, aes(color = factor(year(citation_dateTime)))) +
-  labs(x = "Date", y = "Citation Count", 
+  labs(x = "", y = "Citation Count", 
        title = "Transit Lane Citation Counts in San Francisco") +
   scale_x_datetime(date_breaks = "6 months", date_labels = "%b - %Y") +
   theme_minimal() + 
@@ -288,10 +291,10 @@ citationsTimeSeries <- citationsDateTime %>%
                                   margin = margin(0, 0, 10, 0)),
         legend.title = element_blank())
 
-citationsTimeSeries
+citations_timeSeries
 
 # plotly plot
-ggplotly(citationsTimeSeries, tooltip = c("y"))
+ggplotly(citations_timeSeries, tooltip = c("y"))
 
 
 
@@ -303,6 +306,7 @@ ggplotly(citationsTimeSeries, tooltip = c("y"))
 We will focus on the streets with relatively high amounts of citations. Namely, we will show distributions for Geary, Mission, O'Farrell, Post, and Sutter.
 
 ```{r}
+# Number of citations across streets
 muni %>% 
   group_by(street_name) %>% 
   summarise(n())
@@ -324,11 +328,11 @@ Some key observations from the plot:
 4. Post and Sutter St sustain higher citation counts after hitting the peak compared to other streets
 
 ```{r, fig.keep = 'last'}
-citationsGroupedByStreet <- muni %>% 
+citations_groupedByStreet <- muni %>% 
   group_by(street_name, year) %>% 
   mutate(count = n())
 
-citationsByStreet <- citationsGroupedByStreet %>% 
+citations_byStreet <- citations_groupedByStreet %>% 
   filter(street_name %in% c("Geary", "Mission", "O'Farrell", "Post", "Sutter")) %>% 
   ggplot(aes(street_name)) +
   geom_bar(color = "black", mapping = aes(fill = street_name)) +
@@ -350,10 +354,10 @@ citationsByStreet <- citationsGroupedByStreet %>%
         strip.text.x = element_text(colour = "white", face = "bold"),
         panel.background = element_rect(fill = "white", color = "gray50"))
 
-citationsByStreet
+citations_byStreet
 
 # glitchy
-ggplotly(citationsByStreet, tooltip = "count")
+ggplotly(citations_byStreet, tooltip = "count")
 
 
 ``` 
@@ -364,7 +368,7 @@ ggplotly(citationsByStreet, tooltip = "count")
 
 Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is a big difference in citation counts before the peak hour and citation counts do not gradually increase as time gets closer to the peak hour. Instead, citation counts stays fairly flat. 
 ```{r, fig.keep = 'last'}
-citationsByHour <- muni %>% 
+citations_byHour <- muni %>% 
   ggplot(aes(hour(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -372,7 +376,7 @@ citationsByHour <- muni %>%
   theme(axis.title.y = element_text(margin = margin(0, 10, 0, 0))) + 
   scale_x_continuous(breaks = seq(0, max(hour(muni$citation_dateTime)), by = 1))
 
-citationsByHour
+citations_byHour
 
 ```
 
@@ -381,7 +385,7 @@ citationsByHour
 
 Citations counts have been increasing from 2008 and onwards, peaking in 2012, but maintaining relatively high counts afterwards. New transit lanes being rolled out and the subsequent inital strict enforcement is a big reason for this increasing trend. More data from 2015 onwards is necessary to visualize future trends in citation counts.
 ```{r, fig.keep = 'last'}
-citationsByYear <- muni %>% 
+citations_byYear <- muni %>% 
   ggplot(aes(year(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -390,7 +394,7 @@ citationsByYear <- muni %>%
   scale_x_continuous(breaks = seq(min(year(muni$citation_dateTime)),
                                   max(year(muni$citation_dateTime)), by = 1))
 
-citationsByYear
+citations_byYear
 ```
 
 
@@ -399,7 +403,7 @@ citationsByYear
 
 Citation counts peak around the month of July and are in general highest during Fall months (August, Septemeber, October). This makes sense because these months are when students go back to school and when people in the workforce have come back from summer vacation, increasing people and traffic flow throughout the city. In contrast, citation counts are lowest around the holidays and New Years, when many people leave the city for the holidays and are off from work.
 ```{r}
-citationsByMonth <- muni %>% 
+citations_byMonth <- muni %>% 
   ggplot(aes(month(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
   theme_minimal() +
@@ -408,7 +412,7 @@ citationsByMonth <- muni %>%
         axis.title.x = element_text(margin = margin(10, 0, 0, 0))) + 
   scale_x_continuous(breaks = seq(1, max(month(muni$citation_dateTime)), by = 1))
 
-citationsByMonth
+citations_byMonth
 
 ```
 
@@ -448,7 +452,7 @@ Most violation types are towaway zone #1, DNL PARK, and BUS ZONE. There are few 
 ```{r, fig.keep = 'last'}
 
 # Visualize number of violations by street name with barplot
-citationsByType <- ggplot(data=muni, aes(x=violation_type)) + 
+citations_byType <- ggplot(data=muni, aes(x=violation_type)) + 
   geom_bar(fill = "firebrick") +
   theme_minimal() +
   labs(title = "Citation counts by type of violation", x = "Violation Type") + 
@@ -456,7 +460,7 @@ citationsByType <- ggplot(data=muni, aes(x=violation_type)) +
         axis.title.x = element_text(margin = margin(10, 0, 0, 0)),
         axis.title.y = element_text(margin = margin(0, 10, 0, 0)))
 
-citationsByType
+citations_byType
 
 ```
 
