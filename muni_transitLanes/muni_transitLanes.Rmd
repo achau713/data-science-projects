@@ -13,7 +13,6 @@ always_allow_html: yes
 library(dplyr)
 library(ggplot2)
 library(stringr)
-library(magrittr)
 library(tidyverse)
 library(leaflet)
 library(plotly)
@@ -54,16 +53,16 @@ we have many missing values in the Disposition Code column but few missing value
 apply(muni, 2, function(x) any(is.na(x)))
 
 # find total number of missing values for columns with missing values
-total_missing <-  function(missing_column){
+compute_missing <-  function(missing_column){
   cat("Total missing values:", sum(is.na(missing_column)), "\n")
 }
 
-total_missing(muni$`Amount Due`)
-total_missing(muni$`Suspend Code`)
-total_missing(muni$`Suspend Process Date`)
-total_missing(muni$`Suspend Until Date`)
-total_missing(muni$`Disposition Code`)
-total_missing(muni$Geom)
+compute_missing(muni$`Amount Due`)
+compute_missing(muni$`Suspend Code`)
+compute_missing(muni$`Suspend Process Date`)
+compute_missing(muni$`Suspend Until Date`)
+compute_missing(muni$`Disposition Code`)
+compute_missing(muni$Geom)
 
 ```
 
@@ -92,7 +91,7 @@ muni <-  muni %>%
 # Convert citation_dateTime to a POSIXct object
 muni$citation_dateTime <- mdy_hms(muni$citation_dateTime)
 
-#Separate date column
+# Separate date column
 muni <- muni %>% 
   separate(citation_date, into = c("year", "month", "day"), sep = "-", remove = FALSE)
 
@@ -132,35 +131,18 @@ In the original datset, the location column provided both the street number and 
 # Instead, we write a function with a more explicit return value and reassign the result
 # outside the function (global environment)
 
-# In this case, we create a new column in data frame called y, which contains only the
-# street names of all the location. We use the get_streetName function to return this
-# column and then assign that column to a new column in the muni data frame.
-
-
-# instead of do.call() use dplyr:: bind_rows()
-
-get_streetName <-  function(location_column){
-  location_column <- as.character(location_column) 
-  splitLocation <- strsplit(location_column, "(?<=\\d)\\b", perl=T)
-  y <- do.call(rbind, splitLocation)
-  y <- as.data.frame(y)
-  colnames(y) <- c("street_number", "street_name")
-  return(y$street_name)
-}
-
-muni$street_name <- get_streetName(muni$Location)
+# Separate Location column
+muni <- muni %>% 
+    separate(Location, c("street_number", "street_name"), sep = "(?<=\\d)\\b")
 
 # Check street names
 unique(muni$street_name)
 
 
-### Explanation of Function
+### Explanation of regular expression
 
 # Split location into street number and street name
 # Logic: If a word boundary is proceeded by a digit, split the word
-# Create new matrix with street name column and street name column
-# Change column names
-# Make new column in muni df
 
 
 
@@ -180,11 +162,9 @@ street_types <- c("ST$" = "", "BLVD$" = "", "TUNL$" = "", "Street" = "", "AVE" =
 clean_streetName <- function(streetName_column){
   streetName_column <- streetName_column %>% 
   as.character() %>% 
-  str_replace_all("[:punct:]", "") %>% 
-  str_replace_all(street_types) %>% 
+  str_replace_all(c("[:punct:]" = "", street_types)) %>% 
   str_to_title() %>% 
   trimws(which = "both")
-  return(streetName_column)
 }
 
 muni$street_name <- clean_streetName(muni$street_name)
@@ -231,13 +211,11 @@ unique(muni$street_name)
 ```{r}
 
 muni <- muni %>% 
-  rename(ID = "Object ID", violation_type = "Violation", location = "Location",
-         fine_amount = "Fine Amount")
+  rename(ID = "Object ID", violation_type = "Violation", fine_amount = "Fine Amount")
 
 names(muni)
 
 ```
-
 
 ## Rearrange columns
 
