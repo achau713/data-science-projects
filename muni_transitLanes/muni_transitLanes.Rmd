@@ -285,6 +285,8 @@ We will focus on the streets with relatively high amounts of citations. Namely, 
 
 ```{r}
 # Number of citations across streets
+# Arrange in descending order
+
 muni %>% 
   group_by(street_name) %>% 
   mutate(count_byStreet = n()) %>% 

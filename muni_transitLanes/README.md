@@ -18,3 +18,7 @@ The data set is stored as a csv file in the repository. There was no prior data 
 6. plotly
 7. lubridate
 
+### Visualizations
+
+Plots are stored in the muni_transitLanes_figures folder. Some plots are plotly or leaflet interactive objects, which are not displayed in the script. 
+
