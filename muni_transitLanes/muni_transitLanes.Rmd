@@ -234,7 +234,7 @@ muni <- muni %>%
 First, we condense down the muni data frame by selecting only the street_name and citation_dateTime column. We will pass in this condensed data frame to ggplot2 to create visualizations.
 
 Then, we make a frequency plot with ggplot2 to display the distribution of citation counts over time. However, this plot is difficult to interpret when our binwidth is set equal to 1 day because of the great volume of observations every day. We will choose a bigger binwidth for more useful visualizaion
-```{r, fig.keep = 'last'}
+```{r citations_TimeSeries1, fig.keep = 'last'}
 # select citation_dateTime and street_name columns only
 citations_dateTime <- muni %>% 
   select(street_name, citation_dateTime)
@@ -254,7 +254,7 @@ citations_dateTime %>%
 We increase the bindwidth to be approximately 7 days and put breaks in the dates every 6 months. This allows us to see a clearer general trend without the unnecessary noise.
 
 From the graph, transit lane citations were increasing in general, with peak levels around September 2012. There is a cylical pattern in the data, with peaks and troughs scattered throughout the curve.
-```{r warning= FALSE, fig.keep = 'last'}
+```{r citations_TimeSeries2, warning= FALSE, fig.keep = 'last'}
 citations_timeSeries <- citations_dateTime %>% 
   ggplot(aes(citation_dateTime)) +
   # take average days in a month to be 30 and multiple by the number of seconds in a day
@@ -287,7 +287,10 @@ We will focus on the streets with relatively high amounts of citations. Namely, 
 # Number of citations across streets
 muni %>% 
   group_by(street_name) %>% 
-  summarise(n())
+  mutate(count_byStreet = n()) %>% 
+  select(street_name, count_byStreet) %>% 
+  distinct() %>% 
+  arrange(desc(count_byStreet))
 ```
 
 
@@ -305,7 +308,7 @@ Some key observations from the plot:
 
 4. Post and Sutter St sustain higher citation counts after hitting the peak compared to other streets
 
-```{r, fig.keep = 'last'}
+```{r citations_byStreet, fig.keep = 'last'}
 citations_groupedByStreet <- muni %>% 
   group_by(street_name, year) %>% 
   mutate(count = n())
@@ -345,7 +348,7 @@ ggplotly(citations_byStreet, tooltip = "count")
 ## Transit Lane Citations by hour
 
 Transit lane citations occur most frequently during afternoon rush hour, with a peak count between 4-5PM. There is a big difference in citation counts before the peak hour and citation counts do not gradually increase as time gets closer to the peak hour. Instead, citation counts stays fairly flat. 
-```{r, fig.keep = 'last'}
+```{r citations_byHour, fig.keep = 'last'}
 citations_byHour <- muni %>% 
   ggplot(aes(hour(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
@@ -362,7 +365,7 @@ citations_byHour
 ## Transit Lane Citations by year
 
 Citations counts have been increasing from 2008 and onwards, peaking in 2012, but maintaining relatively high counts afterwards. New transit lanes being rolled out and the subsequent inital strict enforcement is a big reason for this increasing trend. More data from 2015 onwards is necessary to visualize future trends in citation counts.
-```{r, fig.keep = 'last'}
+```{r citations_byYear, fig.keep = 'last'}
 citations_byYear <- muni %>% 
   ggplot(aes(year(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
@@ -380,7 +383,7 @@ citations_byYear
 ## Transit Lane Citations by Month
 
 Citation counts peak around the month of July and are in general highest during Fall months (August, Septemeber, October). This makes sense because these months are when students go back to school and when people in the workforce have come back from summer vacation, increasing people and traffic flow throughout the city. In contrast, citation counts are lowest around the holidays and New Years, when many people leave the city for the holidays and are off from work.
-```{r}
+```{r citations_byMonth}
 citations_byMonth <- muni %>% 
   ggplot(aes(month(citation_dateTime))) +
   geom_bar(stat = "count", fill = "#39a78e") +
@@ -404,7 +407,7 @@ citations_byMonth
 
 ## Transit Lane Citations by Violation Type
 
-We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make out analysis cleaner.
+We have low observations counts for the following categories of violations: 'NO VIOL', 'ON SIDEWLK', 'OVR 18" C', and 'PK FR LB'. So, we remove these categories and the unique observations to make the analysis cleaner.
 ```{r}
 
 # Counts of violation type
@@ -419,15 +422,19 @@ muni <- muni[!muni$violation_type %in% c('NO VIOL', 'ON SIDEWLK', 'OVR 18 " C', 
 # Check violation categories
 table(muni$violation_type)
 
-# Check total number of observations - we orignially had 17,178 observations
+# Check total number of observations - we originally had 17,178 observations
+# Check that we have 17,170 observations (or number of rows in data frame)
 dim(muni)
 
 
 ```
 
+We focus on the violation type because it is less ambiguous than the violation code. Around 2013/2014, the SF traffic code transitioned to the SF transportation code. Hence, the dataset contains violation codes used with two different system, but the violation types themselves remained the same.
+
 Most violation types are towaway zone #1, DNL PARK, and BUS ZONE. There are few observations of the on sidewalk, OVR 18*C violations, and no violation type. We need more information on how specific violation types are defined.
 
-```{r, fig.keep = 'last'}
+
+```{r citation_byType, fig.keep = 'last'}
 
 # Visualize number of violations by street name with barplot
 citations_byType <- ggplot(data=muni, aes(x=violation_type)) + 
