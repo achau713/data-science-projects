@@ -1,0 +1,416 @@
+---
+title: "PM Levels in Milan and Rome"
+author: Anthony Chau
+output: 
+  github_document:
+    toc: true
+    toc_depth: 2
+always_allow_html: yes
+---
+
+# **Problem 1**
+```{r}
+## PM 10 data for two monitoring stations in Milan and three in Rome
+PM10=read.csv(paste("http://www.ics.uci.edu/~mguindan","/teaching/introBDA/data","/Stations_italy.csv", sep=""), as.is=T)
+
+## first lines of the dataset## 
+PM10
+```
+
+## Question 1
+
+#### **Likelihood:**  
+
+We capture the daily patterns in PM10 levels across the two stations in Milan by using a shared muDaily parameter. Because the two stations are fairly close, we assume that both stations reflect similar weather patterns. Hence, we use a shared parameter that captures the daily patterns across both stations.
+
+stationA[i] ~ Normal(muDaily[i], tauA)  
+stationB[i] ~ Normal(muDaily[i], tauB)  
+
+#### **Prior on muDaily[i]:** 
+
+In order to capture the monthly summary, we build a hierarchial model, in which the daily patterns across the daily patterns (muDaily) depends on the monthly summary for the month of October in Milan (muMonthly). Lastly, we incorporate past information on the monthly summary through a normal distribution
+
+muDaily[i] ~ Normal(mu, tauA) 
+muMonthly ~  dnorm(40, 1/100)  
+
+#### **Prior on precision parameters:**
+
+Lastly, we set gamma priors on the precision parameters because the support of the gamma distribution is strictly positive.
+
+tauA ~ Gamma(1,1)  
+tauB ~ Gamma(1,1)  
+
+
+
+## Question 2
+```{r}
+
+library(R2jags)
+
+# Build JAGS Model
+
+jags.data <- list(stationA= PM10$Milan1, stationB = PM10$Milan2)
+  
+jags.param <- c("muDaily", "muMonthly", "prob1", "prob2")
+
+milanModel <- function(){
+  for (i in 1:29){
+    stationA[i] ~ dnorm(muDaily[i], tauA)
+    stationB[i] ~ dnorm(muDaily[i], tauB)
+    muDaily[i] ~ dnorm(muMonthly, tauA)
+    }
+  muMonthly ~  dnorm(40, 1/100)
+  tauA ~ dgamma(1,1)
+  tauB ~ dgamma(1,1)
+  prob1 <- muDaily[20] > 50
+  prob2 <- muDaily[22] > 50
+}
+
+jagsfit <- jags(data = jags.data, parameters.to.save = jags.param, model.file = milanModel, n.iter = 100000, n.burnin = 10000, n.chains = 3, DIC = T)
+
+
+print(jagsfit)
+
+```
+
+
+## Question 3
+
+```{r}
+#Compute posterior mean in Milan for dates:
+
+# 10/22/2017 
+
+jagsfit$BUGSoutput$mean$muDaily[20]
+
+
+# 10/23/2017
+
+jagsfit$BUGSoutput$mean$muDaily[21]
+
+
+# 10/24/2017 
+
+jagsfit$BUGSoutput$mean$muDaily[22]
+
+
+# 10/25/2017 
+
+jagsfit$BUGSoutput$mean$muDaily[23]
+
+
+```
+
+
+
+## Question 4
+
+The purpose of MCMC is to obtain random posterior samples to approximate a posterior distributions too complex to sample directly. Without MCMC, we could not build models with these complex posterior distributions.
+
+## Question 5
+
+Burnin is necessary in a MCMC because the intial random samples generated have not converged towards the desired posterior distribution. In the model, I decided on a burnin of 10,000 samples because the desired posterior distribution was fairly simple so it wasn't necessary to have a long burnin period for the MCMC algorithm to learn more and more about the distribution.
+
+
+## Question 6
+
+The purpose of an autocorrelation plot is to determine if the samples do not exhibit long term dependence.
+```{r}
+# Create MCMC object
+
+jags.mcmc = as.mcmc(jagsfit)
+
+# Some autocorrelation plots for daily means
+autocorr.plot(jags.mcmc[,2])
+autocorr.plot(jags.mcmc[,5])
+autocorr.plot(jags.mcmc[,15])
+```
+
+
+## Question 7
+
+The value of the PSRF for all parameters hovers around the value of 1. Therefore, the chains are similar enough so that we do not have to worry about non-convergence. However, for the plots, there is some variability in how the chains look on the Gelman Rubin Plots. 
+```{r}
+# Gelman Rubin Statistics - Potential Scale Reduction Factor (PSRF)
+gelman.diag(jags.mcmc[,2:31])
+
+# Some Gelman Rubin Plots
+gelman.plot(jags.mcmc[,2])
+gelman.plot(jags.mcmc[,3])
+gelman.plot(jags.mcmc[,4])
+gelman.plot(jags.mcmc[,5])
+
+
+```
+
+## Question 8
+
+Posterior PM10 levels for 10/24/2017 are generally lower than PM10 levels for 10/22/2017 because the city of Milan issued a block on the circulation of diesel cars during late October 2017.
+```{r}
+# Plot posterior densities for the PM10 concentration levels for dates:
+
+# 10/22/2017
+
+plot(jags.mcmc[,20])
+
+# 10/24/2017
+
+plot(jags.mcmc[,22])
+
+```
+
+
+## Question 9
+
+I would only recommend stopping the circulation of diesel cars for 10/22/2017. The analysis shows that there is a very high proabability that the PM10 levels on 10/22/2017 are higher than the regulatory threshold.
+```{r}
+
+# Posterior Probability that the PM10 concentration levels are higher than the regulatory threshold levels of 50 micrograms per meters cubed for dates:
+
+# 10/22/2017
+
+print(jagsfit$BUGSoutput$summary["prob1",])
+
+# 10/24/2017
+print(jagsfit$BUGSoutput$summary["prob2",])
+
+
+```
+
+## Question 10
+
+The posterior monthly mean PM 10 concentration levels is higher than the regulatory threshold of 50 micrograms per meters cubed. Also, the regulatory threshold does not fall into the 95% credible interval for PM 10 concentration levels in the month of October.
+```{r}
+# Compute posterior mean of PM10 concentraion levels for the entire month of October
+
+print(jagsfit$BUGSoutput$mean$muMonthly)
+
+# Compute 95% credible interval of PM10 concentraion levels for the entire month of October
+
+quantile(jagsfit$BUGSoutput$sims.matrix[,"muMonthly"], c(0.025, 0.975))
+
+```
+
+--------------------------------------------------------------------------------------
+  
+  
+# **Problem 2**  
+
+
+## Question 1
+
+For these data, using a Binomial likelihood would be appropriate because we need to model a binary outcome. The theta parameter in the Binomial likelihood would capture the response rate.
+
+## Question 2
+
+Using a beta prior for the unknown response rate is appropriate because the support of a beta distribution is (0,1), which is consistent with the range of probabilities the response rate will take.
+```{r}
+library(epiR)
+
+# Determine parameters for beta distribution by using epi.betabuster function
+
+priorBeta <- epi.betabuster(mode=0.6, conf = 0.90, x = 0.2, greaterthan = TRUE, conf.level = 0.95)
+
+# Hyperparameters for beta prior
+
+priorBeta$shape1
+priorBeta$shape2
+
+```
+
+
+## Question 3
+```{r}
+# Build JAGS Model
+
+jags.data2 <- list(n = 50, a = priorBeta$shape1, b = priorBeta$shape2, response = 30)
+
+## jags.inits <- list(list(theta = priorBeta$mean))
+
+jags.param2 <- c("theta", "prob3", "prob4")
+
+
+clinicalModel <- function(){
+  response ~ dbin(theta, n)
+  theta ~ dbeta(a, b)
+  prob3 <- theta < 0.5 
+  prob4 <- theta > 0.7
+}
+
+jagsfit2 <- jags(data = jags.data2, parameters.to.save = jags.param2, model.file = clinicalModel, n.iter = 100000, n.burnin = 100, n.chains = 2, DIC = T)
+
+print(jagsfit2)
+
+```
+
+## Question 4
+
+```{r}
+# Obtain posterior mean for response rate
+
+jagsfit2$BUGSoutput$mean$theta
+
+# Obtain 95% credible for response rate
+
+quantile(jagsfit2$BUGSoutput$sims.matrix[,4], c(0.025, 0.975))
+
+```
+
+## Question 5
+
+According to the analysis, the mean probability that the response rate is less than 0.5 is 0.077. In other words, it is unlikely that the response rate is less than 0.5. Hence, we would continue the clinical trial at the interim analysis.
+
+```{r}
+# Obtain mean probability that the response rate is less than 0.5
+
+jagsfit2$BUGSoutput$mean$prob3
+
+```
+
+
+## Question 6
+
+According to the analysis, the mean probability that the response rate is greater than 0.7 is 0.056, In other words, it is unlikely that the response rate is greater than 0.7. Hence, I would not recommend to stop the trial early for efficacy at the end of the first stage.
+```{r}
+# Obtain mean probability that the response rate is greater than 0.7
+
+jagsfit2$BUGSoutput$mean$prob4
+
+```
+
+
+## Question 9
+
+####**Likelihood:**  
+
+Setting a binomial likelihood is appropriate for this situation because the response variable is categorical and binary.  
+
+responseA ~ Binomial(thetaA, nA)  
+responseCombo ~ Binomial(thetaCombo, nCombo)  
+
+####**Prior for thetaA and thetaCombo**  
+
+Because arm "A" and arm "Combo" may be related due to the presence of elements of drug A in both drugs, we cannot fix the parameters of the beta priors for the response rate
+for both arms. We need to extend the hierarchial model so that the parameters of the beta prior also depend on other parameters.  
+
+thetaA ~ dbeta(alpha, beta)  
+thetaCombo ~ dbeta(alpha, beta)  
+  
+####**Prior for mu and eta**  
+
+Here, we specify a prior distribution for mu, which links the relationship between arm "A" and arm "Combo". Also, in order to base our judgement on only the trial data, we set a lognormal prior on eta, the prior sample size.  
+
+alpha = mu * eta  
+beta = eta * (1 - mu)  
+mu ~ dbeta(a, b)  
+eta ~ dlnorm(0, 3)  
+
+
+## Question 10
+
+```{r}
+# Determine parameters a and b for beta prior
+
+priorBeta2 <- epi.betabuster(mode = 0.3, conf = 0.90, x = 0.6, greaterthan = FALSE, conf.level = 0.95)
+
+# Build JAGS Model
+
+jags.data3 <- list(nA = 80, nCombo = 65, responseA = 42, responseCombo = 37, a = priorBeta2$shape1, b = priorBeta2$shape2, nA_pred = 250, nCombo_pred = 250)
+
+jags.param3 <- c("thetaA", "thetaCombo", "pred_responseA", "pred_responseCombo")
+
+comboModel <- function(){
+  responseA ~ dbin(thetaA, nA)
+  responseCombo ~ dbin(thetaCombo, nCombo)
+  thetaA ~ dbeta(alpha, beta)
+  thetaCombo ~ dbeta(alpha, beta)
+  alpha = mu * eta
+  beta = eta * (1 - mu)
+  mu ~ dbeta(a, b)
+  eta ~ dlnorm(0, 3)
+  pred_responseA ~ dbin(thetaA, nA_pred)
+  pred_responseCombo ~ dbin(thetaCombo, nCombo_pred)
+}
+
+jagsfit3 <- jags(data = jags.data3, parameters.to.save = jags.param3, model.file = comboModel, n.iter = 100000, n.burnin = 100, n.chains = 4, DIC = T)
+
+print(jagsfit3)
+
+
+```
+
+
+## Question 11
+```{r}
+# Create MCMC object
+
+jags.mcmc2 <- as.mcmc(jagsfit3)
+
+# Plot posterior distribution for thetaA
+
+plot(jags.mcmc2[,4])
+
+# Obtain posterior mean for thetaA
+
+print(jagsfit3$BUGSoutput$mean$thetaA)
+
+# Obtain 90% posterior credible interval for thetaA
+
+quantile(jagsfit3$BUGSoutput$sims.matrix[,4], c(0.050, 0.950))
+
+# Plot posterior distribution for thetaCombo
+
+plot(jags.mcmc2[,5])
+
+# Obtain posterior mean for thetaCombo
+
+print(jagsfit3$BUGSoutput$mean$thetaCombo)
+
+# Obtain 90% posterior credible interval for thetaCombo
+
+quantile(jagsfit3$BUGSoutput$sims.matrix[,5], c(0.050, 0.950))
+
+
+```
+
+## Question 12
+
+Yes, based on the data collected, I would recommend the combo drug for a larger phase 3 study. I base my decision on the credible interval of the response rate for thetaCombo. The analysis shows that a 90% credible interval for thetaCombo contains  higher probabilities of response to the combo drug.
+
+
+## Question 13
+
+```{r}
+# Plot posterior predictive distribution for thetaA
+
+plot(jags.mcmc2[,2])
+
+# Mean for posterior predictive distribution for thetaA
+
+print(jagsfit3$BUGSoutput$mean$pred_responseA)
+
+# 95% credible interval of the posterior predictive distribution for thetaA
+
+quantile(jagsfit3$BUGSoutput$sims.matrix[,2], c(0.025, 0.975))
+
+# Plot posterior predictive distribution for thetaCombo
+
+plot(jags.mcmc2[,3])
+
+# Mean for posterior predictive distribution for thetaCombo
+
+print(jagsfit3$BUGSoutput$mean$pred_responseCombo)
+
+# 95% credible interval of the posterior predictive distribution for thetaCombo
+
+quantile(jagsfit3$BUGSoutput$sims.matrix[,3], c(0.025, 0.975))
+
+```
+
+
+
+
+
+
+
+

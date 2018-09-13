@@ -1,0 +1,2605 @@
+,HT,age,smoking,drinkany,exercise,statins,diabetes,BMI,LDL1
+1,placebo,70,no,no,no,yes,no,23.69000053,137.6000061
+2,placebo,62,no,no,no,no,no,28.62000084,150.6000061
+3,hormone therapy,69,no,no,no,no,yes,42.50999832,156
+4,placebo,64,yes,yes,no,no,no,24.38999939,122.5999985
+5,placebo,65,no,no,no,no,no,21.89999962,172.1999969
+6,hormone therapy,68,no,yes,no,no,no,29.04999924,126.5999985
+8,hormone therapy,69,no,no,yes,yes,no,23.15999985,113.4000015
+9,hormone therapy,61,no,yes,yes,no,no,30.26000023,106.1999969
+10,hormone therapy,62,yes,yes,no,no,no,45.68000031,173.1999969
+11,placebo,72,no,no,no,no,no,22.18000031,192
+12,hormone therapy,73,no,no,no,no,no,25.27000046,149.3999939
+13,placebo,52,yes,no,no,yes,no,24.14999962,161.1999969
+14,hormone therapy,57,yes,no,no,no,no,28.12000084,97
+15,placebo,57,no,no,yes,no,yes,37.40999985,221.1999969
+16,placebo,65,yes,no,yes,no,no,20.45000076,84
+17,hormone therapy,62,yes,no,no,no,yes,34.54999924,94.19999695
+18,hormone therapy,64,no,no,no,yes,no,22.29999924,154.3999939
+19,placebo,50,no,no,yes,no,no,23.62999916,150.6000061
+20,placebo,58,yes,yes,no,no,no,20.47999954,143.6000061
+21,hormone therapy,66,no,no,yes,no,yes,28.52000046,159.1999969
+22,placebo,64,no,no,no,no,yes,42.18999863,179.3999939
+23,hormone therapy,64,no,no,yes,no,no,24.95000076,144.8000031
+24,placebo,67,no,no,no,no,no,24.54000092,109.4000015
+25,hormone therapy,74,no,no,yes,no,yes,29.86000061,170.1999969
+26,placebo,60,yes,no,yes,no,no,22.01000023,147.3999939
+29,hormone therapy,60,no,no,no,no,yes,35.29999924,111.4000015
+30,hormone therapy,64,yes,no,no,no,yes,28.10000038,156.6000061
+31,placebo,67,no,yes,no,yes,yes,29.95999908,236.8000031
+32,hormone therapy,61,yes,no,no,no,no,20.92000008,173.6000061
+33,hormone therapy,53,no,no,yes,no,no,23.72999954,220.3999939
+34,placebo,56,yes,no,no,yes,yes,29.12999916,108.4000015
+35,hormone therapy,58,no,no,no,no,no,28.85000038,128
+36,placebo,65,yes,yes,yes,no,no,21.51000023,128.8000031
+37,placebo,67,yes,no,no,no,yes,24.59000015,161.8000031
+39,hormone therapy,68,no,yes,yes,yes,no,22.17000008,127.1999969
+40,placebo,62,no,no,no,no,no,23.52000046,127.5999985
+41,placebo,62,no,no,no,yes,no,27.23999977,98.40000153
+42,hormone therapy,67,no,no,no,yes,no,25.62999916,138
+43,hormone therapy,68,no,no,no,no,no,25.73999977,145.3999939
+44,hormone therapy,62,no,no,yes,no,yes,34.06000137,145.3999939
+45,placebo,55,no,no,no,no,yes,35.86000061,245.1999969
+46,hormone therapy,59,no,no,no,no,yes,23.10000038,69
+47,hormone therapy,55,no,no,no,no,no,23.65999985,106.8000031
+48,placebo,63,no,no,no,no,yes,26.64999962,193.8000031
+49,placebo,64,no,no,yes,yes,no,27.47999954,132.8000031
+50,placebo,68,no,no,no,no,yes,33.18999863,101.5999985
+51,hormone therapy,58,yes,no,no,no,no,28.71999931,121
+52,placebo,60,yes,no,no,no,yes,28.47999954,151.1999969
+53,placebo,68,no,yes,yes,no,no,17.30999947,154.3999939
+54,placebo,59,no,no,no,yes,no,24.70000076,199.8000031
+56,placebo,52,yes,yes,no,no,no,27.59000015,152.8000031
+57,hormone therapy,68,no,no,no,no,yes,38.79000092,103
+58,hormone therapy,67,no,no,no,no,yes,32.22000122,147.1999969
+59,hormone therapy,66,no,yes,yes,yes,yes,28.20999908,113.5999985
+60,placebo,66,no,no,yes,no,no,20.76000023,184
+61,placebo,68,no,no,yes,no,yes,25.54999924,189.1999969
+62,hormone therapy,47,yes,yes,no,no,no,25.70000076,79.40000153
+63,placebo,66,no,yes,yes,yes,yes,29.79999924,114.1999969
+64,placebo,56,no,no,yes,no,yes,34.13999939,221.6000061
+65,hormone therapy,67,no,no,yes,no,yes,27.37000084,158.6000061
+66,hormone therapy,61,yes,no,no,no,no,24.20999908,168.6000061
+67,placebo,57,no,no,no,yes,no,27.73999977,55.20000076
+68,placebo,71,no,yes,yes,no,no,18.75,118.8000031
+69,placebo,71,yes,no,no,no,no,27.48999977,167.1999969
+70,hormone therapy,63,no,no,no,no,no,28.73999977,284.7999878
+71,hormone therapy,68,no,no,no,yes,yes,26.51000023,117.1999969
+72,hormone therapy,63,no,no,no,no,yes,24.76000023,187
+73,hormone therapy,77,no,no,yes,no,no,19.59000015,114.8000031
+74,hormone therapy,73,no,no,no,no,no,29.34000015,109.5999985
+75,placebo,72,no,no,yes,no,no,24.06999969,172
+77,hormone therapy,69,no,no,yes,no,no,37.77999878,144.1999969
+78,placebo,69,no,no,no,yes,no,29.71999931,166.8000031
+79,hormone therapy,60,no,yes,no,yes,yes,38.31000137,115
+80,placebo,76,no,no,no,no,no,25.03000069,77
+81,placebo,76,no,no,yes,yes,yes,31.46999931,125.5999985
+82,placebo,68,no,no,no,yes,no,24.29000092,103.1999969
+83,placebo,60,no,no,no,no,yes,29.43000031,169.8000031
+84,hormone therapy,60,no,no,no,no,no,27.81999969,96
+85,placebo,51,no,no,yes,no,no,27.05999947,163.8000031
+86,hormone therapy,79,no,no,yes,no,no,23.10000038,135.6000061
+87,hormone therapy,61,no,no,no,no,yes,28.29999924,141
+88,hormone therapy,57,no,yes,yes,no,no,32.65000153,112
+89,placebo,69,no,no,no,yes,yes,45.99000168,104.4000015
+90,hormone therapy,63,no,yes,no,no,no,23.98999977,116
+91,hormone therapy,58,no,no,no,no,no,39.38000107,195.3999939
+92,placebo,76,no,no,yes,no,no,23.89999962,172.1999969
+93,placebo,53,no,no,yes,no,no,26.79000092,150
+94,hormone therapy,69,no,no,yes,yes,no,25.90999985,142.1999969
+95,hormone therapy,61,no,no,no,no,no,34.02000046,191
+96,placebo,68,no,no,yes,no,yes,26.39999962,110
+97,placebo,48,no,no,yes,no,no,25.70999908,90.19999695
+98,hormone therapy,64,no,no,no,no,no,26.61000061,80.40000153
+99,placebo,62,no,no,no,yes,yes,33.90999985,300.3999939
+100,placebo,71,no,no,no,no,yes,39.18000031,117.1999969
+101,hormone therapy,66,no,no,no,no,no,24.70999908,160.8000031
+102,hormone therapy,64,no,no,no,no,yes,22.53000069,115.1999969
+103,placebo,75,yes,no,no,no,no,22.42000008,90.59999847
+104,hormone therapy,56,no,no,no,no,yes,34.31999969,190.6000061
+105,placebo,72,no,no,yes,no,no,24.45999908,126.1999969
+106,placebo,59,no,no,yes,no,no,18.27000046,149.8000031
+107,placebo,64,no,no,no,yes,no,32.41999817,99
+108,hormone therapy,65,no,no,no,yes,yes,31.87000084,89.19999695
+109,hormone therapy,69,no,no,no,no,no,34.25,158.1999969
+110,placebo,65,yes,no,no,yes,no,21.47999954,133.1999969
+111,hormone therapy,75,no,no,no,no,yes,31.60000038,126
+112,placebo,78,no,no,no,yes,no,21.20999908,133.8000031
+113,hormone therapy,54,no,no,no,no,yes,28.71999931,163.3999939
+114,placebo,60,no,no,yes,yes,no,23.03000069,119.8000031
+115,hormone therapy,60,no,no,no,yes,no,33.65000153,148.1999969
+116,hormone therapy,59,no,no,yes,no,yes,31.88999939,108.5999985
+117,hormone therapy,57,yes,no,no,yes,no,26.92000008,100.5999985
+118,hormone therapy,63,no,no,no,no,yes,42.97000122,168.3999939
+119,placebo,56,no,no,no,no,no,22.71999931,147.3999939
+120,hormone therapy,59,no,no,no,no,yes,21.32999992,165.1999969
+122,placebo,70,yes,no,no,yes,no,19.43000031,94.80000305
+123,hormone therapy,67,no,yes,yes,yes,no,32.47999954,219.6000061
+124,placebo,76,no,no,no,yes,no,33.90000153,125.8000031
+125,placebo,65,no,no,no,no,yes,39.31999969,148.1999969
+126,hormone therapy,55,no,no,yes,yes,no,28.29999924,94
+127,hormone therapy,59,yes,no,no,no,no,30.79000092,107.8000031
+128,hormone therapy,78,no,no,no,no,no,30.19000053,125.5999985
+129,placebo,54,no,no,yes,no,no,37.88000107,161.1999969
+130,hormone therapy,61,no,yes,no,yes,no,24.12999916,103.8000031
+132,placebo,72,yes,yes,no,no,yes,20.70999908,75.80000305
+133,placebo,73,no,no,no,no,no,34.34999847,134.6000061
+134,placebo,56,no,no,yes,no,yes,32.52999878,132.1999969
+135,placebo,63,no,yes,no,yes,yes,30.72999954,129.8000031
+136,placebo,51,yes,no,no,no,no,25.29000092,164.1999969
+137,placebo,62,no,no,no,no,no,29.37000084,156.1999969
+139,placebo,72,no,no,yes,no,no,25.39999962,129.3999939
+140,placebo,62,no,yes,yes,no,yes,34.45000076,124.8000031
+141,placebo,68,no,no,yes,yes,no,21.47999954,118.5999985
+142,hormone therapy,56,no,no,yes,yes,no,26.73999977,206.8000031
+143,placebo,59,no,no,yes,yes,no,29.70999908,188
+144,placebo,67,no,no,yes,no,no,26.81999969,101.5999985
+145,hormone therapy,61,yes,no,no,yes,no,20.86000061,137.6000061
+146,hormone therapy,57,yes,no,no,no,no,24.45000076,105
+147,hormone therapy,79,no,no,no,yes,yes,21.67000008,124.1999969
+148,placebo,72,no,no,no,no,no,21.65999985,116
+149,placebo,62,no,no,no,no,no,26.93000031,88
+151,hormone therapy,79,no,no,no,yes,no,29.07999992,67.59999847
+152,hormone therapy,72,no,yes,no,yes,yes,28.80999947,184
+153,hormone therapy,65,yes,no,no,no,no,20.27000046,70.80000305
+154,placebo,65,yes,yes,no,no,no,25.42000008,187.1999969
+155,placebo,63,no,no,no,no,no,28.92000008,178.1999969
+156,hormone therapy,77,no,no,yes,yes,no,31.96999931,85.19999695
+157,placebo,68,no,no,yes,yes,no,39.09999847,136.1999969
+158,hormone therapy,55,no,no,yes,yes,no,27.65999985,131.3999939
+159,placebo,78,yes,yes,yes,no,no,21.29000092,101.1999969
+160,hormone therapy,68,no,no,no,yes,yes,32.34000015,68.19999695
+161,placebo,77,no,no,no,no,no,30.73999977,176
+162,hormone therapy,70,no,no,yes,no,no,24.75,67.19999695
+163,placebo,68,yes,no,no,no,no,20.02000046,134.6000061
+164,placebo,77,no,yes,no,yes,yes,26.93000031,334.2000122
+165,placebo,57,no,no,no,no,no,24.59000015,88.19999695
+166,hormone therapy,71,no,yes,yes,no,no,24.73999977,126.4000015
+167,hormone therapy,59,no,yes,yes,no,no,33.79999924,130.3999939
+168,placebo,78,no,no,no,no,no,39.29000092,122.5999985
+169,placebo,72,no,no,no,yes,no,26.20999908,92.19999695
+170,hormone therapy,75,no,yes,no,no,no,27.70000076,118.4000015
+171,placebo,70,no,no,no,no,yes,33.86000061,145.6000061
+172,placebo,67,no,no,no,no,yes,27.89999962,99.59999847
+173,placebo,68,no,no,yes,no,no,27.54999924,183.3999939
+174,hormone therapy,69,no,no,yes,no,yes,26.05999947,60
+175,placebo,72,no,no,yes,no,yes,32.63999939,116
+177,hormone therapy,71,no,no,no,yes,yes,35.36999893,120.5999985
+179,placebo,76,no,yes,yes,yes,no,27.95000076,129.3999939
+180,placebo,59,yes,yes,yes,no,no,28.93000031,158
+181,hormone therapy,67,no,no,yes,yes,no,33.36000061,94.40000153
+182,hormone therapy,67,no,yes,no,no,no,30.39999962,142.3999939
+183,placebo,76,no,yes,no,no,no,25.11000061,97.40000153
+184,hormone therapy,65,no,no,no,yes,no,20.11000061,107
+185,hormone therapy,57,no,yes,yes,yes,no,19.20000076,123
+186,hormone therapy,61,yes,no,no,no,no,39.25999832,149.1999969
+188,hormone therapy,67,no,no,no,no,no,30.18000031,120.8000031
+189,placebo,63,no,,yes,yes,no,22.59000015,162.8000031
+190,hormone therapy,78,no,yes,no,no,no,24.81999969,105.5999985
+191,hormone therapy,53,yes,no,yes,no,no,24.30999947,125
+192,placebo,62,no,no,no,yes,yes,26.78000069,113.5999985
+193,placebo,67,no,no,no,yes,no,24.45999908,148.8000031
+194,hormone therapy,66,no,no,yes,no,no,26.63999939,131
+195,placebo,66,no,yes,no,yes,no,32.09000015,103.4000015
+196,hormone therapy,63,yes,no,no,yes,no,48.13999939,83.59999847
+197,placebo,72,no,no,no,no,no,23.04000092,203.6000061
+198,hormone therapy,57,no,yes,no,no,no,29.44000053,165.1999969
+199,hormone therapy,69,no,no,no,yes,no,28.62000084,118.4000015
+200,placebo,69,yes,no,no,yes,no,26.44000053,126.1999969
+201,hormone therapy,73,no,no,yes,no,yes,22.89999962,95.19999695
+202,placebo,76,no,yes,no,no,no,22.03000069,144.1999969
+203,placebo,75,no,,no,yes,no,23.54000092,119.1999969
+205,hormone therapy,71,yes,no,no,yes,no,29.57999992,135.6000061
+206,hormone therapy,78,no,no,no,no,no,25.59000015,112.4000015
+209,hormone therapy,67,no,no,no,no,no,40.54000092,169.8000031
+211,placebo,75,no,no,no,no,no,24.70999908,167.8000031
+212,placebo,59,yes,no,no,yes,no,28.07999992,83.40000153
+214,hormone therapy,77,no,no,no,no,no,20.69000053,151
+215,hormone therapy,77,no,no,no,yes,no,29.19000053,114.5999985
+216,placebo,51,yes,no,no,no,no,16.68000031,192
+217,hormone therapy,78,no,yes,no,no,yes,34.24000168,120.4000015
+218,placebo,63,no,no,no,no,yes,26.76000023,123.1999969
+219,hormone therapy,69,no,no,yes,no,yes,28.60000038,144.1999969
+220,hormone therapy,69,no,no,no,no,no,23.51000023,129.6000061
+221,hormone therapy,67,no,no,no,no,no,28.61000061,125.1999969
+222,placebo,71,no,no,yes,yes,no,24.21999931,257.7999878
+223,hormone therapy,70,no,no,yes,yes,no,29.36000061,105.5999985
+224,placebo,62,yes,yes,yes,no,no,34.88000107,156.6000061
+225,hormone therapy,67,yes,no,yes,no,no,21.84000015,80.40000153
+226,hormone therapy,68,no,no,no,no,yes,32.36999893,83
+227,hormone therapy,72,no,yes,no,yes,no,26.44000053,132.6000061
+228,placebo,60,no,no,yes,no,no,25.17000008,146
+229,placebo,61,no,no,no,yes,no,27.11000061,148
+230,placebo,72,yes,yes,no,yes,no,26.97999954,111.1999969
+231,placebo,60,no,no,yes,no,no,27.19000053,86.59999847
+232,hormone therapy,68,no,no,yes,yes,no,19.5,123.4000015
+233,hormone therapy,65,no,no,yes,no,yes,25.20000076,101.4000015
+234,hormone therapy,69,yes,no,yes,no,no,24.89999962,136.6000061
+235,placebo,66,no,no,yes,yes,no,23.77000046,123.8000031
+236,hormone therapy,66,yes,no,no,no,no,21.52000046,116.5999985
+238,placebo,74,no,no,yes,no,yes,25.68000031,134
+239,placebo,65,no,no,no,yes,yes,26.17000008,89.19999695
+240,placebo,71,no,no,yes,yes,no,31.64999962,126
+241,hormone therapy,76,yes,no,no,yes,no,23.12999916,80
+242,hormone therapy,59,no,no,yes,yes,no,21.53000069,172.1999969
+243,placebo,62,no,yes,no,no,no,20.95000076,73.80000305
+244,hormone therapy,70,no,no,no,no,no,34.34999847,149.3999939
+245,placebo,74,no,no,yes,no,no,35.90000153,158.8000031
+246,placebo,69,no,no,no,no,no,20.12999916,123.8000031
+247,placebo,73,no,no,no,no,yes,31.09000015,150
+248,hormone therapy,73,yes,no,no,no,no,19.13999939,146.8000031
+249,placebo,66,no,yes,yes,no,no,19.84000015,104.4000015
+250,hormone therapy,69,no,yes,no,yes,yes,28.20000076,118.4000015
+251,placebo,59,no,no,yes,no,yes,36.36000061,111.4000015
+252,hormone therapy,69,no,no,yes,yes,no,22.44000053,108
+253,hormone therapy,59,yes,no,no,no,no,24.69000053,170.3999939
+254,hormone therapy,66,yes,no,no,no,no,35.33000183,177.8000031
+255,placebo,65,no,no,yes,no,no,31.20999908,140.1999969
+256,placebo,60,no,no,yes,yes,no,22.71999931,144
+257,hormone therapy,64,no,no,yes,yes,no,24.75,72.59999847
+260,hormone therapy,74,no,no,yes,no,no,30.29999924,120
+261,placebo,63,yes,no,no,no,yes,28.89999962,71.59999847
+262,placebo,59,no,no,no,yes,no,35,87.80000305
+263,placebo,65,no,no,yes,yes,no,30.17000008,150.6000061
+264,hormone therapy,62,no,no,yes,yes,no,19.73999977,96.80000305
+265,placebo,79,no,yes,no,yes,yes,29.84000015,127.8000031
+266,hormone therapy,68,no,no,no,no,yes,32.43999863,185.8000031
+267,hormone therapy,62,no,no,yes,yes,no,24.98999977,102.8000031
+268,hormone therapy,68,no,no,no,no,yes,35.02000046,76.80000305
+269,hormone therapy,63,no,no,yes,yes,no,25.59000015,69.59999847
+271,placebo,78,no,no,no,yes,yes,35.52000046,114.1999969
+272,placebo,76,no,no,yes,no,no,31.14999962,135
+273,hormone therapy,69,no,no,yes,yes,no,27.94000053,92.59999847
+274,hormone therapy,79,no,no,yes,no,no,24.18000031,113.1999969
+275,hormone therapy,58,yes,no,yes,no,no,33.70000076,143.3999939
+276,placebo,74,no,no,yes,no,no,26.20000076,184.8000031
+278,placebo,77,yes,no,yes,no,no,24.22999954,113.1999969
+279,hormone therapy,73,no,no,yes,yes,no,23.56999969,179.6000061
+280,placebo,69,no,no,no,no,no,28.62000084,116.5999985
+281,hormone therapy,64,no,no,no,no,yes,36.61999893,101
+282,hormone therapy,69,no,no,no,no,no,20.02000046,124.8000031
+283,hormone therapy,67,no,no,yes,no,no,27.42000008,90
+284,hormone therapy,68,no,no,no,no,yes,25.82999992,130
+285,placebo,63,yes,no,no,no,no,27.65999985,105.5999985
+286,placebo,61,no,yes,yes,yes,no,24.97999954,219.8000031
+287,hormone therapy,62,no,no,yes,no,yes,28.95000076,103.5999985
+288,hormone therapy,72,yes,no,no,no,yes,32.13999939,92.40000153
+289,placebo,75,no,no,no,yes,no,29.27000046,96.59999847
+290,placebo,79,no,no,yes,no,no,29.82999992,203.6000061
+291,hormone therapy,79,no,no,yes,no,no,29.20000076,171.6000061
+292,placebo,65,no,no,no,yes,no,24.54000092,181
+293,hormone therapy,66,no,no,yes,no,no,26.70000076,73.59999847
+294,placebo,76,no,yes,no,no,no,32.45999908,168.3999939
+295,placebo,63,no,no,yes,no,no,22.54999924,119.4000015
+296,hormone therapy,79,no,no,yes,no,no,18.80999947,136
+297,hormone therapy,68,no,yes,yes,no,no,28.13999939,105
+298,hormone therapy,64,yes,no,no,yes,yes,25.06999969,173
+299,placebo,69,no,no,no,no,yes,31.63999939,154
+300,placebo,67,no,no,no,yes,yes,24.88999939,158.8000031
+301,placebo,66,no,no,no,no,no,29.65999985,110
+302,placebo,72,no,yes,no,yes,no,30.19000053,181.6000061
+303,placebo,79,no,no,no,no,yes,33.83000183,117
+304,hormone therapy,66,no,no,yes,no,no,24.95999908,106.5999985
+305,hormone therapy,78,no,no,yes,no,no,20.95999908,96
+307,hormone therapy,73,no,no,yes,no,yes,27.59000015,-20
+308,placebo,78,no,no,no,no,no,25.05999947,138.8000031
+309,placebo,70,no,no,no,no,no,32.68000031,142.8000031
+310,hormone therapy,64,no,no,no,no,no,27.89999962,169.6000061
+311,hormone therapy,79,no,no,no,yes,no,28.57999992,119.4000015
+312,placebo,68,no,no,no,no,yes,31.07999992,133
+313,placebo,75,no,yes,no,yes,yes,21.59000015,114.1999969
+314,hormone therapy,65,no,yes,yes,yes,no,26.15999985,136.8000031
+315,hormone therapy,67,yes,no,no,yes,no,42.20000076,120.8000031
+316,hormone therapy,61,no,no,no,no,yes,36.06999969,94.19999695
+317,hormone therapy,60,no,no,yes,no,yes,35.40000153,80.80000305
+318,placebo,75,no,no,no,no,no,34.15999985,181.1999969
+319,hormone therapy,70,yes,no,no,no,yes,26.81999969,160.8000031
+320,placebo,70,no,no,yes,yes,no,21.29999924,69
+321,placebo,63,no,yes,no,no,yes,32.09999847,177.3999939
+322,placebo,72,no,no,yes,no,no,22.86000061,176.1999969
+323,hormone therapy,69,no,no,no,no,yes,25.87999916,149.8000031
+324,placebo,71,no,no,no,yes,no,25.67000008,163.6000061
+325,placebo,69,no,no,no,no,yes,33.68000031,141
+326,placebo,65,no,no,no,no,no,24.92000008,162.6000061
+327,hormone therapy,75,no,no,no,no,no,32.36999893,133.1999969
+328,placebo,69,no,no,no,no,no,24.68000031,183.1999969
+329,placebo,68,no,yes,no,no,yes,26.17000008,46.59999847
+330,hormone therapy,77,no,no,no,no,no,24.40999985,144.1999969
+331,hormone therapy,65,yes,no,no,no,no,25.57999992,95.80000305
+332,hormone therapy,63,no,yes,no,yes,no,34.93000031,132.8000031
+333,placebo,70,no,no,yes,no,no,31.64999962,206.1999969
+334,hormone therapy,67,no,no,yes,yes,yes,26.45000076,115.4000015
+335,placebo,75,no,no,no,no,yes,30.30999947,174.8000031
+336,hormone therapy,55,yes,yes,no,no,no,22.11000061,69.59999847
+337,placebo,71,yes,no,no,no,no,19.02000046,133.3999939
+338,hormone therapy,76,yes,no,no,no,yes,23,195.8000031
+339,placebo,61,yes,yes,yes,no,no,20.51000023,94
+340,hormone therapy,67,no,no,no,yes,no,32.86999893,162.8000031
+341,hormone therapy,68,no,no,no,no,yes,27.81999969,118.1999969
+342,hormone therapy,62,no,yes,no,no,yes,36.34999847,164.6000061
+343,placebo,65,no,no,no,no,no,37.22000122,157.6000061
+344,hormone therapy,70,no,no,no,yes,yes,30.78000069,56
+345,placebo,68,no,no,yes,yes,no,28.45999908,188.8000031
+346,placebo,65,no,yes,yes,yes,no,28.81999969,141.8000031
+347,placebo,71,no,no,no,yes,no,28.60000038,174
+349,placebo,73,yes,no,no,no,yes,34.20000076,182.8000031
+350,placebo,79,no,no,yes,no,no,33.24000168,112
+351,placebo,71,yes,no,no,no,no,21.45000076,179
+353,hormone therapy,71,no,no,yes,yes,no,25.34000015,163.6000061
+354,hormone therapy,74,no,no,no,no,no,40.63999939,172
+355,hormone therapy,70,no,no,yes,yes,no,27.04000092,131.3999939
+356,hormone therapy,73,no,no,yes,no,no,21.46999931,115
+357,hormone therapy,68,no,no,yes,no,yes,31.04000092,114.1999969
+358,hormone therapy,73,no,no,no,no,no,25.22999954,145
+359,hormone therapy,73,no,no,no,no,no,30.44000053,155.6000061
+361,placebo,73,no,no,yes,yes,no,25.85000038,135.3999939
+362,placebo,71,yes,no,no,no,no,31.20999908,182.6000061
+363,placebo,67,no,yes,yes,no,no,24.62000084,129.8000031
+364,placebo,70,no,no,no,no,no,29.87000084,178.6000061
+365,hormone therapy,70,no,yes,no,no,yes,32.11999893,162.6000061
+366,hormone therapy,62,no,no,no,yes,no,30.60000038,106.5999985
+367,placebo,70,no,yes,no,yes,no,39.95000076,110
+368,placebo,68,yes,yes,no,yes,no,24.55999947,149.3999939
+369,placebo,58,no,yes,no,no,no,19.60000038,86.80000305
+370,hormone therapy,61,no,no,yes,yes,yes,36.84000015,114.1999969
+371,hormone therapy,62,no,no,yes,yes,yes,23.60000038,84.59999847
+372,placebo,55,no,no,yes,yes,no,27.25,115
+373,hormone therapy,61,no,yes,no,no,no,24.81999969,195.8000031
+374,placebo,71,no,no,yes,no,no,24.51000023,215.3999939
+375,hormone therapy,62,no,no,no,no,no,27.81999969,154.8000031
+376,placebo,73,no,no,no,no,yes,33.04000092,139.6000061
+377,placebo,65,yes,no,no,no,no,26.17000008,139.6000061
+378,hormone therapy,55,no,no,yes,yes,no,25.31999969,110
+379,hormone therapy,51,no,no,no,no,no,27.44000053,155.6000061
+380,hormone therapy,68,no,no,yes,yes,no,25.95999908,121.4000015
+381,placebo,61,yes,no,no,no,no,31.84000015,185.6000061
+382,placebo,68,no,yes,yes,yes,no,27.31999969,166
+383,placebo,64,no,yes,yes,yes,no,23.02000046,126.4000015
+384,hormone therapy,63,no,yes,no,no,no,35.11000061,140.1999969
+385,placebo,66,no,no,no,yes,yes,25.37999916,79.40000153
+386,hormone therapy,73,no,no,no,no,no,23.90999985,96
+387,hormone therapy,66,no,no,no,yes,yes,46.77000046,133.6000061
+388,hormone therapy,68,no,no,yes,no,no,26.03000069,226.6000061
+389,hormone therapy,71,no,no,yes,no,no,25.25,150.6000061
+390,placebo,68,yes,no,no,yes,no,24.45999908,93.80000305
+391,placebo,57,yes,yes,no,no,no,17.63999939,85
+392,hormone therapy,66,no,no,no,yes,no,28.42000008,85.80000305
+393,hormone therapy,67,no,no,no,no,no,30.61000061,156
+394,hormone therapy,60,no,no,no,no,yes,34.43999863,120
+395,placebo,67,no,no,yes,no,no,28.76000023,230.8000031
+396,placebo,68,yes,no,yes,yes,no,20.95000076,148.3999939
+397,hormone therapy,61,no,no,yes,yes,no,26.79999924,172.1999969
+398,placebo,69,no,no,yes,yes,no,21.67000008,136.3999939
+399,placebo,69,yes,yes,yes,no,no,23.30999947,104.4000015
+400,placebo,44,no,yes,yes,no,no,36.31999969,225
+401,hormone therapy,53,no,no,no,no,no,29.89999962,124.4000015
+403,hormone therapy,64,no,no,yes,no,no,28.75,235
+404,placebo,61,no,no,no,no,no,32.59000015,216
+405,placebo,68,no,no,no,yes,no,27.95000076,156.1999969
+406,placebo,69,no,no,yes,no,no,23.87999916,147
+407,placebo,64,no,no,yes,no,yes,28.55999947,171.3999939
+409,hormone therapy,70,no,no,yes,yes,yes,31.94000053,146.1999969
+410,hormone therapy,71,no,no,no,no,yes,26.09000015,244.3999939
+411,placebo,60,no,no,no,yes,yes,35.09000015,107.4000015
+412,placebo,75,no,no,yes,no,no,30.80999947,165.3999939
+413,hormone therapy,54,no,no,no,no,yes,39.18000031,190.8000031
+414,placebo,65,no,no,no,no,yes,39.84999847,176.1999969
+415,hormone therapy,74,no,no,yes,no,no,26.01000023,134.6000061
+416,hormone therapy,61,yes,no,yes,no,no,23.75,139.1999969
+417,placebo,58,no,no,yes,yes,no,29.88999939,111.1999969
+418,placebo,66,no,yes,no,yes,no,23.27000046,114.1999969
+420,hormone therapy,70,no,no,no,no,no,28.5,133.1999969
+421,hormone therapy,54,no,no,no,no,yes,25.46999931,186.1999969
+422,hormone therapy,68,no,no,yes,no,no,27.95000076,102.4000015
+423,hormone therapy,78,no,no,yes,yes,no,28.25,94.59999847
+424,placebo,71,no,no,no,no,yes,37.81999969,157.8000031
+425,placebo,57,yes,no,no,yes,no,31.64999962,155.8000031
+426,placebo,58,no,no,yes,no,yes,29.90999985,153.1999969
+427,placebo,66,no,no,no,yes,no,26.37000084,111.1999969
+428,hormone therapy,53,no,no,yes,no,no,22.75,223.1999969
+429,placebo,71,no,no,no,no,no,27.27000046,133.8000031
+430,placebo,62,yes,no,no,yes,no,22.54000092,144.3999939
+431,hormone therapy,68,no,no,yes,yes,no,27.90999985,171.1999969
+432,placebo,57,yes,no,no,no,no,29.5,183.1999969
+433,hormone therapy,65,yes,no,no,no,no,28.84000015,131.3999939
+434,hormone therapy,72,no,no,no,no,no,20.89999962,88.19999695
+435,hormone therapy,62,no,yes,no,no,no,28.62000084,81
+436,hormone therapy,61,yes,yes,no,no,no,30.76000023,145.8000031
+438,hormone therapy,57,yes,no,no,no,no,21.12000084,117.8000031
+439,placebo,76,no,no,no,yes,yes,32.52999878,134.6000061
+440,placebo,57,no,no,no,yes,no,28.48999977,98.59999847
+441,placebo,58,no,no,no,yes,no,30.02000046,111.1999969
+442,hormone therapy,75,no,yes,no,yes,no,30.37999916,109.8000031
+443,hormone therapy,71,no,no,no,yes,no,24.97999954,72.59999847
+445,placebo,64,no,yes,yes,yes,no,25.55999947,169.3999939
+446,placebo,72,no,no,yes,no,yes,35.84999847,136.6000061
+447,placebo,63,no,no,no,no,yes,36.38000107,174.6000061
+448,hormone therapy,57,no,no,no,no,no,29.29999924,163.6000061
+449,placebo,77,no,yes,no,yes,no,21.78000069,193.6000061
+450,hormone therapy,68,no,yes,no,yes,no,25.98999977,114.4000015
+452,placebo,66,no,no,no,no,no,34.86000061,154.1999969
+453,hormone therapy,68,no,no,yes,yes,no,24.70000076,114.5999985
+454,placebo,75,no,yes,no,no,no,25.80999947,88.59999847
+455,hormone therapy,76,no,no,yes,no,no,23.26000023,95.40000153
+456,hormone therapy,70,no,no,yes,no,no,24.56999969,101
+457,placebo,69,no,no,no,yes,no,34.47999954,279.3999939
+458,placebo,68,no,no,yes,no,yes,36.31999969,176.6000061
+459,placebo,67,no,no,yes,yes,no,23.79999924,111.5999985
+460,hormone therapy,69,no,no,no,yes,no,22.42000008,281.2000122
+461,placebo,68,no,no,no,no,no,22,131.3999939
+462,hormone therapy,57,no,no,no,yes,yes,28.44000053,100.5999985
+463,placebo,72,no,no,yes,yes,no,29.62000084,124.8000031
+464,placebo,75,no,no,yes,yes,no,28.92000008,129.6000061
+465,hormone therapy,73,no,yes,no,no,no,28.29999924,101.8000031
+466,placebo,61,no,no,no,no,no,29.92000008,181.1999969
+467,placebo,72,no,no,no,yes,no,30.94000053,121.1999969
+468,hormone therapy,70,no,no,no,no,no,38.09000015,175.8000031
+469,hormone therapy,64,no,no,no,yes,yes,29.67000008,170.6000061
+470,hormone therapy,78,no,no,no,no,no,19.70999908,161
+471,placebo,68,no,no,no,no,no,34.36999893,158.8000031
+472,placebo,75,no,no,no,yes,yes,33.22000122,208.6000061
+474,hormone therapy,75,no,yes,yes,no,no,21.67000008,121.8000031
+475,placebo,77,no,no,no,yes,no,29.69000053,145.3999939
+476,hormone therapy,67,no,no,no,yes,yes,33.20000076,65.80000305
+477,placebo,72,no,yes,yes,no,no,18.39999962,220.1999969
+478,placebo,75,yes,no,no,no,no,26.79999924,155
+479,hormone therapy,68,no,no,no,no,no,49.02000046,181.1999969
+480,placebo,67,no,no,no,no,no,18.60000038,107.1999969
+481,placebo,72,no,no,yes,no,no,24.44000053,140
+482,hormone therapy,75,no,no,yes,no,yes,31.05999947,177
+483,placebo,72,no,yes,no,no,no,27.71999931,148.8000031
+484,placebo,49,no,no,no,no,no,31.03000069,154.6000061
+485,placebo,63,no,yes,no,no,no,40.65000153,143.3999939
+486,placebo,60,no,yes,yes,no,no,24.10000038,184.3999939
+488,placebo,71,no,no,no,no,no,27.10000038,121.1999969
+489,hormone therapy,71,yes,no,no,yes,yes,26.01000023,147.3999939
+490,hormone therapy,72,no,yes,yes,yes,no,24.52000046,99.19999695
+491,hormone therapy,75,no,no,no,no,no,28.36000061,148.3999939
+492,hormone therapy,73,no,no,no,no,no,27.27000046,88.80000305
+493,hormone therapy,68,no,no,no,no,yes,33.5,118.4000015
+494,placebo,65,yes,no,no,yes,no,22.13999939,129.1999969
+495,hormone therapy,56,no,no,no,no,yes,25.85000038,127.4000015
+497,placebo,73,no,no,no,yes,no,21.34000015,161
+498,hormone therapy,75,no,no,no,no,yes,23.37000084,117.4000015
+499,placebo,73,no,no,no,no,yes,34.81999969,132.1999969
+500,hormone therapy,73,yes,yes,no,no,no,22.67000008,112
+501,hormone therapy,64,yes,no,no,no,yes,28.32999992,160
+502,placebo,63,no,no,yes,yes,no,23.45999908,109.4000015
+503,hormone therapy,71,no,no,yes,yes,no,32.91999817,109.1999969
+504,hormone therapy,75,no,no,no,no,yes,26.81999969,91.80000305
+505,hormone therapy,68,no,no,no,no,no,32.68000031,136.1999969
+506,placebo,66,no,no,no,yes,no,31.43000031,177.1999969
+507,placebo,66,no,yes,no,no,no,27.86000061,149.8000031
+508,placebo,60,no,no,yes,yes,no,32.93000031,228.8000031
+509,placebo,75,no,no,yes,yes,no,21.14999962,112.4000015
+510,hormone therapy,63,no,no,yes,yes,no,31.96999931,79.19999695
+511,hormone therapy,64,no,yes,yes,no,no,23.06999969,81.19999695
+512,placebo,53,yes,no,no,yes,yes,28.04000092,124.4000015
+513,placebo,71,no,no,yes,no,no,23.54000092,147.1999969
+514,placebo,68,no,yes,yes,yes,no,24.06999969,111.8000031
+515,hormone therapy,70,yes,no,no,no,no,19.43000031,143.1999969
+516,placebo,79,no,no,no,no,no,27.59000015,189.1999969
+517,placebo,54,yes,no,yes,no,no,38.90999985,121.1999969
+518,hormone therapy,61,no,yes,yes,yes,no,26.78000069,142.8000031
+519,hormone therapy,77,no,no,yes,no,no,23.43000031,118.8000031
+520,placebo,59,no,no,no,no,no,26.36000061,146.8000031
+521,hormone therapy,66,no,yes,yes,no,no,32.04999924,132.1999969
+522,placebo,73,no,no,no,no,no,27.44000053,123.4000015
+523,hormone therapy,67,no,no,yes,yes,no,28.62000084,72
+524,hormone therapy,54,no,no,no,yes,no,24.44000053,82
+525,placebo,65,no,yes,yes,no,no,24.46999931,120.1999969
+526,hormone therapy,70,yes,no,no,no,no,27.93000031,126.8000031
+527,placebo,60,no,no,no,yes,yes,36.25,118.5999985
+528,hormone therapy,59,no,no,yes,no,yes,29.38999939,79.80000305
+529,hormone therapy,63,no,yes,yes,no,no,23.48999977,96
+530,hormone therapy,67,no,no,yes,yes,yes,27.57999992,87.40000153
+531,placebo,75,no,no,yes,no,no,22.82999992,181.3999939
+532,hormone therapy,71,no,no,no,yes,no,40.70000076,131.1999969
+533,hormone therapy,70,no,yes,no,no,no,26.05999947,113.5999985
+534,hormone therapy,71,no,no,yes,yes,no,28.47999954,120.4000015
+536,hormone therapy,64,no,no,yes,no,no,22.32999992,159
+537,hormone therapy,71,no,no,no,no,no,20.57999992,167.3999939
+538,placebo,71,yes,yes,no,no,no,34.00999832,129.3999939
+539,hormone therapy,61,no,no,yes,yes,yes,46.49000168,197.3999939
+540,placebo,72,no,no,no,yes,no,29.89999962,174.8000031
+541,placebo,79,no,no,yes,no,no,34.40000153,97
+542,placebo,61,no,no,yes,yes,no,26.82999992,123.8000031
+543,hormone therapy,74,no,no,yes,yes,no,27.23999977,123.1999969
+544,hormone therapy,71,no,yes,no,yes,no,24.51000023,103.1999969
+546,placebo,74,no,yes,no,no,no,26.77000046,106.8000031
+547,hormone therapy,69,no,no,yes,no,no,22.06999969,140.1999969
+548,placebo,67,no,no,yes,no,no,32.22999954,72.40000153
+549,placebo,71,no,no,yes,no,no,24.47999954,96.80000305
+550,placebo,68,no,no,no,yes,yes,33.81000137,192.8000031
+551,hormone therapy,75,no,no,no,no,no,33.52999878,104.1999969
+552,placebo,75,no,no,no,no,yes,20.80999947,113
+553,hormone therapy,69,no,no,no,yes,no,47.93999863,93.80000305
+554,hormone therapy,72,no,no,no,no,yes,34.63999939,126.4000015
+555,hormone therapy,73,no,yes,no,yes,no,24.82999992,157.3999939
+556,hormone therapy,76,no,no,no,no,no,25.11000061,130.6000061
+557,hormone therapy,68,no,no,yes,yes,no,30.80999947,100.8000031
+558,placebo,70,no,yes,no,no,no,26.52000046,194.6000061
+559,placebo,69,no,no,no,no,no,29.63999939,100.1999969
+560,placebo,67,yes,no,no,no,no,39.52999878,199.8000031
+561,hormone therapy,74,no,no,yes,no,no,24.76000023,137.1999969
+562,placebo,72,no,yes,yes,no,yes,32.16999817,120.8000031
+563,hormone therapy,70,no,no,no,yes,yes,33.52000046,55.20000076
+564,placebo,74,no,yes,no,no,no,27.07999992,124
+565,hormone therapy,62,no,yes,no,yes,no,24.62999916,151.3999939
+566,placebo,64,no,no,no,no,no,38.27000046,156.8000031
+567,placebo,63,no,no,yes,yes,yes,18.78000069,120.1999969
+568,hormone therapy,64,no,no,no,no,yes,40.36999893,115.5999985
+569,hormone therapy,71,no,yes,yes,no,no,21.37000084,65.40000153
+570,hormone therapy,70,no,yes,no,yes,no,32.20000076,96.40000153
+571,placebo,75,no,no,yes,yes,no,24.20000076,144.6000061
+572,hormone therapy,62,no,yes,no,no,no,28.93000031,140.6000061
+573,placebo,63,yes,no,no,no,no,22.29000092,111
+574,hormone therapy,66,no,yes,yes,yes,no,26.75,245.1999969
+575,hormone therapy,61,no,no,no,yes,no,31.05999947,105
+577,placebo,69,no,no,no,yes,yes,34.24000168,197.3999939
+578,hormone therapy,63,yes,yes,yes,no,no,33.31000137,173
+579,hormone therapy,69,no,yes,yes,no,no,20.37999916,129
+581,placebo,68,yes,no,no,no,yes,23.31999969,196.3999939
+582,hormone therapy,72,no,no,no,no,yes,30.97999954,120.1999969
+583,placebo,66,yes,no,no,no,yes,33.02000046,149.8000031
+584,placebo,58,yes,no,no,no,yes,33.79999924,157.8000031
+585,hormone therapy,65,no,no,no,no,yes,27.90999985,120.1999969
+586,hormone therapy,46,yes,yes,no,yes,no,20.84000015,100.4000015
+587,hormone therapy,75,no,no,no,no,no,21.27000046,88.19999695
+588,hormone therapy,58,no,no,no,no,yes,31.90999985,109.1999969
+589,placebo,69,no,no,yes,yes,no,23.93000031,117.1999969
+590,placebo,70,yes,no,no,yes,no,23.15999985,118
+591,hormone therapy,59,no,yes,yes,yes,no,29.17000008,168.8000031
+592,placebo,66,no,no,yes,yes,no,23,118
+593,placebo,67,no,no,yes,yes,yes,28.45000076,110.8000031
+594,placebo,67,no,yes,no,yes,no,31.95999908,117
+595,placebo,73,no,yes,yes,no,no,23.29999924,91.40000153
+596,hormone therapy,66,no,no,yes,yes,no,42.63000107,117.5999985
+597,hormone therapy,61,no,yes,no,no,no,21.17000008,115.5999985
+599,hormone therapy,60,no,yes,yes,no,no,27,155.3999939
+600,placebo,58,no,no,no,no,no,37.08000183,196
+601,placebo,76,no,no,yes,no,no,22.84000015,182.8000031
+602,placebo,64,no,no,no,no,yes,33.38999939,121.8000031
+603,placebo,77,no,no,no,no,no,22.60000038,94.59999847
+604,hormone therapy,70,no,no,no,no,no,26.45999908,105
+605,hormone therapy,65,no,no,no,no,no,30.62999916,112.8000031
+606,hormone therapy,65,no,no,no,no,no,35.61000061,188.1999969
+608,placebo,70,no,yes,no,no,no,21.73999977,238
+609,hormone therapy,64,no,no,yes,no,no,22.97999954,148.3999939
+610,placebo,74,no,no,no,no,no,24.32999992,148.1999969
+611,placebo,66,no,no,no,no,no,22.03000069,139.3999939
+612,placebo,57,no,no,yes,yes,no,25.54999924,100.5999985
+613,placebo,70,no,yes,yes,yes,no,29.44000053,119.4000015
+614,placebo,72,no,no,yes,no,yes,35.56000137,141.1999969
+615,hormone therapy,66,no,no,no,no,no,25.39999962,178.8000031
+616,hormone therapy,63,no,no,no,yes,no,31.84000015,104.4000015
+617,hormone therapy,74,no,no,no,no,yes,40.54000092,102
+618,placebo,56,no,yes,no,yes,no,31.96999931,149.8000031
+619,placebo,59,no,no,yes,no,no,26.42000008,157.6000061
+620,hormone therapy,63,no,no,no,yes,no,25.90999985,80
+621,placebo,70,no,yes,yes,no,yes,33.31000137,109.8000031
+622,hormone therapy,57,no,yes,no,no,no,34.70000076,201.6000061
+623,hormone therapy,59,no,no,no,yes,no,27.20999908,114.8000031
+624,hormone therapy,68,yes,no,no,no,no,23.71999931,159.6000061
+625,hormone therapy,64,no,no,yes,no,no,21.25,120
+626,hormone therapy,74,no,yes,no,yes,yes,23.39999962,136.3999939
+627,hormone therapy,62,yes,no,no,no,no,33.47000122,169.3999939
+628,hormone therapy,76,no,no,yes,no,no,25.21999931,83.59999847
+629,hormone therapy,65,no,yes,yes,no,no,21.79999924,134.1999969
+630,placebo,68,no,no,no,no,no,27.18000031,156
+631,hormone therapy,55,yes,no,no,yes,no,24.95000076,212.3999939
+632,placebo,69,no,yes,no,yes,no,30.53000069,107.5999985
+633,placebo,66,no,no,no,yes,no,36.06999969,128.3999939
+634,placebo,70,no,yes,no,no,no,21.32999992,123.8000031
+635,placebo,59,no,no,yes,no,yes,30.04999924,175.8000031
+636,placebo,67,no,no,no,yes,yes,33.18999863,112.8000031
+637,placebo,60,no,yes,no,yes,no,27.97999954,141.1999969
+639,hormone therapy,62,no,no,no,yes,no,23.79999924,130.8000031
+640,placebo,77,no,no,no,no,no,20.37999916,147.8000031
+641,hormone therapy,77,no,no,no,no,no,24.32999992,106.5999985
+642,placebo,55,no,yes,yes,yes,no,33.88999939,131
+644,hormone therapy,70,no,no,no,no,no,22.10000038,90
+645,placebo,68,no,no,yes,yes,no,22.02000046,122
+646,hormone therapy,71,yes,yes,no,no,no,27.04000092,121.5999985
+648,placebo,61,yes,no,no,no,no,23.62999916,146.3999939
+649,placebo,61,no,no,no,no,yes,21.35000038,74
+650,placebo,69,no,no,no,yes,no,20.87999916,140.1999969
+651,hormone therapy,61,no,no,yes,yes,no,30.94000053,142.3999939
+652,hormone therapy,58,no,no,no,yes,yes,24.81999969,78.19999695
+653,placebo,65,no,yes,no,no,yes,21.70999908,129.3999939
+654,placebo,55,yes,no,yes,no,no,29.45000076,140.6000061
+655,placebo,67,no,yes,no,yes,no,29.89999962,152.1999969
+656,placebo,68,no,no,yes,no,no,25.80999947,87
+657,hormone therapy,73,no,no,yes,no,no,21.71999931,124.4000015
+658,placebo,71,yes,no,no,no,no,20.82999992,257.6000061
+659,hormone therapy,64,no,yes,no,yes,no,27.20999908,60
+660,hormone therapy,65,no,no,yes,no,no,17.45000076,155.1999969
+661,hormone therapy,65,no,no,no,no,yes,38.58000183,90.40000153
+662,placebo,64,no,no,yes,no,no,27.32999992,183.8000031
+663,hormone therapy,59,no,yes,no,yes,no,31.60000038,159.6000061
+664,hormone therapy,67,no,no,yes,no,yes,35.75,184
+665,placebo,75,no,no,no,yes,no,23.30999947,147.6000061
+666,hormone therapy,58,no,no,no,yes,no,25.80999947,97.40000153
+667,placebo,66,no,no,yes,no,no,29.42000008,250
+669,hormone therapy,76,no,yes,yes,no,no,23.96999931,127.5999985
+670,placebo,73,no,no,no,yes,no,30.56999969,107.8000031
+671,placebo,79,no,no,no,yes,no,31.32999992,116.1999969
+672,placebo,79,no,no,no,no,no,26.22999954,135
+673,placebo,69,no,no,yes,no,yes,24.05999947,207.3999939
+674,placebo,73,no,no,no,no,no,28.18000031,110
+675,hormone therapy,70,no,no,no,no,yes,32.25999832,99.59999847
+677,hormone therapy,58,no,yes,yes,yes,no,23.87999916,127.8000031
+678,hormone therapy,73,no,yes,yes,no,no,24.14999962,136.3999939
+679,placebo,59,no,yes,no,no,no,24.43000031,135.8000031
+680,placebo,67,yes,no,yes,no,no,24.62000084,129.3999939
+681,placebo,72,no,yes,yes,yes,no,23.43000031,143.1999969
+682,hormone therapy,64,no,no,yes,yes,yes,25.04000092,81.19999695
+683,hormone therapy,61,no,no,no,yes,yes,32.86999893,172
+684,hormone therapy,61,no,no,no,yes,no,34.40000153,165.6000061
+685,hormone therapy,62,no,yes,no,no,no,25.68000031,150.6000061
+686,hormone therapy,64,yes,yes,yes,no,yes,25.68000031,120.1999969
+687,placebo,73,no,no,yes,yes,no,27.78000069,114
+688,placebo,59,yes,yes,no,no,no,38.97999954,135.1999969
+689,hormone therapy,71,no,yes,yes,yes,no,18.97999954,240.1999969
+690,placebo,67,no,no,no,no,yes,36.56999969,118.4000015
+691,hormone therapy,74,no,yes,yes,no,no,27.67000008,101.1999969
+692,placebo,71,no,yes,no,yes,no,24.86000061,141.3999939
+693,hormone therapy,75,no,no,yes,no,no,23.04999924,92.59999847
+694,placebo,72,no,yes,no,no,no,30.12000084,142
+695,hormone therapy,72,no,no,yes,no,no,27.15999985,151
+696,hormone therapy,67,no,yes,no,no,no,31.70000076,161.3999939
+697,placebo,64,no,yes,no,yes,yes,30.34000015,111.5999985
+698,hormone therapy,58,yes,yes,no,yes,no,31.04999924,160
+699,placebo,60,yes,yes,no,yes,no,29.32999992,113.5999985
+700,placebo,72,no,no,no,no,no,27.20999908,122.4000015
+701,placebo,72,no,no,no,no,no,24.37999916,167.8000031
+702,placebo,63,no,no,no,yes,no,27.63999939,218.8000031
+703,hormone therapy,67,no,yes,yes,yes,no,24.20000076,58.59999847
+704,hormone therapy,66,no,yes,no,no,yes,30.89999962,133
+705,placebo,57,yes,no,yes,no,yes,30.47999954,178.8000031
+706,hormone therapy,78,no,yes,no,no,no,27.35000038,87.59999847
+707,hormone therapy,75,no,no,no,no,no,22.92000008,121.4000015
+708,placebo,54,yes,no,no,no,no,28.89999962,207
+710,placebo,60,no,yes,yes,yes,no,26.87000084,187.8000031
+711,placebo,55,no,yes,no,no,no,36.47000122,168.3999939
+712,hormone therapy,58,no,yes,no,no,no,40.90999985,153
+713,hormone therapy,68,yes,yes,no,yes,yes,32.84000015,122.4000015
+714,placebo,67,yes,no,no,no,no,23.54999924,206.3999939
+715,placebo,61,no,no,no,no,no,27.54999924,126.4000015
+716,hormone therapy,69,yes,yes,no,no,no,21.96999931,136.8000031
+717,placebo,61,no,no,no,yes,no,27.88999939,115
+718,placebo,65,no,yes,yes,yes,no,27.60000038,212
+719,hormone therapy,75,no,yes,no,yes,no,16.20999908,125.8000031
+720,placebo,69,no,no,no,no,no,24.46999931,179.3999939
+721,placebo,73,no,no,yes,no,no,21.88999939,144
+722,hormone therapy,61,no,yes,yes,yes,yes,33.00999832,106.8000031
+723,hormone therapy,74,no,no,no,no,no,27.70000076,165
+724,hormone therapy,63,no,yes,yes,yes,no,27.22999954,102.1999969
+725,hormone therapy,74,yes,no,no,no,no,26.42000008,126
+726,hormone therapy,74,no,yes,yes,no,no,26.20999908,97.59999847
+727,placebo,68,no,no,no,no,yes,36.97999954,137.6000061
+728,placebo,71,no,no,no,no,no,31.87000084,141.6000061
+729,hormone therapy,65,no,yes,no,no,no,33.86999893,106.1999969
+730,placebo,66,no,no,yes,no,no,25.23999977,94.19999695
+731,hormone therapy,72,no,yes,yes,no,no,25.84000015,120.4000015
+732,hormone therapy,68,yes,no,yes,no,yes,21.84000015,78
+733,hormone therapy,56,yes,yes,no,no,no,28.07999992,142.6000061
+734,placebo,69,no,no,no,no,yes,29.45000076,127.5999985
+735,placebo,69,no,yes,no,no,no,36.99000168,140.3999939
+736,hormone therapy,72,no,yes,no,yes,yes,24.89999962,120.5999985
+737,placebo,62,no,no,yes,no,yes,37.79999924,152
+738,hormone therapy,70,yes,yes,no,no,no,26.45000076,140.3999939
+739,placebo,64,no,yes,yes,no,yes,33.59000015,193.1999969
+740,hormone therapy,72,no,yes,no,yes,no,27.54999924,84.80000305
+741,placebo,63,no,yes,no,no,no,36.09999847,152.6000061
+743,placebo,75,no,no,no,yes,no,26.21999931,110.8000031
+745,placebo,72,no,yes,no,no,no,22.13999939,143.1999969
+746,placebo,71,no,no,no,yes,yes,30.62999916,105.5999985
+747,hormone therapy,73,no,no,yes,no,no,22.65999985,149.6000061
+748,hormone therapy,70,no,yes,no,yes,yes,22.05999947,97.59999847
+749,hormone therapy,78,no,yes,no,yes,no,23.80999947,112.5999985
+750,placebo,73,no,no,no,yes,no,17.85000038,167.1999969
+752,hormone therapy,77,no,no,yes,no,no,21.09000015,77
+753,placebo,69,no,yes,no,yes,no,26.25,121.4000015
+754,hormone therapy,67,no,no,no,yes,yes,23.67000008,112.4000015
+755,hormone therapy,67,yes,no,no,no,yes,31.09000015,132
+756,hormone therapy,77,no,yes,no,yes,no,26.84000015,99.59999847
+757,placebo,69,no,no,no,yes,no,24.23999977,132.8000031
+758,hormone therapy,75,no,yes,no,no,no,26.70999908,121.5999985
+759,placebo,79,no,yes,no,yes,no,29.02000046,127.8000031
+760,placebo,68,no,no,no,no,yes,23.51000023,205.3999939
+761,hormone therapy,57,no,yes,no,yes,no,28.87000084,74.40000153
+762,hormone therapy,73,no,no,no,no,no,30.70999908,137.6000061
+763,placebo,75,no,no,no,no,no,27.54999924,188.1999969
+764,placebo,74,no,no,no,no,no,29.28000069,69
+765,placebo,73,no,yes,no,yes,yes,33.95999908,130.3999939
+766,placebo,63,no,yes,no,yes,yes,21.95999908,95.19999695
+767,hormone therapy,58,no,yes,yes,yes,no,31.17000008,111.5999985
+768,placebo,69,no,yes,yes,no,no,31.51000023,147
+769,placebo,67,yes,no,yes,no,no,26.86000061,72.19999695
+770,hormone therapy,68,no,no,yes,yes,no,25.88999939,117
+772,placebo,70,no,no,no,no,no,25.15999985,183.1999969
+773,placebo,66,yes,yes,no,yes,no,24.45000076,91.59999847
+774,placebo,59,no,yes,no,no,no,35.68999863,143.6000061
+775,placebo,68,no,no,yes,no,no,24.44000053,178
+776,hormone therapy,60,no,yes,no,no,no,29.48999977,163.8000031
+777,placebo,67,no,yes,yes,yes,no,26.29999924,161.3999939
+778,placebo,45,yes,yes,no,yes,no,31.20000076,81
+779,hormone therapy,61,yes,yes,no,no,no,24.63999939,112.5999985
+780,placebo,68,no,no,yes,no,no,28.62000084,79.19999695
+781,hormone therapy,63,no,yes,yes,yes,no,26.04000092,55.79999924
+782,hormone therapy,64,no,yes,yes,yes,no,22.13999939,81
+783,hormone therapy,64,no,yes,no,no,no,27.54999924,98.40000153
+784,hormone therapy,61,no,yes,no,yes,no,31.23999977,124.5999985
+785,hormone therapy,59,no,no,no,no,no,27.03000069,116
+786,hormone therapy,63,no,yes,no,no,no,22.86000061,117.1999969
+787,hormone therapy,57,no,no,yes,no,no,27.51000023,103.4000015
+788,hormone therapy,70,no,no,no,no,yes,35.91999817,138
+789,hormone therapy,68,no,no,yes,yes,no,28.04000092,116.1999969
+790,placebo,61,no,no,no,yes,yes,25.29999924,123.8000031
+791,hormone therapy,57,no,no,no,no,no,27.42000008,122.5999985
+792,placebo,67,no,no,no,no,no,28.07999992,99.19999695
+793,hormone therapy,69,no,yes,yes,no,no,24.53000069,77.59999847
+794,hormone therapy,70,yes,no,yes,yes,no,24.44000053,102.8000031
+795,placebo,71,no,yes,no,no,yes,33.22999954,135.6000061
+796,placebo,69,no,yes,yes,no,yes,30.44000053,155.8000031
+797,placebo,55,no,yes,yes,no,no,27.43000031,136
+798,placebo,74,no,yes,no,yes,no,34.38000107,110.4000015
+799,hormone therapy,60,no,yes,no,no,no,25.20999908,107.4000015
+800,placebo,72,yes,yes,no,no,no,28.11000061,124.4000015
+801,hormone therapy,66,no,no,no,no,no,31.69000053,117
+802,hormone therapy,68,no,no,no,no,yes,29.53000069,161.6000061
+803,placebo,75,no,yes,no,no,no,20.12999916,128.3999939
+804,hormone therapy,65,no,yes,no,yes,no,54.13000107,128
+805,hormone therapy,59,no,yes,no,no,no,24.38999939,141.1999969
+806,placebo,64,no,yes,no,yes,no,31.25,106
+807,hormone therapy,61,no,yes,yes,yes,no,31.70999908,94.80000305
+808,placebo,59,yes,yes,no,yes,no,19.82999992,96.59999847
+809,placebo,62,no,yes,yes,no,no,27.06999969,124.4000015
+810,hormone therapy,60,no,no,no,yes,yes,30.44000053,88
+811,hormone therapy,62,no,no,yes,yes,yes,35.66999817,111
+812,hormone therapy,68,no,no,no,yes,yes,38.09999847,78.59999847
+813,hormone therapy,58,yes,yes,no,no,no,33.54999924,190.1999969
+814,hormone therapy,52,no,no,no,no,no,26.46999931,178.6000061
+816,hormone therapy,68,no,yes,yes,yes,no,25.06999969,100.4000015
+817,placebo,72,no,no,no,no,yes,28.30999947,107.5999985
+818,hormone therapy,59,no,no,no,no,yes,29.77000046,134.3999939
+819,placebo,62,no,no,no,yes,no,22.22999954,93
+820,hormone therapy,64,no,yes,yes,yes,no,24.36000061,94.40000153
+821,placebo,64,no,no,no,yes,no,27.03000069,105.1999969
+824,placebo,63,no,no,yes,yes,no,39.65999985,79
+825,placebo,56,no,yes,no,no,no,29.93000031,109.4000015
+826,hormone therapy,68,no,no,no,yes,no,28.28000069,199.3999939
+827,placebo,54,no,yes,no,no,no,29.56999969,93
+828,placebo,66,no,yes,yes,yes,no,26.63999939,113.5999985
+829,hormone therapy,60,no,yes,no,yes,no,30.25,93.80000305
+830,hormone therapy,69,no,no,yes,no,yes,30.47999954,172
+831,hormone therapy,74,no,yes,no,yes,yes,23.92000008,71
+832,hormone therapy,56,no,no,no,yes,no,34.15000153,255.3999939
+833,placebo,64,no,yes,no,no,yes,25.88999939,177.8000031
+834,placebo,69,no,no,yes,yes,no,28.76000023,129.1999969
+835,placebo,66,no,yes,yes,yes,no,34.49000168,133.6000061
+836,placebo,70,no,no,yes,no,no,22.60000038,188.1999969
+837,placebo,69,no,yes,no,no,no,26.63999939,121.1999969
+838,hormone therapy,71,no,no,yes,no,no,22.51000023,98.19999695
+839,hormone therapy,46,no,no,no,no,yes,46.25999832,117.5999985
+840,hormone therapy,57,no,no,yes,no,no,39.58000183,208.1999969
+841,placebo,66,yes,no,no,no,no,19.96999931,197.6000061
+842,placebo,69,no,no,yes,yes,no,25.37000084,69
+843,placebo,58,yes,no,no,no,yes,39.29000092,211.1999969
+845,hormone therapy,64,no,no,yes,no,no,28.35000038,119
+846,hormone therapy,64,no,no,yes,yes,no,28.80999947,106.1999969
+847,hormone therapy,73,no,no,yes,no,yes,31.22999954,129.1999969
+848,placebo,70,no,yes,yes,no,no,36.36000061,150.1999969
+849,hormone therapy,60,no,yes,no,no,no,29.13999939,147.3999939
+850,hormone therapy,48,no,no,yes,no,yes,31,143.1999969
+851,placebo,63,no,no,no,yes,yes,30.04000092,117.5999985
+853,hormone therapy,72,no,yes,no,no,no,26.65999985,133.1999969
+854,hormone therapy,63,no,yes,yes,no,no,35.50999832,126.1999969
+855,placebo,75,no,no,no,yes,yes,26.88999939,133.3999939
+856,placebo,56,no,no,no,no,yes,30.15999985,169.6000061
+857,hormone therapy,69,no,yes,yes,no,yes,25.47999954,135.3999939
+858,placebo,66,no,yes,yes,yes,no,27.44000053,196.6000061
+859,hormone therapy,67,no,no,no,no,no,36.22000122,87.59999847
+860,hormone therapy,60,no,yes,yes,no,yes,28.20000076,88.59999847
+861,placebo,64,no,no,no,yes,no,33.09000015,226.8000031
+862,placebo,77,no,yes,no,no,no,26.44000053,87.80000305
+863,placebo,68,no,no,no,yes,yes,27.13999939,98
+864,placebo,64,no,no,yes,no,no,20.57999992,134.6000061
+866,hormone therapy,66,no,no,yes,no,no,22.11000061,111.1999969
+867,placebo,61,yes,yes,no,yes,no,31.87000084,108.1999969
+868,hormone therapy,79,no,yes,no,no,no,22.62999916,117.8000031
+869,hormone therapy,69,no,yes,no,yes,no,40.31000137,102
+870,placebo,74,no,yes,no,yes,no,29.52000046,159.8000031
+871,placebo,78,no,yes,yes,no,no,21.25,126.1999969
+873,hormone therapy,68,no,no,no,no,yes,24.90999985,142.1999969
+874,placebo,66,no,yes,no,yes,no,25.79999924,106
+875,placebo,72,no,yes,no,no,yes,24.39999962,102.5999985
+876,placebo,72,no,yes,yes,yes,no,27.19000053,152.6000061
+877,hormone therapy,73,no,yes,no,no,no,26.09000015,155.6000061
+878,placebo,62,no,yes,no,yes,no,23.70000076,119.8000031
+880,placebo,74,no,no,yes,no,no,20.54000092,119.8000031
+881,hormone therapy,72,no,no,no,yes,no,38.56999969,103.8000031
+883,placebo,73,no,yes,no,no,yes,38.47000122,112.4000015
+884,hormone therapy,62,no,yes,no,no,yes,28.37000084,128.3999939
+885,hormone therapy,73,no,yes,no,yes,no,23.82999992,51.40000153
+886,hormone therapy,64,no,yes,yes,no,no,32.15000153,114.4000015
+887,placebo,64,yes,no,no,yes,no,23.87000084,167
+888,placebo,69,no,no,yes,no,no,21.5,140
+889,placebo,68,no,yes,yes,no,no,28.80999947,122.1999969
+890,placebo,60,no,no,no,no,no,21.70000076,117.1999969
+891,hormone therapy,75,yes,no,no,yes,no,20.12000084,108.4000015
+892,placebo,61,no,yes,yes,no,no,25.14999962,146.1999969
+893,hormone therapy,73,no,no,no,no,yes,34.77000046,112.4000015
+894,hormone therapy,77,no,no,no,no,no,34.88000107,121.1999969
+895,placebo,77,no,no,no,no,yes,27.32999992,164.6000061
+896,hormone therapy,65,no,yes,yes,no,no,23.95000076,128.6000061
+897,hormone therapy,77,no,yes,yes,no,no,27.40999985,98
+898,hormone therapy,56,no,yes,no,no,no,22.26000023,90.40000153
+900,hormone therapy,53,yes,no,no,no,yes,26.75,96.59999847
+901,hormone therapy,72,yes,yes,no,yes,no,24.21999931,94
+902,placebo,65,no,no,no,no,yes,37.93000031,188.3999939
+903,placebo,77,no,yes,no,no,no,22.30999947,160
+904,placebo,51,no,no,no,yes,yes,33.79999924,124.8000031
+905,hormone therapy,64,no,no,yes,yes,no,29.71999931,130.6000061
+906,placebo,50,no,yes,no,no,no,28.40999985,123
+907,placebo,67,no,no,yes,yes,yes,35.20999908,124
+908,hormone therapy,69,no,no,no,no,no,30.46999931,143.8000031
+909,placebo,68,no,no,no,yes,yes,29.63999939,94
+910,hormone therapy,72,no,no,no,yes,no,37.13999939,104.4000015
+911,placebo,71,no,no,no,no,yes,38.04999924,178.1999969
+912,hormone therapy,65,no,no,no,no,yes,35.04000092,150
+913,placebo,70,no,no,yes,yes,yes,23.35000038,149.8000031
+914,hormone therapy,69,no,no,yes,yes,no,24.12000084,86.80000305
+915,placebo,68,no,no,yes,no,yes,26.51000023,122.5999985
+916,placebo,73,no,no,no,yes,yes,28.90999985,101.8000031
+917,hormone therapy,67,no,yes,no,yes,no,36.54999924,169.8000031
+918,placebo,76,no,no,no,yes,no,27.79000092,133.8000031
+919,hormone therapy,75,no,yes,yes,yes,no,22.47999954,141.6000061
+920,hormone therapy,68,no,yes,no,yes,yes,24.52000046,86.59999847
+921,hormone therapy,73,no,yes,yes,yes,no,26.77000046,113.8000031
+922,placebo,61,no,no,yes,yes,yes,35.13000107,161.3999939
+923,hormone therapy,62,no,no,no,no,yes,32.04999924,116.1999969
+924,placebo,57,no,yes,no,no,no,31.12000084,109.5999985
+925,placebo,61,no,no,yes,no,no,25.71999931,228.3999939
+926,hormone therapy,70,no,no,no,no,no,27.46999931,122.1999969
+927,placebo,53,no,no,no,no,yes,29,128
+928,hormone therapy,57,no,no,no,no,no,26.20999908,125
+929,placebo,67,no,no,yes,no,yes,30.79000092,129.6000061
+930,hormone therapy,55,no,no,yes,yes,yes,26.73999977,115
+931,hormone therapy,63,no,yes,no,no,no,32.97000122,111.8000031
+932,placebo,72,no,yes,yes,yes,no,33.11999893,111.4000015
+933,hormone therapy,75,no,no,no,yes,no,32.75,132.3999939
+934,placebo,67,no,no,no,yes,no,28.80999947,117
+935,placebo,63,no,yes,yes,no,no,24.76000023,142.8000031
+936,hormone therapy,64,no,no,yes,no,no,23.79000092,126.4000015
+937,hormone therapy,66,no,yes,no,no,no,30.81999969,129.8000031
+938,placebo,64,no,yes,no,no,yes,30.73999977,135.1999969
+939,placebo,60,no,no,no,no,no,36.43000031,162.1999969
+940,hormone therapy,56,no,no,yes,no,no,23.09000015,126.8000031
+941,hormone therapy,58,yes,yes,no,no,no,48.59000015,159.6000061
+942,placebo,51,no,yes,no,no,no,34.22999954,131.6000061
+943,hormone therapy,64,no,yes,no,yes,no,33.04999924,109
+944,placebo,56,yes,no,no,no,no,27.26000023,107.5999985
+945,hormone therapy,74,no,no,yes,no,no,26.13999939,101.5999985
+946,placebo,72,no,no,no,no,no,29.03000069,131.8000031
+947,hormone therapy,66,no,yes,yes,yes,no,21.88999939,110.4000015
+948,hormone therapy,75,no,no,no,no,no,22.22999954,129.6000061
+949,placebo,74,no,no,no,no,no,37.88999939,155.8000031
+950,placebo,73,no,no,no,no,no,37.59000015,204.6000061
+951,placebo,58,no,yes,no,no,no,26.95000076,181
+952,placebo,74,no,no,no,no,no,24.97999954,121.8000031
+953,hormone therapy,61,yes,yes,no,no,yes,28.95000076,154.6000061
+954,placebo,68,no,yes,yes,yes,no,22.89999962,82.40000153
+955,hormone therapy,62,yes,yes,no,yes,no,28.07999992,90.19999695
+956,placebo,64,no,yes,no,no,no,32.04000092,156.1999969
+957,placebo,69,no,no,yes,no,no,32.27999878,127.8000031
+958,hormone therapy,65,no,no,yes,yes,no,31.46999931,159.6000061
+959,placebo,59,yes,yes,yes,no,no,21.96999931,132.3999939
+960,hormone therapy,46,yes,yes,no,no,no,29.43000031,152
+961,placebo,66,yes,yes,yes,no,no,22.70000076,130.8000031
+962,hormone therapy,65,no,no,no,yes,no,45.70999908,172.1999969
+963,hormone therapy,65,yes,yes,no,yes,no,27.28000069,120.1999969
+964,hormone therapy,59,yes,no,no,no,no,19.72999954,140.3999939
+965,placebo,62,yes,yes,no,no,no,34.27000046,155.6000061
+966,hormone therapy,73,no,no,yes,yes,no,26.29999924,94.80000305
+967,hormone therapy,61,yes,yes,no,no,no,26.87999916,103.1999969
+968,hormone therapy,70,no,no,yes,no,yes,36.31000137,106.5999985
+969,placebo,74,no,no,no,yes,no,28.95999908,149.1999969
+970,placebo,64,no,no,yes,no,yes,19.97999954,114.1999969
+971,hormone therapy,59,no,yes,no,no,no,24.37000084,109.1999969
+972,hormone therapy,54,no,yes,yes,yes,no,27.20999908,137.6000061
+973,placebo,65,no,yes,no,no,no,31.72999954,128.8000031
+974,hormone therapy,69,no,no,yes,no,no,23.45999908,103.1999969
+975,hormone therapy,58,yes,no,no,no,yes,19.95999908,81.40000153
+976,placebo,61,no,no,yes,no,no,26.17000008,162.8000031
+977,placebo,74,no,no,no,yes,no,27.5,114.8000031
+978,placebo,69,no,yes,no,yes,no,30.07999992,228.6000061
+979,placebo,73,no,no,no,yes,no,27.37999916,141
+980,placebo,74,no,yes,yes,yes,no,31.93000031,162.3999939
+981,hormone therapy,72,no,no,no,no,no,32.81999969,158.6000061
+982,placebo,55,no,yes,no,yes,yes,44.61000061,138.6000061
+983,hormone therapy,59,no,no,yes,yes,no,21.42000008,67.19999695
+984,placebo,65,no,yes,yes,no,no,19.19000053,157.8000031
+985,hormone therapy,64,no,no,yes,no,yes,39.20999908,136
+986,hormone therapy,71,yes,no,no,no,no,38.50999832,143.8000031
+987,hormone therapy,67,no,yes,yes,yes,no,24.06999969,158.8000031
+988,hormone therapy,65,no,yes,yes,no,no,27.20000076,83.80000305
+989,placebo,63,no,no,yes,no,no,29.54999924,161.1999969
+990,hormone therapy,73,no,no,no,no,no,31.42000008,134.3999939
+991,placebo,68,no,yes,no,no,no,34.15999985,208.3999939
+992,hormone therapy,68,no,no,no,no,yes,35.34999847,160.8000031
+993,placebo,63,no,no,no,no,yes,35.15999985,248
+994,placebo,69,no,no,yes,no,no,22,111.1999969
+995,hormone therapy,65,no,yes,no,no,no,27.48999977,102
+996,hormone therapy,61,yes,no,no,no,no,34.93000031,130.3999939
+997,placebo,58,no,no,no,yes,yes,35.63999939,103.1999969
+998,placebo,75,no,no,no,yes,no,29.95000076,195.3999939
+999,placebo,65,no,yes,no,no,no,28.46999931,183
+1000,hormone therapy,57,yes,yes,yes,no,no,26.53000069,147.1999969
+1001,placebo,62,yes,yes,no,no,no,26.87999916,160.1999969
+1002,hormone therapy,64,no,yes,yes,no,no,20.80999947,143
+1003,hormone therapy,63,no,yes,yes,no,no,22.45000076,83
+1004,hormone therapy,63,no,no,no,no,no,19.82999992,175.1999969
+1005,hormone therapy,68,no,no,yes,yes,no,22.97999954,74.59999847
+1006,placebo,60,no,no,no,yes,yes,38.70999908,104.5999985
+1007,hormone therapy,64,no,yes,no,no,no,36.56000137,190.6000061
+1008,hormone therapy,68,yes,yes,no,no,no,25.67000008,154.1999969
+1009,placebo,59,no,yes,yes,no,no,22.75,171
+1010,placebo,71,no,yes,no,no,no,28.17000008,160.1999969
+1011,placebo,54,no,no,yes,no,yes,40.99000168,156.6000061
+1012,hormone therapy,61,no,no,no,no,no,24.44000053,77.59999847
+1013,placebo,74,no,no,no,no,yes,31.22999954,106.8000031
+1014,placebo,71,no,no,yes,no,no,21.95999908,210.8000031
+1015,placebo,66,no,yes,no,no,yes,25.94000053,118.5999985
+1016,hormone therapy,53,no,no,yes,no,no,29.09000015,67.40000153
+1017,hormone therapy,51,no,no,no,no,no,36.72999954,95.40000153
+1018,hormone therapy,54,no,yes,no,no,yes,19.97999954,91.59999847
+1019,hormone therapy,61,no,yes,yes,no,no,26.79000092,138.8000031
+1020,hormone therapy,58,yes,yes,no,no,no,26.21999931,285
+1021,placebo,72,no,no,no,no,no,27.10000038,187.1999969
+1022,hormone therapy,64,no,no,yes,yes,no,28.32999992,113.4000015
+1023,placebo,69,no,yes,yes,no,no,24.06999969,166.6000061
+1024,placebo,60,no,no,no,no,yes,30.54000092,138
+1025,hormone therapy,75,no,no,no,yes,no,29.71999931,105.8000031
+1026,placebo,59,no,no,yes,no,yes,24.81999969,140.1999969
+1027,hormone therapy,63,no,no,no,no,yes,29.62000084,88
+1028,placebo,69,no,no,yes,no,no,39.22000122,140.1999969
+1029,placebo,58,yes,yes,no,no,no,33.15999985,133.3999939
+1030,placebo,64,no,yes,yes,no,no,31.36000061,128.8000031
+1032,placebo,61,no,no,no,yes,no,20.79000092,70.59999847
+1033,hormone therapy,59,no,yes,yes,no,no,26.77000046,152
+1034,placebo,69,no,yes,no,no,no,21.62999916,123.8000031
+1035,hormone therapy,66,no,yes,no,yes,no,25.42000008,59
+1036,hormone therapy,57,no,yes,yes,yes,no,28.45000076,118.1999969
+1037,placebo,62,no,no,yes,yes,no,24.11000061,125
+1038,placebo,63,no,no,yes,no,no,29.65999985,165.6000061
+1039,hormone therapy,65,no,yes,no,yes,yes,31.55999947,100.1999969
+1040,placebo,58,no,yes,yes,no,no,29.36000061,171.3999939
+1041,hormone therapy,70,no,no,no,no,no,24.32999992,139.8000031
+1042,placebo,62,no,yes,no,no,no,23.42000008,129.8000031
+1043,placebo,69,no,yes,no,no,no,35.15000153,153.6000061
+1044,hormone therapy,64,no,yes,no,no,no,29,76.40000153
+1045,hormone therapy,60,no,yes,yes,yes,no,27.62999916,93.59999847
+1046,hormone therapy,66,no,yes,no,yes,no,28.67000008,82.19999695
+1047,hormone therapy,62,no,no,no,no,no,34.02000046,178.1999969
+1048,hormone therapy,62,no,yes,yes,yes,no,25.70000076,94.19999695
+1049,hormone therapy,54,no,no,no,no,no,24.31999969,100.5999985
+1050,placebo,60,no,yes,no,no,no,38.45999908,149.6000061
+1051,placebo,66,no,yes,yes,yes,no,33,123
+1052,placebo,73,no,yes,no,no,no,37.33000183,136.3999939
+1053,placebo,72,no,no,no,no,yes,38.18999863,123.8000031
+1054,placebo,68,no,no,no,yes,no,31.95000076,131
+1055,hormone therapy,72,no,yes,yes,no,no,23.21999931,74
+1056,hormone therapy,74,no,no,yes,no,no,19.54999924,106.4000015
+1057,hormone therapy,64,no,yes,yes,no,no,29.10000038,99.19999695
+1058,placebo,79,no,no,yes,yes,no,22.06999969,114.5999985
+1059,placebo,60,no,no,no,yes,yes,27.01000023,69.80000305
+1060,placebo,67,no,no,yes,yes,no,29.11000061,128
+1061,placebo,56,yes,yes,no,no,yes,30.73999977,189.1999969
+1062,hormone therapy,72,no,yes,no,yes,yes,35.29000092,136.1999969
+1063,hormone therapy,73,no,yes,no,no,no,31.67000008,115.4000015
+1064,placebo,69,no,no,yes,yes,no,24.42000008,88.59999847
+1065,hormone therapy,62,no,no,no,yes,no,43.29000092,123
+1066,hormone therapy,50,no,no,no,no,no,28.12000084,100.4000015
+1067,hormone therapy,71,no,no,no,yes,no,26.81999969,56.20000076
+1068,placebo,69,no,no,yes,yes,yes,32.72000122,127.8000031
+1069,placebo,59,no,no,no,no,no,41.09999847,140.3999939
+1070,hormone therapy,77,no,no,no,yes,no,36.27999878,89.19999695
+1071,hormone therapy,60,no,yes,yes,yes,no,37.61999893,94.59999847
+1072,placebo,70,no,no,no,yes,no,20.29999924,113.5999985
+1073,placebo,73,no,no,no,yes,yes,30.02000046,134.3999939
+1074,hormone therapy,64,no,no,no,yes,yes,31.87999916,123.1999969
+1075,hormone therapy,61,no,yes,no,no,yes,37.22999954,141.8000031
+1076,placebo,72,no,yes,no,no,no,26.79999924,85.40000153
+1077,placebo,73,no,no,yes,yes,no,27.17000008,101.1999969
+1078,placebo,69,no,no,yes,no,no,26.19000053,167
+1079,placebo,58,no,no,no,no,no,26.55999947,164.3999939
+1080,hormone therapy,66,no,yes,no,yes,yes,29.04999924,66.19999695
+1081,placebo,69,no,no,no,yes,no,29.56999969,108.8000031
+1082,placebo,62,no,yes,yes,no,no,30.62999916,173.3999939
+1083,hormone therapy,70,no,yes,no,yes,yes,31.51000023,137.1999969
+1084,hormone therapy,69,yes,yes,yes,no,yes,28.71999931,97
+1085,placebo,56,yes,no,yes,no,no,29.86000061,140.1999969
+1086,placebo,59,no,no,no,yes,yes,32.20000076,139.1999969
+1087,hormone therapy,78,no,no,yes,no,yes,21.56999969,91.59999847
+1088,hormone therapy,70,no,yes,yes,yes,no,23.14999962,102.8000031
+1089,hormone therapy,60,no,no,no,no,yes,35.65999985,98
+1090,placebo,67,no,no,yes,no,no,34.77999878,132.3999939
+1091,hormone therapy,59,yes,yes,no,no,yes,36.91999817,106.8000031
+1092,hormone therapy,66,no,no,yes,no,yes,32.06999969,90
+1093,hormone therapy,55,no,yes,yes,no,yes,35.79000092,60.40000153
+1094,placebo,61,no,no,yes,yes,no,36.09000015,100.1999969
+1095,placebo,67,no,no,yes,no,no,30.06999969,122.8000031
+1096,placebo,71,no,no,no,no,no,28.29000092,107.8000031
+1097,placebo,64,no,no,yes,yes,yes,39.38999939,114.5999985
+1098,placebo,65,no,yes,yes,no,no,31.47999954,129.6000061
+1099,placebo,77,no,no,yes,yes,yes,25.12999916,121.1999969
+1100,hormone therapy,67,no,no,no,no,yes,34.15000153,102
+1101,placebo,53,no,yes,no,no,no,45.04000092,130.6000061
+1102,hormone therapy,78,no,yes,no,yes,no,25.51000023,96.59999847
+1103,placebo,69,no,no,no,no,no,31.12999916,170.8000031
+1104,hormone therapy,61,no,yes,no,no,no,31.35000038,123.5999985
+1105,hormone therapy,61,no,yes,no,no,no,20.54999924,96
+1106,hormone therapy,54,no,no,no,no,no,38.86999893,111.8000031
+1107,placebo,66,no,yes,yes,yes,no,29.15999985,105
+1108,placebo,58,no,yes,yes,yes,no,25.18000031,111.4000015
+1109,placebo,57,no,no,yes,no,no,29.45000076,165
+1110,hormone therapy,59,no,no,no,yes,no,26.14999962,74
+1111,hormone therapy,55,no,no,no,no,yes,37.84000015,42
+1112,placebo,77,no,no,yes,yes,no,28.63999939,103.8000031
+1113,hormone therapy,53,no,yes,no,no,no,32.43000031,88.59999847
+1114,hormone therapy,64,no,yes,no,no,yes,35.52000046,99.80000305
+1115,placebo,60,no,no,yes,no,yes,37.90999985,178.3999939
+1116,placebo,57,no,no,yes,no,no,39.68999863,144.1999969
+1117,placebo,73,no,yes,no,yes,no,28.93000031,197.3999939
+1118,hormone therapy,75,no,no,no,no,no,27.43000031,147.6000061
+1119,hormone therapy,71,no,no,yes,no,yes,29.29999924,134.3999939
+1120,placebo,68,no,no,yes,yes,no,23.59000015,99
+1121,hormone therapy,58,no,yes,no,no,no,23.10000038,164.8000031
+1122,placebo,72,no,no,no,no,no,21.15999985,79.19999695
+1123,hormone therapy,79,no,no,no,no,no,23.34000015,109
+1124,hormone therapy,77,no,no,no,yes,no,25.42000008,89.19999695
+1125,hormone therapy,72,no,yes,no,no,yes,32.20999908,52.59999847
+1126,placebo,52,no,no,no,no,no,40.06000137,149.6000061
+1127,placebo,74,no,no,no,yes,no,25.04999924,106.4000015
+1128,placebo,73,no,yes,yes,yes,no,27.29999924,86.59999847
+1129,hormone therapy,70,no,no,yes,yes,no,24.55999947,151.3999939
+1130,hormone therapy,70,no,no,no,no,no,28.27000046,188.1999969
+1131,placebo,60,no,yes,no,yes,no,40.02000046,152
+1132,placebo,54,yes,yes,yes,no,no,25.70999908,129.6000061
+1133,hormone therapy,66,no,yes,yes,yes,no,25.68000031,144.8000031
+1135,hormone therapy,69,no,yes,yes,yes,no,24.12999916,87
+1136,hormone therapy,70,no,no,yes,yes,yes,34.83000183,136.3999939
+1137,placebo,61,no,yes,yes,no,no,22.93000031,188.8000031
+1138,placebo,52,no,yes,yes,yes,no,27.97999954,178.3999939
+1139,placebo,62,no,no,yes,yes,no,27.35000038,113.5999985
+1141,placebo,68,no,no,no,yes,no,30.25,127.4000015
+1142,hormone therapy,70,no,no,yes,yes,no,22.85000038,100.4000015
+1143,placebo,69,no,no,yes,no,no,27.5,137.8000031
+1144,hormone therapy,74,no,no,yes,yes,no,24.07999992,102.8000031
+1145,hormone therapy,73,no,no,no,no,no,28.29999924,187.3999939
+1146,placebo,65,no,yes,yes,no,no,23.35000038,124.4000015
+1147,hormone therapy,69,no,no,no,yes,no,27.85000038,136.8000031
+1148,hormone therapy,64,no,no,no,no,no,39.59999847,58.59999847
+1149,placebo,67,no,no,no,no,yes,32.84999847,161.6000061
+1150,hormone therapy,76,no,yes,no,yes,no,30.22999954,158.6000061
+1151,hormone therapy,68,yes,yes,yes,no,no,26.87999916,103.5999985
+1152,placebo,73,no,no,no,no,yes,41.34999847,168
+1153,hormone therapy,61,no,yes,yes,yes,no,25.96999931,105.4000015
+1154,hormone therapy,66,no,no,no,no,no,36.74000168,99.80000305
+1156,placebo,75,no,yes,yes,no,no,25.73999977,105
+1157,hormone therapy,79,no,no,no,no,no,27.31999969,101.5999985
+1158,hormone therapy,76,no,no,yes,no,no,24.73999977,194.8000031
+1159,placebo,79,no,no,yes,no,no,20.84000015,237.6000061
+1160,hormone therapy,77,no,no,no,no,no,35.15999985,110
+1161,hormone therapy,76,no,no,no,yes,no,22.54000092,117.8000031
+1162,placebo,62,no,yes,no,yes,no,24.39999962,145
+1163,placebo,48,yes,yes,yes,yes,no,31.17000008,125
+1164,hormone therapy,46,no,yes,no,no,no,40.61999893,135.1999969
+1165,hormone therapy,59,no,no,yes,no,yes,39.25999832,93.40000153
+1166,placebo,75,yes,yes,no,no,no,17.51000023,115.8000031
+1167,placebo,59,no,yes,no,no,no,40.77999878,140.1999969
+1168,hormone therapy,54,no,yes,no,no,no,29.27000046,130.8000031
+1169,placebo,76,no,yes,no,yes,yes,34.22999954,106.8000031
+1170,hormone therapy,58,no,no,no,yes,no,25.76000023,86.40000153
+1171,placebo,57,no,yes,no,no,yes,42.50999832,117
+1172,hormone therapy,56,yes,yes,no,no,no,26.21999931,158.1999969
+1173,hormone therapy,54,no,no,yes,yes,yes,29.48999977,92.80000305
+1174,placebo,58,no,yes,no,no,yes,28.73999977,129.3999939
+1175,hormone therapy,71,no,no,yes,no,no,26.45999908,143.3999939
+1177,hormone therapy,53,no,yes,yes,no,yes,19.92000008,96
+1178,placebo,71,no,no,yes,yes,no,25.14999962,124
+1179,hormone therapy,66,no,no,no,no,no,28.55999947,130.8000031
+1180,placebo,55,no,no,no,yes,yes,27.51000023,146.8000031
+1181,hormone therapy,74,no,yes,yes,yes,no,26.18000031,128.8000031
+1182,hormone therapy,61,no,no,no,no,no,29.75,112.1999969
+1183,hormone therapy,63,yes,no,no,yes,yes,30.55999947,74
+1184,placebo,55,no,yes,no,no,no,38.70999908,164
+1185,placebo,76,no,yes,no,no,no,26.21999931,82.80000305
+1186,placebo,73,no,no,yes,no,no,27.19000053,189.3999939
+1187,placebo,70,no,no,no,yes,no,20.73999977,115
+1188,hormone therapy,70,no,no,no,yes,no,20.76000023,94.59999847
+1190,placebo,67,no,no,no,yes,no,28.40999985,114.1999969
+1191,hormone therapy,54,no,no,no,yes,yes,39.00999832,122.8000031
+1192,hormone therapy,63,no,no,no,no,no,27.78000069,116.8000031
+1193,hormone therapy,73,no,no,yes,no,no,22.62999916,88.19999695
+1194,placebo,67,yes,no,no,no,no,25.27000046,211.1999969
+1195,hormone therapy,58,no,yes,no,no,no,29.18000031,146.6000061
+1196,placebo,79,no,no,no,yes,no,30.60000038,133.1999969
+1197,placebo,70,no,no,no,yes,no,32.72000122,86.80000305
+1199,placebo,72,no,yes,no,no,no,27.04999924,111.1999969
+1200,placebo,68,yes,no,no,yes,no,20.76000023,223.6000061
+1201,hormone therapy,73,no,yes,yes,no,no,24.34000015,121.5999985
+1202,placebo,76,no,no,no,no,yes,27.96999931,140
+1203,hormone therapy,71,no,no,no,yes,yes,36.22000122,190
+1204,hormone therapy,76,no,no,no,yes,no,26.21999931,114.5999985
+1205,placebo,67,no,no,no,no,no,39.20000076,128.1999969
+1206,placebo,69,no,no,yes,yes,no,24.46999931,128.3999939
+1207,hormone therapy,57,no,no,no,no,yes,41.5,133.3999939
+1208,hormone therapy,55,no,no,no,no,yes,24.76000023,101
+1209,hormone therapy,59,no,no,yes,no,no,30.94000053,134.8000031
+1210,placebo,68,yes,yes,yes,no,no,27.45999908,90.80000305
+1211,hormone therapy,73,yes,yes,no,no,no,22.20000076,129.8000031
+1212,placebo,63,no,no,yes,no,no,35.38999939,179.1999969
+1213,placebo,68,no,no,yes,yes,no,31.47999954,129.6000061
+1214,placebo,60,no,yes,yes,no,no,21.5,128.6000061
+1215,placebo,66,no,yes,no,no,no,28.56999969,159
+1216,hormone therapy,57,no,yes,yes,no,no,27.61000061,161.3999939
+1217,hormone therapy,67,no,no,no,yes,no,36.34000015,110.8000031
+1218,hormone therapy,73,no,yes,yes,yes,no,28.37000084,153.1999969
+1219,placebo,61,no,yes,yes,yes,no,26.85000038,167.8000031
+1220,hormone therapy,67,no,no,no,yes,no,23.98999977,150.1999969
+1221,placebo,59,no,yes,no,no,no,25.70000076,184.3999939
+1222,placebo,61,no,yes,no,yes,no,30.48999977,126.1999969
+1223,placebo,70,no,yes,no,no,no,26.43000031,152.1999969
+1224,hormone therapy,67,no,yes,no,yes,no,26.71999931,71.40000153
+1225,placebo,74,no,no,yes,no,yes,29.01000023,227
+1226,placebo,61,no,yes,no,yes,no,21.19000053,172.1999969
+1227,hormone therapy,57,no,no,no,no,no,32.81000137,135.1999969
+1228,placebo,61,no,no,no,yes,yes,25.30999947,81.80000305
+1229,placebo,57,no,no,no,no,yes,30.96999931,85
+1230,hormone therapy,52,no,no,yes,no,yes,30.75,203.1999969
+1232,placebo,64,no,no,no,no,yes,41.99000168,201.8000031
+1233,placebo,50,no,yes,yes,yes,yes,33.86000061,115
+1234,hormone therapy,58,no,yes,no,yes,no,23.77000046,80.40000153
+1235,placebo,67,no,no,yes,yes,yes,23.81999969,111.5999985
+1236,hormone therapy,65,yes,yes,yes,no,no,34.5,154.6000061
+1237,hormone therapy,67,no,yes,no,no,no,28.69000053,185.3999939
+1238,hormone therapy,68,no,yes,yes,no,no,22.92000008,132.3999939
+1239,hormone therapy,76,no,yes,no,no,no,32.04000092,135
+1240,placebo,52,no,yes,no,no,yes,26.35000038,158
+1241,placebo,57,no,yes,no,yes,no,19.73999977,102.1999969
+1242,hormone therapy,55,no,yes,no,yes,yes,38.34000015,48.20000076
+1243,hormone therapy,64,no,no,no,no,no,22.62000084,155.1999969
+1244,placebo,69,yes,yes,no,yes,no,26.23999977,134.1999969
+1245,placebo,51,no,yes,no,yes,no,21.63999939,166.3999939
+1246,placebo,57,no,no,no,yes,yes,32.31000137,101
+1247,placebo,72,no,yes,yes,yes,no,19.87000084,193
+1248,hormone therapy,65,no,no,yes,no,no,26.94000053,74.80000305
+1249,placebo,72,no,yes,yes,no,no,24.82999992,174.8000031
+1251,hormone therapy,68,no,no,no,no,yes,31.07999992,66.59999847
+1252,hormone therapy,71,no,yes,yes,no,no,31.07999992,149.3999939
+1253,placebo,63,no,no,no,no,no,25.27000046,174
+1254,placebo,69,no,yes,no,no,no,28.75,218.8000031
+1255,placebo,79,no,no,yes,no,yes,21.20999908,151.6000061
+1256,hormone therapy,77,no,no,no,no,no,19.44000053,89.40000153
+1257,placebo,55,yes,yes,no,no,no,28.51000023,211.3999939
+1258,hormone therapy,65,no,no,yes,yes,no,32.13000107,101.1999969
+1259,hormone therapy,55,no,yes,yes,no,no,23.73999977,139
+1260,hormone therapy,62,no,no,yes,no,yes,31.46999931,119.8000031
+1261,placebo,71,no,no,no,yes,no,29.88999939,123.8000031
+1263,placebo,73,no,yes,no,no,no,23.21999931,180.1999969
+1264,hormone therapy,64,no,no,yes,yes,no,30.75,98.59999847
+1265,hormone therapy,63,no,yes,yes,yes,yes,29.12000084,98.19999695
+1266,hormone therapy,65,no,yes,no,yes,no,36.95999908,89.80000305
+1267,placebo,67,no,yes,yes,yes,no,24.40999985,119.5999985
+1268,placebo,74,no,no,no,yes,no,26.56999969,151.6000061
+1269,hormone therapy,67,no,no,yes,no,no,26.84000015,144.8000031
+1270,placebo,62,no,yes,yes,yes,no,22.11000061,155.1999969
+1271,placebo,61,no,yes,yes,no,yes,38.00999832,119.1999969
+1273,hormone therapy,61,no,yes,yes,no,no,32.11000061,156.3999939
+1274,placebo,67,yes,no,no,no,no,31.23999977,190
+1275,hormone therapy,71,no,yes,yes,no,no,25.29000092,65.40000153
+1276,placebo,60,no,no,yes,no,yes,35.75,87.40000153
+1277,hormone therapy,56,no,yes,yes,yes,no,23.96999931,102.5999985
+1278,placebo,64,no,yes,no,yes,no,21.67000008,121.5999985
+1279,placebo,63,no,yes,no,yes,no,25.53000069,137.6000061
+1280,hormone therapy,70,no,yes,no,no,no,31.07999992,129.1999969
+1281,placebo,64,no,yes,no,no,no,24.54999924,172.3999939
+1282,hormone therapy,68,no,no,yes,no,no,22.32999992,132.8000031
+1283,placebo,61,no,yes,no,yes,no,36.06999969,116
+1284,placebo,72,no,yes,yes,no,no,28.17000008,193
+1285,hormone therapy,64,no,yes,no,no,yes,28.75,169
+1286,placebo,73,no,yes,yes,no,no,30.86000061,131.6000061
+1287,hormone therapy,71,no,yes,no,no,no,29.21999931,172.8000031
+1288,placebo,61,yes,no,yes,no,no,24.03000069,154
+1289,hormone therapy,61,no,yes,yes,yes,no,37.11999893,72.19999695
+1290,placebo,59,no,yes,no,no,no,27.85000038,158.8000031
+1291,hormone therapy,70,no,yes,yes,no,no,19.54999924,131.8000031
+1292,placebo,68,no,yes,yes,no,no,21.87000084,131.8000031
+1293,placebo,67,no,no,yes,no,no,27.39999962,167.6000061
+1294,hormone therapy,59,no,yes,no,no,no,31.70999908,135.8000031
+1296,hormone therapy,55,yes,yes,no,yes,no,26.51000023,156.1999969
+1297,hormone therapy,62,no,no,yes,no,yes,34.31000137,57.79999924
+1298,placebo,68,yes,yes,yes,yes,no,26.34000015,106.4000015
+1299,hormone therapy,71,no,no,no,yes,yes,33.65000153,82.59999847
+1300,placebo,65,no,yes,no,no,yes,49.13999939,100.5999985
+1301,placebo,57,no,yes,yes,no,no,26.43000031,159.8000031
+1302,placebo,69,no,yes,yes,no,yes,30.70000076,128.8000031
+1303,hormone therapy,59,no,no,no,no,no,24.63999939,128
+1304,hormone therapy,64,no,no,no,no,yes,36.59999847,149.3999939
+1305,placebo,60,no,yes,yes,no,no,24.92000008,234.6000061
+1306,hormone therapy,59,no,yes,no,no,no,26.46999931,138.8000031
+1307,hormone therapy,67,no,no,yes,yes,no,32.34000015,120
+1308,placebo,70,no,no,no,no,yes,31.80999947,134.1999969
+1309,placebo,70,no,yes,no,no,no,37.41999817,191.6000061
+1312,placebo,56,no,no,yes,no,no,23.02000046,147.6000061
+1313,hormone therapy,60,no,no,yes,no,yes,32.04000092,134.3999939
+1314,placebo,72,no,yes,yes,yes,no,26.77000046,114.8000031
+1315,hormone therapy,72,no,yes,yes,no,no,27,92.80000305
+1316,hormone therapy,56,yes,no,yes,no,no,26.61000061,129.6000061
+1317,placebo,60,yes,yes,yes,no,no,29.48999977,182.6000061
+1318,placebo,70,no,no,no,no,yes,30.43000031,134.1999969
+1319,placebo,70,no,yes,no,yes,no,28.81999969,115.1999969
+1320,hormone therapy,69,no,yes,yes,no,yes,31.96999931,131
+1322,placebo,63,no,no,no,no,no,35.16999817,132.8000031
+1323,hormone therapy,63,no,yes,yes,no,no,25.54000092,112
+1324,placebo,68,no,yes,yes,no,no,26.13999939,182.8000031
+1325,hormone therapy,67,no,yes,no,no,no,31.72999954,78.80000305
+1326,placebo,71,no,no,no,no,no,29.60000038,162.1999969
+1327,hormone therapy,65,no,no,yes,no,no,30.23999977,137.6000061
+1328,placebo,71,no,no,no,yes,no,27.75,180.1999969
+1330,hormone therapy,68,no,yes,yes,no,yes,34.25,107
+1331,placebo,60,yes,no,no,no,no,26.18000031,214
+1332,placebo,70,no,no,yes,no,no,32.13999939,224.8000031
+1333,hormone therapy,68,no,yes,no,no,no,29.65999985,133.3999939
+1334,hormone therapy,69,no,yes,no,no,no,32.04000092,145.3999939
+1335,placebo,62,no,no,yes,no,no,35.18000031,162.1999969
+1336,hormone therapy,66,no,no,no,no,yes,29.36000061,108.4000015
+1337,hormone therapy,73,no,yes,yes,no,no,28.93000031,91.19999695
+1338,placebo,67,no,yes,yes,no,no,22.54000092,111
+1339,placebo,59,no,yes,no,no,yes,34.81000137,62.79999924
+1340,placebo,58,no,no,yes,no,no,29.51000023,185
+1341,placebo,62,yes,no,no,no,yes,31.09000015,147.8000031
+1342,placebo,70,no,no,yes,no,no,24.96999931,132.6000061
+1343,placebo,71,no,no,no,no,yes,34.59000015,170
+1344,placebo,71,no,yes,no,no,no,29.15999985,184.8000031
+1345,placebo,65,no,no,yes,yes,no,24.15999985,109
+1346,hormone therapy,66,no,no,no,no,no,23.52000046,154
+1347,hormone therapy,66,no,no,yes,no,no,26.60000038,105.4000015
+1348,hormone therapy,63,no,no,yes,yes,no,19.71999931,118
+1349,hormone therapy,68,no,yes,no,no,no,31.85000038,168
+1350,hormone therapy,60,no,yes,yes,no,yes,26.82999992,226.3999939
+1351,hormone therapy,67,no,no,no,yes,no,23.51000023,140.6000061
+1352,placebo,75,no,no,yes,no,no,18.12999916,208.1999969
+1353,placebo,64,no,yes,no,no,no,28.22999954,145.8000031
+1354,placebo,73,no,yes,no,no,no,24.76000023,125.1999969
+1355,placebo,74,no,yes,yes,yes,no,31.79999924,137.3999939
+1356,hormone therapy,65,no,no,yes,no,no,36.27000046,114.1999969
+1357,hormone therapy,61,no,no,no,yes,yes,30.07999992,109.8000031
+1358,hormone therapy,64,no,yes,yes,yes,no,27.70000076,142.1999969
+1359,hormone therapy,67,no,yes,no,no,no,29.09000015,67.19999695
+1360,hormone therapy,66,yes,no,no,no,no,24.51000023,160.3999939
+1361,placebo,75,no,no,no,yes,no,24.87999916,125.5999985
+1362,placebo,70,no,no,no,yes,no,33.20000076,145
+1363,hormone therapy,60,no,yes,no,yes,no,22.71999931,127.1999969
+1364,hormone therapy,66,no,yes,no,no,no,29.37999916,159.1999969
+1365,placebo,56,no,yes,yes,no,no,30.37999916,117.4000015
+1366,placebo,66,no,yes,yes,no,no,32.88999939,137.6000061
+1367,placebo,66,no,no,no,yes,no,32.54000092,87
+1368,placebo,66,no,yes,yes,yes,no,26.54999924,130.8000031
+1369,hormone therapy,59,no,yes,yes,yes,no,25.20000076,221.1999969
+1370,hormone therapy,73,no,yes,no,no,no,30.39999962,72
+1371,hormone therapy,67,no,no,no,yes,no,27.37000084,101.8000031
+1372,placebo,67,no,yes,yes,no,no,24.70999908,133.1999969
+1373,hormone therapy,70,no,no,yes,yes,yes,28.37000084,68.80000305
+1374,hormone therapy,69,no,yes,no,no,no,27.39999962,115.5999985
+1375,placebo,63,no,yes,yes,yes,no,31.23999977,132.1999969
+1376,hormone therapy,67,no,yes,yes,yes,no,25.36000061,113.4000015
+1377,placebo,71,yes,no,no,no,no,27.35000038,151.3999939
+1378,placebo,66,no,yes,no,no,no,32.81999969,107.8000031
+1379,hormone therapy,63,no,yes,yes,no,no,23.84000015,102.4000015
+1380,placebo,61,no,yes,yes,yes,yes,25.69000053,211.8000031
+1382,hormone therapy,63,yes,no,no,no,no,27.37000084,138.3999939
+1384,placebo,59,no,yes,yes,yes,yes,37.95999908,137.8000031
+1385,hormone therapy,54,no,yes,yes,no,no,23.87999916,94
+1386,hormone therapy,54,yes,yes,no,yes,no,32.84000015,290
+1387,placebo,69,no,no,no,no,no,28.07999992,128.8000031
+1388,hormone therapy,67,no,yes,no,no,no,29.28000069,185.6000061
+1389,hormone therapy,74,no,no,no,no,no,28.81999969,77.40000153
+1390,placebo,71,no,yes,yes,no,no,23.5,131.3999939
+1391,placebo,72,no,no,yes,no,no,30.20000076,137.8000031
+1392,placebo,62,no,yes,no,yes,no,29.27000046,106
+1393,placebo,55,no,yes,yes,yes,no,41.40000153,105.4000015
+1394,placebo,66,no,no,yes,yes,no,27.54000092,105.5999985
+1395,placebo,65,no,yes,yes,no,no,26.61000061,149
+1396,hormone therapy,63,no,no,no,yes,no,26.78000069,114.1999969
+1397,hormone therapy,69,no,no,no,no,yes,26.39999962,116.5999985
+1398,hormone therapy,70,no,yes,yes,no,no,25.14999962,179.8000031
+1399,placebo,73,no,no,yes,no,no,24.34000015,191.6000061
+1400,placebo,68,no,yes,yes,no,yes,30.60000038,149.6000061
+1401,hormone therapy,75,no,yes,no,no,no,26.12999916,130
+1402,hormone therapy,58,no,yes,yes,yes,no,28.88999939,108.4000015
+1403,hormone therapy,53,yes,yes,no,no,no,22.95999908,130
+1405,placebo,60,no,yes,no,no,no,25.70999908,167.1999969
+1406,hormone therapy,63,no,no,yes,no,no,24.42000008,98.59999847
+1407,placebo,62,no,yes,no,no,no,32.72000122,180.1999969
+1408,hormone therapy,65,no,yes,no,no,no,29.54999924,146.1999969
+1409,hormone therapy,74,no,no,no,no,yes,27.79999924,140.1999969
+1410,placebo,66,no,no,yes,no,no,30.04000092,123
+1411,placebo,68,no,yes,yes,yes,no,32.75,135.3999939
+1412,hormone therapy,67,no,no,no,no,no,23.86000061,116.8000031
+1413,hormone therapy,68,no,no,no,yes,yes,42.04999924,103.1999969
+1414,placebo,78,no,no,no,no,yes,23.97999954,171.1999969
+1415,hormone therapy,64,yes,no,no,no,no,32.88999939,129.6000061
+1416,placebo,57,no,yes,no,yes,no,24.02000046,81.40000153
+1417,placebo,76,no,yes,no,yes,no,25.55999947,130
+1418,hormone therapy,58,no,yes,no,no,no,40.61999893,96.40000153
+1419,placebo,67,no,no,no,yes,no,23.53000069,130.8000031
+1421,hormone therapy,74,no,yes,no,no,no,26.06999969,78
+1422,hormone therapy,63,no,yes,no,no,yes,35.20000076,116.8000031
+1423,hormone therapy,78,no,yes,no,no,no,26.07999992,130.8000031
+1424,hormone therapy,68,no,yes,no,yes,no,24.70999908,102
+1425,hormone therapy,59,no,no,no,no,no,25.85000038,83
+1426,placebo,77,no,yes,no,yes,no,26.44000053,88.80000305
+1428,placebo,79,no,yes,yes,no,no,25.79999924,162.6000061
+1429,hormone therapy,72,no,no,no,no,no,28.51000023,93.19999695
+1430,placebo,57,no,yes,no,no,no,26.75,104
+1431,placebo,69,no,no,no,yes,no,23.36000061,141.8000031
+1432,hormone therapy,65,no,no,no,yes,yes,28.79999924,124.4000015
+1433,placebo,70,no,no,no,no,yes,23.07999992,133.3999939
+1434,placebo,72,no,yes,no,no,no,26.43000031,221
+1435,placebo,72,no,yes,yes,no,no,23.04999924,132.8000031
+1436,hormone therapy,56,no,yes,yes,no,yes,25.70999908,115.1999969
+1437,hormone therapy,68,no,yes,no,yes,yes,37.18000031,55.59999847
+1438,hormone therapy,78,no,yes,no,no,no,22.29000092,120.1999969
+1439,hormone therapy,74,yes,no,no,no,no,21.96999931,72.40000153
+1440,placebo,68,no,yes,no,no,yes,28.06999969,136.3999939
+1441,hormone therapy,71,no,no,yes,no,no,35,132.3999939
+1442,placebo,68,no,yes,no,no,no,27.12999916,135.6000061
+1443,placebo,73,no,no,no,no,no,36.59999847,108.1999969
+1444,hormone therapy,76,no,no,no,no,no,33.68000031,95.80000305
+1445,hormone therapy,77,no,no,yes,yes,no,21.48999977,110
+1446,hormone therapy,65,no,yes,no,no,no,34.25999832,106.8000031
+1447,hormone therapy,69,no,no,yes,no,no,27.73999977,133.6000061
+1448,placebo,71,no,no,yes,yes,no,30.07999992,91.80000305
+1449,hormone therapy,75,no,yes,no,yes,no,31.20000076,116.5999985
+1450,placebo,78,no,yes,no,no,yes,37.40999985,145.3999939
+1451,placebo,60,no,yes,yes,yes,no,26.87000084,120.5999985
+1452,hormone therapy,74,no,no,yes,yes,no,29.86000061,131.6000061
+1453,placebo,62,no,no,no,yes,yes,33.22000122,105.4000015
+1454,placebo,77,no,yes,yes,no,no,20.78000069,132.8000031
+1455,hormone therapy,67,no,no,no,no,no,34.65999985,136.3999939
+1456,placebo,78,no,yes,no,no,no,22.56999969,161.6000061
+1458,hormone therapy,78,no,yes,no,no,no,26.42000008,110.1999969
+1459,placebo,66,no,no,no,no,yes,31.01000023,72.59999847
+1460,placebo,62,no,no,no,yes,yes,36.13000107,120
+1461,hormone therapy,60,no,no,yes,yes,no,31.48999977,98
+1462,hormone therapy,64,no,yes,yes,no,yes,33.22999954,69.80000305
+1463,placebo,68,no,yes,no,yes,yes,25.78000069,132.3999939
+1464,placebo,69,no,yes,yes,yes,yes,28.45000076,123.5999985
+1465,hormone therapy,63,no,no,no,yes,no,27.04000092,122.8000031
+1466,hormone therapy,64,no,yes,yes,no,no,25.87000084,133
+1467,placebo,59,yes,yes,no,no,no,29.03000069,211.1999969
+1468,placebo,58,no,yes,no,no,no,35.70000076,128
+1469,hormone therapy,68,no,yes,no,yes,no,28.47999954,83.59999847
+1470,placebo,69,no,yes,yes,no,no,29.96999931,146.8000031
+1471,placebo,66,no,yes,no,yes,no,31.37000084,91.80000305
+1472,placebo,78,no,no,no,no,no,29.13999939,200.3999939
+1473,placebo,78,yes,no,no,no,no,27.57999992,167.8000031
+1474,hormone therapy,59,no,no,no,no,yes,47.13999939,148.1999969
+1475,placebo,75,no,no,yes,no,no,21.69000053,143.3999939
+1476,hormone therapy,76,no,yes,no,no,no,35.34999847,115.4000015
+1478,hormone therapy,68,no,yes,no,no,yes,39.25,94
+1479,placebo,69,no,yes,no,no,no,25.97999954,163.1999969
+1480,placebo,74,no,no,no,yes,no,21.71999931,119.8000031
+1481,hormone therapy,78,no,yes,no,no,no,29.86000061,142.6000061
+1482,hormone therapy,77,no,no,no,yes,no,25.78000069,157.8000031
+1483,hormone therapy,57,yes,no,no,no,no,22.70000076,133.6000061
+1484,hormone therapy,66,no,yes,no,no,yes,30.40999985,135.1999969
+1485,placebo,74,no,yes,yes,yes,no,26.71999931,248.8000031
+1486,placebo,59,yes,no,no,no,no,27.81999969,143.3999939
+1487,placebo,63,no,yes,yes,no,no,51.47000122,140.3999939
+1488,placebo,53,no,yes,no,no,no,36.31999969,113
+1489,placebo,76,no,yes,no,no,no,24.23999977,130.3999939
+1490,hormone therapy,72,no,no,yes,no,yes,39.56999969,130.3999939
+1491,hormone therapy,68,no,yes,yes,no,no,27.79000092,139
+1492,placebo,70,no,no,no,no,no,24.07999992,174
+1493,hormone therapy,50,no,no,yes,no,no,27.89999962,139
+1494,placebo,62,no,yes,no,yes,yes,33.04000092,143.3999939
+1495,hormone therapy,76,no,no,yes,no,no,30.04000092,94.80000305
+1496,hormone therapy,60,no,yes,yes,yes,no,35.31000137,149
+1497,hormone therapy,72,no,yes,yes,no,no,34.86999893,134.8000031
+1498,hormone therapy,73,no,no,yes,yes,no,24.37999916,109.1999969
+1499,placebo,79,no,yes,no,no,no,21.65999985,164.6000061
+1500,hormone therapy,58,no,yes,no,no,yes,39.18000031,75.80000305
+1501,hormone therapy,75,no,no,yes,no,no,20.80999947,142.6000061
+1502,hormone therapy,62,no,yes,no,yes,no,35.41999817,128.8000031
+1503,placebo,71,no,no,yes,yes,no,28.51000023,116
+1504,hormone therapy,73,no,no,no,no,no,28.03000069,141.6000061
+1505,placebo,66,no,yes,no,no,yes,31.27000046,209.3999939
+1506,hormone therapy,54,no,yes,yes,no,no,30.04000092,122.8000031
+1508,placebo,70,no,no,yes,no,no,22.04000092,141
+1509,hormone therapy,64,no,no,no,yes,yes,36.02999878,102.4000015
+1510,hormone therapy,51,yes,yes,no,no,no,20.87999916,102.8000031
+1511,placebo,59,no,yes,yes,yes,no,28,77.80000305
+1512,placebo,70,no,no,no,no,yes,27.04999924,124.1999969
+1513,hormone therapy,77,no,no,no,yes,yes,28.12999916,126
+1514,placebo,74,no,no,yes,no,yes,22.54000092,150.6000061
+1515,placebo,54,yes,no,no,yes,no,26.82999992,142.1999969
+1516,hormone therapy,61,no,yes,no,yes,yes,26.31999969,163
+1517,placebo,57,yes,yes,no,no,no,26.98999977,161
+1518,placebo,61,no,no,yes,no,no,34.97000122,152.8000031
+1519,placebo,67,no,yes,yes,no,no,23.75,134.3999939
+1520,placebo,63,no,yes,no,yes,no,28.57999992,156.6000061
+1521,placebo,77,no,yes,yes,yes,no,29.44000053,107.8000031
+1522,hormone therapy,70,no,no,no,no,no,20.52000046,134.1999969
+1523,hormone therapy,57,no,yes,yes,no,yes,33.41999817,165.3999939
+1524,hormone therapy,70,no,yes,no,no,yes,34.13999939,95.19999695
+1525,placebo,68,no,no,no,no,no,40.20999908,229.3999939
+1526,placebo,46,yes,no,no,no,no,24.95000076,156
+1527,placebo,70,no,no,no,no,no,26.84000015,182.8000031
+1528,hormone therapy,54,yes,yes,no,no,no,27.46999931,141
+1529,placebo,64,no,yes,yes,no,no,28.29999924,116.4000015
+1530,placebo,59,no,no,no,yes,yes,27.82999992,119.1999969
+1531,placebo,65,no,yes,yes,yes,no,36.11000061,85.40000153
+1532,hormone therapy,79,no,yes,yes,no,no,27.89999962,65.59999847
+1533,hormone therapy,73,no,yes,yes,no,no,23.54000092,140.3999939
+1534,hormone therapy,68,no,no,yes,yes,yes,32.81000137,173.6000061
+1535,placebo,73,no,no,yes,no,no,25.36000061,124.4000015
+1536,placebo,67,no,no,no,no,no,28.57999992,108.5999985
+1537,placebo,73,no,no,no,yes,yes,24.02000046,92.59999847
+1538,placebo,53,no,yes,no,no,no,29.96999931,190.1999969
+1539,placebo,75,no,yes,no,no,no,24.51000023,118.5999985
+1540,hormone therapy,68,no,no,no,yes,yes,32.90999985,169.1999969
+1541,hormone therapy,65,yes,yes,no,no,no,26.55999947,139.3999939
+1542,hormone therapy,66,yes,no,no,no,no,22.81999969,161
+1543,hormone therapy,61,no,no,no,no,no,24.37999916,120.4000015
+1544,placebo,60,no,yes,no,yes,no,26.65999985,110.4000015
+1545,hormone therapy,66,yes,yes,no,yes,no,22.36000061,173.1999969
+1546,placebo,61,no,yes,yes,no,yes,44.68999863,153
+1547,hormone therapy,69,yes,yes,no,yes,no,22.57999992,89
+1548,placebo,69,no,no,no,no,no,22.40999985,185.3999939
+1549,hormone therapy,68,no,no,yes,no,yes,31.37000084,181.6000061
+1550,hormone therapy,68,no,no,no,yes,no,25.54999924,126.5999985
+1551,hormone therapy,63,no,yes,no,no,yes,24.85000038,148
+1552,hormone therapy,75,yes,no,no,no,no,34,82.19999695
+1553,placebo,60,no,yes,no,no,no,29.29999924,156
+1554,hormone therapy,58,no,yes,yes,yes,no,31.26000023,160.8000031
+1555,hormone therapy,61,no,no,no,yes,yes,37.79000092,86.59999847
+1556,hormone therapy,66,no,no,yes,no,no,24.64999962,112.4000015
+1557,placebo,68,no,yes,yes,no,no,28.05999947,130.1999969
+1558,placebo,74,yes,no,no,no,no,24.05999947,142.1999969
+1559,hormone therapy,67,no,yes,no,yes,no,27.56999969,92
+1560,placebo,69,no,yes,no,yes,yes,30.48999977,103.5999985
+1561,hormone therapy,66,no,yes,yes,no,no,25.86000061,102.5999985
+1562,placebo,72,no,yes,no,yes,no,22.29000092,179.3999939
+1563,placebo,55,yes,yes,no,no,no,28.54000092,139.3999939
+1565,hormone therapy,68,no,yes,yes,no,no,28.25,105
+1567,hormone therapy,68,no,yes,yes,no,no,22.54999924,75
+1568,hormone therapy,73,yes,yes,no,no,yes,27.42000008,157.1999969
+1569,hormone therapy,72,no,no,no,no,no,33.36999893,98.19999695
+1570,placebo,64,no,yes,yes,no,no,23.80999947,110.4000015
+1571,placebo,68,no,no,no,yes,no,22.81999969,127.4000015
+1572,placebo,72,yes,no,no,no,no,20.72999954,137.1999969
+1573,placebo,63,no,no,no,no,yes,33.54000092,188
+1574,placebo,68,no,no,no,no,no,35.97000122,224.6000061
+1575,placebo,62,no,yes,no,no,no,26.06999969,87.40000153
+1577,placebo,72,no,no,yes,no,no,33.41999817,130.3999939
+1579,hormone therapy,71,no,yes,yes,no,yes,19.84000015,163
+1580,placebo,65,no,yes,no,yes,no,28.65999985,134.3999939
+1581,placebo,68,no,yes,no,no,yes,23.92000008,189.6000061
+1582,hormone therapy,67,no,no,yes,yes,no,18.12999916,183
+1583,hormone therapy,55,no,no,no,yes,yes,24.92000008,195.3999939
+1584,placebo,69,no,yes,no,yes,no,22.37000084,196.8000031
+1585,hormone therapy,68,no,no,no,no,no,24.20999908,169.3999939
+1586,hormone therapy,71,no,yes,no,no,no,25.86000061,168.1999969
+1587,hormone therapy,56,no,yes,yes,no,yes,29.86000061,148.6000061
+1588,placebo,53,yes,yes,no,no,no,25.75,165
+1589,placebo,59,no,yes,yes,no,no,24.5,297.3999939
+1590,placebo,70,no,yes,no,yes,no,26.59000015,119.1999969
+1591,placebo,72,no,no,yes,no,no,32.86999893,185.3999939
+1592,hormone therapy,60,no,yes,yes,no,no,23.51000023,153.1999969
+1593,placebo,63,no,no,no,no,no,37.11000061,104.1999969
+1595,placebo,70,no,no,no,yes,no,23.20000076,133
+1596,placebo,65,yes,yes,no,no,yes,41.27000046,147.6000061
+1597,hormone therapy,65,no,no,no,no,no,42.45999908,217.6000061
+1598,hormone therapy,56,no,no,yes,yes,no,21.03000069,87.40000153
+1599,placebo,70,no,no,no,no,yes,36.02999878,187.1999969
+1600,placebo,69,no,yes,no,yes,no,26.68000031,190.3999939
+1601,hormone therapy,71,yes,no,no,no,no,31.34000015,110
+1602,hormone therapy,64,no,no,no,no,yes,38.70000076,102.5999985
+1603,hormone therapy,62,no,yes,yes,no,no,23.28000069,63
+1604,hormone therapy,64,no,no,no,no,no,32.52999878,128.6000061
+1605,placebo,73,no,yes,no,yes,no,26.28000069,222.3999939
+1606,hormone therapy,62,no,no,no,no,no,28.63999939,106
+1607,placebo,72,no,no,yes,no,no,23.56999969,115.4000015
+1608,placebo,70,no,no,yes,yes,no,26.29999924,126.8000031
+1609,hormone therapy,71,no,no,yes,yes,no,33.08000183,109.5999985
+1610,hormone therapy,60,no,no,yes,yes,no,30.15999985,136.6000061
+1611,hormone therapy,74,no,no,no,no,no,21.35000038,163.6000061
+1612,placebo,60,no,yes,no,no,no,27.87999916,158
+1613,hormone therapy,68,no,no,yes,no,no,22.14999962,148.8000031
+1614,hormone therapy,69,no,no,yes,no,yes,27.20000076,106.4000015
+1615,placebo,62,no,no,no,no,yes,20.60000038,97.40000153
+1616,placebo,59,no,yes,yes,no,no,24.92000008,156.3999939
+1617,placebo,67,no,yes,yes,no,no,29.23999977,139
+1618,placebo,64,yes,no,no,no,no,26.42000008,141.1999969
+1619,hormone therapy,62,yes,yes,no,no,no,24.67000008,155.3999939
+1620,hormone therapy,56,no,yes,no,no,yes,37.79000092,105.5999985
+1621,placebo,65,no,no,yes,yes,no,24.55999947,151.8000031
+1622,placebo,64,no,no,yes,no,yes,30.54000092,136.8000031
+1624,placebo,54,no,yes,no,no,no,29.39999962,151.3999939
+1625,hormone therapy,55,no,yes,yes,yes,no,29.62000084,73.80000305
+1626,hormone therapy,61,no,no,no,no,yes,30.98999977,117.4000015
+1627,hormone therapy,61,no,no,no,no,no,24.20999908,166.6000061
+1628,placebo,64,no,no,no,no,no,35.04999924,158.8000031
+1629,hormone therapy,71,no,no,no,no,no,28.70999908,107
+1630,placebo,77,no,no,yes,no,no,27.05999947,129
+1631,hormone therapy,70,no,no,yes,yes,no,24.20000076,130.1999969
+1632,hormone therapy,67,no,no,no,yes,no,30.05999947,157.3999939
+1633,placebo,72,no,no,no,no,yes,28.85000038,116.4000015
+1634,placebo,63,no,no,no,yes,no,23.89999962,86.19999695
+1635,placebo,67,no,yes,yes,no,no,23.18000031,127.1999969
+1636,hormone therapy,61,no,no,yes,no,no,29.36000061,135.6000061
+1637,hormone therapy,78,no,no,no,no,yes,31.76000023,152.3999939
+1638,hormone therapy,71,no,no,yes,yes,no,25.45999908,122
+1639,placebo,78,no,no,no,yes,no,24.03000069,105.8000031
+1640,hormone therapy,69,no,no,yes,yes,no,31.71999931,146.6000061
+1641,hormone therapy,71,no,no,no,no,yes,28.35000038,108.4000015
+1642,placebo,70,no,no,no,no,no,20.95000076,170.3999939
+1643,placebo,71,no,no,yes,yes,no,24.37000084,99.59999847
+1645,placebo,71,no,no,no,yes,no,36.50999832,88.40000153
+1647,placebo,78,no,yes,no,no,no,25.05999947,138.1999969
+1648,hormone therapy,69,no,no,no,no,no,29.04000092,164.3999939
+1649,hormone therapy,67,no,no,no,no,no,30.55999947,79.19999695
+1650,hormone therapy,64,yes,no,no,yes,no,34.81999969,141.6000061
+1651,placebo,75,no,yes,no,no,no,27.73999977,97
+1652,hormone therapy,73,no,yes,yes,no,no,25.31999969,123.5999985
+1653,hormone therapy,65,yes,yes,yes,no,yes,29.45000076,145.8000031
+1654,placebo,67,yes,yes,yes,yes,no,25.68000031,116.5999985
+1655,hormone therapy,70,no,yes,no,no,no,22.5,97.40000153
+1656,placebo,67,no,yes,yes,yes,no,28.01000023,128.3999939
+1657,hormone therapy,69,yes,yes,no,yes,no,18.70999908,90.80000305
+1658,placebo,62,no,no,yes,no,yes,23.20999908,143.3999939
+1659,placebo,72,no,no,no,yes,yes,25.02000046,132.6000061
+1660,hormone therapy,58,no,no,no,yes,no,33.61999893,158
+1661,placebo,75,no,yes,no,yes,no,26.87000084,98.40000153
+1662,hormone therapy,69,no,yes,no,no,yes,30.15999985,156
+1663,hormone therapy,66,no,yes,yes,yes,no,24.05999947,108.8000031
+1664,placebo,71,no,yes,no,no,no,32.70999908,211.3999939
+1665,placebo,62,no,no,no,yes,yes,27.79999924,101
+1667,hormone therapy,65,no,yes,no,yes,no,30.06999969,124.5999985
+1668,placebo,58,no,no,yes,no,yes,27.93000031,123.4000015
+1669,hormone therapy,63,no,yes,no,yes,no,21.06999969,117.5999985
+1670,hormone therapy,56,no,yes,yes,no,no,30.97999954,167
+1671,placebo,63,no,yes,no,yes,no,31.84000015,196.6000061
+1672,placebo,73,no,no,no,no,no,33.88000107,89.80000305
+1673,placebo,65,no,yes,no,yes,no,23,134.8000031
+1674,hormone therapy,74,no,yes,no,no,no,26.69000053,74.59999847
+1676,hormone therapy,65,no,yes,yes,yes,yes,34.66999817,316.2000122
+1677,placebo,75,no,yes,yes,no,yes,23.98999977,155.1999969
+1678,hormone therapy,65,no,yes,no,yes,yes,22.57999992,218.6000061
+1679,placebo,67,no,yes,no,no,no,28.07999992,126.5999985
+1681,placebo,71,no,yes,no,yes,yes,28.48999977,91.40000153
+1682,hormone therapy,62,no,yes,yes,yes,no,26.21999931,149.6000061
+1683,hormone therapy,65,no,no,yes,no,yes,25.45000076,169.6000061
+1684,hormone therapy,72,no,yes,no,no,no,32.61999893,129
+1685,hormone therapy,69,no,yes,no,no,no,26.25,111.8000031
+1686,hormone therapy,69,no,yes,yes,yes,no,40.04999924,133.8000031
+1687,placebo,66,no,no,no,yes,no,26.42000008,121.5999985
+1688,placebo,77,no,yes,yes,yes,no,20.78000069,96.59999847
+1689,hormone therapy,61,no,yes,yes,no,no,27.09000015,110.8000031
+1690,hormone therapy,73,no,no,yes,yes,yes,26.95999908,159.6000061
+1691,placebo,77,no,yes,yes,no,yes,24.32999992,95.19999695
+1692,hormone therapy,70,no,yes,yes,no,no,27.06999969,62.40000153
+1693,placebo,68,no,yes,no,yes,no,30.52000046,82
+1694,placebo,78,no,no,no,yes,yes,25.70000076,173.3999939
+1695,placebo,72,no,no,yes,no,no,20.95999908,148.1999969
+1696,hormone therapy,69,no,no,no,no,no,27.95999908,126.1999969
+1697,hormone therapy,61,yes,yes,no,no,no,25.18000031,186.6000061
+1698,placebo,69,no,no,no,no,no,26.64999962,138.1999969
+1699,hormone therapy,66,no,yes,yes,yes,no,26.36000061,138.3999939
+1700,hormone therapy,70,no,no,no,yes,yes,26.67000008,184.6000061
+1701,placebo,72,no,no,yes,no,yes,33.25999832,132
+1702,hormone therapy,76,no,yes,yes,no,yes,35.81999969,88.59999847
+1703,placebo,67,no,yes,yes,yes,yes,30.07999992,91.40000153
+1705,hormone therapy,71,no,no,yes,no,no,24.51000023,122.4000015
+1706,placebo,66,no,yes,yes,no,no,23.45000076,136
+1709,placebo,71,no,no,yes,yes,no,27.76000023,90.59999847
+1710,placebo,70,no,no,yes,yes,no,19.79000092,116.8000031
+1711,placebo,65,no,no,no,yes,yes,26.37999916,110.5999985
+1712,placebo,63,no,yes,yes,no,no,23.40999985,110
+1713,placebo,79,no,yes,yes,yes,no,21.87999916,125.8000031
+1714,placebo,63,no,yes,yes,no,no,25.85000038,135.8000031
+1715,placebo,72,no,yes,no,yes,yes,21.78000069,110.5999985
+1716,placebo,56,no,yes,no,no,no,27.57999992,101.5999985
+1717,hormone therapy,67,no,no,no,no,no,28.37999916,114.4000015
+1718,placebo,58,no,yes,yes,no,no,31.28000069,148.8000031
+1719,hormone therapy,73,no,yes,yes,yes,no,32.06000137,119.5999985
+1720,hormone therapy,69,yes,yes,no,no,no,26.89999962,78.40000153
+1721,hormone therapy,72,no,yes,yes,yes,no,27.86000061,176.1999969
+1722,placebo,74,no,yes,yes,no,no,32.81999969,188.8000031
+1723,placebo,64,no,yes,no,yes,no,29.86000061,178.1999969
+1724,placebo,59,no,yes,no,yes,yes,34.16999817,109.1999969
+1725,hormone therapy,75,no,no,yes,yes,yes,33.22000122,189
+1726,placebo,70,no,yes,yes,yes,no,24.23999977,64
+1727,hormone therapy,62,no,no,no,no,no,31.56999969,109
+1728,hormone therapy,61,no,yes,yes,yes,yes,34.90000153,142.8000031
+1729,placebo,65,no,no,no,yes,yes,25.39999962,144
+1730,hormone therapy,65,no,no,no,yes,no,44.25999832,59
+1731,hormone therapy,62,no,no,no,yes,yes,39.13000107,83.80000305
+1732,placebo,69,no,yes,no,no,yes,37.24000168,111.5999985
+1733,hormone therapy,64,yes,yes,no,no,no,22.20000076,122.4000015
+1734,hormone therapy,67,no,no,no,yes,no,30.84000015,159.8000031
+1735,hormone therapy,65,no,no,no,no,yes,26.07999992,125
+1736,placebo,48,yes,no,no,no,yes,29.82999992,94.59999847
+1737,placebo,72,no,no,yes,no,no,22.87999916,134.6000061
+1738,placebo,74,no,no,no,yes,no,23.12000084,97
+1739,hormone therapy,72,no,yes,yes,yes,no,26.12000084,118
+1740,placebo,72,no,yes,yes,yes,yes,24.81999969,139.8000031
+1741,hormone therapy,76,no,yes,no,no,no,19.52000046,106.8000031
+1742,placebo,67,no,no,yes,yes,yes,33.47999954,124.1999969
+1743,placebo,71,no,yes,yes,yes,yes,33.18999863,195.3999939
+1744,hormone therapy,54,yes,no,no,no,no,27.93000031,176
+1745,hormone therapy,75,no,no,no,no,no,31.79999924,105
+1746,hormone therapy,75,no,yes,no,no,no,23.77000046,122.4000015
+1747,placebo,73,no,no,yes,no,no,20.98999977,73.40000153
+1748,hormone therapy,72,no,no,no,yes,no,37.02999878,149.3999939
+1749,placebo,68,no,no,no,no,yes,27.02000046,76.19999695
+1750,hormone therapy,73,no,no,no,no,no,25.87000084,77.59999847
+1751,placebo,62,no,yes,yes,no,no,37.70999908,121.8000031
+1752,hormone therapy,70,no,no,no,yes,yes,29.46999931,89.19999695
+1753,hormone therapy,69,no,yes,no,yes,yes,32.59000015,132.6000061
+1754,hormone therapy,79,no,yes,yes,yes,no,22.45999908,129.1999969
+1755,placebo,78,no,yes,no,yes,no,35.88000107,67
+1756,hormone therapy,72,no,yes,yes,no,no,25.15999985,70.40000153
+1757,placebo,73,no,no,no,no,no,24.82999992,54.79999924
+1758,placebo,66,no,yes,no,no,no,27.21999931,111.1999969
+1759,hormone therapy,61,no,no,yes,no,no,22.92000008,36.79999924
+1760,hormone therapy,66,no,yes,yes,yes,yes,28.89999962,98.40000153
+1761,placebo,71,no,yes,yes,yes,no,25.73999977,213.8000031
+1762,placebo,67,no,no,yes,no,yes,24.25,124.8000031
+1763,hormone therapy,63,no,yes,yes,no,yes,40.75999832,122.4000015
+1765,placebo,62,no,no,no,no,yes,29.62999916,109.8000031
+1766,placebo,69,no,yes,yes,yes,no,29.18000031,120.4000015
+1767,hormone therapy,63,no,yes,no,yes,no,40.61999893,132.6000061
+1768,hormone therapy,61,yes,no,yes,yes,no,28.21999931,177.6000061
+1769,placebo,72,no,yes,yes,no,no,22.87999916,109.1999969
+1770,hormone therapy,71,no,yes,no,yes,no,30.88999939,148.1999969
+1771,placebo,57,no,no,no,no,yes,36.20000076,156.3999939
+1772,hormone therapy,78,no,yes,no,yes,no,23.62999916,174.6000061
+1773,placebo,75,no,no,yes,no,no,30.87000084,149.6000061
+1775,hormone therapy,62,no,no,no,no,yes,23.63999939,146
+1776,placebo,64,no,yes,no,yes,yes,29.54999924,119.5999985
+1777,hormone therapy,67,no,no,yes,yes,no,26.69000053,92
+1778,placebo,65,no,yes,no,yes,yes,32.41999817,124.5999985
+1780,hormone therapy,71,no,no,yes,yes,yes,26.13999939,103.4000015
+1781,placebo,72,no,yes,no,no,no,38.81999969,140.6000061
+1782,placebo,71,no,yes,no,no,yes,31.68000031,158.3999939
+1783,placebo,72,no,yes,yes,no,no,31.02000046,137
+1784,placebo,63,no,yes,no,no,yes,49.45999908,122.4000015
+1785,placebo,62,no,yes,yes,yes,yes,24.56999969,116.8000031
+1786,hormone therapy,69,no,yes,no,no,yes,29.76000023,140.6000061
+1787,placebo,75,no,no,no,no,no,25.90999985,168.1999969
+1788,hormone therapy,79,no,yes,no,no,no,23.62999916,81.40000153
+1789,hormone therapy,73,no,yes,yes,yes,yes,26.98999977,135.6000061
+1790,hormone therapy,72,no,no,no,no,yes,34.27999878,150.6000061
+1791,placebo,69,no,no,no,yes,no,24.70000076,91.80000305
+1792,placebo,76,no,yes,no,yes,no,25.34000015,120
+1793,placebo,72,no,yes,no,yes,yes,31.53000069,108.8000031
+1794,hormone therapy,72,no,no,yes,no,no,25.10000038,76.59999847
+1795,placebo,78,no,yes,yes,yes,no,23.06999969,141.6000061
+1796,hormone therapy,70,no,yes,no,yes,no,30.35000038,107.4000015
+1797,placebo,57,no,yes,no,no,no,28.40999985,228.6000061
+1798,hormone therapy,79,no,yes,yes,no,no,15.48999977,94
+1799,hormone therapy,76,no,no,no,no,yes,31.20999908,156.1999969
+1800,placebo,59,no,no,no,no,yes,32.04000092,85.80000305
+1801,placebo,74,no,yes,yes,yes,no,24.55999947,255.3999939
+1802,hormone therapy,64,yes,yes,no,yes,no,29.29999924,128.1999969
+1803,placebo,65,no,no,no,yes,no,29.26000023,100.5999985
+1805,hormone therapy,54,no,no,no,no,no,35.13000107,162.3999939
+1806,hormone therapy,65,no,no,no,no,no,29.31999969,140.8000031
+1807,placebo,68,no,no,yes,no,no,21.15999985,131.3999939
+1808,hormone therapy,69,yes,no,no,yes,no,31.22999954,114.1999969
+1809,hormone therapy,58,no,no,yes,no,no,32.81999969,122.5999985
+1810,placebo,64,no,no,no,yes,no,27.09000015,126.8000031
+1811,hormone therapy,65,no,no,yes,yes,no,27.61000061,109.5999985
+1812,placebo,67,no,no,yes,yes,no,25.57999992,119
+1813,placebo,70,no,yes,yes,yes,no,23.23999977,180.3999939
+1814,placebo,71,no,no,no,no,no,28.62000084,145.1999969
+1815,hormone therapy,67,no,yes,yes,yes,no,23.62000084,123
+1816,hormone therapy,70,no,no,yes,yes,no,24.93000031,87.19999695
+1817,hormone therapy,58,yes,no,no,yes,no,40.29999924,145.3999939
+1818,placebo,59,no,no,yes,no,no,30.54000092,167.6000061
+1819,hormone therapy,62,no,yes,yes,yes,no,24.81999969,173.8000031
+1820,hormone therapy,70,yes,no,yes,yes,no,22.95000076,207.3999939
+1821,hormone therapy,56,no,no,no,no,no,28.18000031,132
+1822,placebo,69,no,no,yes,no,no,31.48999977,106.1999969
+1823,placebo,51,no,no,no,yes,yes,44.38000107,104.4000015
+1825,hormone therapy,63,no,no,yes,yes,no,28.32999992,80
+1826,placebo,63,yes,no,no,yes,no,30.87999916,202.6000061
+1827,hormone therapy,66,no,yes,no,no,no,24.95000076,58.79999924
+1828,placebo,76,no,no,yes,no,no,21.06999969,75.80000305
+1829,hormone therapy,62,no,yes,no,no,yes,27.79999924,92.59999847
+1830,hormone therapy,61,no,no,no,no,no,29.31999969,198.8000031
+1831,placebo,60,no,no,no,no,yes,36.08000183,145.8000031
+1832,hormone therapy,70,no,yes,no,no,no,34.59000015,181.8000031
+1833,placebo,75,no,no,no,no,no,31.70000076,103.4000015
+1834,placebo,70,no,no,yes,no,no,23.02000046,170.3999939
+1835,placebo,65,no,no,yes,yes,no,33.29999924,158.8000031
+1837,hormone therapy,57,no,yes,no,no,no,24.76000023,128.3999939
+1838,hormone therapy,70,no,no,no,no,no,26.5,148.3999939
+1840,hormone therapy,65,no,no,no,yes,yes,29.37000084,130
+1842,hormone therapy,63,no,no,no,no,no,19.42000008,140.1999969
+1843,hormone therapy,65,no,no,no,yes,no,28.21999931,101
+1844,placebo,58,no,no,yes,no,yes,30.32999992,153.6000061
+1845,hormone therapy,57,no,no,no,no,yes,36.83000183,80.80000305
+1846,hormone therapy,53,no,no,no,no,no,31.54999924,84.40000153
+1847,placebo,65,no,no,no,yes,no,36.15000153,96.19999695
+1848,placebo,64,yes,no,no,no,yes,24.29000092,166.1999969
+1849,placebo,60,no,no,yes,yes,no,27.39999962,149
+1850,hormone therapy,66,no,no,yes,no,yes,30.54999924,125.5999985
+1851,hormone therapy,59,no,no,yes,yes,no,20.85000038,168.1999969
+1852,placebo,65,no,yes,no,yes,no,26.65999985,148.3999939
+1853,hormone therapy,67,no,no,no,no,no,23.54000092,147
+1854,hormone therapy,66,no,no,yes,no,yes,31.87999916,124
+1855,hormone therapy,69,no,no,no,no,no,30.12000084,134
+1856,placebo,57,no,yes,yes,no,no,31.62999916,128
+1857,placebo,70,no,no,yes,yes,no,24.62000084,113.8000031
+1858,placebo,63,no,no,no,no,no,33.56000137,89
+1859,hormone therapy,50,yes,no,no,no,no,22.98999977,133.6000061
+1860,hormone therapy,63,no,no,no,no,no,22.87000084,99
+1861,hormone therapy,74,no,yes,no,no,no,28.65999985,82.19999695
+1862,placebo,70,yes,no,no,no,no,22.54000092,93.80000305
+1863,placebo,73,no,no,no,yes,no,24.88999939,147
+1864,placebo,65,no,no,yes,yes,no,24.46999931,100.8000031
+1865,placebo,64,no,no,no,no,no,27.94000053,194.1999969
+1866,placebo,64,yes,no,no,no,no,23.84000015,166.6000061
+1867,placebo,70,no,no,yes,no,no,18.63999939,155.3999939
+1868,placebo,73,no,no,no,yes,yes,33.09000015,158.3999939
+1871,hormone therapy,66,no,no,yes,no,no,24.45000076,106.5999985
+1872,placebo,67,no,no,yes,no,no,29.75,138.8000031
+1873,placebo,58,no,no,no,no,yes,28.61000061,395.3999939
+1874,placebo,52,no,no,no,no,yes,26.86000061,90.19999695
+1875,hormone therapy,71,no,no,yes,no,no,26.54000092,119
+1876,hormone therapy,62,no,yes,no,no,no,35.77000046,101
+1877,hormone therapy,74,no,no,no,no,no,33.91999817,59.40000153
+1878,hormone therapy,61,no,no,yes,no,no,27.25,121.1999969
+1879,hormone therapy,53,no,no,no,yes,no,23.93000031,111.8000031
+1880,hormone therapy,63,no,no,no,no,yes,35.47000122,87.40000153
+1881,placebo,61,no,no,yes,no,yes,39.61999893,133.3999939
+1882,placebo,76,no,no,no,yes,no,28.92000008,148.3999939
+1883,placebo,77,no,yes,no,no,no,24.72999954,161.1999969
+1885,hormone therapy,76,no,no,no,no,yes,29.05999947,113.5999985
+1886,placebo,61,no,no,no,no,no,25.47999954,129.6000061
+1887,hormone therapy,69,no,yes,yes,no,no,18.38999939,128.6000061
+1888,hormone therapy,70,no,yes,no,yes,no,26.30999947,161.3999939
+1889,placebo,60,no,no,yes,yes,no,21.90999985,235.3999939
+1890,hormone therapy,68,no,no,no,no,no,21.10000038,90.59999847
+1891,placebo,60,no,no,no,no,no,23.23999977,137
+1892,hormone therapy,60,no,no,no,no,yes,34.65999985,81
+1893,placebo,66,no,yes,yes,no,no,36,151.1999969
+1894,hormone therapy,57,no,no,no,yes,no,32.83000183,151
+1895,hormone therapy,61,no,yes,yes,no,no,21.43000031,87.59999847
+1896,hormone therapy,69,no,no,yes,no,no,24.39999962,189.3999939
+1897,placebo,62,yes,yes,no,no,no,31.52000046,153.1999969
+1898,placebo,75,no,no,no,yes,no,26.71999931,137
+1899,placebo,68,no,no,yes,no,no,28.29999924,113
+1900,hormone therapy,71,no,no,yes,no,yes,30.18000031,127
+1901,hormone therapy,64,no,no,no,no,yes,27.79999924,138.8000031
+1902,placebo,65,yes,no,no,yes,yes,24.75,169.6000061
+1903,placebo,61,no,no,yes,yes,no,27.95000076,214
+1904,hormone therapy,76,no,yes,no,yes,no,29.40999985,90.80000305
+1905,hormone therapy,60,no,no,yes,no,no,23,89
+1906,hormone therapy,58,no,no,yes,no,yes,41.72999954,135.1999969
+1907,hormone therapy,76,no,no,yes,no,no,24.80999947,120.5999985
+1908,placebo,67,no,yes,no,no,yes,32.45000076,185.3999939
+1909,hormone therapy,69,no,yes,yes,yes,yes,38.70999908,95
+1910,hormone therapy,60,no,yes,no,no,no,24.55999947,98.19999695
+1911,hormone therapy,68,no,no,yes,yes,no,23.5,78.40000153
+1912,hormone therapy,57,yes,no,yes,yes,no,29.56999969,151.1999969
+1913,placebo,66,yes,no,yes,no,no,18.75,72.19999695
+1914,placebo,53,no,yes,no,yes,yes,35.20999908,158.6000061
+1915,placebo,63,no,no,yes,yes,no,34.70999908,115
+1916,placebo,73,no,no,yes,no,yes,32.13000107,116.1999969
+1917,placebo,78,no,no,no,no,no,27.28000069,115
+1918,hormone therapy,77,no,no,no,yes,yes,33.90999985,152
+1919,placebo,71,no,no,no,no,no,30.94000053,103.5999985
+1920,hormone therapy,71,no,no,no,no,no,25.43000031,131.8000031
+1921,placebo,76,no,no,no,no,no,27.90999985,150.8000031
+1922,placebo,72,no,yes,no,no,no,27.05999947,153.1999969
+1923,placebo,77,no,no,yes,yes,no,23.34000015,155.1999969
+1924,hormone therapy,69,no,no,yes,yes,no,26.20000076,132.1999969
+1925,placebo,73,no,no,no,no,no,30.12000084,189.8000031
+1926,hormone therapy,69,no,no,yes,no,no,28.97999954,111.1999969
+1927,hormone therapy,72,no,no,no,no,no,35.02999878,159.6000061
+1928,placebo,71,no,no,yes,no,yes,21.14999962,92
+1930,hormone therapy,76,no,no,no,yes,no,24.63999939,80.40000153
+1931,hormone therapy,74,no,yes,yes,no,no,31.81999969,106.5999985
+1934,placebo,73,no,yes,no,yes,no,23.18000031,126.8000031
+1935,placebo,61,no,no,yes,yes,no,30.69000053,136.3999939
+1936,hormone therapy,70,no,no,no,no,yes,29.40999985,91.80000305
+1937,placebo,56,no,no,yes,no,no,23.22999954,130
+1939,placebo,71,no,no,no,yes,no,21.86000061,111.5999985
+1940,hormone therapy,52,yes,no,no,yes,yes,28.42000008,83.19999695
+1941,placebo,74,no,no,no,yes,no,27.97999954,84.80000305
+1942,hormone therapy,72,no,no,yes,yes,no,23.68000031,158.3999939
+1944,placebo,64,no,yes,no,no,no,26.45000076,143.3999939
+1945,placebo,74,no,no,yes,no,no,30,103.5999985
+1946,hormone therapy,61,no,no,no,no,yes,39.63999939,176.1999969
+1947,hormone therapy,75,no,no,no,yes,no,27.89999962,193.3999939
+1948,hormone therapy,72,no,no,yes,yes,no,24.04999924,103.4000015
+1949,hormone therapy,61,no,yes,no,yes,no,35.25999832,155.8000031
+1950,placebo,70,no,yes,no,no,no,33.54999924,206.3999939
+1951,placebo,71,no,no,yes,yes,no,23.37999916,127.5999985
+1952,placebo,74,no,yes,yes,no,no,18.20000076,174.3999939
+1953,hormone therapy,71,no,yes,no,no,no,25.94000053,167
+1954,placebo,58,yes,no,yes,no,no,22.57999992,158.6000061
+1955,hormone therapy,63,no,yes,no,yes,no,24.70999908,101.8000031
+1956,hormone therapy,64,no,yes,yes,yes,no,22.42000008,98.80000305
+1957,hormone therapy,70,no,yes,yes,no,no,25.88999939,185.1999969
+1958,placebo,69,no,yes,no,yes,yes,25.15999985,112.8000031
+1959,hormone therapy,74,no,yes,no,no,no,23.03000069,95
+1960,placebo,72,no,yes,yes,no,no,31.36000061,149.3999939
+1961,hormone therapy,59,no,yes,no,no,yes,27.10000038,187.3999939
+1962,placebo,62,no,no,no,no,no,28.68000031,134.3999939
+1963,hormone therapy,74,no,no,no,yes,no,37.70000076,86.80000305
+1964,placebo,70,no,no,yes,no,yes,28.46999931,123.5999985
+1965,hormone therapy,58,no,no,yes,yes,no,29.52000046,141.1999969
+1967,hormone therapy,74,no,yes,yes,no,no,22.54999924,146.8000031
+1968,hormone therapy,72,no,yes,yes,no,no,36.09000015,193.1999969
+1969,placebo,69,no,yes,no,no,no,25.65999985,197
+1970,placebo,70,no,no,no,no,yes,26.37999916,144.8000031
+1971,placebo,73,no,no,no,no,yes,31.63999939,158
+1972,hormone therapy,58,no,no,yes,yes,no,34.90999985,119.1999969
+1973,placebo,58,no,yes,no,no,no,29.94000053,150
+1974,placebo,74,no,no,no,yes,no,26.62000084,109.8000031
+1975,hormone therapy,74,no,yes,yes,no,no,27.02000046,92.40000153
+1976,placebo,72,no,yes,yes,yes,no,27.36000061,151.1999969
+1977,placebo,74,no,no,yes,yes,no,29.52000046,113.5999985
+1978,placebo,62,no,yes,yes,no,no,24.44000053,129.1999969
+1979,placebo,69,yes,yes,no,yes,no,26.93000031,94.19999695
+1980,placebo,61,yes,yes,no,yes,no,23.34000015,97.59999847
+1981,hormone therapy,59,no,yes,yes,no,yes,31.28000069,111.1999969
+1982,placebo,54,no,yes,no,yes,no,38.13999939,78.19999695
+1983,hormone therapy,71,no,no,no,no,no,24.56999969,181
+1984,hormone therapy,67,no,yes,no,yes,yes,30.86000061,142.3999939
+1985,placebo,58,no,yes,no,yes,no,33.02000046,131.1999969
+1986,hormone therapy,64,no,yes,no,no,no,22.82999992,121.4000015
+1987,hormone therapy,67,no,no,no,no,yes,29.95000076,110.8000031
+1988,placebo,71,no,yes,yes,yes,no,21.60000038,110.4000015
+1989,placebo,68,yes,no,no,yes,yes,33.93000031,98.59999847
+1990,placebo,64,no,no,no,yes,yes,32.15000153,132.1999969
+1991,placebo,65,yes,yes,yes,yes,no,29.59000015,146.8000031
+1992,hormone therapy,63,yes,yes,no,no,no,35.83000183,86.40000153
+1993,hormone therapy,65,no,yes,yes,yes,no,21.12000084,117.4000015
+1994,hormone therapy,60,no,no,yes,yes,no,23.26000023,127.4000015
+1995,placebo,64,yes,yes,yes,no,no,29.56999969,115
+1996,placebo,70,no,no,yes,no,no,29.46999931,144.1999969
+1997,hormone therapy,69,no,no,no,no,yes,31.96999931,107.8000031
+1998,placebo,71,yes,no,no,no,no,30.75,118.1999969
+1999,placebo,72,no,yes,no,no,no,25.78000069,139.3999939
+2000,placebo,75,no,no,no,yes,yes,37.06999969,82.40000153
+2001,hormone therapy,78,no,no,no,no,no,25.61000061,145.1999969
+2002,hormone therapy,69,no,yes,no,yes,no,23.36000061,106
+2003,placebo,65,yes,yes,no,no,no,30.43000031,105
+2004,hormone therapy,55,yes,no,no,no,no,27.51000023,137.3999939
+2005,hormone therapy,71,no,no,yes,no,no,25.46999931,155
+2006,placebo,70,no,no,no,no,no,22.92000008,199.3999939
+2007,hormone therapy,66,no,yes,yes,no,no,19.90999985,124.4000015
+2008,hormone therapy,69,no,yes,yes,no,no,23.51000023,127.5999985
+2009,hormone therapy,64,no,yes,no,no,yes,23.14999962,100.4000015
+2010,hormone therapy,63,no,no,yes,no,no,29.72999954,164.1999969
+2011,hormone therapy,62,no,yes,yes,no,no,25.20000076,140.1999969
+2012,hormone therapy,61,no,no,yes,yes,yes,26.39999962,111.1999969
+2013,hormone therapy,61,no,no,no,yes,no,25.39999962,158.8000031
+2014,placebo,78,no,no,no,yes,no,29.29999924,108.8000031
+2015,placebo,76,no,yes,no,yes,no,27.46999931,135.8000031
+2016,placebo,79,no,no,no,no,no,28.5,177.3999939
+2017,hormone therapy,68,yes,yes,no,no,no,33.00999832,175
+2018,placebo,63,yes,no,yes,no,no,22.68000031,132.1999969
+2019,placebo,62,no,no,yes,yes,no,24.36000061,90.19999695
+2020,placebo,77,no,yes,no,yes,no,25.79999924,100.1999969
+2021,hormone therapy,72,no,yes,no,no,no,32.45000076,121.8000031
+2022,hormone therapy,69,no,no,yes,no,no,29.93000031,147.1999969
+2023,hormone therapy,63,no,yes,no,no,yes,36.24000168,195.3999939
+2024,placebo,76,no,no,yes,no,no,25.68000031,151.1999969
+2025,placebo,71,no,no,no,yes,no,30.21999931,45
+2026,placebo,73,no,yes,no,yes,no,35.40999985,81
+2028,hormone therapy,55,yes,no,no,no,yes,26.34000015,104.5999985
+2029,placebo,70,no,no,no,yes,yes,26.55999947,107.1999969
+2030,placebo,70,no,no,no,yes,yes,38.25,80.80000305
+2031,placebo,69,no,no,no,yes,no,26.64999962,163.3999939
+2032,hormone therapy,56,no,no,yes,yes,yes,18.37000084,138.3999939
+2033,placebo,62,no,yes,yes,no,no,28.5,138.8000031
+2034,placebo,74,no,no,yes,no,yes,36.20000076,86
+2035,hormone therapy,75,no,no,yes,no,no,18.04999924,100
+2036,hormone therapy,62,no,no,yes,no,yes,27.62999916,57.79999924
+2037,placebo,76,yes,yes,no,no,no,26.32999992,98
+2038,hormone therapy,64,no,no,yes,no,no,30.60000038,89
+2039,placebo,70,no,yes,no,no,no,25.96999931,169.6000061
+2040,placebo,51,yes,yes,yes,no,no,24.14999962,119.5999985
+2041,placebo,73,no,yes,no,yes,no,37.06999969,132
+2042,placebo,69,no,no,yes,no,yes,38.38999939,139.1999969
+2043,hormone therapy,65,no,yes,yes,yes,no,21.57999992,87.40000153
+2044,hormone therapy,75,yes,yes,yes,no,no,19.70999908,121
+2045,hormone therapy,78,yes,yes,no,yes,no,27.36000061,76.80000305
+2046,hormone therapy,63,no,yes,no,no,no,37.36999893,126
+2047,placebo,66,no,no,no,no,yes,39.02999878,109.1999969
+2048,hormone therapy,65,yes,no,no,no,no,35.56999969,97
+2049,hormone therapy,77,no,yes,no,no,no,26.94000053,155.3999939
+2050,hormone therapy,71,no,yes,yes,no,no,25.20000076,175.6000061
+2051,placebo,79,no,yes,no,yes,no,29.01000023,114.4000015
+2052,placebo,72,no,yes,yes,yes,no,34.31000137,163
+2053,placebo,78,no,yes,no,no,no,33.09000015,122.1999969
+2054,hormone therapy,77,no,no,no,yes,no,31.44000053,160.6000061
+2055,hormone therapy,79,no,no,no,no,no,30.29999924,169.3999939
+2056,hormone therapy,73,no,no,yes,no,no,29.04000092,112.8000031
+2057,placebo,60,yes,no,yes,no,no,35.41999817,127.1999969
+2058,hormone therapy,69,yes,no,no,no,no,27.29999924,128.8000031
+2059,hormone therapy,77,no,no,yes,no,no,35.11000061,160.3999939
+2060,placebo,76,no,yes,no,yes,no,24.84000015,155.6000061
+2061,hormone therapy,73,no,yes,yes,yes,no,22.77000046,76.40000153
+2062,placebo,71,no,yes,yes,no,yes,23.80999947,143.1999969
+2063,placebo,70,no,no,yes,yes,yes,28.79999924,99.40000153
+2064,placebo,75,no,yes,yes,no,no,24.45000076,153.3999939
+2065,hormone therapy,71,no,no,no,no,no,29.29000092,150
+2067,hormone therapy,69,no,no,yes,no,no,24.62000084,70.19999695
+2068,hormone therapy,73,no,yes,yes,yes,no,30.82999992,104.4000015
+2069,placebo,73,no,yes,no,yes,no,23.47999954,169.6000061
+2070,placebo,71,no,no,yes,no,no,25.04000092,176
+2071,placebo,71,yes,yes,yes,yes,no,25.73999977,106.1999969
+2072,hormone therapy,72,no,no,yes,yes,no,26.84000015,146.6000061
+2073,placebo,71,no,no,no,no,no,36.70999908,126.4000015
+2074,placebo,79,no,no,no,no,no,25.87000084,115.1999969
+2075,hormone therapy,75,no,yes,no,yes,no,24.31999969,134.6000061
+2076,hormone therapy,55,no,yes,no,yes,no,25.95000076,115.8000031
+2077,hormone therapy,68,no,yes,no,yes,no,36.97000122,112.1999969
+2078,placebo,63,no,yes,yes,yes,no,25.28000069,138.3999939
+2079,placebo,72,no,yes,no,no,no,27.65999985,111.8000031
+2080,hormone therapy,72,no,yes,yes,yes,no,32.15999985,129.6000061
+2081,placebo,68,no,yes,no,yes,no,21.48999977,82.59999847
+2082,hormone therapy,71,no,no,yes,no,no,22.81999969,128.3999939
+2083,placebo,58,no,yes,yes,yes,no,29.46999931,232.3999939
+2084,placebo,58,no,yes,yes,no,no,21.26000023,141
+2085,hormone therapy,73,no,no,no,yes,no,39.47000122,167.8000031
+2086,hormone therapy,69,no,no,yes,no,yes,30.07999992,120
+2087,placebo,72,no,no,no,yes,yes,41.84000015,118.8000031
+2088,hormone therapy,50,yes,no,no,no,no,21.22999954,133.3999939
+2089,placebo,63,no,no,yes,no,no,33.63999939,239
+2090,hormone therapy,70,no,yes,no,no,yes,29.51000023,115
+2091,hormone therapy,72,no,yes,yes,no,yes,24.27000046,72.40000153
+2092,placebo,67,no,yes,yes,no,no,29.45000076,111.5999985
+2093,hormone therapy,65,no,yes,yes,no,no,40.13000107,149.6000061
+2094,hormone therapy,72,no,no,yes,no,no,22.10000038,134.6000061
+2095,placebo,64,no,yes,no,no,no,44.47000122,124.8000031
+2096,hormone therapy,65,no,no,no,yes,no,29.93000031,124
+2097,placebo,75,no,yes,no,no,no,20.22999954,68.59999847
+2098,hormone therapy,71,no,no,no,no,no,29.29999924,93.40000153
+2099,placebo,74,no,yes,no,no,no,34.20000076,95.19999695
+2100,placebo,68,no,yes,yes,no,no,18.69000053,105.1999969
+2101,hormone therapy,56,no,no,yes,no,no,34.97999954,104.4000015
+2102,placebo,67,no,yes,yes,no,no,26.17000008,133.6000061
+2103,hormone therapy,59,no,yes,no,yes,no,32.47000122,103
+2104,placebo,62,no,no,no,no,no,27.43000031,112.5999985
+2105,placebo,69,no,yes,yes,yes,no,23.95000076,138
+2107,placebo,74,no,no,yes,no,no,31.32999992,157.3999939
+2108,hormone therapy,74,no,yes,no,no,no,24.45999908,161
+2109,hormone therapy,52,yes,yes,no,yes,no,25.97999954,250
+2110,placebo,70,no,no,no,no,no,27.13999939,109
+2111,hormone therapy,72,no,no,yes,no,no,36.49000168,150.1999969
+2112,placebo,65,no,yes,no,yes,no,24.61000061,114
+2113,hormone therapy,62,yes,yes,no,yes,no,31.87000084,103.8000031
+2114,hormone therapy,72,no,no,no,no,no,27.5,129.6000061
+2115,placebo,71,no,no,no,no,no,21.92000008,156
+2116,hormone therapy,55,no,no,no,no,no,36.61999893,76.80000305
+2117,placebo,60,no,yes,yes,no,no,27.28000069,140
+2118,placebo,71,no,yes,yes,no,no,29.92000008,156.3999939
+2119,placebo,68,no,yes,yes,no,no,29.14999962,128.6000061
+2120,hormone therapy,61,yes,no,yes,no,no,20.82999992,118.8000031
+2121,placebo,61,no,no,no,no,no,26.02000046,176.8000031
+2122,hormone therapy,62,no,yes,yes,yes,no,29.76000023,109.1999969
+2123,placebo,72,yes,yes,yes,no,no,31.78000069,260.3999939
+2124,placebo,73,no,no,no,yes,no,26.67000008,142.1999969
+2125,placebo,64,yes,yes,no,no,no,26.80999947,131.1999969
+2126,hormone therapy,69,no,no,no,yes,no,40.18000031,96.19999695
+2127,hormone therapy,69,no,yes,no,no,no,25.10000038,74.80000305
+2128,placebo,58,no,no,no,yes,yes,27.25,105.4000015
+2129,hormone therapy,71,no,no,yes,no,yes,22.5,64
+2130,hormone therapy,67,no,no,no,no,yes,42.00999832,93.40000153
+2131,placebo,66,no,no,no,no,no,31.52000046,190.6000061
+2132,hormone therapy,62,no,no,no,no,no,33.25,92.40000153
+2133,placebo,79,no,no,no,no,no,31.79000092,115
+2136,placebo,65,no,yes,no,yes,no,29.65999985,143.3999939
+2137,placebo,60,no,no,no,yes,yes,44.18000031,102.1999969
+2138,hormone therapy,63,no,no,yes,yes,no,26.89999962,91.19999695
+2139,hormone therapy,71,no,no,yes,yes,no,25.06999969,119.1999969
+2140,hormone therapy,74,no,no,yes,no,no,24.52000046,119.8000031
+2141,hormone therapy,64,no,no,yes,no,no,29.15999985,77
+2142,hormone therapy,71,no,no,no,yes,no,26.25,102
+2143,hormone therapy,62,no,no,no,no,no,34.13000107,228.1999969
+2144,placebo,73,no,no,yes,no,no,21.51000023,193.3999939
+2145,placebo,67,no,no,yes,yes,yes,40.22999954,79.59999847
+2147,placebo,60,no,no,no,no,no,35.31999969,114.8000031
+2148,placebo,63,yes,yes,no,no,no,26.62000084,151.3999939
+2149,placebo,64,no,yes,yes,no,no,26.52000046,127.1999969
+2150,hormone therapy,79,no,yes,no,no,no,25.36000061,156.1999969
+2151,placebo,64,no,no,no,no,yes,32.72000122,166.8000031
+2152,hormone therapy,65,no,yes,yes,yes,no,32.95999908,119.4000015
+2153,hormone therapy,62,no,yes,no,yes,no,34.43000031,127.5999985
+2154,hormone therapy,68,no,no,no,yes,yes,30.57999992,98.19999695
+2155,placebo,70,no,no,no,yes,yes,35.66999817,100.1999969
+2156,placebo,61,no,yes,yes,no,yes,23.76000023,68.19999695
+2157,hormone therapy,60,yes,yes,no,yes,no,32.95000076,145.3999939
+2158,hormone therapy,65,yes,no,no,no,no,26.62000084,156.3999939
+2159,placebo,69,no,no,yes,yes,yes,27.72999954,155
+2160,placebo,57,no,no,yes,no,no,41.18999863,106.4000015
+2161,placebo,72,no,no,no,no,yes,26.90999985,173.6000061
+2162,hormone therapy,59,no,yes,no,no,no,29.09000015,124
+2163,placebo,66,no,no,no,yes,yes,34.47999954,144.3999939
+2164,hormone therapy,74,no,yes,no,no,no,32.97999954,146
+2165,hormone therapy,61,no,no,no,yes,yes,28.13999939,137.8000031
+2166,hormone therapy,57,no,yes,yes,no,no,22.90999985,138.6000061
+2167,hormone therapy,74,no,no,no,yes,no,25.77000046,85.40000153
+2168,hormone therapy,64,no,no,no,yes,yes,35.38000107,144.1999969
+2169,placebo,67,yes,yes,yes,yes,no,25.93000031,96.19999695
+2170,placebo,60,no,no,no,no,yes,25.12000084,149.8000031
+2171,placebo,59,yes,no,yes,no,no,32.11000061,159.1999969
+2172,placebo,79,no,no,no,no,yes,35.34000015,154.1999969
+2173,hormone therapy,72,no,yes,no,no,no,22.94000053,119.8000031
+2174,hormone therapy,70,yes,no,no,yes,no,36.06999969,134
+2175,hormone therapy,71,yes,yes,no,no,yes,27.88999939,153.3999939
+2176,placebo,76,no,yes,no,yes,no,22.46999931,107.1999969
+2177,placebo,70,no,no,no,no,no,31.03000069,167.6000061
+2178,placebo,60,yes,no,yes,no,no,25.54999924,122.1999969
+2179,hormone therapy,72,no,no,yes,yes,no,26.79999924,72
+2180,hormone therapy,65,no,no,yes,no,yes,19.95000076,119.1999969
+2181,placebo,70,no,yes,yes,no,no,25.62999916,143.6000061
+2182,hormone therapy,66,no,no,no,no,no,28.51000023,145.6000061
+2183,placebo,64,no,yes,yes,no,no,21.46999931,139.6000061
+2184,placebo,65,no,no,no,yes,yes,25.25,124.4000015
+2185,placebo,68,no,no,no,no,no,37.43000031,122.4000015
+2187,placebo,64,no,yes,no,no,no,34.97999954,144.8000031
+2188,hormone therapy,74,no,no,yes,yes,no,25.5,140.1999969
+2189,placebo,76,no,yes,yes,no,no,26.18000031,153.3999939
+2190,hormone therapy,75,no,yes,no,yes,yes,38.20999908,106
+2191,placebo,67,no,no,no,yes,yes,28.03000069,102.4000015
+2192,placebo,69,no,no,no,no,no,38.13999939,145.6000061
+2193,hormone therapy,67,no,no,no,yes,yes,40.11999893,119.4000015
+2194,placebo,78,no,no,yes,no,no,33.06999969,164.8000031
+2195,placebo,67,no,no,no,no,no,35.74000168,125.8000031
+2196,hormone therapy,67,yes,no,no,yes,no,22.54000092,115.8000031
+2197,hormone therapy,71,no,no,no,yes,yes,29.15999985,118.8000031
+2198,hormone therapy,68,no,no,yes,yes,yes,30.98999977,142.8000031
+2199,hormone therapy,71,no,no,yes,yes,yes,35.84000015,98.19999695
+2200,placebo,74,yes,yes,no,yes,yes,17.55999947,89.19999695
+2201,hormone therapy,72,no,yes,no,yes,no,24.35000038,97
+2202,placebo,72,no,no,no,no,yes,26.25,183.6000061
+2203,hormone therapy,77,no,yes,no,yes,no,24.72999954,98.40000153
+2204,hormone therapy,73,no,yes,yes,no,no,24.42000008,133.8000031
+2205,hormone therapy,60,no,no,yes,no,yes,31.79999924,74.19999695
+2206,placebo,67,no,yes,no,no,no,21.59000015,116.8000031
+2207,placebo,63,no,no,yes,yes,yes,21.77000046,172.8000031
+2209,placebo,74,no,no,no,yes,no,33.38999939,129.6000061
+2210,placebo,75,no,yes,yes,yes,no,26.59000015,117.4000015
+2211,placebo,77,no,no,no,yes,no,30.11000061,201
+2212,placebo,59,no,no,no,no,yes,31.67000008,242.3999939
+2213,hormone therapy,68,no,yes,yes,yes,no,26.94000053,119.5999985
+2214,placebo,72,no,no,yes,no,no,32.31000137,142.8000031
+2215,hormone therapy,55,no,yes,no,no,no,30.22999954,158
+2216,placebo,66,no,yes,yes,yes,no,30.86000061,125.5999985
+2217,placebo,68,no,yes,yes,no,no,21.26000023,160.1999969
+2218,hormone therapy,76,yes,yes,yes,no,no,27.96999931,112.1999969
+2219,hormone therapy,67,no,no,yes,no,yes,27.75,93.59999847
+2220,placebo,61,no,no,no,no,yes,28.95999908,189.8000031
+2221,placebo,65,yes,no,yes,no,no,25.53000069,113.5999985
+2222,hormone therapy,56,no,no,no,no,yes,35.95999908,110.5999985
+2223,placebo,67,no,no,no,no,no,22.40999985,102.4000015
+2224,placebo,66,yes,no,yes,yes,no,29.04999924,96.59999847
+2225,placebo,73,no,yes,yes,yes,no,20.39999962,144.8000031
+2226,placebo,62,no,no,no,no,yes,42.27000046,144.3999939
+2227,hormone therapy,74,no,no,yes,no,no,23.29000092,173.1999969
+2228,placebo,58,no,no,no,no,no,27.07999992,108.1999969
+2229,hormone therapy,56,no,yes,no,no,no,21.32999992,141.6000061
+2230,hormone therapy,58,no,no,no,no,no,43.49000168,139.6000061
+2231,hormone therapy,54,no,no,no,no,yes,41.61999893,163
+2232,hormone therapy,66,no,yes,yes,yes,no,26.44000053,143.8000031
+2233,placebo,56,no,yes,no,yes,no,27.35000038,340
+2234,placebo,59,no,no,yes,no,no,36.68000031,179.3999939
+2235,hormone therapy,60,yes,no,no,yes,no,27.44000053,157
+2236,placebo,64,no,yes,yes,no,no,24.67000008,159.1999969
+2237,hormone therapy,62,no,yes,yes,yes,no,25.63999939,164.8000031
+2238,placebo,67,no,yes,no,no,no,26.13999939,143.6000061
+2239,hormone therapy,70,no,no,yes,yes,yes,30.60000038,97.40000153
+2240,placebo,67,no,no,no,no,no,27.88999939,157.8000031
+2242,hormone therapy,64,no,no,no,yes,no,20.89999962,294.7999878
+2243,hormone therapy,65,no,yes,no,no,no,28.18000031,236.6000061
+2244,hormone therapy,65,no,no,yes,yes,no,21.93000031,194.6000061
+2245,placebo,59,no,no,no,no,yes,27.02000046,107
+2246,placebo,60,no,yes,no,yes,no,34.49000168,113.4000015
+2247,placebo,56,yes,yes,no,no,no,22.14999962,184.1999969
+2248,hormone therapy,57,no,yes,no,no,no,25.88999939,152.1999969
+2249,placebo,66,no,yes,no,no,no,29.17000008,120.1999969
+2250,hormone therapy,64,no,no,no,yes,no,28.46999931,119.4000015
+2251,hormone therapy,67,no,no,yes,no,yes,35.49000168,109.5999985
+2252,hormone therapy,74,no,no,no,no,no,30.38999939,178.6000061
+2253,placebo,69,no,yes,yes,no,yes,33.52999878,123.4000015
+2254,hormone therapy,63,no,no,yes,yes,no,29.20000076,134.6000061
+2255,hormone therapy,63,no,no,no,yes,yes,34.86999893,99.40000153
+2256,placebo,60,no,yes,no,no,no,21.95000076,118.8000031
+2257,placebo,57,no,yes,no,no,no,25.51000023,138.6000061
+2258,placebo,57,no,yes,yes,no,no,25.38999939,134.1999969
+2259,placebo,58,no,yes,no,no,no,28.45999908,146.6000061
+2260,hormone therapy,69,no,no,yes,yes,no,25.39999962,104.5999985
+2261,hormone therapy,74,no,no,no,no,no,24.32999992,116.4000015
+2262,hormone therapy,65,no,no,yes,yes,no,29.06999969,129.8000031
+2263,placebo,72,no,no,no,yes,yes,31.93000031,59
+2264,hormone therapy,62,no,no,no,no,yes,29.55999947,68.19999695
+2265,placebo,62,no,yes,no,no,no,27.22999954,134
+2266,hormone therapy,70,no,no,no,no,no,31.44000053,119.5999985
+2267,hormone therapy,55,yes,no,no,no,no,40.20000076,181.8000031
+2268,hormone therapy,66,no,yes,no,yes,no,26.05999947,91.80000305
+2269,placebo,72,no,no,no,no,no,30.96999931,110.8000031
+2270,placebo,56,no,no,no,no,no,32.24000168,133.8000031
+2271,placebo,75,no,no,no,yes,no,28.70000076,128.3999939
+2272,placebo,72,no,no,no,yes,no,26.05999947,155.1999969
+2273,hormone therapy,68,no,no,no,no,no,30.36000061,164.1999969
+2274,placebo,59,no,no,no,yes,yes,41.65000153,115
+2275,hormone therapy,69,no,no,no,no,yes,48.70000076,134.8000031
+2276,placebo,74,no,yes,yes,yes,yes,27.32999992,115.8000031
+2277,placebo,63,no,no,no,no,no,29.92000008,204.1999969
+2278,placebo,69,no,no,yes,no,yes,30.51000023,125
+2280,placebo,77,no,no,no,no,no,40.15999985,147.1999969
+2282,placebo,73,no,no,no,no,no,25.06999969,186.3999939
+2283,placebo,71,no,no,yes,yes,yes,37.16999817,113.5999985
+2284,placebo,58,no,no,no,no,yes,34.68000031,211.3999939
+2285,hormone therapy,67,no,no,yes,no,yes,26.39999962,111.4000015
+2286,hormone therapy,61,no,no,no,no,yes,46.74000168,94.19999695
+2287,hormone therapy,55,yes,no,no,no,no,26.63999939,224
+2288,hormone therapy,65,no,no,yes,no,no,24.11000061,90.80000305
+2289,placebo,55,no,no,yes,no,no,29.64999962,235.1999969
+2290,hormone therapy,75,no,no,no,no,no,26.85000038,150.6000061
+2291,hormone therapy,78,no,no,no,yes,no,22.95000076,126.4000015
+2292,placebo,68,no,no,no,yes,no,26.21999931,212.3999939
+2294,hormone therapy,57,no,no,no,no,no,30.09000015,95.59999847
+2295,hormone therapy,68,no,yes,no,yes,no,33.93999863,127.5999985
+2296,placebo,68,no,no,no,no,yes,30.32999992,124.8000031
+2298,placebo,73,no,no,no,no,no,29.34000015,111.4000015
+2299,placebo,61,no,no,yes,yes,no,38.77000046,114
+2300,hormone therapy,75,no,yes,no,yes,no,36.06999969,122.4000015
+2302,placebo,55,yes,no,no,no,no,24.34000015,200.8000031
+2303,placebo,57,no,yes,no,yes,yes,40.36999893,149.6000061
+2304,placebo,61,no,no,yes,yes,yes,32.95000076,133.1999969
+2305,placebo,77,no,no,no,no,no,30.26000023,159
+2306,hormone therapy,57,no,yes,yes,no,no,25.14999962,119.5999985
+2307,hormone therapy,68,no,no,no,yes,yes,35.91999817,101
+2308,hormone therapy,63,no,yes,yes,no,yes,26.04999924,177.3999939
+2309,hormone therapy,62,no,no,no,no,no,32.02999878,98
+2310,hormone therapy,66,no,yes,no,no,no,49.75999832,131.1999969
+2311,hormone therapy,77,no,no,no,no,yes,36.75,78
+2312,placebo,72,yes,yes,no,yes,no,24.39999962,123
+2313,placebo,69,no,yes,no,no,no,21.27000046,111.4000015
+2314,placebo,71,no,no,no,no,yes,33.63999939,83.40000153
+2315,hormone therapy,66,no,no,yes,yes,no,27.23999977,128.8000031
+2316,hormone therapy,73,no,no,yes,no,yes,19.36000061,112.8000031
+2317,hormone therapy,66,no,yes,no,no,no,25.71999931,155.8000031
+2318,hormone therapy,63,no,yes,no,no,no,29.65999985,169.1999969
+2319,hormone therapy,57,no,no,no,yes,no,26.38999939,82.19999695
+2320,placebo,63,no,no,no,yes,yes,50,167
+2321,hormone therapy,73,no,no,no,yes,no,31.84000015,156.8000031
+2322,placebo,63,yes,no,no,no,no,25.12999916,132.1999969
+2323,hormone therapy,68,no,no,no,yes,no,27.69000053,97.40000153
+2324,placebo,57,no,yes,no,no,no,28.14999962,187.8000031
+2325,placebo,67,no,no,yes,no,yes,28.27000046,126
+2326,hormone therapy,71,no,no,yes,no,yes,29.54999924,135.8000031
+2327,placebo,59,no,no,yes,no,no,37.81000137,200
+2328,hormone therapy,60,no,no,yes,yes,no,40.02000046,98.40000153
+2329,placebo,60,no,no,no,no,no,38.81999969,161.8000031
+2330,placebo,77,no,no,no,no,no,24.34000015,159
+2331,hormone therapy,67,no,no,no,no,yes,26.80999947,20
+2332,placebo,62,yes,yes,no,no,no,26.64999962,115.8000031
+2333,hormone therapy,76,no,yes,yes,yes,no,25.12999916,67.19999695
+2334,hormone therapy,72,no,no,no,no,no,22.75,104
+2335,placebo,71,no,yes,yes,no,no,25.39999962,191.8000031
+2336,placebo,67,no,yes,no,no,no,31.89999962,143.3999939
+2337,hormone therapy,69,no,yes,yes,yes,no,25.20000076,125
+2338,placebo,79,no,yes,yes,no,no,23.90999985,111.8000031
+2339,placebo,78,no,no,no,no,no,23.26000023,114.4000015
+2340,hormone therapy,78,no,yes,yes,no,no,20.15999985,80.40000153
+2341,hormone therapy,79,no,no,no,no,no,25.22999954,171.6000061
+2342,placebo,78,no,yes,yes,no,no,21.87000084,153.8000031
+2344,placebo,54,yes,no,no,no,no,29.31999969,151
+2345,placebo,70,no,no,yes,no,no,25.15999985,115
+2346,hormone therapy,64,yes,no,no,yes,no,26.76000023,105
+2347,hormone therapy,70,no,yes,yes,no,no,31.54999924,139.3999939
+2349,hormone therapy,61,yes,no,yes,yes,no,24.26000023,123
+2350,placebo,64,no,no,yes,no,no,20.18000031,145.1999969
+2351,hormone therapy,73,no,no,no,no,no,25.57999992,156
+2352,placebo,53,yes,no,no,no,no,28.57999992,126
+2353,hormone therapy,51,no,no,no,no,yes,28.22999954,222
+2354,hormone therapy,65,no,no,no,no,yes,35.13000107,109.5999985
+2355,hormone therapy,70,no,no,no,yes,no,28.06999969,166.3999939
+2356,placebo,59,no,no,no,no,no,27.92000008,107
+2357,placebo,62,yes,yes,yes,no,no,26.52000046,147.8000031
+2358,hormone therapy,79,no,no,no,no,yes,28.01000023,128.8000031
+2359,placebo,57,yes,no,yes,no,no,30.38999939,102.4000015
+2360,hormone therapy,73,no,no,no,no,yes,33.25,120.8000031
+2361,placebo,75,no,no,yes,no,no,23.34000015,109.8000031
+2362,hormone therapy,75,no,no,no,no,yes,34.16999817,131.1999969
+2363,placebo,68,no,no,yes,yes,no,26.05999947,95.19999695
+2364,hormone therapy,73,no,yes,yes,yes,no,24.23999977,125.1999969
+2365,placebo,72,no,no,yes,no,no,19.14999962,121.5999985
+2366,placebo,66,no,no,no,no,no,28.27000046,121.8000031
+2367,hormone therapy,56,no,no,no,no,yes,42.29000092,103.4000015
+2368,placebo,57,no,yes,yes,yes,no,20.93000031,210.1999969
+2369,hormone therapy,72,no,no,yes,yes,no,22.35000038,115.4000015
+2370,placebo,61,no,yes,no,yes,no,29.09000015,128
+2371,hormone therapy,63,yes,no,no,yes,no,24.95999908,146.1999969
+2372,placebo,58,no,no,yes,no,no,22.60000038,158.3999939
+2373,placebo,61,no,yes,no,no,yes,33.5,176
+2374,placebo,68,no,yes,no,no,no,28.47999954,96.19999695
+2375,placebo,65,no,yes,no,yes,yes,28.95999908,156.3999939
+2376,hormone therapy,58,no,no,no,yes,no,37.84000015,79.59999847
+2377,hormone therapy,67,no,yes,yes,no,no,24.89999962,127
+2378,hormone therapy,59,no,no,no,yes,no,37.79000092,100.5999985
+2379,hormone therapy,59,yes,yes,yes,yes,no,30.65999985,186.3999939
+2380,placebo,61,no,no,no,no,no,21.72999954,117.5999985
+2381,hormone therapy,65,no,yes,yes,yes,no,27.90999985,84
+2382,hormone therapy,70,no,yes,no,yes,no,27.28000069,126.5999985
+2383,hormone therapy,64,no,no,no,yes,yes,28.39999962,128
+2384,placebo,64,no,yes,yes,no,no,20.19000053,147.6000061
+2385,placebo,67,no,no,yes,yes,yes,27.87000084,210.1999969
+2386,placebo,74,no,yes,no,yes,no,26.21999931,113
+2387,placebo,67,no,no,yes,no,no,25.63999939,152.1999969
+2388,placebo,59,no,yes,no,no,no,24.12999916,147.3999939
+2389,hormone therapy,68,yes,yes,no,yes,yes,29.57999992,70
+2390,hormone therapy,65,yes,yes,yes,no,no,26.70999908,95.80000305
+2391,hormone therapy,55,yes,no,yes,yes,yes,27.17000008,121.5999985
+2392,placebo,71,no,no,no,no,yes,34.63999939,150.1999969
+2393,hormone therapy,72,no,no,yes,no,no,24.47999954,131.6000061
+2394,hormone therapy,68,no,yes,no,yes,no,28.54999924,140
+2395,placebo,57,no,no,no,yes,no,36.50999832,86
+2396,placebo,64,no,no,no,no,yes,35.88999939,102.1999969
+2397,hormone therapy,65,no,yes,yes,no,no,28.38999939,138.6000061
+2398,placebo,61,yes,yes,no,no,no,22.68000031,111.5999985
+2399,hormone therapy,66,no,no,no,no,yes,33.29000092,174.6000061
+2400,hormone therapy,63,no,no,no,no,no,30.62000084,131.1999969
+2401,hormone therapy,71,no,no,no,no,no,25.62000084,100.8000031
+2402,hormone therapy,66,no,no,no,yes,no,28.40999985,90
+2403,hormone therapy,61,no,yes,no,no,yes,22.94000053,211
+2404,hormone therapy,69,no,yes,yes,no,no,28.42000008,167.3999939
+2405,placebo,69,no,yes,yes,yes,yes,25.96999931,89.40000153
+2406,hormone therapy,59,yes,no,no,no,no,21.77000046,132.8000031
+2407,hormone therapy,67,yes,no,no,no,yes,28.57999992,124
+2408,hormone therapy,56,no,no,no,no,yes,35.88000107,58.20000076
+2409,placebo,54,yes,yes,no,yes,no,24.32999992,198.1999969
+2410,placebo,54,no,no,no,yes,yes,27.84000015,169.6000061
+2411,hormone therapy,71,no,no,no,yes,no,24.63999939,74.80000305
+2412,placebo,61,no,no,no,no,yes,29.96999931,136.3999939
+2413,hormone therapy,68,yes,no,no,no,yes,28.55999947,123.5999985
+2414,placebo,65,yes,no,no,no,no,23.45000076,117.5999985
+2415,placebo,59,no,yes,no,yes,no,21.12000084,94.80000305
+2416,hormone therapy,56,no,no,no,yes,yes,28.59000015,61.79999924
+2417,placebo,55,yes,yes,no,no,no,26.12000084,133.3999939
+2418,hormone therapy,69,no,yes,no,no,no,31.09000015,147.8000031
+2419,placebo,73,no,yes,no,no,no,40.63000107,121.8000031
+2420,placebo,72,no,yes,no,yes,no,29.29999924,117.1999969
+2422,hormone therapy,59,no,yes,no,no,no,31.60000038,171.1999969
+2423,placebo,63,no,no,no,yes,yes,44.29999924,118.1999969
+2424,placebo,76,no,yes,no,no,no,36.50999832,183.1999969
+2425,hormone therapy,65,no,no,no,no,yes,35.93000031,34.59999847
+2426,placebo,73,yes,yes,yes,yes,yes,23.92000008,129
+2427,placebo,57,no,yes,no,no,no,29.29999924,119.4000015
+2428,hormone therapy,67,no,no,no,no,no,26.47999954,116.5999985
+2429,placebo,75,no,no,no,no,yes,27.22999954,114.4000015
+2430,placebo,79,no,no,yes,no,no,25.79000092,135.1999969
+2431,hormone therapy,64,no,no,yes,no,yes,33.45000076,58.79999924
+2432,placebo,68,no,no,yes,no,no,40.38999939,127.8000031
+2433,placebo,67,no,no,yes,no,no,33.81999969,149.8000031
+2434,hormone therapy,60,no,no,no,no,yes,43.90999985,114.4000015
+2435,hormone therapy,76,no,yes,no,yes,no,25.77000046,143
+2436,placebo,78,no,no,yes,no,no,26.23999977,102.5999985
+2438,placebo,70,no,no,yes,no,yes,31.54000092,164.1999969
+2439,placebo,69,yes,no,no,yes,no,22.38999939,197.3999939
+2440,hormone therapy,62,no,no,no,yes,yes,28.20000076,134.8000031
+2441,hormone therapy,69,no,no,yes,yes,no,20.76000023,131.3999939
+2442,placebo,70,no,no,yes,no,no,28.45999908,107.8000031
+2443,hormone therapy,74,no,no,no,no,no,26.70999908,127.4000015
+2444,hormone therapy,75,no,no,yes,no,yes,25.17000008,229.8000031
+2446,hormone therapy,71,no,no,yes,no,yes,30.11000061,189.8000031
+2447,placebo,73,no,yes,yes,yes,no,25.12999916,137
+2448,hormone therapy,63,yes,no,no,no,no,22.04000092,157
+2449,placebo,57,no,no,yes,no,no,38.00999832,139.3999939
+2450,placebo,62,no,yes,no,yes,yes,46.97999954,131
+2453,hormone therapy,68,no,no,yes,no,yes,29.47999954,167.8000031
+2454,placebo,66,no,no,yes,no,no,28.21999931,145
+2455,hormone therapy,71,no,no,no,no,yes,32.61000061,157
+2456,hormone therapy,63,no,no,no,no,yes,27.14999962,137.6000061
+2457,placebo,65,no,no,no,no,no,25.20000076,98.59999847
+2458,placebo,75,no,no,no,no,no,48.41999817,166.8000031
+2459,placebo,73,yes,no,no,yes,yes,31.53000069,195.3999939
+2460,hormone therapy,76,no,no,yes,no,yes,24.89999962,121.5999985
+2461,hormone therapy,74,no,no,yes,no,yes,24.88999939,232.1999969
+2462,hormone therapy,73,yes,no,yes,yes,no,19.79000092,110.1999969
+2464,placebo,78,no,no,no,no,no,25.52000046,50.40000153
+2465,placebo,76,no,no,no,no,yes,34.18000031,127.8000031
+2466,hormone therapy,74,no,yes,no,yes,no,23.92000008,122.8000031
+2467,hormone therapy,77,no,no,no,no,yes,26.62000084,98.40000153
+2468,placebo,70,no,no,no,yes,no,31.72999954,136.1999969
+2470,hormone therapy,67,no,yes,yes,no,no,23.72999954,131.8000031
+2471,placebo,71,no,yes,no,yes,no,28.92000008,107
+2472,hormone therapy,72,no,no,yes,yes,no,23.64999962,103
+2473,placebo,68,no,yes,yes,yes,no,25.47999954,116.8000031
+2474,placebo,74,no,no,no,yes,no,31.35000038,145.6000061
+2475,placebo,74,no,no,no,no,no,18.92000008,115.1999969
+2476,placebo,71,no,no,no,yes,yes,26.78000069,100.5999985
+2477,placebo,72,yes,no,no,no,no,39.77999878,139.1999969
+2479,hormone therapy,64,no,no,no,no,no,26.88999939,91.59999847
+2480,hormone therapy,62,yes,no,no,no,yes,31.10000038,150.6000061
+2481,placebo,71,no,no,yes,no,no,37.56000137,126.4000015
+2482,placebo,69,no,no,no,yes,no,30.46999931,135.1999969
+2483,placebo,75,no,no,yes,yes,no,19.87999916,103.1999969
+2484,placebo,64,no,no,yes,yes,no,28.04000092,71.40000153
+2486,hormone therapy,60,no,no,yes,no,yes,27.59000015,139.8000031
+2487,hormone therapy,71,yes,yes,no,no,no,18.85000038,78
+2488,hormone therapy,58,no,no,yes,no,no,27.31999969,127.5999985
+2490,hormone therapy,74,no,no,no,no,no,27.34000015,147.1999969
+2491,placebo,70,no,no,no,no,no,20.40999985,72
+2492,placebo,54,no,yes,no,no,no,37.29999924,106.1999969
+2493,placebo,70,no,no,yes,yes,no,22.14999962,64
+2494,hormone therapy,62,no,no,no,no,yes,30.72999954,89.59999847
+2496,hormone therapy,74,no,no,no,no,yes,27.01000023,108.4000015
+2497,hormone therapy,71,no,no,no,no,no,30.19000053,194.8000031
+2498,hormone therapy,71,no,no,yes,yes,yes,25.53000069,18.60000038
+2499,placebo,74,no,no,yes,yes,no,23.45999908,140
+2500,placebo,74,no,no,yes,no,no,27.87000084,181.1999969
+2501,placebo,73,no,no,no,yes,no,23.54000092,102.8000031
+2502,placebo,70,no,yes,yes,no,yes,30.39999962,178
+2503,hormone therapy,79,no,yes,yes,no,no,21.32999992,119
+2504,placebo,68,no,no,yes,yes,yes,30.40999985,105.8000031
+2505,hormone therapy,57,no,yes,no,yes,no,32.36000061,101.4000015
+2506,placebo,78,no,no,no,yes,no,26.48999977,73.59999847
+2507,placebo,59,no,no,yes,yes,no,39.43999863,77.19999695
+2508,hormone therapy,62,no,no,yes,no,no,30.47999954,130
+2509,placebo,61,no,no,no,yes,no,49.50999832,111
+2510,hormone therapy,75,no,yes,no,no,no,25.86000061,143
+2511,hormone therapy,70,yes,yes,no,yes,no,21.78000069,76.19999695
+2512,hormone therapy,74,no,yes,yes,no,no,32.02999878,178
+2513,placebo,65,no,no,no,yes,yes,31.11000061,76.40000153
+2514,hormone therapy,66,no,no,no,no,yes,40.13999939,135
+2515,placebo,70,no,yes,no,no,no,24.81999969,174.3999939
+2516,placebo,56,no,yes,yes,no,no,26.22999954,127.4000015
+2517,hormone therapy,57,no,yes,no,yes,no,29.17000008,93
+2518,placebo,65,no,no,yes,no,no,34.97999954,115
+2519,hormone therapy,76,no,no,no,no,no,26.39999962,91.80000305
+2520,hormone therapy,66,no,no,no,no,yes,29.56999969,128.6000061
+2521,hormone therapy,59,yes,yes,no,no,no,31.12999916,78
+2522,hormone therapy,78,no,no,yes,no,no,26.70000076,110.1999969
+2523,hormone therapy,67,no,no,no,no,no,28.88999939,141
+2524,placebo,73,no,yes,yes,no,no,27.20000076,124.5999985
+2525,placebo,66,no,no,no,yes,yes,42.50999832,156
+2527,placebo,66,no,yes,no,yes,no,26.93000031,133.3999939
+2528,placebo,66,no,no,no,no,no,27.07999992,151.8000031
+2529,placebo,59,no,no,no,no,no,32.84999847,153.3999939
+2530,placebo,58,yes,no,no,no,no,33.20000076,167
+2531,placebo,72,yes,no,no,no,yes,26.92000008,134.3999939
+2532,placebo,67,no,yes,yes,yes,no,26.93000031,104.1999969
+2533,placebo,71,no,yes,no,yes,no,26.28000069,155.8000031
+2534,hormone therapy,75,yes,yes,no,no,no,17.31999969,99.59999847
+2535,placebo,66,no,yes,no,no,no,22.70999908,156
+2536,hormone therapy,55,no,no,yes,no,yes,27.32999992,133.6000061
+2537,hormone therapy,61,no,no,no,no,no,37.56999969,116
+2538,hormone therapy,68,no,no,no,no,yes,34.66999817,128
+2539,placebo,64,no,yes,no,no,no,34.65999985,151.8000031
+2540,placebo,62,yes,yes,no,no,no,22.90999985,190
+2541,hormone therapy,75,no,no,no,no,yes,36.31999969,93.80000305
+2542,placebo,65,no,yes,yes,no,no,25.55999947,114.4000015
+2543,placebo,64,no,yes,no,no,no,30.67000008,139.8000031
+2544,hormone therapy,73,no,yes,no,no,no,24.29000092,131
+2546,placebo,70,no,no,no,no,yes,22,184.3999939
+2547,hormone therapy,70,no,yes,no,no,yes,22.18000031,121.8000031
+2548,hormone therapy,59,no,no,no,no,yes,20.70000076,126.5999985
+2549,hormone therapy,76,no,yes,yes,no,no,22.96999931,83
+2550,hormone therapy,59,no,yes,no,no,no,34.65999985,154
+2551,hormone therapy,63,no,no,no,no,no,21.11000061,203.6000061
+2552,hormone therapy,58,no,no,yes,no,no,28.73999977,107.4000015
+2553,hormone therapy,70,no,yes,no,no,no,37.56999969,114.5999985
+2554,placebo,73,no,no,no,no,no,26.54000092,144.3999939
+2555,hormone therapy,63,yes,no,no,no,yes,30.29000092,105.4000015
+2556,hormone therapy,71,no,no,no,yes,no,32.06000137,135.6000061
+2557,placebo,75,no,yes,yes,no,no,28.75,126
+2558,placebo,67,yes,no,no,no,no,22.37999916,137.6000061
+2559,hormone therapy,72,no,yes,no,no,no,32.61000061,70.59999847
+2560,placebo,66,no,yes,no,no,no,25.45000076,118
+2561,hormone therapy,79,no,no,yes,yes,no,28.70999908,121.5999985
+2562,placebo,68,no,no,no,no,yes,26.05999947,158.3999939
+2563,hormone therapy,57,no,no,no,yes,no,29.10000038,75.80000305
+2564,hormone therapy,69,no,yes,no,no,yes,31.06999969,158.3999939
+2565,placebo,63,no,yes,yes,yes,no,22.87000084,84.80000305
+2566,placebo,58,yes,yes,no,no,no,29.72999954,161.6000061
+2567,placebo,70,no,yes,no,no,yes,37.72000122,196.3999939
+2568,placebo,74,no,no,no,no,no,27.54999924,144.6000061
+2569,hormone therapy,62,no,no,yes,no,yes,27.46999931,108.8000031
+2570,hormone therapy,76,no,yes,yes,no,no,30.03000069,162.6000061
+2571,placebo,60,no,yes,no,no,no,30.27000046,154
+2572,placebo,70,no,no,no,yes,no,27.14999962,117
+2573,placebo,73,no,yes,no,no,yes,30.55999947,127.8000031
+2574,hormone therapy,70,no,no,yes,no,yes,34.00999832,97.19999695
+2575,placebo,78,no,no,no,no,no,35.13000107,167.6000061
+2576,hormone therapy,77,yes,no,yes,yes,no,27.61000061,136.6000061
+2577,placebo,77,no,no,yes,yes,yes,29.29999924,73.40000153
+2578,hormone therapy,69,no,no,yes,no,no,32.34000015,127
+2579,placebo,71,no,no,no,no,yes,37.34000015,450.2000122
+2580,placebo,56,yes,no,no,yes,yes,26.37000084,108.1999969
+2581,hormone therapy,67,no,no,no,no,yes,35.38999939,163.1999969
+2582,placebo,74,no,yes,no,no,no,32.63999939,96.40000153
+2583,hormone therapy,75,no,no,yes,no,no,24.51000023,113.5999985
+2584,hormone therapy,69,no,no,yes,no,no,21.35000038,77.40000153
+2585,hormone therapy,78,no,no,yes,yes,no,26.44000053,78
+2586,placebo,64,no,yes,no,yes,no,33.81000137,90
+2587,hormone therapy,77,no,yes,no,yes,no,22.88999939,94.80000305
+2588,hormone therapy,73,no,yes,yes,no,no,28.23999977,120.1999969
+2589,placebo,68,no,yes,no,no,no,36.31000137,115.8000031
+2590,placebo,71,no,no,yes,yes,no,28.45999908,82.40000153
+2591,hormone therapy,61,no,no,no,no,no,21.92000008,107.1999969
+2592,placebo,76,yes,no,no,no,no,26.87999916,144
+2593,placebo,58,no,yes,yes,no,yes,42.52000046,133.1999969
+2594,placebo,52,no,yes,yes,yes,no,26.04999924,129.3999939
+2595,placebo,73,no,yes,yes,yes,no,27.68000031,151.1999969
+2596,placebo,69,no,yes,yes,no,yes,31.95999908,119.5999985
+2597,hormone therapy,68,no,no,no,no,no,32.63999939,60.40000153
+2599,placebo,59,no,no,no,no,yes,33.02000046,164.1999969
+2600,hormone therapy,78,no,yes,no,no,yes,27.59000015,72.19999695
+2602,placebo,67,no,no,no,no,yes,35.33000183,138.3999939
+2603,hormone therapy,64,no,no,no,yes,yes,29.07999992,73.40000153
+2604,placebo,76,no,no,no,no,yes,30.12999916,97.40000153
+2605,placebo,60,no,no,yes,no,no,21.84000015,45.40000153
+2606,hormone therapy,59,yes,no,yes,no,yes,23.65999985,159.1999969
+2607,hormone therapy,72,no,yes,no,no,yes,28.18000031,131
+2608,hormone therapy,71,no,no,yes,yes,no,29.69000053,137
+2609,hormone therapy,65,no,no,yes,no,no,28.56999969,105.8000031
+2610,placebo,70,no,no,yes,no,no,22.20000076,57.59999847
+2611,hormone therapy,66,no,no,yes,no,no,23.28000069,93.59999847
+2612,placebo,72,no,yes,no,yes,no,32.13000107,139.8000031
+2613,placebo,76,no,yes,no,no,no,24.67000008,145.1999969
+2615,hormone therapy,78,no,no,no,yes,yes,22.87000084,102
+2616,hormone therapy,76,no,yes,yes,yes,no,34.29999924,102.4000015
+2617,hormone therapy,65,no,yes,no,yes,no,25.63999939,112
+2618,placebo,61,yes,no,no,yes,no,22.20000076,186
+2619,placebo,69,no,yes,yes,no,yes,25.67000008,109.5999985
+2620,hormone therapy,63,no,yes,no,yes,no,30.20000076,81.40000153
+2621,hormone therapy,74,no,yes,yes,yes,no,28.64999962,80.59999847
+2623,placebo,75,no,no,no,no,no,26.09000015,145.6000061
+2624,placebo,63,no,yes,yes,yes,no,20.28000069,141
+2625,placebo,77,no,no,yes,no,yes,39.61999893,170.6000061
+2626,hormone therapy,75,no,no,yes,no,no,32.45999908,128.1999969
+2627,hormone therapy,60,no,yes,yes,no,yes,31.65999985,168.3999939
+2628,placebo,61,no,no,no,yes,yes,43.86000061,132.3999939
+2629,hormone therapy,67,no,yes,yes,yes,no,28.46999931,84.19999695
+2630,placebo,64,no,yes,no,no,no,26.09000015,189.3999939
+2631,placebo,71,no,no,yes,no,no,36.40000153,223
+2632,placebo,56,no,no,yes,no,no,38.5,114.1999969
+2633,placebo,68,no,no,no,yes,no,43.5,155.1999969
+2634,hormone therapy,52,no,no,yes,yes,no,29.54999924,127
+2635,hormone therapy,60,no,no,yes,no,no,26.20999908,124.4000015
+2636,placebo,65,no,no,no,yes,no,31.12999916,165.1999969
+2637,placebo,51,no,yes,no,no,yes,29.64999962,48.79999924
+2638,hormone therapy,76,no,yes,no,no,no,24.98999977,123
+2639,hormone therapy,68,no,no,no,yes,no,32.22000122,94.19999695
+2640,hormone therapy,72,no,yes,no,no,no,23.37000084,146.1999969
+2641,placebo,68,no,no,no,no,yes,23.40999985,242.8000031
+2642,hormone therapy,70,no,yes,no,yes,no,24.39999962,111.4000015
+2643,hormone therapy,68,no,yes,yes,no,no,27.46999931,142
+2644,placebo,73,no,no,no,no,no,24.62000084,153.8000031
+2645,hormone therapy,76,no,yes,no,yes,yes,33.90999985,88.80000305
+2646,hormone therapy,61,no,yes,no,no,no,33.86000061,99.80000305
+2647,hormone therapy,74,no,yes,no,yes,no,28.89999962,155.6000061
+2648,hormone therapy,78,no,yes,yes,no,no,26.87999916,75.19999695
+2650,placebo,71,no,yes,yes,no,no,19.43000031,228.8000031
+2651,placebo,67,no,no,yes,no,yes,30.07999992,118.8000031
+2652,hormone therapy,74,no,no,yes,no,no,26.06999969,238
+2653,hormone therapy,72,no,yes,no,no,no,24.36000061,175
+2654,placebo,72,no,no,no,yes,no,39.24000168,185.8000031
+2655,placebo,73,yes,yes,no,no,no,18.25,130.1999969
+2656,placebo,69,no,no,yes,no,no,23.77000046,122
+2657,hormone therapy,77,no,yes,yes,no,no,20.54000092,146.1999969
+2659,hormone therapy,74,no,no,no,no,no,30.60000038,100.4000015
+2660,placebo,73,no,no,yes,no,yes,38.15000153,161.6000061
+2661,placebo,55,no,no,no,no,yes,36.13000107,103
+2662,placebo,64,no,no,yes,no,yes,26.20000076,138.8000031
+2663,hormone therapy,68,yes,no,no,no,no,39.22999954,64
+2664,placebo,71,no,no,yes,no,no,26.23999977,155.8000031
+2665,placebo,77,no,no,no,no,no,29.29999924,169.6000061
+2667,placebo,73,yes,no,no,no,no,23.69000053,115
+2668,hormone therapy,74,no,no,no,yes,yes,28.86000061,102.1999969
+2669,placebo,76,no,no,no,no,yes,39.65000153,219.8000031
+2670,hormone therapy,72,no,yes,yes,yes,no,27.54000092,104.1999969
+2671,placebo,76,no,no,no,no,yes,27.52000046,119.5999985
+2672,hormone therapy,72,no,yes,yes,no,no,29.11000061,134.6000061
+2673,placebo,72,no,yes,no,no,no,20.34000015,165.6000061
+2674,hormone therapy,72,no,no,no,no,no,33.00999832,157.1999969
+2675,hormone therapy,77,no,no,yes,no,no,29.98999977,176.8000031
+2676,hormone therapy,75,no,no,no,no,no,27.20000076,90
+2677,placebo,71,no,yes,no,yes,no,29.14999962,172.1999969
+2678,hormone therapy,72,yes,yes,no,yes,no,23.39999962,133.3999939
+2679,placebo,75,no,yes,no,yes,no,28.86000061,137.1999969
+2680,hormone therapy,65,no,no,no,no,yes,36.29000092,136.1999969
+2681,hormone therapy,59,yes,yes,no,yes,no,28.76000023,103.1999969
+2682,placebo,71,no,yes,no,yes,no,24.06999969,191
+2683,hormone therapy,53,no,no,no,no,yes,35.09000015,155
+2684,placebo,54,no,yes,no,no,no,35.31000137,166
+2685,placebo,71,no,no,yes,no,no,30.04000092,154.1999969
+2686,hormone therapy,54,yes,yes,no,no,no,25.29000092,135
+2688,hormone therapy,54,no,yes,no,no,yes,31.54000092,84.80000305
+2689,placebo,45,yes,yes,no,no,no,38.97999954,150.3999939
+2690,placebo,66,no,no,no,no,no,32.50999832,145.3999939
+2691,hormone therapy,63,yes,no,no,no,no,23.30999947,114.8000031
+2692,hormone therapy,56,no,yes,no,no,no,34,54.79999924
+2693,placebo,78,no,no,no,no,no,28.85000038,161.6000061
+2694,hormone therapy,60,no,yes,yes,no,no,25.89999962,168.3999939
+2695,hormone therapy,74,no,yes,yes,no,no,20.09000015,164.8000031
+2696,hormone therapy,73,no,yes,yes,no,no,31.02000046,123.5999985
+2697,hormone therapy,67,no,no,yes,yes,yes,30.52000046,107.1999969
+2698,placebo,66,no,yes,no,no,no,23.45000076,113.8000031
+2699,placebo,63,no,yes,no,yes,no,27.42000008,138.8000031
+2700,hormone therapy,67,no,no,no,no,no,25.76000023,101.8000031
+2701,placebo,68,no,yes,yes,yes,no,35.63999939,183.1999969
+2702,placebo,59,no,yes,yes,yes,no,21.78000069,115.4000015
+2703,hormone therapy,68,no,yes,yes,yes,yes,27.59000015,143.1999969
+2704,placebo,69,no,no,no,yes,yes,23.87000084,110.8000031
+2705,placebo,70,no,no,no,no,yes,33.06000137,148.1999969
+2706,placebo,63,yes,no,yes,no,no,22.29999924,143.8000031
+2707,placebo,75,no,no,yes,no,no,26.47999954,117.1999969
+2708,hormone therapy,73,no,no,yes,no,no,32.06999969,151
+2709,hormone therapy,49,no,yes,no,no,no,28.40999985,170
+2710,placebo,68,no,no,no,no,yes,23.79999924,135.6000061
+2711,hormone therapy,65,no,no,no,no,no,22.78000069,117.4000015
+2712,hormone therapy,58,no,yes,no,no,no,33.93999863,105
+2713,hormone therapy,61,no,yes,yes,yes,no,25.96999931,161.3999939
+2714,hormone therapy,67,no,yes,yes,no,no,25.21999931,131.6000061
+2715,hormone therapy,62,yes,yes,no,no,no,25.19000053,136.8000031
+2716,hormone therapy,70,no,no,yes,no,yes,38,74.19999695
+2717,placebo,47,no,no,yes,no,no,44.75,63
+2718,placebo,63,yes,no,no,no,no,28.76000023,151
+2719,placebo,67,no,yes,no,yes,yes,27.82999992,165
+2720,placebo,62,no,yes,no,no,no,20.36000061,150
+2722,hormone therapy,67,no,yes,yes,yes,no,21.98999977,88
+2723,placebo,62,no,yes,no,yes,no,26.94000053,121.5999985
+2724,placebo,58,yes,yes,no,no,no,25,128.1999969
+2726,hormone therapy,61,no,yes,yes,no,no,27.65999985,134
+2728,hormone therapy,61,no,no,no,no,no,29.26000023,126.8000031
+2729,placebo,52,yes,yes,yes,no,no,23.48999977,213.6000061
+2730,placebo,63,no,yes,yes,yes,no,25.54999924,178.3999939
+2731,placebo,56,no,yes,no,no,no,30.35000038,139.3999939
+2732,hormone therapy,72,no,yes,no,yes,no,30.15999985,125.5999985
+2733,placebo,69,no,yes,no,yes,no,22.65999985,100.5999985
+2734,placebo,75,no,no,no,yes,no,24.30999947,254.3999939
+2735,hormone therapy,52,yes,no,no,no,no,25.01000023,89.19999695
+2736,hormone therapy,61,yes,yes,no,no,no,30.88999939,130.1999969
+2737,placebo,66,no,no,no,no,no,31.37000084,181
+2738,hormone therapy,66,no,no,no,no,no,28.51000023,67.59999847
+2739,hormone therapy,58,no,yes,no,yes,yes,41.75,123.8000031
+2740,placebo,59,no,yes,yes,yes,no,27.46999931,256.3999939
+2741,placebo,76,no,yes,yes,no,no,26.60000038,142.1999969
+2742,hormone therapy,62,no,yes,no,no,no,27.70000076,86.59999847
+2744,placebo,64,no,yes,yes,yes,no,23.23999977,109.8000031
+2745,placebo,72,no,yes,no,yes,no,33.40999985,194.6000061
+2746,placebo,76,no,no,yes,no,yes,23.93000031,122.5999985
+2747,placebo,74,no,no,no,no,yes,26.52000046,141.8000031
+2748,hormone therapy,78,no,no,yes,yes,no,28.89999962,94.19999695
+2749,hormone therapy,70,no,yes,yes,yes,yes,28.02000046,92
+2750,hormone therapy,75,no,yes,no,no,no,32.95999908,164.1999969
+2751,placebo,74,no,yes,no,yes,no,38.84000015,108.1999969
+2752,hormone therapy,76,no,no,no,no,no,36.20999908,140.1999969
+2753,hormone therapy,76,no,no,no,no,no,25.93000031,122.5999985
+2754,hormone therapy,70,no,no,no,no,yes,28.18000031,156.3999939
+2755,hormone therapy,65,no,no,no,yes,yes,25.59000015,75.80000305
+2756,placebo,61,no,yes,yes,no,yes,23.97999954,138.8000031
+2757,hormone therapy,72,no,yes,yes,yes,no,20.40999985,102.1999969
+2758,hormone therapy,76,no,no,yes,no,no,25.62000084,241.8000031
+2759,placebo,67,no,yes,yes,yes,no,29.20000076,79.59999847
+2761,placebo,57,no,no,yes,yes,yes,26.88999939,161.3999939
+2762,placebo,72,no,no,no,no,no,29.34000015,80
+2763,placebo,66,no,no,no,no,yes,36.08000183,200.6000061

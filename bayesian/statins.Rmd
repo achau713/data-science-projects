@@ -1,0 +1,847 @@
+---
+title: "STATS 115 Final"
+author: "Anthony Chau"
+date: "March 18, 2018"
+output: html_document
+---
+## Question 1
+
+For this data set, we will use a linear regression model to gain inference on LDL1 levels given out chosen predictor variables. We build a linear regression model in a Bayesian framework using JAGS software.
+
+
+## Question 2
+
+For our exploratory data analysis, we check the values of the quantitative variables using the summary function and check the levels for the categorical variables using the str function. We use a scatterplot to check for the association between LDL1 levels with age and BMI. We discover that age and BMI, seperately, have a positive correlation with LDL1 levels. 
+
+Also, we use boxplots to check if certain levels for the categorical variables correspond with higher (or lower) LDL1 levels. For example, we have more observations with higher LDL levels for statin use. However, this possibly suggests that the statin variable may be positive correlated with LDL1 levels but our analysis here is too simple and naive before being able to conclude anything.
+```{r}
+
+hers <- read.csv("C:/Users/achau/Desktop/UCI/Winter 2018/STATS 115/STATS 115 Final/hersdata_1.csv")
+attach(hers)
+head(hers)
+
+# Check encoding of categorical variables
+options(contrasts = c("contr.treatment", "contr.poly"))
+
+contrasts(as.factor(smoking))
+contrasts(as.factor(exercise))
+contrasts(as.factor(HT))
+contrasts(as.factor(statins))
+contrasts(as.factor(drinkany))
+
+# Check data types of variables
+str(hers)
+
+# Minimum and maximum values
+hist(hers$LDL1, xlab = "Counts", ylab = "LDL1 Levels", col = "green", main = "Counts of LDL1 Levels")
+
+# Summary of quantitative variables
+summary(hers$LDL1)
+summary(hers$age)
+summary(hers$BMI)
+
+# Scatterplot
+
+pairs(~LDL1 + age + BMI, labels = c("LDL1", "Age", "BMI"), data = hers)
+
+# Boxplots
+
+boxplot(LDL1 ~ HT, data = hers, main = "LDL Cholesterol Data", xlab = "Hormone Therapy", ylab = "LDL1 Levels")
+
+boxplot(LDL1 ~ smoking, data = hers, main = "HERS Study", xlab = "Smoking", ylab = "LDL1 Levels")
+
+boxplot(LDL1 ~ drinkany, data = hers, main = "HERS Study", xlab = "Drinker", ylab = "LDL1 Levels")
+
+boxplot(LDL1 ~ exercise, data = hers, main = "HERS Study", xlab = "Exercise", ylab = "LDL1 Levels")
+
+boxplot(LDL1 ~ statins, data = hers, main = "HERS Study", xlab = "Statins", ylab = "LDL1 Levels")
+
+boxplot(LDL1 ~ diabetes, data = hers, main = "HERS Study", xlab = "Diabetes", ylab = "LDL1 Levels")
+
+# Convert to 0 and 1 encoding of no and yes, respectively
+levels(smoking)[2] <- 1
+levels(smoking)[1] <- 0
+levels(smoking)
+
+levels(exercise)[2] <- 1
+levels(exercise)[1] <- 0
+levels(exercise)
+
+levels(HT)[2] <- 1
+levels(HT)[1] <- 0
+levels(HT)
+
+levels(drinkany)[2] <- 0
+levels(drinkany)[3] <- 1
+levels(drinkany)
+
+
+
+```
+
+
+## Question 3 
+
+First, we run the model with a g-prior set to equal the number of observations in the dataset. This is also known as the unit information prior. For our predictors, we consider HT, Age, BMI, Smoking, drinkany, and exercise. HT should be included because it was part of the original clinical study. We include Age and BMI because the predictors showed a positive correlation with LPL1 levels in the scatterplots conducted during the exploratory data analysis. Lastly, we include smoking, drinkany, and exercise because we assume that these effects of these factors on LPL1 levels are magnified given the old age of the subjects of the study.
+```{r}
+library(R2jags)
+
+# Write out model with selected predictors
+X.mat1 = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(exercise))
+
+# Specify prior precision matrix for beta0
+COinv1 <- t(X.mat1) %*% X.mat1
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data1 <-
+  list(
+  y = LDL1,
+  Xmat1 = X.mat1,
+  r = dim(X.mat1)[2],
+  n = dim(X.mat1)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat1)[2]),
+  COinv1 = COinv1,
+  gg = dim(X.mat1)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param1 <- c("CPOinv1", "beta", "tau")
+
+# Initialize stochastic nodes
+jags.inits1 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel1 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat1[i, 2] + beta[3]*Xmat1[i, 3] + beta[4]*Xmat1[i, 4] + beta[5]*Xmat1[i, 5] + beta[6]*Xmat1[i,6]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv1[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv1[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit1 <- jags(data = jags.data1, parameters.to.save = jags.param1, model.file = HERSModel1, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n1 = dim(X.mat1)[1]; r1 = dim(X.mat1)[2];
+pm_tau1 = jagsfit1$BUGSoutput$summary["tau","mean"]
+pm_coeff1 = jagsfit1$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]"),"mean"]
+
+BIC1 <- -n1*log(pm_tau1)+n1*log(2*pi) +pm_tau1*sum(LDL1-(pm_coeff1[1]+pm_coeff1[2]*as.numeric(HT)+pm_coeff1[3]*age+pm_coeff1[4]*BMI+pm_coeff1[5]*as.numeric(smoking)+pm_coeff1[6]*as.numeric(exercise))^2)+(r1+1)*log(n1)
+
+BIC1
+
+## Deviance Information Criterion
+print(jagsfit1$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO1 <- 1/jagsfit1$BUGSoutput$mean$CPOinv1  
+
+## Compute LPML
+
+print(LPML1 <- sum(log(CPO1)))
+```
+
+### Model 2
+Now, we consider a model with all predictor variables but no interaction. There was an issue with the X.mat variable in which it added an additional column for the drinkany variable, so for future models, I subtract 1 from the number of columns in the model matrix to determine the numbers of regression coefficients, including the intercept.
+```{r}
+# Write out model with selected predictors
+X.mat2 = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes))
+
+# Specify prior precision matrix for beta0
+COinv2 <- t(X.mat2) %*% X.mat2
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data2 <-
+  list(
+  y = LDL1,
+  Xmat2 = X.mat2,
+  r = dim(X.mat2)[2] - 1,
+  n = dim(X.mat2)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat2)[2] - 1),
+  COinv2 = COinv2,
+  gg = dim(X.mat2)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param2 <- c("CPOinv2", "beta", "tau","meanLDL1_statins[60:65]", "meanLDL1_nonstatins[60:65]", "LDL1_smoke0", "LDL1_smoke1","pred1", "pred2", "pred3")
+
+# Initialize stochastic nodes
+jags.inits2 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel2 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat2[i, 2] + beta[3]*Xmat2[i, 3] + beta[4]*Xmat2[i, 4] + beta[5]*Xmat2[i, 5] + beta[6]*Xmat2[i,6] + beta[7]*Xmat2[i,8] + beta[8]*Xmat2[i,9] + beta[9]*Xmat2[i,10]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv2[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv2[1:r, 1:r])
+  tau ~ dgamma(a, b)
+  # Estimate mean LDL levels for statin users and non-statin users at different ages, with mean BMI level of 28.58
+  for(i in 60:65){
+    meanLDL1_statins[i] <- beta[1] + beta[2] + beta[3]*i + beta[4]*28.58 + beta[5] + beta[6] + beta[7] + beta[8] + beta[9]
+    meanLDL1_nonstatins[i] <- beta[1] + beta[2] + beta[3]*i + beta[4]*28.58 + beta[5] + beta[6] + beta[7] + beta[9]
+  }
+  # Predict association of smoke with LDL after one year from the entrance in the study with BMI held constant at 28.58
+  # (o is the base year, 1 is the next year)
+  # Mean age of subjects from the data is about 67. So we start at age 67 and stop at age 68.
+  meanLDL1_smoke0 <- beta[1] + beta[2] + beta[3]*67 + beta[4]*28.58 + beta[5] + beta[6] + beta[7] + beta[8] + beta[9]
+  meanLDL1_smoke1 <- beta[1] + beta[2] + beta[3]*68 + beta[4]*28.58 + beta[5] + beta[6] + beta[7] + beta[8] + beta[9]
+  LDL1_smoke0 ~ dnorm(meanLDL1_smoke0, tau)
+  LDL1_smoke1 ~ dnorm(meanLDL1_smoke1, tau)
+  # Predict LDL1 values for a 60-year old woman that is undergoing HT, doesn't smoke nor consume alcohol,   does some exercise, doesn't use statins, doesn't have diabetes, and has a BMI of 25.8
+  LDL1_pred1 <- beta[1] + beta[2] + 60*beta[3] + 25.8*beta[4] + beta[7] 
+  pred1 ~ dnorm(LDL1_pred1, tau)
+  # Predict LDL1 values for the same woman above but now she uses statins
+  LDL1_pred2 <- beta[1] + beta[2] + 60*beta[3] + 25.8*beta[4] + beta[7] + beta[8]
+  pred2 ~ dnorm(LDL1_pred2, tau)
+  # Predict LDL1 values for the same woman in the first case, but now she is assigned to the placebo group
+  LDL1_pred3 <- beta[1] + 60*beta[3] + 25.8*beta[4] + beta[7]
+  pred3 ~ dnorm(LDL1_pred3, tau)
+}
+
+jagsfit2 <- jags(data = jags.data2, parameters.to.save = jags.param2, model.file = HERSModel2, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n2 = dim(X.mat2)[1]; r2 = dim(X.mat2)[2] - 1;
+pm_tau2 = jagsfit2$BUGSoutput$summary["tau","mean"]
+pm_coeff2 = jagsfit2$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]", "beta[7]", "beta[8]", "beta[9]"),"mean"]
+
+BIC2 <- -n2*log(pm_tau2)+n2*log(2*pi) +pm_tau2*sum(LDL1-(pm_coeff2[1]+pm_coeff2[2]*as.numeric(HT)+pm_coeff2[3]*age+pm_coeff2[4]*BMI+pm_coeff2[5]*as.numeric(smoking)+pm_coeff2[6]*as.numeric(drinkany)+pm_coeff2[7]*as.numeric(exercise)+pm_coeff2[8]*as.numeric(statins)+pm_coeff2[9]*as.numeric(diabetes))^2)+(r2+1)*log(n2)
+
+BIC2
+
+## Deviance Information Criterion
+print(jagsfit2$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO2 <- 1/jagsfit2$BUGSoutput$mean$CPOinv2  
+
+## LPML
+
+print(LPML2 <- sum(log(CPO2)))
+```
+
+### Model 3
+Now we consider a model with all predictor variables except diabetes. We remove diabetes to see if there is a significant difference in the values of model diagnostics because we know from prior medical knowledge that diabetes and cholesterol have a high association between them. 
+
+In the third model, the BIC and DIC is higher than both of the previous two models. This suggests that a model without diabetes does not fit the data as well as a model with diabetes. In other words, the model without diabetes does not predict as well as a model with diabetes because the diabetes variable has been removed from the model. 
+
+For simplicity, we choose the model based on the values of the model diagnostics. Hence, we will consider the second model in the upcoming data analysis because it has the highest LPML, and second-lowest DIC and BIC. While it is true that the first model has more desirable DIC and BIC values, we choose the second model which has the lowest LPML value because we would prefer to use the model with the greatest predictive accuracy.
+```{r}
+# Write out model with selected predictors
+X.mat3 = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins))
+
+# Specify prior precision matrix for beta0
+COinv3 <- t(X.mat3) %*% X.mat3
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data3 <-
+  list(
+  y = LDL1,
+  Xmat3 = X.mat3,
+  r = dim(X.mat3)[2] - 1,
+  n = dim(X.mat3)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat3)[2] - 1),
+  COinv3 = COinv3,
+  gg = dim(X.mat3)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param3 <- c("CPOinv3", "beta", "tau")
+
+# Initialize stochastic nodes
+jags.inits3 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel3 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat3[i, 2] + beta[3]*Xmat3[i, 3] + beta[4]*Xmat3[i, 4] + beta[5]*Xmat3[i, 5] + beta[6]*Xmat3[i,6] + beta[7]*Xmat3[i,8] + beta[8]*Xmat3[i,9]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv3[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv3[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit3 <- jags(data = jags.data3, parameters.to.save = jags.param3, model.file = HERSModel3, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+
+# JAGS output for regression coefficients and tau
+jagsfit3$BUGSoutput$summary[2605:2614,"mean"]
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n3 = dim(X.mat3)[1]; r3 = dim(X.mat3)[2] - 1;
+pm_tau3 = jagsfit3$BUGSoutput$summary["tau","mean"]
+pm_coeff3 = jagsfit3$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]", "beta[7]", "beta[8]"),"mean"]
+
+BIC3 <- -n3*log(pm_tau3)+n3*log(2*pi) +pm_tau3*sum(LDL1-(pm_coeff3[1]+pm_coeff3[2]*as.numeric(HT)+pm_coeff3[3]*age+pm_coeff3[4]*BMI+pm_coeff3[5]*as.numeric(smoking)+pm_coeff3[6]*as.numeric(drinkany)+pm_coeff3[7]*as.numeric(exercise)+pm_coeff3[8]*as.numeric(statins))^2)+(r3+1)*log(n3)
+
+BIC3
+
+## Deviance Information Criterion
+print(jagsfit3$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO3 <- 1/jagsfit3$BUGSoutput$mean$CPOinv3 
+
+## LPML
+
+print(LPML3 <- sum(log(CPO3)))
+```
+
+## Question 4
+
+We elicit the subpopulation means for statin using women and non-statin using women aged 60-65 with BMI of 28.58, and holding all other variables the same. 
+
+Mean LDL1 levels for women aged 60-65 with a BMI of 28.58 using statins are lower than mean LDL1 levels for women aged 60-65 not using statins. However, our model predicts relatively low mean LDL levels. The mean value of LDL1 values of our data set is 132.4, which is significantly higher than what the model predicts. This suggests limitations to our subpopulation analysis.
+
+The regression coefficient is negative, so we would expect statins users to have lower LDL1 compared to non-statins users. As for clinical significance, this suggests that women taking statins tend to have lower LDL1 levels compared to women who are not taking statins. As a result, physicians may want to consider prescribing statins to patients with high LDL1 levels.  
+```{r}
+# Mean LDL1 levels for women aged 60-65 using statins and not using statins
+
+jagsfit2$BUGSoutput$summary[2617:2627,"mean"]
+
+# Regression coefficient corresponding to the statins variable
+
+jagsfit2$BUGSoutput$summary["beta[8]","mean"]
+
+```
+
+## Question 5
+
+### Model 4 (use model 2 and add interaction between HT and statins)
+In order to model the effect of the HT being different according to if one uses statins or not, we need to include an interaction term between HT and statin in our model. We look at the regression coefficient corresponding to the interaction to interpret the effect of HT on if one uses statins or not.
+
+The regression coefficient corresponding to the interaction term is negative which implies that LDL1 levels for women are lower when they are both taking statins and under hormone therapy.
+```{r}
+# Write out model with selected predictors
+X.mat4 = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes) +as.factor(HT)*as.factor(statins))
+
+# Specify prior precision matrix for beta0
+COinv4 <- t(X.mat4) %*% X.mat4
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data4 <-
+  list(
+  y = LDL1,
+  Xmat4 = X.mat4,
+  r = dim(X.mat4)[2] - 1,
+  n = dim(X.mat4)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat4)[2] - 1),
+  COinv4 = COinv4,
+  gg = dim(X.mat4)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param4 <- c("CPOinv4", "beta", "tau")
+
+# Initialize stochastic nodes
+jags.inits4 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel4 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat4[i, 2] + beta[3]*Xmat4[i, 3] + beta[4]*Xmat4[i, 4] + beta[5]*Xmat4[i, 5] + beta[6]*Xmat4[i,6] + beta[7]*Xmat4[i,8] + beta[8]*Xmat4[i,9] + beta[9]*Xmat4[i,10] + beta[10]*Xmat4[i,11]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv4[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv4[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit4 <- jags(data = jags.data4, parameters.to.save = jags.param4, model.file = HERSModel4, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# JAGS output for regression coefficient corresponding to interaction term 
+jagsfit4$BUGSoutput$summary[2614,"mean"]
+```
+
+## Question 6
+
+The regression coefficient corresponding to the standardized BMI term is about 37, which is significantly greater than the value of the coefficient in Model 2 without standardization (about 0.014). This suggests that the standardization of continuous variables better magnifies the true relationship between a predictor and the response variable.
+
+And this makes clinical sense too, because if one has higher BMI, then there is more strain on your body to pump blood, provide energy, and sustain other biological functions. Hence, for higher and higher BMI levels, you would expect your LDL1 levels to be higher because your body cannot efficiently remove the bad cholesterol from your body.
+
+For the interaction, there is a strong negative associatiaion between standardized BMI and the use of statins. The coefficient value is around -34. This suggests that subjects with higher BMI but who use statins have lower LDL1 levels than those who have lower BMI who use statins. It is possible that using statins has a greater effect on LDL1 levels for subjects with high BMI, which is to say that subjects with lower BMI and using statins would not expect a dramatic drop in LDL1 levels. This statement makes sense because subjects with lower BMI would not have as high of a BMI in the first place beacuse they would have overall lower LDL1 levels than subjects with higher BMI. It is harder to reduce LDL1 levels when they are already low than when they are high.
+```{r}
+# Standardize BMI by considering the difference of the BMI and sample mean of the BMI divided by the standard deviation
+
+for (i in 1:2604){
+  hers$stdBMI[i] <- (hers$BMI[i] - mean(hers$BMI)) / sd(hers$BMI)
+}
+
+attach(hers)
+
+# Write out model with selected predictors
+X.mat5 = model.matrix(~ as.factor(HT) + age + hers$stdBMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes) + stdBMI*as.factor(statins))
+
+# Specify prior precision matrix for beta0
+COinv5 <- t(X.mat5) %*% X.mat5
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data5 <-
+  list(
+  y = LDL1,
+  Xmat5 = X.mat5,
+  r = dim(X.mat5)[2] - 1,
+  n = dim(X.mat5)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat5)[2] - 1),
+  COinv5 = COinv5,
+  gg = dim(X.mat5)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param5 <- c("CPOinv5", "beta", "tau")
+
+# Initialize stochastic nodes
+jags.inits5 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel5 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat5[i, 2] + beta[3]*Xmat5[i, 3] + beta[4]*Xmat5[i, 4] + beta[5]*Xmat5[i, 5] + beta[6]*Xmat5[i,6] + beta[7]*Xmat5[i,8] + beta[8]*Xmat5[i,9] + beta[9]*Xmat5[i,10] + beta[10]*Xmat5[i,11]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv5[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv5[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit5 <- jags(data = jags.data5, parameters.to.save = jags.param5, model.file = HERSModel5, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# JAGS output for regression coefficient corresponding to standardized BMI term
+
+jagsfit5$BUGSoutput$summary[2608,"mean"]
+
+# Compared to JAGS output for regression corresponding to BMI term
+
+jagsfit2$BUGSoutput$summary["beta[4]","mean"]
+
+# JAGS output for regression coefficient corresponding to standardized BMI and statins interaction term 
+
+jagsfit5$BUGSoutput$summary[2614,"mean"]
+
+```
+
+
+## Question 7
+
+We use model 2 and run an analysis of a subject at age 67 and of a subject at age 68. We compare the regression coefficients corresponding to the smoking variable to see if there is still an association after one year.
+
+The smoking coefficient comparing the base year (age 67) to the next year (age 68) dramatically increases from about 4.8 to 10/7. This suggests that the effect of smoking on LDL1 levels magnifies as a subject gets older and older.
+```{r}
+# JAGS Output from Model 2:
+jagsfit2$BUGSoutput$summary[2605:2606,"mean"]
+
+```
+
+## Question 8
+
+The LPML value for Model 2, with diabetes (-16127.99) is greater than the LPML value for Model 3, without diabetes (-16156.15). This makes intutive sense because LPML evaluates a model based on predictive accuracy. In other words, more predictors result in greater predictive accuracy, to an extent of course. However, the difference LPML is not big; but it still exists. 
+```{r}
+# LPML for model with diabetes
+
+print(LPML2 <- sum(log(CPO2)))
+
+# LPML for model without diabetes
+
+print(LPML3 <- sum(log(CPO3)))
+```
+
+
+## Question 9
+
+We compute a pseudo-Bayes Factor by exponentiating the difference between the LPML statistics for the two models. 
+
+THe computed psuedo-Bayes Factor is significantly large, which referring to the table for Bayes Factors (Kass and Raftery, 1985), suggests that there is very strong evidence in favor of model 2 compared to model 3.
+```{r}
+# Pseudo-Bayes Factor
+
+print(PBF <- exp(LPML2 - LPML3))
+```
+
+## Question 10
+
+For the sensitivity analysis, we consider different values of the g-prior. We have already built a model with $\ g=n $, where the value of g has the equvalent weight of one observation. Now, we consider a g-prior such that $\ g=1 $, in which equal weight is assigned to the prior and likelihood.
+```{r}
+# Write out model with selected predictors
+X.mat2A = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes))
+
+# Specify prior precision matrix for beta0
+COinv2A <- t(X.mat2A) %*% X.mat2A
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data2A <-
+  list(
+  y = LDL1,
+  Xmat2A = X.mat2A,
+  r = dim(X.mat2A)[2] - 1,
+  n = dim(X.mat2A)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat2A)[2] - 1),
+  COinv2A = COinv2A,
+  gg = 1 # unit information prior
+  )
+
+# Parameters to monitor
+jags.param2A <- c("CPOinv2A", "beta", "tau")
+
+# Initialize stochastic nodes
+jags.inits2A <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel2A <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat2A[i, 2] + beta[3]*Xmat2A[i, 3] + beta[4]*Xmat2A[i, 4] + beta[5]*Xmat2A[i, 5] + beta[6]*Xmat2A[i,6] + beta[7]*Xmat2A[i,8] + beta[8]*Xmat2A[i,9] + beta[9]*Xmat2A[i,10]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv2A[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv2A[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit2A <- jags(data = jags.data2A, parameters.to.save = jags.param2A, model.file = HERSModel2A, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n2A = dim(X.mat2A)[1]; r2A = dim(X.mat2A)[2] - 1;
+pm_tau2A = jagsfit2A$BUGSoutput$summary["tau","mean"]
+pm_coeff2A = jagsfit2A$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]", "beta[7]", "beta[8]", "beta[9]"),"mean"]
+
+BIC2A <- -n2A*log(pm_tau2)+n2A*log(2*pi) +pm_tau2A*sum(LDL1-(pm_coeff2A[1]+pm_coeff2A[2]*as.numeric(HT)+pm_coeff2A[3]*age+pm_coeff2A[4]*BMI+pm_coeff2A[5]*as.numeric(smoking)+pm_coeff2A[6]*as.numeric(drinkany)+pm_coeff2A[7]*as.numeric(exercise)+pm_coeff2A[8]*as.numeric(statins)+pm_coeff2A[9]*as.numeric(diabetes))^2)+(r2A+1)*log(n2A)
+
+BIC2A
+
+## Deviance Information Criterion
+print(jagsfit2A$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO2A <- 1/jagsfit2A$BUGSoutput$mean$CPOinv2A  
+
+## LPML
+
+print(LPML2A <- sum(log(CPO2A)))
+```
+
+Now, we consider a model with the g-prior specified as $\ g=max(n,r^2)$ (Fernandez et al, 2001). In this case, the g-prior ends up being g=n because we have a large number of observations, which is the same specification as the original model with g-prior set to equal the number of observations. As a result, we omit running a model with the g-prior suggested by Fernandez to avoid redundancy.
+
+We compare model diagnostics for the model with $\ g=n$ and $\ g=max(n,r^2)$ with the model in which $\ g=1$. From our analysis the model with $\ g=1$ has a lower LPML value, DIC value, and BIC value. In fact, the model with $\ g=1$ has a DIC value that is signifanctly lower than the model with $\ g=n$ and $\ g=max(n,r^2)$. The lower DIC value is because a g-prior of $\ g=1$ results in a larger precision of the beta priors. This larger precision may be more representative of the model and the data. In other words, there is a greater likelihood of the beta parameters, given the data of the model.
+```{r}
+# Model Diagnostics for model with g=n and g=max(n,r^2)
+
+## BIC
+
+print(BIC2)
+
+## Deviance Information Criterion
+print(jagsfit2$BUGSoutput$DIC)
+
+## LPML
+
+print(LPML2 <- sum(log(CPO2)))
+
+# Model Diagnostics for model with g=1
+
+## BIC
+
+print(BIC2A)
+
+## Deviance Information Criterion
+print(jagsfit2A$BUGSoutput$DIC)
+
+## LPML
+
+print(LPML2A <- sum(log(CPO2A)))
+
+```
+
+## Question 11
+
+Because we did a sensitivity analysis with different values for the g-prior, in this question we consider an independent prior with different values of the parameters for a sensitivity analysis. First, we consider a prior on tau with parameter $\ c=0.001$.
+```{r}
+# Write out model with selected predictors
+X.mat6 = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes))
+
+# Specify prior precision matrix for beta0
+COinv6 <- t(X.mat6) %*% X.mat6
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data6 <-
+  list(
+  y = LDL1,
+  Xmat6 = X.mat6,
+  r = dim(X.mat6)[2] - 1,
+  n = dim(X.mat6)[1],
+  b = 0.000001 * diag(1, dim(X.mat6)[2] - 1),
+  c = 0.001
+  )
+
+# Parameters to monitor
+jags.param6 <- c("beta", "tau","CPOinv6")
+
+# Initialize stochastic nodes
+jags.inits6 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel6 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat6[i, 2] + beta[3]*Xmat6[i, 3] + beta[4]*Xmat6[i, 4] + beta[5]*Xmat6[i, 5] + beta[6]*Xmat6[i,6] + beta[7]*Xmat6[i,8] + beta[8]*Xmat6[i,9] + beta[9]*Xmat6[i,10]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv6[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(rep(0,r), b)
+  tau ~ dgamma(c, c)
+}
+
+jagsfit6 <- jags(data = jags.data6, parameters.to.save = jags.param6, model.file = HERSModel6, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n6 = dim(X.mat6)[1]; r6 = dim(X.mat6)[2] - 1;
+pm_tau6 = jagsfit6$BUGSoutput$summary["tau","mean"]
+pm_coeff6 = jagsfit6$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]", "beta[7]", "beta[8]", "beta[9]"),"mean"]
+
+BIC6 <- -n6*log(pm_tau6)+n6*log(2*pi) +pm_tau6*sum(LDL1-(pm_coeff6[1]+pm_coeff6[2]*as.numeric(HT)+pm_coeff6[3]*age+pm_coeff6[4]*BMI+pm_coeff6[5]*as.numeric(smoking)+pm_coeff6[6]*as.numeric(drinkany)+pm_coeff6[7]*as.numeric(exercise)+pm_coeff6[8]*as.numeric(statins)+pm_coeff6[9]*as.numeric(diabetes))^2)+(r6+1)*log(n6)
+
+BIC6
+
+## Deviance Information Criterion
+print(jagsfit6$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO6 <- 1/jagsfit6$BUGSoutput$mean$CPOinv6 
+
+## LPML
+
+print(LPML6 <- sum(log(CPO6)))
+```
+
+
+Now, we consider a model using independent priors, with a prior on tau in which $\ c=0.01$. We discover that the model diagnostics for both models are pretty similar. This makes sense for the BIC criterion because the BIC does not depend on the prior. Also, it makes sense for the DIC criterion because we have not changed the number of parameters between the two models, which would penalize the DIC value if we added more parameters. Lastly, for the LPML, the values between the models differ only slightly (about 0.04 difference), which suggests that the posterior samples between the two models are pretty much the same.
+```{r}
+# Write out model with selected predictors
+X.mat6A = model.matrix(~ as.factor(HT) + age + BMI + as.factor(smoking) + as.factor(drinkany) + as.factor(exercise) + as.factor(statins) + as.factor(diabetes))
+
+# Specify prior precision matrix for beta0
+COinv6A <- t(X.mat6A) %*% X.mat6A
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data6A <-
+  list(
+  y = LDL1,
+  Xmat6A = X.mat6A,
+  r = dim(X.mat6A)[2] - 1,
+  n = dim(X.mat6A)[1],
+  b = 0.000001 * diag(1, dim(X.mat6A)[2] - 1),
+  c = 0.01
+  )
+
+# Parameters to monitor
+jags.param6A <- c("beta", "tau","CPOinv6A")
+
+# Initialize stochastic nodes
+jags.inits6A <- list(list(tau=1 ,beta=c(1,1,1,1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel6A <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat6A[i, 2] + beta[3]*Xmat6A[i, 3] + beta[4]*Xmat6A[i, 4] + beta[5]*Xmat6A[i, 5] + beta[6]*Xmat6A[i,6] + beta[7]*Xmat6A[i,8] + beta[8]*Xmat6A[i,9] + beta[9]*Xmat6A[i,10]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv6A[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(rep(0,r), b)
+  tau ~ dgamma(c, c)
+}
+
+jagsfit6A <- jags(data = jags.data6A, parameters.to.save = jags.param6A, model.file = HERSModel6A, n.iter = 100000, n.burnin = 10000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+
+n6A = dim(X.mat6A)[1]; r6A = dim(X.mat6A)[2] - 1;
+pm_tau6A = jagsfit6A$BUGSoutput$summary["tau","mean"]
+pm_coeff6A = jagsfit6A$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]", "beta[7]", "beta[8]", "beta[9]"),"mean"]
+
+BIC6A <- -n6A*log(pm_tau6A)+n6A*log(2*pi) +pm_tau6A*sum(LDL1-(pm_coeff6A[1]+pm_coeff6A[2]*as.numeric(HT)+pm_coeff6A[3]*age+pm_coeff6A[4]*BMI+pm_coeff6A[5]*as.numeric(smoking)+pm_coeff6A[6]*as.numeric(drinkany)+pm_coeff6A[7]*as.numeric(exercise)+pm_coeff6A[8]*as.numeric(statins)+pm_coeff6A[9]*as.numeric(diabetes))^2)+(r6A+1)*log(n6A)
+
+BIC6
+
+## Deviance Information Criterion
+print(jagsfit6A$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO6A <- 1/jagsfit6A$BUGSoutput$mean$CPOinv6A 
+
+## LPML
+
+print(LPML6A <- sum(log(CPO6A)))
+```
+
+
+## Question 12
+
+We predict the LDL1 levels for three cases, using model 2 to generate the output.
+
+Unfortunately, the ordering of the median LDL1 levels for all three cases does not make intuitive sense. However, after looking at the mean LDL1 levels for the three cases, we see that case 1 has the highest mean LDL1 value, followed by case 3, and then case 2. We would expect a decrease in LDL1 values for the woman if she uses statins because the regression coefficient is negative ($\beta_{8} = -3.203$). Also, the mean LDL1 levels in case 2 is lower because we took out the HT regression coefficient which was positive ($\beta_{2}$ = 2.560$)
+
+Also, the 95% credible intervals we generated for all three cases are exceptionally wide. This suggests that we need more predictors in the model to improve the accuracy of our model and subsequently decrease the standard error for the beta coefficients.
+```{r}
+# Case 1: Median and mean levels for a 60 years-old woman that is undergoing HT, doesn't smoke nor consume alcohol, does some alcohol, does some exercise, doesn't use statins, doesn't have diabetes, and has a BMI of 25.8
+
+jagsfit2$BUGSoutput$summary["pred1","50%"]
+
+jagsfit2$BUGSoutput$summary["pred1","mean"]
+
+# 95% credible interval for LDL1 levels for the same subject
+quantile(jagsfit2$BUGSoutput$sims.matrix[,"pred1"], c(0.025, 0.975))
+
+# Case 2: Median and mean LDL1 levels for same subject; the only difference now is that she uses statins
+
+jagsfit2$BUGSoutput$summary["pred2","50%"]
+
+jagsfit2$BUGSoutput$summary["pred2","mean"]
+
+# 95% credible interval for LDL1 levels for the same subject
+
+quantile(jagsfit2$BUGSoutput$sims.matrix[,"pred2"], c(0.025, 0.975))
+
+# Case 3: Median LDL1 levels for same subject; the only difference now is that she is assigned to the placebo group
+
+jagsfit2$BUGSoutput$summary["pred3","50%"]
+
+jagsfit2$BUGSoutput$summary["pred3","mean"]
+
+# 95% credible interval for LDL1 levels for the same subject
+
+quantile(jagsfit2$BUGSoutput$sims.matrix[,"pred3"], c(0.025, 0.975))
+
+```
+
+
+## Question 13
+
+In order to study the differential effects between the 20 clinics, it would be appropriate to build a deeper hierarchical model, which models the effects for each individual clinics as well as combining the individual clinic information into a single parameter which models the overall effect among all clinics. To compare the effects between clinics, the use of a risk difference or risk ratio statistic can be implemented into the model. 
+
+## Question 14
+The posterior results under the standard improper prior are similar to results obtained under a frequentist setting. Other than this theoretical result, the standard improper prior is not used often in building statistical models. 
+
+The proper reference prior is an approximation to the standard improper prior. In the case of the proper reference prior, posterior analysis can easily be done using the results of the MCMC simulation. However, this prior is not as robust as other priors because the choice of parameter values is arbitrary, and as a a result, it does not reasonably incorporate the expert's info into the prior. With that said, it is still a useful prior to use for primary data analysis or for sensitivity analysis in a study.
+
+## Question 15
+Independent priors are most commonly used in practice because of the flexibility of the prior specification. It is easy to incorporate independent priors into a model and perform data analysis and sensitivity analysis. However, like the proper reference prior, choices for the parameters may not reflect the expert's info accurately.
+
+G-priors link the distribution of tau and beta, because it specifies a distribution for beta given tau, which allows us to build a more sophisticated and accurate model. However, it is difficult to set a prior on g itself, which is a limitation to the data analysis. Also, we are able to incorporate the current data we have into our model, and use that to train the model to predict new observations. Lastly, we are able to set the values of g to different values, depending on the assumptions we make.
+
+## Question 16
+The LPML evaluates a model based on its predictive ability. Hence, we would prefer models with higher LPML values.
+
+The LPML is estimated from posterior samples by taking the sum of the log of the CPO. Since the LPML is estimated from posterior samples, there may be cases in which the posterior samples can not be elicited in a model.  
+
+
+## Question 17
+The Bayes Factor compares two models based on their posterior probabilities. Because the Bayes Factor is expressed as a ratio of the two model's posterior probabilities, one just needs to calculate one value and interpret - instead of computing two values for other model diagnostics and comparing. Also, the Bayes Factor can be computed from a single posterior sample, by using output from MCMC sampling. Lastly, the Bayes factor has the property of transitivity, which for example, allows you to make an indirect comparison between Model A and Model C if you know the Bayes Factor between Model A and Model B and for Model B and Model C.
+
+As for limitations of the Bayes Factor, the Bayes Factor is not defined for improper priors, and it has been criticized for the assumption that one of the models is correct (Guindani, Lecture 9). Also, MCMC sampling methods may be inefficient and computationally costly for complex models.
+
+
+
+
+
+
