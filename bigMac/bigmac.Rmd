@@ -5,7 +5,7 @@ date: "November 25, 2018"
 output: 
   github_document:
     toc: true
-    toc_depth: 2
+    toc_depth: 3
 always_allow_html: yes
 ---
 
@@ -23,8 +23,8 @@ We will investigate the relationship between local prices (in Dollars) of a Big 
 
 
 #**Statistical Methods**
-
 ##**Exploratory Data Analysis**
+###Non-GDP Adjusted
 
 First, we plot the local price (in Dollars) of a Big Mac for each country. We observe that across our chosen countries, the local price of a Big Mac has been increasing steadily only in the United States. So we remove this upward trend by taking the first difference for the United States series. For the other countries, we assume stationarity since the ACF of the prices exhibit exponential decay.  
 
@@ -41,7 +41,7 @@ bigmac$date <- as.Date(bigmac$date)
 
 singleCountry <- function(country){
   subset(bigmac, name == country, 
-         select = c("date", "dollar_price"))
+         select = c("date", "dollar_price", "adj_price"))
 }
 
 ## Japanese Yen 
@@ -109,11 +109,82 @@ main = "Russia")
 pacf(brazil$dollar_price, ylab = "PACF Series for Local Price (in Dollars) of Big Mac", 
 main = "Russia")
 
+# add observation to beginning of differenced US time series
+diffUSA <- c(0, diffUSA)
+
+```
+
+###GDP-Adjusted
+
+We will now consider the GDP adjusted dollar price of a Big Mac in Japan, USA, Russia, and Brazil.
+```{r GDPAdj}
+
+## Japanese Yen 
+japan <- singleCountry("Japan")
+japan$adj_price <- ts(japan$adj_price)
+
+# plot of local price (in Dollars) of Big Mac
+plot(japan$adj_price, xlab = "Year", ylab = "Local Adjusted Price (in Dollars) of Big Mac", 
+     main = "Japan", xaxt = "n")
+axis(1, at = seq(from = 0, to = 16, by = 2), labels = 2010:2018)
+
+# acf/pacf
+acf(japan$adj_price, ylab = "ACF Series for Local Adjusted Price (in Dollars) of Big Mac", main = "Japan")
+pacf(japan$adj_price, ylab = "PACF Series for Local  AdjustedPrice (in Dollars) of Big Mac", main = "Japan")
+
+## US Dollar
+usa <- singleCountry("United States")
+usa$adj_price <- ts(usa$adj_price)
+
+# plot of US price of Big Mac
+plot(usa$adj_price, xlab = "Year", ylab = "Local Price (USD) of Big Mac", 
+     main = "USA", xaxt = "n")
+axis(1, at = seq(from = 0, to = 16, by = 2), labels = 2010:2018)
+
+# acf/pacf
+acf(usa$adj_price, ylab = "ACF Series for Differenced Local Adjusted Price (USD) of Big Mac", 
+main = "United States")
+pacf(usa$adj_price, ylab = "PACF Series for Differenced Local Adjusted Price (USD) of Big Mac", main = "United States")
+
+## Brazil real
+
+brazil <- singleCountry("Brazil")
+brazil$adj_price <- ts(brazil$adj_price)
+
+# plot of Brazilian price (in Dollars) of Big Mac
+plot(brazil$adj_price, xlab = "Year", ylab = "Local Adjusted Price (in Dollars) of Big Mac", 
+     main = "Brazil", xaxt = "n")
+axis(1, at = seq(from = 0, to = 16, by = 2), labels = 2010:2018)
+
+# acf/pacf
+acf(brazil$adj_price, ylab = "ACF Series for Local Adjusted Price (in Dollars) of Big Mac", 
+main = "Brazil")
+pacf(brazil$adj_price, ylab = "PACF Series for Local Adjusted Price (in Dollars) of Big Mac", 
+main = "Brazil")
+
+## Russian ruble
+
+russia <- singleCountry("Russia")
+russia$adj_price <- ts(russia$adj_price)
+
+# plot of Russian price (in Dollars) of Big Mac
+plot(russia$adj_price, xlab = "Year", ylab = "Local Adjusted Price (in Dollars) of Big Mac", 
+     main = "Russia", xaxt = "n")
+axis(1, at = seq(from = 0, to = 16, by = 2), labels = 2010:2018)
+
+# acf/pacf
+acf(russia$adj_price, ylab = "ACF Series for Local Adjusted Price (in Dollars) of Big Mac", 
+main = "Russia")
+pacf(brazil$adj_price, ylab = "PACF Series for Local Adjusted Price (in Dollars) of Big Mac", 
+main = "Russia")
 
 ```
 
 
+
+
 ##**Model Building**
+### Non-GDP Adjusted
 
 We fit a vector ARMA model because we want to model multiple time series together to determine if there are any relationships between pairs of time series. Looking at an individual time series is less interesting for this dataset because we would not be able to answer questions about the relationships between the prices of Big Macs between countries. We only consider the VAR model of order 1 because we do not have many observations for each time series. 
 
@@ -121,17 +192,13 @@ We fit a vector ARMA model because we want to model multiple time series togethe
 set.seed(1234)
 library(vars)
 
-# combine differenced prices of all countries
-allCountries <- cbind(japan$dollar_price, diffUSA, brazil$dollar_price, russia$dollar_price)
-
-# handle NA value with US difference prices
-allCountries[1,2] <- 0
-
+# combine prices of all countries
+allCountries <- cbind(japan$dollar_price, ts(diffUSA), brazil$dollar_price, russia$dollar_price)
 
 # fit vector ARMA of order 1
 vectorFit <- VAR(allCountries, p = 1, type = "both")
-
 summary(vectorFit)
+
 
 ```
 
@@ -149,16 +216,35 @@ $$
 \end{array}\right)
 $$
 
+### GDP-Adjusted
+```{r}
+# combine GDP-adjustedprices of all countries
+allCountries2 <- cbind(japan$adj_price, usa$adj_price, brazil$adj_price, russia$adj_price)
 
-##**Model Forecasting**
-```{r, fig.height = 10, fig.width = 10}
-fit.pr = predict(vectorFit, n.ahead = 4, ci = 0.95) # 2 years ahead
-fanchart(fit.pr)
+# fit vector ARMA of order 1
+vectorFit2<- VAR(allCountries2, p = 1, type = "both")
+summary(vectorFit2)
 ```
 
 
+##**Model Forecasting**
+### Non-GDP Adjusted
+
+```{r, fig.height = 10, fig.width = 10}
+fit_pred = predict(vectorFit, n.ahead = 4, ci = 0.95) # 2 years ahead
+fanchart(fit_pred)
+```
+
+### GDP-Adjusted
+```{r}
+fit_pred2 = predict(vectorFit2, n.ahead = 4, ci = 0.95) # 2 years ahead
+fanchart(fit_pred2)
+```
+
 
 ##**Model Diagonstics**
+### Non-GDP Adjusted
+
 
 We plot the acf for the residuals of each indvidual series and for the pairs of series. In most of the plots, the correlation of the residuals is negligible. However, our visual inspection disagrees with the result of the multivariate Ljung-box test. We reject with significance level 0.05 and therfore conclude that the residuals are not white noise. This result undermines the correctness of our model since we assumed that the residuals are white noise before fitting the model. 
 ```{r}
@@ -171,14 +257,19 @@ acf(resid(vectorFit), 12)
 serial.test(vectorFit, lags.pt = 10, type = "PT.adjusted")
 ```
 
+### GDP-Adjusted
 
 #**Results**
+### Non-GDP Adjusted
+
 
 The vector ARMA model gives 4 different models for each country. However, not every model performed well in terms of coefficient signifiance and overall model significance. The US model performed the best a R-squared value of 0.74, outperforming all other models. The Japan model performed the next best according to the R-squared value, followed by the Brazil and Russian model. In addition, two of the coefficients of the US model are significant. These coefficients included the lagged US price and the lagged Russian price. Every other coefficient was independently insignificant. 
 
 Further analysis of the data is necessary to build a model which can more closely estimate the relationship of local prices of Big Macs between different countries. The inclusion of other datasets containing other variables which could influence the price of a Big Mac should be considered.  
 
 From a practical perspective, these results suggest that it is difficult to isolate a relationship between the price of a good (Big Macs in this context) in one country, and the price of the same good in other countries. There are undoubtedly many other factors which would impact the local price of a good, which are not included in this model. Hence, the idea proposed by *The Economist* that the ratio of the value of goods that can be bought with local currency can estimate the exchange rates between countries is not perfect. 
+
+### GDP Adjusted
 
 
 #**Discussion**
@@ -198,7 +289,6 @@ Also, forecasting is difficult for this data set. The data is collected every 6 
 Lastly, we wrap up the analysis with final thoughts on the data analysis.
 
 Overall, the results indicate that the estimated models did not perform well in estimating the prices of a Big Mac dependent on the prices of a Big Mac in other countries. If it is difficult to determine the relationship between prices of Big Macs in different countries, then the use of the ratio of the value of goods a local currency can buy to approximate exchange rates is unreliable. Hence, we should consider other potential variables and their relationships to better approximate the exchange rates between countries. 
-
 
 
 
