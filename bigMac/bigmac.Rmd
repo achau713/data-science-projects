@@ -236,7 +236,7 @@ fanchart(fit_pred)
 ```
 
 ### GDP-Adjusted
-```{r}
+```{r, fig.height = 10, fig.width = 10}
 fit_pred2 = predict(vectorFit2, n.ahead = 4, ci = 0.95) # 2 years ahead
 fanchart(fit_pred2)
 ```
