@@ -149,6 +149,15 @@ $$
 \end{array}\right)
 $$
 
+
+##**Model Forecasting**
+```{r}
+fit.pr = predict(vectorFit, n.ahead = 4, ci = 0.95) # 2 years ahead
+fanchart(fit.pr)
+```
+
+
+
 ##**Model Diagonstics**
 
 We plot the acf for the residuals of each indvidual series and for the pairs of series. In most of the plots, the correlation of the residuals is negligible. However, our visual inspection disagrees with the result of the multivariate Ljung-box test. We reject with significance level 0.05 and therfore conclude that the residuals are not white noise. This result undermines the correctness of our model since we assumed that the residuals are white noise before fitting the model. 
@@ -183,6 +192,8 @@ Another limitation of the data is the frequency in which the data was collected.
 Furthermore, if the idea is to approximate the exchange rate between countries by the ratio of the value of goods that can be bought with local currency, then the frequency of change should match on both sides of the equation. Exchange rates change frequently and constantly. But, the velocity of change for exchange rates do not match the frequency which the data for the prices of Big Macs was gathered. If data for the prices of Big Macs was gathered more frequently, then perhaps the model would perform better. Or we could find a different good whose price is demand elastic which would result in a better approximation to the exchange rate.
 
 Also, the model is assuming that only the prices of a Big Mac in other countries affect the local price of a Big Mac. This is an oversimplistic assumption which does not reflect reality. There are many other factors which could influence the local price of a Big Mac. These other factors are not controlled for in our analysis and represent an opportunity for future analysis. 
+
+Also, forecasting is difficult for this data set. The data is collected every 6 months which implies forecasted estimates for Big Mac prices every 6 months. This is an unreasonable assumption of this model which assumes we can precisely forecast 6 months out in advance given the sparsity of our data. 
 
 Lastly, we wrap up the analysis with final thoughts on the data analysis.
 
