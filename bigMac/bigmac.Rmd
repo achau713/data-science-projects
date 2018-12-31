@@ -193,7 +193,7 @@ Furthermore, if the idea is to approximate the exchange rate between countries b
 
 Also, the model is assuming that only the prices of a Big Mac in other countries affect the local price of a Big Mac. This is an oversimplistic assumption which does not reflect reality. There are many other factors which could influence the local price of a Big Mac. These other factors are not controlled for in our analysis and represent an opportunity for future analysis. 
 
-Also, forecasting is difficult for this data set. The data is collected every 6 months which implies forecasted estimates for Big Mac prices every 6 months. This is an unreasonable assumption of this model which assumes we can precisely forecast 6 months out in advance given the sparsity of our data. 
+Also, forecasting is difficult for this data set. The data is collected every 6 months which implies forecasted estimates for Big Mac prices will occur every 6 months. This is an unreasonable assumption of this model, assuming we can precisely forecast 6 months out in advance given the sparsity of our data. This is an issue of casaulity. We are uncertain how strong the correlation is between the prices of Big Mac in different countries. There are many other factors within a 6 month period which can obscure a strong casual relationship that we seek. 
 
 Lastly, we wrap up the analysis with final thoughts on the data analysis.
 
