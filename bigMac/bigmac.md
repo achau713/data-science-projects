@@ -1,4 +1,4 @@
-Stats 245 Final Project
+Prices of Big Mac
 ================
 Anthony Chau
 November 25, 2018
@@ -8,6 +8,7 @@ November 25, 2018
 -   [**Statistical Methods**](#statistical-methods)
     -   [**Exploratory Data Analysis**](#exploratory-data-analysis)
     -   [**Model Building**](#model-building)
+    -   [**Model Forecasting**](#model-forecasting)
     -   [**Model Diagonstics**](#model-diagonstics)
 -   [**Results**](#results)
 -   [**Discussion**](#discussion)
@@ -34,7 +35,7 @@ We will investigate the relationship between local prices (in Dollars) of a Big 
 
 First, we plot the local price (in Dollars) of a Big Mac for each country. We observe that across our chosen countries, the local price of a Big Mac has been increasing steadily only in the United States. So we remove this upward trend by taking the first difference for the United States series. For the other countries, we assume stationarity since the ACF of the prices exhibit exponential decay.
 
-We extract the local price (in Dollars) from the 4 chosen countries and plot the ACF and PACF of the time series for each country. We notice that the ACF tails off and the PACF cuts off after the first lag for each country. This observation suggests that we will include a autoregressive term of order 1 in our final model.
+We extract the local price (in Dollars) from the 4 chosen countries and plot the ACF and PACF of the time series for each country. We notice that the ACF tails off and the PACF cuts off after the first lag for each country. This observation suggests that we should include a autoregressive term of order 1 in our final model.
 
 ``` r
 # load data
@@ -332,6 +333,16 @@ $$
 \\end{array}\\right)
 $$
 
+**Model Forecasting**
+---------------------
+
+``` r
+fit.pr = predict(vectorFit, n.ahead = 4, ci = 0.95) # 2 years ahead
+fanchart(fit.pr)
+```
+
+![](bigmac_files/figure-markdown_github/unnamed-chunk-1-1.png)
+
 **Model Diagonstics**
 ---------------------
 
@@ -348,7 +359,7 @@ library(forecast)
 acf(resid(vectorFit), 12)
 ```
 
-![](bigmac_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](bigmac_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ``` r
 # multivariate Ljung-Box test
@@ -375,13 +386,15 @@ From a practical perspective, these results suggest that it is difficult to isol
 
 First, we discuss some limitations of the data analysis.
 
-The model choice for our objective is quite complex, considering we are jointly analyzing the time series for 4 countries. This data set is unique as the number of observations in a time series is quite low (15). This constraint limits our model choice to simple models because we want to avoid estimating more parameters than the number of observations.
+The model choice for our objective is quite complex, considering we are jointly analyzing the time series for 4 countries. This data set is unique as the number of observations in a time series is quite low (15). This constraint limits our model choice to simple models because we want to avoid estimating more parameters than the number of observations. On that same note, we also want to avoid overfitting the data
 
-Another limitation of the data is the frequency in which the data was collected. The data is biyearly and only spans about 7 years. It is plausible to believe that the price of a Big Mac is demand inelastic, that is, the price does not change dramatically given a unit change in demand and this is the reason for the infrequent collection of data. But, the sparsity of data makes model estimation and estimation difficult.
+Another limitation of the data is the frequency in which the data was collected. The data is biyearly and only spans about 7 years. It is plausible to believe the price of a Big Mac is demand inelastic - the price does not change dramatically given a unit change in demand and this is the reason for the infrequent collection of data. But, the sparsity of data makes model estimation and estimation difficult.
 
 Furthermore, if the idea is to approximate the exchange rate between countries by the ratio of the value of goods that can be bought with local currency, then the frequency of change should match on both sides of the equation. Exchange rates change frequently and constantly. But, the velocity of change for exchange rates do not match the frequency which the data for the prices of Big Macs was gathered. If data for the prices of Big Macs was gathered more frequently, then perhaps the model would perform better. Or we could find a different good whose price is demand elastic which would result in a better approximation to the exchange rate.
 
 Also, the model is assuming that only the prices of a Big Mac in other countries affect the local price of a Big Mac. This is an oversimplistic assumption which does not reflect reality. There are many other factors which could influence the local price of a Big Mac. These other factors are not controlled for in our analysis and represent an opportunity for future analysis.
+
+Also, forecasting is difficult for this data set. The data is collected every 6 months which implies forecasted estimates for Big Mac prices will occur every 6 months. This is an unreasonable assumption of this model, assuming we can precisely forecast 6 months out in advance given the sparsity of our data. This is an issue of casaulity. We are uncertain how strong the correlation is between the prices of Big Mac in different countries. There are many other factors within a 6 month period which can obscure a strong casual relationship that we seek.
 
 Lastly, we wrap up the analysis with final thoughts on the data analysis.
 
