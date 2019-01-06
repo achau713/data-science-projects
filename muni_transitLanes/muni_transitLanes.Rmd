@@ -13,7 +13,7 @@ always_allow_html: yes
 library(dplyr)
 library(ggplot2)
 library(stringr)
-library(tidyverse)
+library(readr)
 library(leaflet)
 library(plotly)
 library(lubridate)
@@ -400,11 +400,6 @@ citations_byMonth
 ```
 
 
-
-## Transit Lane Citations by Weekday
-```{r}
-
-```
 
 
 ## Transit Lane Citations by Violation Type
