@@ -81,17 +81,33 @@ gridApprox2(3, 4, 20)
 # Case 3: 3 successes with 7 trials
 gridApprox2(4, 7, 20)
 
-
 ```
 
 #**Exercise 2M3**
 
+This problem is an application of Bayes Rule.
+$$
+\begin{aligned}
+\Pr(Land|Earth) &= 0.3 && \text{(Likelihood)}\\
+\Pr(Earth) &= 0.5 && \text{(Prior)}\\
+\Pr(Land) &= Pr(Land | Earth) \cdot Pr(Earth) + Pr(Land | Mars) \cdot Pr(Mars) && \text{(Average Likelihood)}\\
+\ &= 0.3 \cdot 0.5 + 1 \cdot 0.5 \\
+\ &= 0.15 + 0.5 \\
+\ &= 0.65
+\end{aligned}
+$$
 
+Hence, we can apply Bayes Rule to compute $Pr(Earth | Land)$.
 
+$$
+\begin{aligned}
+\Pr(Earth | Land) &= \frac{Pr(Land | Earth) \cdot Pr(Earth)} {Pr(Land)} \\
+\ &= \frac {0.3 \cdot 0.5} {0.65} \\
+\ &= 0.23
+\end{aligned}
+$$
 
-
-
-
+#**Exercise 2M4**
 
 
 

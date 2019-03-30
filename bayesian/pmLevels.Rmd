@@ -8,25 +8,29 @@ output:
 always_allow_html: yes
 ---
 
-# **Problem 1**
+# Exploratory Data Analysis
 ```{r}
-## PM 10 data for two monitoring stations in Milan and three in Rome
+# PM 10 data for two monitoring stations in Milan and three in Rome
 PM10=read.csv(paste("http://www.ics.uci.edu/~mguindan","/teaching/introBDA/data","/Stations_italy.csv", sep=""), as.is=T)
 
 ## first lines of the dataset## 
 PM10
 ```
 
-## Question 1
+# Model Building
 
-#### **Likelihood:**  
+## **Likelihood:**  
 
 We capture the daily patterns in PM10 levels across the two stations in Milan by using a shared muDaily parameter. Because the two stations are fairly close, we assume that both stations reflect similar weather patterns. Hence, we use a shared parameter that captures the daily patterns across both stations.
 
-stationA[i] ~ Normal(muDaily[i], tauA)  
-stationB[i] ~ Normal(muDaily[i], tauB)  
+\[
+\begin{aligned}
+station_{A}[i] &\sim Normal(tempDaily[i], tauA)  \\
+station_{B}[i] &\sim Normal(tempDaily[i], tauB)  \\
+\end{aligned}
+\]
 
-#### **Prior on muDaily[i]:** 
+## **Prior on muDaily[i]:** 
 
 In order to capture the monthly summary, we build a hierarchial model, in which the daily patterns across the daily patterns (muDaily) depends on the monthly summary for the month of October in Milan (muMonthly). Lastly, we incorporate past information on the monthly summary through a normal distribution
 

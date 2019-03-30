@@ -1,5 +1,5 @@
 ---
-title: "STATS 115 Final"
+title: "Statins"
 author: "Anthony Chau"
 date: "March 18, 2018"
 output: html_document
@@ -16,7 +16,7 @@ For our exploratory data analysis, we check the values of the quantitative varia
 Also, we use boxplots to check if certain levels for the categorical variables correspond with higher (or lower) LDL1 levels. For example, we have more observations with higher LDL levels for statin use. However, this possibly suggests that the statin variable may be positive correlated with LDL1 levels but our analysis here is too simple and naive before being able to conclude anything.
 ```{r}
 
-hers <- read.csv("C:/Users/achau/Desktop/UCI/Winter 2018/STATS 115/STATS 115 Final/hersdata_1.csv")
+hers <- read.csv("hersdata_1.csv")
 attach(hers)
 head(hers)
 

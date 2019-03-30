@@ -1,0 +1,144 @@
+---
+title: "Statins"
+author: "Anthony Chau"
+date: "December 30, 2018"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+After loading the data, we note that we have ten total variables:
+
+* X : ID number
+* HT: Hormone Therapy/Placebo
+* Age: Age of patient
+* Smoking: Yes/No
+* Drinkany: Yes/No
+* Exercise: Yes/No
+* Statins: Yes/No
+* Diabetes: Yes/No
+* BMI: BMI index
+* LDL1: Level of LDL1 (low density lipoprotien - "good cholesterol")
+
+```{r loadData}
+hers <- read.csv("hersdata_1.csv")
+summary(hers)
+
+```
+
+
+```{r dataViz}
+library(ggplot2)
+library(dplyr)
+
+ggplot(hers, aes(x = BMI, y = LDL1)) +
+  geom_point(aes(col = age), size = 1) +
+  labs(title = "BMI vs LDL1", y = "LDL1 Levels")
+
+
+
+# Convert to 0 and 1 encoding of no and yes, respectively
+levels(hers$smoking)[2]<- 1
+levels(hers$smoking)[1]<- 0
+
+levels(hers$exercise)[2] <- 1
+levels(hers$exercise)[1] <- 0
+
+levels(hers$HT)[2] <- 1
+levels(hers$HT)[1] <- 0
+
+levels(hers$drinkany)[2] <- 0
+levels(hers$drinkany)[3] <- 1
+
+```
+
+
+
+```{r}
+library(R2jags)
+
+# Write out model with selected predictors
+X.mat1 = model.matrix(~ as.factor(hers$HT) + hers$age + hers$BMI + as.factor(hers$smoking) + as.factor(hers$exercise))
+
+# Specify prior precision matrix for beta0
+COinv1 <- t(X.mat1) %*% X.mat1
+
+# r is the number of regression coefficients, including the intercept
+
+# n is the sample size
+
+# Create JAGS Model
+
+# Data
+jags.data1 <-
+  list(
+  y = hers$LDL1,
+  Xmat1 = X.mat1,
+  r = dim(X.mat1)[2],
+  n = dim(X.mat1)[1],
+  a = 0.001,
+  b = 0.001,
+  beta0 = rep(0, dim(X.mat1)[2]),
+  COinv1 = COinv1,
+  gg = dim(X.mat1)[1] # unit information prior
+  )
+
+# Parameters to monitor
+jags.param1 <- c("beta")
+
+# Initialize stochastic nodes
+jags.inits1 <- list(list(beta=c(1,1,1,1,1,1)))
+
+
+#jags.inits1 <- list(list(tau=1 ,beta=c(1,1,1,1,1,1)))
+
+# Regression Model in Bayesian Framework
+HERSModel1 <- function(){
+  for (i in 1:n) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[1] + beta[2]*Xmat1[i, 2] + beta[3]*Xmat1[i, 3] + beta[4]*Xmat1[i, 4] + beta[5]*Xmat1[i, 5] + beta[6]*Xmat1[i,6]
+  # CPOinv is the MLE of a normal distribution
+  CPOinv1[i] <- sqrt(2*3.14159/tau)*exp(0.5*tau*pow(y[i]-mu[i],2))
+  }
+  # Priors on beta and tau
+  beta[1:r] ~ dmnorm(beta0[1:r], (1/gg) * COinv1[1:r, 1:r])
+  tau ~ dgamma(a, b)
+}
+
+jagsfit1 <- jags(data = jags.data1, parameters.to.save = jags.param1, model.file = HERSModel1, n.iter = 10000, n.burnin = 1000, n.chains = 1, DIC = T)
+
+# Model Diagnostics
+
+## BIC using the formula to reproduce the results
+# 
+# n1 = dim(X.mat1)[1]; r1 = dim(X.mat1)[2];
+# pm_tau1 = jagsfit1$BUGSoutput$summary["tau","mean"]
+# pm_coeff1 = jagsfit1$BUGSoutput$summary[c("beta[1]","beta[2]", "beta[3]", "beta[4]", "beta[5]", "beta[6]"),"mean"]
+# 
+# BIC1 <- -n1*log(pm_tau1)+n1*log(2*pi) +pm_tau1*sum(hers$LDL1-(pm_coeff1[1]+pm_coeff1[2]*as.numeric(hers$HT)+pm_coeff1[3]*hers$age+pm_coeff1[4]*hers$BMI+pm_coeff1[5]*as.numeric(hers$smoking)+pm_coeff1[6]*as.numeric(hers$exercise))^2)+(r1+1)*log(n1)
+# 
+# BIC1
+
+## Deviance Information Criterion
+print(jagsfit1$BUGSoutput$DIC)
+
+## Compute CPO, a vector of length n = 654
+
+CPO1 <- 1/jagsfit1$BUGSoutput$mean$CPOinv1  
+
+## Compute LPML
+
+print(LPML1 <- sum(log(CPO1)))
+```
+
+
+
+```{r}
+print(jagsfit1)
+
+jagsfit1.mcmc <- as.mcmc(jagsfit1)
+xyplot(jagsfit1.mcmc)
+```
+
